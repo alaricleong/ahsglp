@@ -15,7 +15,7 @@
         body {
             /* Aptos font prioritized, falling back to Inter and system sans-serif */
             font-family: 'Aptos', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
         /* Custom responsive scrollbar */
         ::-webkit-scrollbar {
@@ -26,12 +26,12 @@
             background: rgba(0, 0, 0, 0.02);
         }
         ::-webkit-scrollbar-thumb {
-            background: rgba(74, 13, 23, 0.4);
+            background: rgba(74, 13, 23, 0.6);
             border-radius: 3px;
         }
     </style>
 </head>
-<body class="bg-[#faf6ee] text-[#064e3b] dark:bg-[#021c15] dark:text-[#d8f3dc] min-h-screen flex flex-col antialiased">
+<body id="bodyFrame" class="bg-[#faf6ee] text-[#02180a] min-h-screen flex flex-col antialiased transition-all duration-300">
 
     <!-- Highly Cohesive Combined Header and Tabs Row in Royal Maroon (#4a0d17) -->
     <header class="w-full bg-[#4a0d17] text-white border-b border-[#63141f] sticky top-0 z-50 shadow-md px-3 py-2.5 transition-all">
@@ -107,22 +107,22 @@
     <main class="flex-1 max-w-7xl w-full mx-auto p-3.5 md:p-6 flex flex-col gap-4 bg-[#faf6ee] dark:bg-[#021c15]" id="mainContainer">
         
         <!-- Onboarding Screen (Initial Setup Card) -->
-        <section id="onboardingScreen" class="bg-[#f8f5eb] dark:bg-slate-800 rounded-3xl p-5 md:p-8 shadow-lg border border-[#e4dec9] dark:border-slate-700 max-w-md mx-auto my-6 w-full">
+        <section id="onboardingScreen" class="bg-[#fdfbf7] dark:bg-[#112d24] rounded-3xl p-5 md:p-8 shadow-lg border border-[#e4dec9] dark:border-slate-800 max-w-md mx-auto my-6 w-full">
             <div class="text-center mb-5">
-                <span class="bg-[#faf5ef] text-[#4a0d17] dark:bg-slate-750 dark:text-amber-250 text-xs font-black px-3 py-1 rounded-md uppercase tracking-wider border border-amber-200/50" id="onboardBadge">Setup Portal</span>
+                <span class="bg-[#faf5ef] text-[#4a0d17] dark:bg-[#1b4332] dark:text-amber-250 text-xs font-black px-3 py-1 rounded-md uppercase tracking-wider border border-amber-200/50" id="onboardBadge">Setup Portal</span>
                 <h2 class="text-2xl font-black mt-2 tracking-tight text-[#4a0d17] dark:text-white" id="onboardTitle">AHS Global Classroom</h2>
-                <p class="text-[#064e3b] dark:text-slate-350 mt-1.5 text-xs font-medium" id="onboardDesc">Welcome to the Global Literacy Project. Let's register your group tracker first.</p>
+                <p class="text-[#02180a] dark:text-slate-350 mt-1.5 text-xs font-medium" id="onboardDesc">Welcome to the Global Literacy Project. Let's register your group tracker first.</p>
             </div>
 
-            <!-- Enhanced 3-Dropdown Setup Form (Replaces plain text format string) -->
+            <!-- Enhanced 3-Dropdown Setup Form -->
             <form id="onboardForm" onsubmit="submitOnboarding(event)" class="space-y-4">
                 
                 <!-- Dropdown 1: Year selection -->
                 <div>
-                    <label class="block text-xs font-black text-[#042f1a] dark:text-slate-200 mb-1.5" id="lblYearOnboard">
+                    <label class="block text-xs font-black text-[#02180a] dark:text-slate-200 mb-1.5" id="lblYearOnboard">
                         1. Select Current Trip Year *
                     </label>
-                    <select id="onboardYear" required class="w-full bg-[#fdfbf7] dark:bg-slate-900 border-2 border-[#1b4332]/20 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-xs font-bold text-[#042f1a] dark:text-white focus:outline-none focus:ring-1 focus:ring-[#4a0d17]">
+                    <select id="onboardYear" required class="w-full bg-[#faf6ee] dark:bg-slate-900 border-2 border-[#1b4332]/25 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-xs font-bold text-[#02180a] dark:text-white focus:outline-none focus:ring-1 focus:ring-[#4a0d17]">
                         <option value="2026">2026</option>
                         <option value="2027">2027</option>
                         <option value="2028">2028</option>
@@ -132,10 +132,10 @@
 
                 <!-- Dropdown 2: Trip City selection -->
                 <div>
-                    <label class="block text-xs font-black text-[#042f1a] dark:text-slate-200 mb-1.5" id="lblCityOnboard">
+                    <label class="block text-xs font-black text-[#02180a] dark:text-slate-200 mb-1.5" id="lblCityOnboard">
                         2. Select Destination Trip City *
                     </label>
-                    <select id="onboardCity" required class="w-full bg-[#fdfbf7] dark:bg-slate-900 border-2 border-[#1b4332]/20 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-xs font-bold text-[#042f1a] dark:text-white focus:outline-none focus:ring-1 focus:ring-[#4a0d17]">
+                    <select id="onboardCity" required class="w-full bg-[#faf6ee] dark:bg-slate-900 border-2 border-[#1b4332]/25 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-xs font-bold text-[#02180a] dark:text-white focus:outline-none focus:ring-1 focus:ring-[#4a0d17]">
                         <option value="Sydney">Sydney (悉尼)</option>
                         <option value="Beijing">Beijing (北京)</option>
                         <option value="Chongqing">Chongqing (重庆)</option>
@@ -147,11 +147,11 @@
 
                 <!-- Dropdown 3: Group selection (1 to 25) -->
                 <div>
-                    <label class="block text-xs font-black text-[#042f1a] dark:text-slate-200 mb-1.5" id="lblGroupOnboard">
+                    <label class="block text-xs font-black text-[#02180a] dark:text-slate-200 mb-1.5" id="lblGroupOnboard">
                         3. Select Team Group Number *
                     </label>
-                    <select id="onboardGroup" required class="w-full bg-[#fdfbf7] dark:bg-slate-900 border-2 border-[#1b4332]/20 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-xs font-bold text-[#042f1a] dark:text-white focus:outline-none focus:ring-1 focus:ring-[#4a0d17]">
-                        <!-- Populated iteratively from 1 to 25 in JS on window.onload -->
+                    <select id="onboardGroup" required class="w-full bg-[#faf6ee] dark:bg-slate-900 border-2 border-[#1b4332]/25 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-xs font-bold text-[#02180a] dark:text-white focus:outline-none focus:ring-1 focus:ring-[#4a0d17]">
+                        <!-- Populated iteratively dynamically -->
                     </select>
                 </div>
 
@@ -169,11 +169,11 @@
             <!-- ====== PROBLEM TAB ====== -->
             <div id="tabContent-problem" class="space-y-4">
                 
-                <!-- Collaborative Resources Section at the top of Tab (Vibrant Unified Card Box) -->
-                <div class="bg-[#f8f5eb] dark:bg-slate-800 p-3.5 rounded-2xl border border-amber-200/60 dark:border-slate-700 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3">
+                <!-- Collaborative Resources Section at top of Tab -->
+                <div class="bg-[#fdfbf7] dark:bg-[#112d24] p-3.5 rounded-2xl border border-amber-200/60 dark:border-slate-800 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3">
                     <div class="text-center sm:text-left">
                         <span class="text-[9px] font-black uppercase text-amber-800 dark:text-amber-300 tracking-wider">Learning Assets</span>
-                        <h4 class="text-xs font-black text-[#042f1a] dark:text-white">GC Team Core Digital Resources</h4>
+                        <h4 class="text-xs font-black text-[#02180a] dark:text-white">GC Team Core Digital Resources</h4>
                     </div>
                     <div class="flex flex-wrap gap-2 justify-center">
                         <a href="https://sdgs.un.org/goals" target="_blank" class="px-3 py-1.5 bg-[#4a0d17] hover:bg-[#63141f] text-white text-[10px] font-black rounded-lg flex items-center gap-1 shadow-sm transition">
@@ -188,46 +188,46 @@
                     </div>
                 </div>
 
-                <!-- UN SDG Selector (Standardized card block color) -->
-                <div class="bg-[#f8f5eb] dark:bg-slate-800 p-4 rounded-2xl shadow-xs border border-slate-200 dark:border-slate-700">
+                <!-- UN SDG Selector -->
+                <div class="bg-[#fdfbf7] dark:bg-[#112d24] p-4 rounded-2xl shadow-xs border border-slate-200 dark:border-slate-800">
                     <div class="mb-3">
-                        <h3 class="text-sm md:text-base font-black tracking-tight text-[#042f1a] dark:text-white" id="sdgHeaderTitle">Select UN SDG Area of Focus</h3>
-                        <p class="text-[#1b4332] dark:text-slate-350 text-xs mt-0.5" id="sdgHeaderDesc">Choose one primary Sustainable Development Goal relevant to your problem exploration.</p>
+                        <h3 class="text-sm md:text-base font-black tracking-tight text-[#02180a] dark:text-white" id="sdgHeaderTitle">Select UN SDG Area of Focus</h3>
+                        <p class="text-[#02180a] dark:text-slate-300 text-xs mt-0.5" id="sdgHeaderDesc">Choose one primary Sustainable Development Goal relevant to your problem exploration.</p>
                     </div>
 
                     <!-- Beautifully stylized SDG Selection Grid -->
                     <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2" id="sdgGrid">
                         <!-- Custom designed SDG elements generated dynamically -->
                     </div>
-                    <div id="selectedSdgInfo" class="mt-3 p-3 rounded-xl bg-[#faf6ee] dark:bg-slate-900 border-l-4 border-indigo-500 hidden">
+                    <div id="selectedSdgInfo" class="mt-3 p-3 rounded-xl bg-[#faf6ee] dark:bg-slate-900 border-l-4 border-indigo-505 hidden">
                         <span class="text-[9px] font-extrabold uppercase tracking-widest text-[#4a0d17] dark:text-amber-400 block" id="lblSelectedGoal">Selected Goal</span>
-                        <p id="selectedSdgText" class="font-black text-xs mt-0.5 text-[#042f1a] dark:text-slate-100">No SDG goal selected yet.</p>
+                        <p id="selectedSdgText" class="font-black text-xs mt-0.5 text-[#02180a] dark:text-slate-100">No SDG goal selected yet.</p>
                     </div>
                 </div>
 
-                <!-- Problem Identification Workspace (Standardized card block color) -->
-                <div class="bg-[#f8f5eb] dark:bg-slate-800 p-4 rounded-2xl shadow-xs border border-slate-200 dark:border-slate-700 space-y-4">
+                <!-- Problem Identification Workspace -->
+                <div class="bg-[#fdfbf7] dark:bg-[#112d24] p-4 rounded-2xl shadow-xs border border-slate-200 dark:border-slate-800 space-y-4">
                     <div>
-                        <h3 class="text-sm md:text-base font-black text-[#042f1a] dark:text-white" id="problemQ1Title">1. Identifying Challenges (3 - 4)</h3>
-                        <p class="text-[#064e3b] dark:text-slate-350 text-xs mt-0.5" id="problemQ1Desc">Using the UN SDGs, identify challenges in the social focus area of your team. Why is it a challenge?</p>
+                        <h3 class="text-sm md:text-base font-black text-[#02180a] dark:text-white" id="problemQ1Title">1. Identifying Challenges (3 - 4)</h3>
+                        <p class="text-[#02180a] dark:text-slate-350 text-xs mt-0.5" id="problemQ1Desc">Using the UN SDGs, identify challenges in the social focus area of your team. Why is it a challenge?</p>
                         
-                        <!-- Rich Input Boxes (More compact paddings and labels with light background) -->
+                        <!-- Rich Input Boxes -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
                             <div class="bg-[#faf6ee] dark:bg-slate-900/40 p-3 rounded-xl border border-[#e4dec9] dark:border-slate-750">
-                                <label class="block text-xs font-black mb-1.5 text-[#042f1a] dark:text-amber-100" id="lblChg1">Challenge 1 & Reason *</label>
-                                <textarea id="chgInput1" rows="2" placeholder="Identify challenge 1..." class="w-full bg-[#fdfbf7] dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 focus:ring-2 focus:ring-[#4a0d17] focus:outline-none text-xs font-bold text-[#042f1a] dark:text-white"></textarea>
+                                <label class="block text-xs font-black mb-1.5 text-[#4a0d17] dark:text-amber-100" id="lblChg1">Challenge 1 & Reason *</label>
+                                <textarea id="chgInput1" rows="2" placeholder="Identify challenge 1..." class="w-full bg-[#fdfbf7] dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 focus:ring-2 focus:ring-[#4a0d17] focus:outline-none text-xs font-bold text-[#02180a] dark:text-white"></textarea>
                             </div>
                             <div class="bg-[#faf6ee] dark:bg-slate-900/40 p-3 rounded-xl border border-[#e4dec9] dark:border-slate-750">
-                                <label class="block text-xs font-black mb-1.5 text-[#042f1a] dark:text-amber-100" id="lblChg2">Challenge 2 & Reason *</label>
-                                <textarea id="chgInput2" rows="2" placeholder="Identify challenge 2..." class="w-full bg-[#fdfbf7] dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 focus:ring-2 focus:ring-[#4a0d17] focus:outline-none text-xs font-bold text-[#042f1a] dark:text-white"></textarea>
+                                <label class="block text-xs font-black mb-1.5 text-[#4a0d17] dark:text-amber-100" id="lblChg2">Challenge 2 & Reason *</label>
+                                <textarea id="chgInput2" rows="2" placeholder="Identify challenge 2..." class="w-full bg-[#fdfbf7] dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 focus:ring-2 focus:ring-[#4a0d17] focus:outline-none text-xs font-bold text-[#02180a] dark:text-white"></textarea>
                             </div>
                             <div class="bg-[#faf6ee] dark:bg-slate-900/40 p-3 rounded-xl border border-[#e4dec9] dark:border-slate-750">
-                                <label class="block text-xs font-black mb-1.5 text-[#042f1a] dark:text-amber-100" id="lblChg3">Challenge 3 & Reason *</label>
-                                <textarea id="chgInput3" rows="2" placeholder="Identify challenge 3..." class="w-full bg-[#fdfbf7] dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 focus:ring-2 focus:ring-[#4a0d17] focus:outline-none text-xs font-bold text-[#042f1a] dark:text-white"></textarea>
+                                <label class="block text-xs font-black mb-1.5 text-[#4a0d17] dark:text-amber-100" id="lblChg3">Challenge 3 & Reason *</label>
+                                <textarea id="chgInput3" rows="2" placeholder="Identify challenge 3..." class="w-full bg-[#fdfbf7] dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 focus:ring-2 focus:ring-[#4a0d17] focus:outline-none text-xs font-bold text-[#02180a] dark:text-white"></textarea>
                             </div>
                             <div class="bg-[#faf6ee] dark:bg-slate-900/40 p-3 rounded-xl border border-[#e4dec9] dark:border-slate-750">
-                                <label class="block text-xs font-black mb-1.5 text-[#042f1a] dark:text-amber-100" id="lblChg4">Challenge 4 & Reason (Optional)</label>
-                                <textarea id="chgInput4" rows="2" placeholder="Identify challenge 4..." class="w-full bg-[#fdfbf7] dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 focus:ring-2 focus:ring-[#4a0d17] focus:outline-none text-xs font-bold text-[#042f1a] dark:text-white"></textarea>
+                                <label class="block text-xs font-black mb-1.5 text-[#4a0d17] dark:text-amber-100" id="lblChg4">Challenge 4 & Reason (Optional)</label>
+                                <textarea id="chgInput4" rows="2" placeholder="Identify challenge 4..." class="w-full bg-[#fdfbf7] dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 focus:ring-2 focus:ring-[#4a0d17] focus:outline-none text-xs font-bold text-[#02180a] dark:text-white"></textarea>
                             </div>
                         </div>
                     </div>
@@ -238,84 +238,110 @@
                     <div>
                         <div class="mb-3">
                             <span class="bg-[#4a0d17] text-white dark:bg-amber-950 dark:text-amber-300 text-[9px] font-black px-2 py-0.5 rounded-sm uppercase tracking-wider" id="lblTemplateTag">Template Guide</span>
-                            <h3 class="text-sm md:text-base font-black text-[#042f1a] dark:text-white mt-1" id="problemQ2Title">2. Design a Problem Statement</h3>
-                            <p class="text-[#064e3b] dark:text-slate-350 text-xs mt-0.5" id="problemQ2Desc">Research the challenges and identify one core problem. Design your statement with the structured format below:</p>
+                            <h3 class="text-sm md:text-base font-black text-[#02180a] dark:text-white mt-1" id="problemQ2Title">2. Design a Problem Statement</h3>
+                            <p class="text-[#02180a] dark:text-slate-355 text-xs mt-0.5" id="problemQ2Desc">Research the challenges and identify one core problem. Design your statement with the structured format below:</p>
                         </div>
 
-                        <!-- Template Visualizer Panel (Compact layouts) -->
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-2 bg-[#faf6ee] dark:bg-slate-900/30 p-3 rounded-xl border border-slate-250 dark:border-slate-800 text-[10px] font-bold text-[#042f1a] dark:text-white">
+                        <!-- Template Visualizer Panel -->
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-2 bg-[#faf6ee] dark:bg-slate-900/30 p-3 rounded-xl border border-slate-250 dark:border-slate-800 text-[10px] font-bold text-[#02180a] dark:text-white">
                             <div class="border-l-2 border-indigo-500 pl-1.5">
-                                <span class="font-extrabold block text-indigo-600 dark:text-indigo-400" id="lblPart1">Condition Statement</span>
-                                <p class="text-[#1b4332] dark:text-slate-300 mt-0.5">Because of...</p>
+                                <span class="font-extrabold block text-indigo-700 dark:text-indigo-400">Condition Statement</span>
+                                <p class="text-[#02180a] dark:text-slate-300 mt-0.5">Because of [ethical concerns / high stress]...</p>
                             </div>
-                            <div class="border-l-2 border-emerald-550 pl-1.5">
-                                <span class="font-extrabold block text-emerald-600 dark:text-emerald-400" id="lblPart2">Stem + Key Verb Phrase</span>
-                                <p class="text-[#1b4332] dark:text-slate-300 mt-0.5">...how might we...</p>
+                            <div class="border-l-2 border-emerald-500 pl-1.5">
+                                <span class="font-extrabold block text-emerald-700 dark:text-emerald-400">Stem + Key Verb Phrase</span>
+                                <p class="text-[#02180a] dark:text-slate-300 mt-0.5">...how might we create / assist...</p>
                             </div>
                             <div class="border-l-2 border-purple-500 pl-1.5">
-                                <span class="font-extrabold block text-purple-600 dark:text-purple-400" id="lblPart3">Purpose Statement</span>
-                                <p class="text-[#1b4332] dark:text-slate-300 mt-0.5">...in order to...</p>
+                                <span class="font-extrabold block text-purple-700 dark:text-purple-400">Purpose Statement</span>
+                                <p class="text-[#02180a] dark:text-slate-300 mt-0.5">...in order to encourage / reduce...</p>
                             </div>
                             <div class="border-l-2 border-pink-500 pl-1.5">
-                                <span class="font-extrabold block text-pink-600 dark:text-pink-400" id="lblPart4">Future Parameters</span>
-                                <p class="text-[#1b4332] dark:text-slate-300 mt-0.5">...in [Place] in [Year]?</p>
+                                <span class="font-extrabold block text-pink-700 dark:text-pink-400">Future Parameters</span>
+                                <p class="text-[#02180a] dark:text-slate-300 mt-0.5">...in [Trip City] in [Year] and beyond?</p>
                             </div>
                         </div>
 
-                        <!-- Input fields for Problem Statement formulation with light background -->
-                        <div class="mt-3 space-y-2">
+                        <!-- Input fields for Problem Statement formulation -->
+                        <div class="mt-3 space-y-3">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
                                 <div class="bg-[#faf6ee] dark:bg-slate-900/30 p-2 rounded-xl border border-[#e4dec9] dark:border-slate-800">
-                                    <label class="block text-[10px] font-black text-[#042f1a] dark:text-slate-200 mb-1" id="lblP1">1. Because of... (Condition) *</label>
-                                    <input type="text" id="probPart1" placeholder="e.g. because of high stress and isolation during COVID..." class="w-full bg-[#fdfbf7] dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 focus:ring-2 focus:ring-[#4a0d17] focus:outline-none text-xs font-bold text-[#042f1a] dark:text-white">
+                                    <label class="block text-[10px] font-black text-[#02180a] dark:text-slate-200 mb-1">1. Because of... (Condition Statement) *</label>
+                                    <input type="text" id="probPart1" placeholder="e.g. the rising stress levels from academic competition..." class="w-full bg-[#fdfbf7] dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 focus:ring-2 focus:ring-[#4a0d17] focus:outline-none text-xs font-bold text-[#02180a] dark:text-white">
                                 </div>
                                 <div class="bg-[#faf6ee] dark:bg-slate-900/30 p-2 rounded-xl border border-[#e4dec9] dark:border-slate-800">
-                                    <label class="block text-[10px] font-black text-[#042f1a] dark:text-slate-200 mb-1" id="lblP2">2. How might we... (Stem + Key Verb Phrase) *</label>
-                                    <input type="text" id="probPart2" placeholder="e.g. how might we assist youths..." class="w-full bg-[#fdfbf7] dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 focus:ring-2 focus:ring-[#4a0d17] focus:outline-none text-xs font-bold text-[#042f1a] dark:text-white">
+                                    <label class="block text-[10px] font-black text-[#02180a] dark:text-slate-200 mb-1">2. How might we... (Stem + Key Verb Phrase) *</label>
+                                    <input type="text" id="probPart2" placeholder="e.g. design interactive wellness workshops..." class="w-full bg-[#fdfbf7] dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 focus:ring-2 focus:ring-[#4a0d17] focus:outline-none text-xs font-bold text-[#02180a] dark:text-white">
                                 </div>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
                                 <div class="bg-[#faf6ee] dark:bg-slate-900/30 p-2 rounded-xl border border-[#e4dec9] dark:border-slate-800">
-                                    <label class="block text-[10px] font-black text-[#042f1a] dark:text-slate-200 mb-1" id="lblP3">3. In order to... (Purpose) *</label>
-                                    <input type="text" id="probPart3" placeholder="e.g. in order to reduce local depression rates..." class="w-full bg-[#fdfbf7] dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 focus:ring-2 focus:ring-[#4a0d17] focus:outline-none text-xs font-bold text-[#042f1a] dark:text-white">
+                                    <label class="block text-[10px] font-black text-[#02180a] dark:text-slate-200 mb-1">3. In order to... (Purpose Statement) *</label>
+                                    <input type="text" id="probPart3" placeholder="e.g. reduce depression rates and promote emotional balance..." class="w-full bg-[#fdfbf7] dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 focus:ring-2 focus:ring-[#4a0d17] focus:outline-none text-xs font-bold text-[#02180a] dark:text-white">
                                 </div>
-                                <div class="bg-[#faf6ee] dark:bg-slate-900/30 p-2 rounded-xl border border-[#e4dec9] dark:border-slate-800">
-                                    <label class="block text-[10px] font-black text-[#042f1a] dark:text-slate-200 mb-1" id="lblP4">4. Location & Timeline... (Future Parameters) *</label>
-                                    <input type="text" id="probPart4" placeholder="e.g. in Singapore and China in 2026 and beyond?" class="w-full bg-[#fdfbf7] dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 focus:ring-2 focus:ring-[#4a0d17] focus:outline-none text-xs font-bold text-[#042f1a] dark:text-white">
+                                <div class="bg-[#faf6ee] dark:bg-slate-900/30 p-2 rounded-xl border border-[#e4dec9] dark:border-slate-800 flex flex-col justify-center">
+                                    <label class="block text-[10px] font-black text-[#02180a] dark:text-slate-200 mb-1">4. Future Scene Location & Timeline *</label>
+                                    <input type="text" id="probPart4" placeholder="e.g. in Sydney in 2026 and beyond?" class="w-full bg-[#fdfbf7] dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg p-2.5 focus:ring-2 focus:ring-[#4a0d17] focus:outline-none text-xs font-bold text-[#02180a] dark:text-white">
                                 </div>
                             </div>
                             
                             <div class="bg-[#f0edf5] dark:bg-slate-900 p-3 rounded-xl border border-indigo-200 dark:border-indigo-900 mt-1.5 shadow-sm">
                                 <span class="text-[9px] font-black text-indigo-900 dark:text-indigo-300 uppercase block tracking-wider" id="lblProbStatementOutput">Assembled Problem Statement:</span>
-                                <p id="assembledProbStatement" class="text-[#042f1a] dark:text-slate-100 font-black mt-1 text-xs md:text-sm italic leading-relaxed">Assemble inputs to view complete problem statement.</p>
+                                <p id="assembledProbStatement" class="text-[#02180a] dark:text-slate-100 font-black mt-1 text-xs md:text-sm italic leading-relaxed">Assemble inputs to view complete problem statement.</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- AI Evaluator and Scoring block -->
                     <div class="mt-4 bg-gradient-to-r from-indigo-50 to-indigo-100/40 dark:from-slate-800/80 dark:to-slate-950/60 p-4 rounded-2xl border border-indigo-100/60 dark:border-indigo-950 flex flex-col md:flex-row gap-4 items-start justify-between">
-                        <div class="space-y-1.5 flex-1">
+                        <div class="space-y-1.5 flex-1 w-full">
                             <div class="flex items-center gap-1.5">
                                 <span class="bg-[#4a0d17] text-white p-1 rounded-md">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
                                 </span>
                                 <h4 class="text-xs font-black text-[#4a0d17] dark:text-indigo-300 uppercase tracking-wide" id="aiMasterTitle">AI GLP Master Advisor</h4>
                             </div>
-                            <p class="text-[#064e3b] dark:text-slate-350 text-[11px] font-extrabold" id="aiMasterDesc">Our digital AI Master evaluates your SDG challenges Alignment, Rubrics Relevance, and Problem Statement clarity. Score of >= 6/10 required to proceed.</p>
+                            <p class="text-[#02180a] dark:text-slate-350 text-[11px] font-extrabold" id="aiMasterDesc">Our digital AI Master evaluates your SDG challenges Alignment, Rubrics Relevance, and Problem Statement clarity. Score of >= 6/10 required to proceed.</p>
                             
-                            <!-- AI Feedback Display -->
-                            <div id="aiFeedbackProb" class="hidden p-3.5 rounded-xl bg-[#faf6ee] dark:bg-slate-900 border-2 border-indigo-200 dark:border-slate-800 space-y-2 shadow-xs">
-                                <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-800 pb-2">
-                                    <span class="text-[9px] font-extrabold text-[#2d6a4f] dark:text-slate-450 uppercase" id="lblAiResult">AI Master Rubrics Report:</span>
-                                    <span class="text-xs font-black text-[#042f1a] dark:text-indigo-300 bg-indigo-50 dark:bg-indigo-950/40 px-2 py-0.5 rounded-md" id="probScoreVal">Score: 0/10</span>
-                                </div>
-                                <p id="aiFeedbackTextProb" class="text-xs text-[#064e3b] dark:text-slate-200 font-extrabold leading-relaxed"></p>
-                                <div class="p-2.5 bg-[#f8f5eb] dark:bg-indigo-950/20 rounded-lg text-[10px] font-bold text-slate-700 dark:text-slate-350 space-y-0.5 border border-indigo-100 dark:border-indigo-900">
-                                    <p class="font-extrabold text-[#042f1a] dark:text-indigo-300" id="lblAiSuggestion">Suggestions for refinement:</p>
-                                    <p id="aiSuggestionsTextProb" class="italic font-medium leading-relaxed"></p>
+                            <!-- AI Detailed Evaluation Block with Intellectual Standards -->
+                            <div id="aiFeedbackProb" class="hidden p-4 rounded-xl bg-[#faf6ee] dark:bg-slate-900 border-2 border-indigo-200 dark:border-slate-800 space-y-3 shadow-xs w-full">
+                                <div class="flex justify-between items-center border-b border-slate-200 dark:border-slate-800 pb-2">
+                                    <span class="text-[9px] font-extrabold text-[#2d6a4f] dark:text-slate-450 uppercase">Intellectual Standards Evaluation Report</span>
+                                    <span class="text-xs font-black text-white bg-[#4a0d17] px-2.5 py-1 rounded-md" id="probScoreVal">Score: 0/10</span>
                                 </div>
                                 
-                                <button onclick="speakFeedback('prob')" class="mt-1 bg-indigo-50 hover:bg-indigo-100 dark:bg-slate-800 dark:hover:bg-slate-750 text-[#042f1a] dark:text-indigo-200 px-2.5 py-1 rounded text-[9px] font-black flex items-center gap-1.5 transition">
+                                <div class="grid grid-cols-1 sm:grid-cols-5 gap-2 text-xs">
+                                    <!-- Clarity -->
+                                    <div class="bg-[#fdfbf7] dark:bg-slate-800 p-2.5 rounded-lg border border-[#e4dec9] dark:border-slate-700">
+                                        <span class="font-black text-[#4a0d17] dark:text-amber-200 block text-[10px] uppercase">1. Clarity</span>
+                                        <p id="clarityValProb" class="text-[11px] mt-0.5 font-bold"></p>
+                                    </div>
+                                    <!-- Precision -->
+                                    <div class="bg-[#fdfbf7] dark:bg-slate-800 p-2.5 rounded-lg border border-[#e4dec9] dark:border-slate-700">
+                                        <span class="font-black text-[#4a0d17] dark:text-amber-200 block text-[10px] uppercase">2. Precision</span>
+                                        <p id="precisionValProb" class="text-[11px] mt-0.5 font-bold"></p>
+                                    </div>
+                                    <!-- Accuracy -->
+                                    <div class="bg-[#fdfbf7] dark:bg-slate-800 p-2.5 rounded-lg border border-[#e4dec9] dark:border-slate-700">
+                                        <span class="font-black text-[#4a0d17] dark:text-amber-200 block text-[10px] uppercase">3. Accuracy</span>
+                                        <p id="accuracyValProb" class="text-[11px] mt-0.5 font-bold"></p>
+                                    </div>
+                                    <!-- Logic -->
+                                    <div class="bg-[#fdfbf7] dark:bg-slate-800 p-2.5 rounded-lg border border-[#e4dec9] dark:border-slate-700">
+                                        <span class="font-black text-[#4a0d17] dark:text-amber-200 block text-[10px] uppercase">4. Logic</span>
+                                        <p id="logicValProb" class="text-[11px] mt-0.5 font-bold"></p>
+                                    </div>
+                                    <!-- Relevance -->
+                                    <div class="bg-[#fdfbf7] dark:bg-slate-800 p-2.5 rounded-lg border border-[#e4dec9] dark:border-slate-700">
+                                        <span class="font-black text-[#4a0d17] dark:text-amber-200 block text-[10px] uppercase">5. Relevance (SDG)</span>
+                                        <p id="relevanceValProb" class="text-[11px] mt-0.5 font-bold"></p>
+                                    </div>
+                                </div>
+
+                                <!-- Dynamic encouragement note or detailed improvement suggestions -->
+                                <div id="feedbackResponseBoxProb" class="p-3 rounded-lg text-[11px] font-bold"></div>
+                                
+                                <button onclick="speakFeedback('prob')" class="mt-1 bg-indigo-50 hover:bg-indigo-100 dark:bg-slate-800 dark:hover:bg-slate-750 text-[#02180a] dark:text-indigo-200 px-2.5 py-1 rounded text-[9px] font-black flex items-center gap-1.5 transition">
                                     🗣️ <span id="btnSpeakFeedback">Listen to AI Feedback</span>
                                 </button>
                             </div>
@@ -333,7 +359,7 @@
 
                     <!-- End of set Sharing -->
                     <div class="bg-[#faf5ef] dark:bg-slate-900/50 p-3 rounded-xl flex flex-wrap gap-2 items-center justify-between border border-amber-200/50 dark:border-slate-800">
-                        <span class="text-[11px] font-black text-[#042f1a] dark:text-slate-200" id="lblSharePrompt">Share current progress with teacher or peers:</span>
+                        <span class="text-[11px] font-black text-[#02180a] dark:text-slate-200" id="lblSharePrompt">Share current progress with teacher or peers:</span>
                         <div class="flex gap-1.5">
                             <button onclick="shareProgress('whatsapp', 'problem')" class="px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-[10px] font-black rounded-lg flex items-center gap-1 transition">
                                 💬 WhatsApp
@@ -349,11 +375,11 @@
             <!-- ====== SOLUTION TAB ====== -->
             <div id="tabContent-solution" class="hidden space-y-4">
                 
-                <!-- Collaborative Resources Section at the top of Tab -->
-                <div class="bg-[#f8f5eb] dark:bg-slate-800 p-3.5 rounded-2xl border border-amber-200/60 dark:border-slate-700 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3">
+                <!-- Collaborative Resources Section at top of Tab -->
+                <div class="bg-[#fdfbf7] dark:bg-slate-800 p-3.5 rounded-2xl border border-amber-200/60 dark:border-slate-700 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3">
                     <div class="text-center sm:text-left">
                         <span class="text-[9px] font-black uppercase text-amber-800 dark:text-amber-300 tracking-wider">Learning Assets</span>
-                        <h4 class="text-xs font-black text-[#042f1a] dark:text-white">GC Team Core Digital Resources</h4>
+                        <h4 class="text-xs font-black text-[#02180a] dark:text-white">GC Team Core Digital Resources</h4>
                     </div>
                     <div class="flex flex-wrap gap-2 justify-center">
                         <a href="https://sdgs.un.org/goals" target="_blank" class="px-3 py-1.5 bg-[#4a0d17] hover:bg-[#63141f] text-white text-[10px] font-black rounded-lg flex items-center gap-1 shadow-sm transition">
@@ -368,24 +394,24 @@
                     </div>
                 </div>
 
-                <!-- Solutions formulation (Standardized Card Box) -->
-                <div class="bg-[#f8f5eb] dark:bg-slate-800 p-4 rounded-2xl shadow-xs border border-slate-200 dark:border-slate-700 space-y-4">
+                <!-- Solutions formulation -->
+                <div class="bg-[#fdfbf7] dark:bg-slate-800 p-4 rounded-2xl shadow-xs border border-slate-200 dark:border-slate-700 space-y-4">
                     <div>
                         <h3 class="text-sm md:text-base font-black text-[#4a0d17] dark:text-white" id="solQ1Title">1. Generate Solution Ideas</h3>
-                        <p class="text-[#064e3b] dark:text-slate-300 text-[11px] mt-0.5" id="solQ1Desc">Compare and explain existing measures in your focused area. Formulate at least 3 innovative solutions.</p>
+                        <p class="text-[#02180a] dark:text-slate-300 text-[11px] mt-0.5" id="solQ1Desc">Compare and explain existing measures in your focused area. Formulate at least 3 innovative solutions.</p>
                         
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-3">
-                            <div class="bg-[#faf6ee] dark:bg-slate-900/40 p-3 rounded-xl border border-[#e4dec9] dark:border-slate-800">
-                                <label class="block text-xs font-black mb-1.5 text-[#042f1a] dark:text-slate-250" id="lblSol1">Innovative Solution A *</label>
-                                <textarea id="solInput1" rows="2" placeholder="Define solution A..." class="w-full bg-[#fdfbf7] dark:bg-slate-900 border border-slate-350 dark:border-slate-700 rounded-lg p-2.5 focus:ring-2 focus:ring-[#4a0d17] focus:outline-none text-xs font-bold text-[#042f1a] dark:text-white"></textarea>
+                            <div class="bg-[#faf6ee] dark:bg-slate-900/40 p-3 rounded-xl border border-[#e4dec9] dark:border-slate-850">
+                                <label class="block text-xs font-black mb-1.5 text-[#02180a] dark:text-slate-250" id="lblSol1">Innovative Solution A *</label>
+                                <textarea id="solInput1" rows="2" placeholder="Define solution A..." class="w-full bg-[#fdfbf7] dark:bg-slate-900 border border-slate-350 dark:border-slate-700 rounded-lg p-2.5 focus:ring-2 focus:ring-[#4a0d17] focus:outline-none text-xs font-bold text-[#02180a] dark:text-white"></textarea>
                             </div>
-                            <div class="bg-[#faf6ee] dark:bg-slate-900/40 p-3 rounded-xl border border-[#e4dec9] dark:border-slate-800">
-                                <label class="block text-xs font-black mb-1.5 text-[#042f1a] dark:text-slate-250" id="lblSol2">Innovative Solution B *</label>
-                                <textarea id="solInput2" rows="2" placeholder="Define solution B..." class="w-full bg-[#fdfbf7] dark:bg-slate-900 border border-slate-350 dark:border-slate-700 rounded-lg p-2.5 focus:ring-2 focus:ring-[#4a0d17] focus:outline-none text-xs font-bold text-[#042f1a] dark:text-white"></textarea>
+                            <div class="bg-[#faf6ee] dark:bg-slate-900/40 p-3 rounded-xl border border-[#e4dec9] dark:border-slate-850">
+                                <label class="block text-xs font-black mb-1.5 text-[#02180a] dark:text-slate-250" id="lblSol2">Innovative Solution B *</label>
+                                <textarea id="solInput2" rows="2" placeholder="Define solution B..." class="w-full bg-[#fdfbf7] dark:bg-slate-900 border border-slate-350 dark:border-slate-700 rounded-lg p-2.5 focus:ring-2 focus:ring-[#4a0d17] focus:outline-none text-xs font-bold text-[#02180a] dark:text-white"></textarea>
                             </div>
-                            <div class="bg-[#faf6ee] dark:bg-slate-900/40 p-3 rounded-xl border border-[#e4dec9] dark:border-slate-800">
-                                <label class="block text-xs font-black mb-1.5 text-[#042f1a] dark:text-slate-250" id="lblSol3">Innovative Solution C *</label>
-                                <textarea id="solInput3" rows="2" placeholder="Define solution C..." class="w-full bg-[#fdfbf7] dark:bg-slate-900 border border-slate-350 dark:border-slate-700 rounded-lg p-2.5 focus:ring-2 focus:ring-[#4a0d17] focus:outline-none text-xs font-bold text-[#042f1a] dark:text-white"></textarea>
+                            <div class="bg-[#faf6ee] dark:bg-slate-900/40 p-3 rounded-xl border border-[#e4dec9] dark:border-slate-850">
+                                <label class="block text-xs font-black mb-1.5 text-[#02180a] dark:text-slate-250" id="lblSol3">Innovative Solution C *</label>
+                                <textarea id="solInput3" rows="2" placeholder="Define solution C..." class="w-full bg-[#fdfbf7] dark:bg-slate-900 border border-slate-350 dark:border-slate-700 rounded-lg p-2.5 focus:ring-2 focus:ring-[#4a0d17] focus:outline-none text-xs font-bold text-[#02180a] dark:text-white"></textarea>
                             </div>
                         </div>
                     </div>
@@ -396,16 +422,16 @@
                     <div>
                         <div class="flex flex-wrap items-center justify-between gap-1.5 mb-2.5">
                             <div>
-                                <h3 class="text-sm md:text-base font-black text-[#042f1a] dark:text-white" id="solQ2Title">2. Interactive Evaluation Matrix</h3>
-                                <p class="text-[#064e3b] dark:text-slate-300 text-xs mt-0.5" id="solQ2Desc">Identify 3 to 4 selection criteria (Time, Manpower, Cost, Perception) on a 1-5 score scale to evaluate solutions.</p>
+                                <h3 class="text-sm md:text-base font-black text-[#02180a] dark:text-white" id="solQ2Title">2. Interactive Evaluation Matrix</h3>
+                                <p class="text-[#02180a] dark:text-slate-300 text-xs mt-0.5" id="solQ2Desc">Identify 3 to 4 selection criteria (Time, Manpower, Cost, Perception) on a 1-5 score scale to evaluate solutions.</p>
                             </div>
                             
                             <!-- Control Buttons for Matrix -->
                             <div class="flex flex-wrap gap-1">
-                                <button onclick="addColumn()" class="px-2.5 py-1 bg-[#faf6ee] dark:bg-slate-900 hover:bg-[#eae3d5] text-[#042f1a] dark:text-white text-[10px] font-black rounded-lg transition border border-[#1b4332]/25 dark:border-slate-700" id="btnAddCriteria">
+                                <button onclick="addColumn()" class="px-2.5 py-1 bg-[#faf6ee] dark:bg-slate-900 hover:bg-[#eae3d5] text-[#02180a] dark:text-white text-[10px] font-black rounded-lg transition border border-[#1b4332]/25 dark:border-slate-700" id="btnAddCriteria">
                                     + Add Custom Criteria
                                 </button>
-                                <button onclick="addRow()" class="px-2.5 py-1 bg-[#faf6ee] dark:bg-slate-900 hover:bg-[#eae3d5] text-[#042f1a] dark:text-white text-[10px] font-black rounded-lg transition border border-[#1b4332]/25 dark:border-slate-700" id="btnAddSolutionRow">
+                                <button onclick="addRow()" class="px-2.5 py-1 bg-[#faf6ee] dark:bg-slate-900 hover:bg-[#eae3d5] text-[#02180a] dark:text-white text-[10px] font-black rounded-lg transition border border-[#1b4332]/25 dark:border-slate-700" id="btnAddSolutionRow">
                                     + Add Solution Row
                                 </button>
                             </div>
@@ -415,7 +441,7 @@
                         <div class="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800">
                             <table class="w-full text-left border-collapse" id="matrixTable">
                                 <thead>
-                                    <tr class="bg-[#faf6ee] dark:bg-slate-900 text-[#042f1a] dark:text-slate-200 text-[10px] font-extrabold uppercase tracking-wider border-b border-[#e4dec9] dark:border-slate-800">
+                                    <tr class="bg-[#faf6ee] dark:bg-slate-900 text-[#02180a] dark:text-slate-200 text-[10px] font-extrabold uppercase tracking-wider border-b border-[#e4dec9] dark:border-slate-800">
                                         <th class="p-3.5 min-w-[145px]" id="tblHeadSolution">Solutions</th>
                                         <th class="p-3.5" id="colCrit-1">Time [1-5]</th>
                                         <th class="p-3.5" id="colCrit-2">Manpower [1-5]</th>
@@ -423,7 +449,7 @@
                                         <th class="p-3.5 text-center min-w-[80px]" id="tblHeadTotal">Total Score</th>
                                     </tr>
                                 </thead>
-                                <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs text-[#064e3b] dark:text-[#d8f3dc]">
+                                <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-xs text-[#02180a] dark:text-[#d8f3dc]">
                                     <!-- Dynamic rows loaded via Javascript -->
                                 </tbody>
                             </table>
@@ -434,39 +460,65 @@
 
                     <!-- Solution Statement Formulation -->
                     <div>
-                        <h3 class="text-sm md:text-base font-black text-[#042f1a] dark:text-white" id="solQ3Title">3. Apply Selected Criteria & Formulate Solution Statement</h3>
-                        <p class="text-[#064e3b] dark:text-slate-350 text-xs mt-0.5" id="solQ3Desc">Based on the criteria scores above, define the best feasible path and complete the solution statement.</p>
+                        <h3 class="text-sm md:text-base font-black text-[#02180a] dark:text-white" id="solQ3Title">3. Apply Selected Criteria & Formulate Solution Statement</h3>
+                        <p class="text-[#02180a] dark:text-slate-355 text-xs mt-0.5" id="solQ3Desc">Based on the criteria scores above, define the best feasible path and complete the solution statement.</p>
                         
                         <div class="mt-2.5">
                             <label class="block text-xs font-black mb-1.5 text-slate-800 dark:text-slate-200" id="lblFinalSolStatement">Final Solution Statement *</label>
-                            <textarea id="finalSolutionStatement" rows="2" placeholder="e.g. By leveraging a targeted social application peer-support mechanism, we will assist youths in Singapore and China..." class="w-full bg-[#faf6ee] dark:bg-slate-900 border border-slate-350 dark:border-slate-700 rounded-xl p-3 focus:ring-2 focus:ring-[#4a0d17] focus:outline-none text-xs font-bold text-[#042f1a] dark:text-white"></textarea>
+                            <textarea id="finalSolutionStatement" rows="2" placeholder="e.g. By leveraging a targeted social application peer-support mechanism, we will assist youths in Singapore and China..." class="w-full bg-[#faf6ee] dark:bg-slate-900 border border-slate-355 dark:border-slate-700 rounded-xl p-3 focus:ring-2 focus:ring-[#4a0d17] focus:outline-none text-xs font-bold text-[#02180a] dark:text-white"></textarea>
                         </div>
                     </div>
 
                     <!-- Solution Tab AI Evaluator Section -->
                     <div class="mt-3.5 bg-gradient-to-r from-teal-50 to-teal-100/30 dark:from-slate-800/80 dark:to-slate-950/60 p-3.5 rounded-2xl border border-teal-100/60 dark:border-teal-950 flex flex-col md:flex-row gap-3.5 items-start justify-between">
-                        <div class="space-y-1.5 flex-1">
+                        <div class="space-y-1.5 flex-1 w-full">
                             <div class="flex items-center gap-1.5">
                                 <span class="bg-[#4a0d17] text-white p-1 rounded-md">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                                 </span>
                                 <h4 class="text-xs font-black text-[#4a0d17] dark:text-teal-300 uppercase tracking-wide" id="aiMasterSolTitle">AI GLP Master Advisor</h4>
                             </div>
-                            <p class="text-[#064e3b] dark:text-slate-350 text-[11px] font-extrabold" id="aiMasterSolDesc">The Master evaluates your solutions' feasibility, quantitative scoring logic, and overall alignment. Score of >= 6/10 required to proceed.</p>
+                            <p class="text-[#02180a] dark:text-slate-355 text-[11px] font-extrabold" id="aiMasterSolDesc">The Master evaluates your solutions' feasibility, quantitative scoring logic, and overall alignment. Score of >= 6/10 required to proceed.</p>
                             
-                            <!-- AI Feedback Display -->
-                            <div id="aiFeedbackSol" class="hidden p-3.5 rounded-xl bg-[#faf6ee] dark:bg-slate-900 border-2 border-teal-200 dark:border-slate-800 space-y-2 shadow-xs">
-                                <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-800 pb-1.5">
-                                    <span class="text-[9px] font-extrabold text-[#2d6a4f] dark:text-slate-450 uppercase" id="lblAiSolResult">AI Master Solution Report:</span>
-                                    <span class="text-xs font-black text-[#042f1a] dark:text-teal-300 bg-teal-50 dark:bg-indigo-950/40 px-2 py-0.5 rounded-md" id="solScoreVal">Score: 0/10</span>
-                                </div>
-                                <p id="aiFeedbackTextSol" class="text-xs text-[#064e3b] dark:text-slate-200 font-extrabold leading-relaxed"></p>
-                                <div class="p-2.5 bg-[#f8f5eb] dark:bg-indigo-950/20 rounded-lg text-[10px] font-bold text-slate-700 dark:text-slate-350 space-y-0.5 border border-teal-100 dark:border-teal-900">
-                                    <p class="font-extrabold text-[#042f1a] dark:text-indigo-300" id="lblAiSolSuggestion">Suggestions for refinement:</p>
-                                    <p id="aiSuggestionsTextSol" class="italic font-medium leading-relaxed"></p>
+                            <!-- AI Detailed Evaluation Block with Intellectual Standards -->
+                            <div id="aiFeedbackSol" class="hidden p-4 rounded-xl bg-[#faf6ee] dark:bg-slate-900 border-2 border-teal-200 dark:border-slate-800 space-y-3 shadow-xs w-full">
+                                <div class="flex justify-between items-center border-b border-slate-200 dark:border-slate-800 pb-2">
+                                    <span class="text-[9px] font-extrabold text-[#2d6a4f] dark:text-slate-450 uppercase">Intellectual Standards Evaluation Report</span>
+                                    <span class="text-xs font-black text-white bg-[#4a0d17] px-2.5 py-1 rounded-md" id="solScoreVal">Score: 0/10</span>
                                 </div>
                                 
-                                <button onclick="speakFeedback('sol')" class="mt-1 bg-teal-50 hover:bg-teal-100 dark:bg-slate-800 dark:hover:bg-slate-750 text-[#042f1a] dark:text-teal-200 px-2.5 py-1 rounded text-[9px] font-black flex items-center gap-1.5 transition">
+                                <div class="grid grid-cols-1 sm:grid-cols-5 gap-2 text-xs">
+                                    <!-- Clarity -->
+                                    <div class="bg-[#fdfbf7] dark:bg-slate-800 p-2.5 rounded-lg border border-[#e4dec9] dark:border-slate-700">
+                                        <span class="font-black text-[#4a0d17] dark:text-amber-200 block text-[10px] uppercase">1. Clarity</span>
+                                        <p id="clarityValSol" class="text-[11px] mt-0.5 font-bold"></p>
+                                    </div>
+                                    <!-- Precision -->
+                                    <div class="bg-[#fdfbf7] dark:bg-slate-800 p-2.5 rounded-lg border border-[#e4dec9] dark:border-slate-700">
+                                        <span class="font-black text-[#4a0d17] dark:text-amber-200 block text-[10px] uppercase">2. Precision</span>
+                                        <p id="precisionValSol" class="text-[11px] mt-0.5 font-bold"></p>
+                                    </div>
+                                    <!-- Accuracy -->
+                                    <div class="bg-[#fdfbf7] dark:bg-slate-800 p-2.5 rounded-lg border border-[#e4dec9] dark:border-slate-700">
+                                        <span class="font-black text-[#4a0d17] dark:text-amber-200 block text-[10px] uppercase">3. Accuracy</span>
+                                        <p id="accuracyValSol" class="text-[11px] mt-0.5 font-bold"></p>
+                                    </div>
+                                    <!-- Logic -->
+                                    <div class="bg-[#fdfbf7] dark:bg-slate-800 p-2.5 rounded-lg border border-[#e4dec9] dark:border-slate-700">
+                                        <span class="font-black text-[#4a0d17] dark:text-amber-200 block text-[10px] uppercase">4. Logic</span>
+                                        <p id="logicValSol" class="text-[11px] mt-0.5 font-bold"></p>
+                                    </div>
+                                    <!-- Relevance -->
+                                    <div class="bg-[#fdfbf7] dark:bg-slate-800 p-2.5 rounded-lg border border-[#e4dec9] dark:border-slate-700">
+                                        <span class="font-black text-[#4a0d17] dark:text-amber-200 block text-[10px] uppercase">5. Relevance (SDG)</span>
+                                        <p id="relevanceValSol" class="text-[11px] mt-0.5 font-bold"></p>
+                                    </div>
+                                </div>
+
+                                <!-- Dynamic encouragement note or detailed improvement suggestions -->
+                                <div id="feedbackResponseBoxSol" class="p-3 rounded-lg text-[11px] font-bold"></div>
+                                
+                                <button onclick="speakFeedback('sol')" class="mt-1 bg-teal-50 hover:bg-teal-100 dark:bg-slate-800 dark:hover:bg-slate-750 text-[#02180a] dark:text-teal-200 px-2.5 py-1 rounded text-[9px] font-black flex items-center gap-1.5 transition">
                                     🗣️ <span id="btnSpeakSolFeedback">Listen to AI Feedback</span>
                                 </button>
                             </div>
@@ -484,7 +536,7 @@
 
                     <!-- End of set Sharing -->
                     <div class="bg-[#faf5ef] dark:bg-slate-900/50 p-3 rounded-xl flex flex-wrap gap-2 items-center justify-between border border-amber-200/50 dark:border-slate-800">
-                        <span class="text-[11px] font-black text-[#042f1a] dark:text-slate-200" id="lblShareSolPrompt">Share current progress:</span>
+                        <span class="text-[11px] font-black text-[#02180a] dark:text-slate-200" id="lblShareSolPrompt">Share current progress:</span>
                         <div class="flex gap-1.5">
                             <button onclick="shareProgress('whatsapp', 'solution')" class="px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-[10px] font-black rounded-lg flex items-center gap-1 transition">
                                 💬 WhatsApp
@@ -500,11 +552,11 @@
             <!-- ====== ACTION TAB ====== -->
             <div id="tabContent-action" class="hidden space-y-4">
                 
-                <!-- Collaborative Resources Section at the top of Tab -->
-                <div class="bg-[#f8f5eb] dark:bg-slate-800 p-3.5 rounded-2xl border border-amber-200/60 dark:border-slate-700 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3">
+                <!-- Collaborative Resources Section at top of Tab -->
+                <div class="bg-[#fdfbf7] dark:bg-slate-800 p-3.5 rounded-2xl border border-amber-200/60 dark:border-slate-700 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3">
                     <div class="text-center sm:text-left">
                         <span class="text-[9px] font-black uppercase text-amber-800 dark:text-amber-300 tracking-wider">Learning Assets</span>
-                        <h4 class="text-xs font-black text-[#042f1a] dark:text-white">GC Team Core Digital Resources</h4>
+                        <h4 class="text-xs font-black text-[#02180a] dark:text-white">GC Team Core Digital Resources</h4>
                     </div>
                     <div class="flex flex-wrap gap-2 justify-center">
                         <a href="https://sdgs.un.org/goals" target="_blank" class="px-3 py-1.5 bg-[#4a0d17] hover:bg-[#63141f] text-white text-[10px] font-black rounded-lg flex items-center gap-1 shadow-sm transition">
@@ -519,30 +571,30 @@
                     </div>
                 </div>
 
-                <!-- Action Card (Standardized Card Box Color) -->
-                <div class="bg-[#f8f5eb] dark:bg-slate-800 p-4 rounded-2xl shadow-xs border border-slate-200 dark:border-slate-700 space-y-4">
+                <!-- Action Card -->
+                <div class="bg-[#fdfbf7] dark:bg-slate-800 p-4 rounded-2xl shadow-xs border border-slate-200 dark:border-slate-700 space-y-4">
                     <div class="border-b border-[#1b4332]/10 dark:border-slate-700 pb-2.5">
                         <span class="bg-pink-100 text-[#4a0d17] dark:bg-pink-950 dark:text-pink-300 text-[9px] font-black px-2 py-0.5 rounded-md uppercase tracking-wider border border-pink-200/50" id="lblActionBadge">Action Plan Setup</span>
-                        <h3 class="text-sm md:text-base font-black text-[#042f1a] dark:text-white mt-1.5" id="actionHeading">Action Presentation Planner</h3>
-                        <p class="text-[#064e3b] dark:text-slate-350 text-xs mt-0.5" id="actionSubHeading">Develop a meticulous execution and dissemination strategy for your proposed global solutions.</p>
+                        <h3 class="text-sm md:text-base font-black text-[#02180a] dark:text-white mt-1.5" id="actionHeading">Action Presentation Planner</h3>
+                        <p class="text-[#02180a] dark:text-slate-355 text-xs mt-0.5" id="actionSubHeading">Develop a meticulous execution and dissemination strategy for your proposed global solutions.</p>
                     </div>
 
                     <!-- Plan Guidelines Layout Info -->
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                         <div class="bg-gradient-to-br from-[#4a0d17]/5 to-[#4a0d17]/10 p-3 rounded-xl border border-amber-200/50 dark:border-slate-700">
                             <span class="text-[9px] font-black text-amber-800 dark:text-amber-400 block uppercase tracking-wider">Component 1</span>
-                            <h4 class="font-extrabold text-xs text-[#042f1a] dark:text-slate-100 mt-0.5" id="lblActInfographics">1. Infographic Design</h4>
-                            <p class="text-[10px] text-[#064e3b] dark:text-slate-300 mt-1 font-medium leading-relaxed" id="lblActInfographicsDesc">Synthesize goals, demographic maps, problems, and evaluation totals visually inside a single poster canvas.</p>
+                            <h4 class="font-extrabold text-xs text-[#02180a] dark:text-slate-100 mt-0.5" id="lblActInfographics">1. Infographic Design</h4>
+                            <p class="text-[10px] text-[#02180a] dark:text-slate-300 mt-1 font-medium leading-relaxed" id="lblActInfographicsDesc">Synthesize goals, demographic maps, problems, and evaluation totals visually inside a single poster canvas.</p>
                         </div>
                         <div class="bg-gradient-to-br from-indigo-500/5 to-indigo-500/10 p-3 rounded-xl border border-indigo-100 dark:border-indigo-900/40">
                             <span class="text-[9px] font-black text-indigo-700 dark:text-indigo-400 block uppercase tracking-wider">Component 2</span>
                             <h4 class="font-extrabold text-xs text-slate-900 dark:text-slate-100 mt-0.5" id="lblActPres">2. 5-Min Oral Pitch</h4>
-                            <p class="text-[10px] text-[#064e3b] dark:text-slate-300 mt-1 font-medium leading-relaxed" id="lblActPresDesc">Clearly outline selected SDGs, problem statement, evaluation matrix, and final execution metrics.</p>
+                            <p class="text-[10px] text-[#02180a] dark:text-slate-300 mt-1 font-medium leading-relaxed" id="lblActPresDesc">Clearly outline selected SDGs, problem statement, evaluation matrix, and final execution metrics.</p>
                         </div>
                         <div class="bg-gradient-to-br from-emerald-500/5 to-emerald-500/10 p-3 rounded-xl border border-emerald-100 dark:border-emerald-900/40">
                             <span class="text-[9px] font-black text-emerald-700 dark:text-emerald-400 block uppercase tracking-wider">Component 3</span>
                             <h4 class="font-extrabold text-xs text-slate-900 dark:text-slate-100 mt-0.5" id="lblActQa">3. 3-Min Q&A Loop</h4>
-                            <p class="text-[10px] text-[#064e3b] dark:text-slate-350 mt-1 font-medium leading-relaxed" id="lblActQaDesc">Synthesize arguments against limitations, economic frameworks, scale of solutions, and public response metrics.</p>
+                            <p class="text-[10px] text-[#02180a] dark:text-slate-355 mt-1 font-medium leading-relaxed" id="lblActQaDesc">Synthesize arguments against limitations, economic frameworks, scale of solutions, and public response metrics.</p>
                         </div>
                     </div>
 
@@ -552,18 +604,18 @@
                         
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                             <div class="bg-[#faf6ee] dark:bg-slate-900/30 p-2.5 rounded-xl border border-[#e4dec9] dark:border-slate-700">
-                                <label class="block text-[10px] font-black mb-1.5 text-[#042f1a] dark:text-slate-200" id="lblActTimeline">Implementation Timeline *</label>
-                                <input type="text" id="actionTimeline" placeholder="e.g., Months 1-3: Research; Months 4-6: Beta Deployment..." class="w-full bg-[#fdfbf7] dark:bg-slate-900 border border-slate-350 dark:border-slate-700 rounded-lg p-2.5 focus:ring-2 focus:ring-[#4a0d17] focus:outline-none text-xs font-bold text-[#042f1a] dark:text-white">
+                                <label class="block text-[10px] font-black mb-1.5 text-[#02180a] dark:text-slate-200" id="lblActTimeline">Implementation Timeline *</label>
+                                <input type="text" id="actionTimeline" placeholder="e.g., Months 1-3: Research; Months 4-6: Beta Deployment..." class="w-full bg-[#fdfbf7] dark:bg-slate-900 border border-slate-350 dark:border-slate-700 rounded-lg p-2.5 focus:ring-2 focus:ring-[#4a0d17] focus:outline-none text-xs font-bold text-[#02180a] dark:text-white">
                             </div>
                             <div class="bg-[#faf6ee] dark:bg-slate-900/30 p-2.5 rounded-xl border border-[#e4dec9] dark:border-slate-700">
-                                <label class="block text-[10px] font-black mb-1.5 text-[#042f1a] dark:text-slate-200" id="lblActRoles">Team Responsibilities & Roles *</label>
-                                <input type="text" id="actionRoles" placeholder="e.g., Student A: Presenter, Student B: Designer, Student C: Researcher..." class="w-full bg-[#fdfbf7] dark:bg-slate-900 border border-slate-350 dark:border-slate-700 rounded-lg p-2.5 focus:ring-2 focus:ring-[#4a0d17] focus:outline-none text-xs font-bold text-[#042f1a] dark:text-white">
+                                <label class="block text-[10px] font-black mb-1.5 text-[#02180a] dark:text-slate-200" id="lblActRoles">Team Responsibilities & Roles *</label>
+                                <input type="text" id="actionRoles" placeholder="e.g., Student A: Presenter, Student B: Designer, Student C: Researcher..." class="w-full bg-[#fdfbf7] dark:bg-slate-900 border border-slate-355 dark:border-slate-700 rounded-lg p-2.5 focus:ring-2 focus:ring-[#4a0d17] focus:outline-none text-xs font-bold text-[#02180a] dark:text-white">
                             </div>
                         </div>
 
                         <div class="bg-[#faf6ee] dark:bg-slate-900/30 p-3 rounded-xl border border-[#e4dec9] dark:border-slate-700">
-                            <label class="block text-xs font-black mb-1.5 text-[#042f1a] dark:text-slate-200" id="lblActSteps">Key Interactive Steps for Execution *</label>
-                            <textarea id="actionSteps" rows="3" placeholder="List step-by-step measures (minimum 3 steps)..." class="w-full bg-[#fdfbf7] dark:bg-slate-900 border border-slate-350 dark:border-slate-700 rounded-lg p-3 focus:ring-2 focus:ring-[#4a0d17] focus:outline-none text-xs font-bold text-[#042f1a] dark:text-white"></textarea>
+                            <label class="block text-xs font-black mb-1.5 text-[#02180a] dark:text-slate-200" id="lblActSteps">Key Interactive Steps for Execution *</label>
+                            <textarea id="actionSteps" rows="3" placeholder="List step-by-step measures (minimum 3 steps)..." class="w-full bg-[#fdfbf7] dark:bg-slate-900 border border-slate-355 dark:border-slate-700 rounded-lg p-3 focus:ring-2 focus:ring-[#4a0d17] focus:outline-none text-xs font-bold text-[#02180a] dark:text-white"></textarea>
                         </div>
                     </div>
 
@@ -571,7 +623,7 @@
                     <div class="mt-4 bg-[#faf5ef] dark:bg-slate-900/40 p-4 rounded-2xl border border-amber-200/50 dark:border-slate-800 text-center space-y-2.5">
                         <div class="max-w-md mx-auto space-y-1">
                             <h4 class="text-sm font-black text-[#4a0d17] dark:text-white" id="lblFinishTitle">Complete & Expose Entire Portfolio</h4>
-                            <p class="text-[10px] text-[#064e3b] dark:text-slate-300 font-bold" id="lblFinishDesc">You've established SDG goals, completed critical problem identification, validated with Master AI, evaluated solution metrics, and generated action steps.</p>
+                            <p class="text-[10px] text-[#02180a] dark:text-slate-300 font-bold" id="lblFinishDesc">You've established SDG goals, completed critical problem problem identification, validated with Master AI, evaluated solution metrics, and generated action steps.</p>
                         </div>
 
                         <div class="flex flex-wrap gap-1.5 justify-center">
@@ -590,12 +642,12 @@
 
     </main>
 
-    <!-- Custom Alert / Toast Dialog (Replaces unsafe window.alert) -->
-    <div id="modalDialog" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center z-[100] p-4 transition-all duration-300">
-        <div class="bg-[#fdfbf7] dark:bg-slate-850 p-5 rounded-2xl max-w-xs w-full text-center shadow-xl border border-[#1b4332]/25 dark:border-slate-800 transform scale-95 transition-transform duration-300">
+    <!-- Custom Alert / Toast Dialog (Redone with cream backdrops & fully readable, dark charcoal-green text) -->
+    <div id="modalDialog" class="fixed inset-0 bg-black/65 backdrop-blur-sm hidden items-center justify-center z-[100] p-4 transition-all duration-300">
+        <div class="bg-[#fdfbf7] dark:bg-slate-800 border-4 border-[#4a0d17] p-6 rounded-2xl max-w-xs w-full text-center shadow-2xl transform scale-95 transition-transform duration-300">
             <div id="modalIcon" class="flex justify-center mb-2.5 text-4xl">⚠️</div>
-            <p id="modalMessage" class="font-black text-[#042f1a] dark:text-white text-xs leading-relaxed whitespace-pre-line mb-4"></p>
-            <button onclick="closeModal()" class="w-full bg-[#4a0d17] hover:bg-[#5b121e] text-white py-2.5 rounded-xl text-xs font-black shadow-xs active:scale-95 transition duration-150" id="btnModalClose">
+            <p id="modalMessage" class="font-black text-[#03200f] dark:text-white text-xs leading-relaxed whitespace-pre-line mb-4"></p>
+            <button onclick="closeModal()" class="w-full bg-[#4a0d17] hover:bg-[#63141f] text-white py-2.5 rounded-xl text-xs font-black shadow-xs active:scale-95 transition duration-150" id="btnModalClose">
                 Dismiss
             </button>
         </div>
@@ -607,7 +659,7 @@
         <p class="text-white text-xs font-extrabold tracking-wide animate-pulse" id="lblLoadingText">Evaluating using AI GLP Master...</p>
     </div>
 
-    <!-- Compact Royal Maroon (#4a0d17) Footer with requested exact attribution -->
+    <!-- Compact Royal Maroon (#4a0d17) Footer -->
     <footer class="w-full bg-[#4a0d17] text-white border-t border-[#63141f] py-4 mt-auto">
         <div class="max-w-7xl mx-auto px-4 text-center text-[11px] text-amber-100 font-extrabold leading-tight tracking-widest uppercase" id="lblFooter">
             Copyright by Mr Alaric Leong and the GC Team.
@@ -630,8 +682,8 @@
         let problemScore = 0;
         let solutionScore = 0;
 
-        // Custom API Key from environment or hardcoded fallback
-        const apiKey = ""; 
+        // Custom API Key provided by user
+        const apiKey = "AQ.Ab8RN6LfcVqyMfwF9lkRTaS4rGxuyIK0PZSezsrYQNknIjXNBg"; 
 
         // Multi-language dictionary
         const i18n = {
@@ -664,15 +716,12 @@
                 lblPart2: "Stem + Key Verb Phrase",
                 lblPart3: "Purpose Statement",
                 lblPart4: "Future Parameters",
-                lblP1: "1. Because of... (Condition) *",
+                lblP1: "1. Because of... (Condition Statement) *",
                 lblP2: "2. How might we... (Stem + Key Verb Phrase) *",
-                lblP3: "3. In order to... (Purpose) *",
-                lblP4: "4. Location & Timeline... (Future Parameters) *",
+                lblP3: "3. In order to... (Purpose Statement) *",
                 lblProbStatementOutput: "Assembled Problem Statement:",
                 aiMasterTitle: "AI GLP Master Advisor",
                 aiMasterDesc: "Our digital AI Master evaluates your SDG challenges Alignment, Rubrics Relevance, and Problem Statement clarity. Score of >= 6/10 required to proceed.",
-                lblAiResult: "AI Master Rubrics Report:",
-                lblAiSuggestion: "Suggestions for refinement:",
                 btnSpeakFeedback: "Listen to AI Feedback",
                 btnTextEvalProb: "Evaluate & Unlock",
                 lblMinScoreIndicator: "Requires 6+ Points",
@@ -693,8 +742,6 @@
                 lblFinalSolStatement: "Final Solution Statement *",
                 aiMasterSolTitle: "AI GLP Master Advisor",
                 aiMasterSolDesc: "The Master evaluates your solutions' feasibility, quantitative scoring logic, and overall alignment. Score of >= 6/10 required to proceed.",
-                lblAiSolResult: "AI Master Solution Report:",
-                lblAiSolSuggestion: "Suggestions for refinement:",
                 btnSpeakSolFeedback: "Listen to AI Feedback",
                 btnTextEvalSol: "Evaluate & Unlock",
                 lblMinScoreSolIndicator: "Requires 6+ Points",
@@ -747,15 +794,12 @@
                 lblPart2: "疑问词与动词短语 (Stem + Verb)",
                 lblPart3: "主要目的/预期目标 (Purpose)",
                 lblPart4: "未来时空环境参数 (Future scene)",
-                lblP1: "1. 鉴于... / 由于... (Condition) *",
-                lblP2: "2. 我们能如何... (Stem + Key Verb Phrase) *",
-                lblP3: "3. 从而以便于... (Purpose) *",
-                lblP4: "4. 地点与具体年份限制 (Future Parameters) *",
+                lblP1: "1. 鉴于... / 由于... (现状/起因陈述) *",
+                lblP2: "2. 我们能如何... (疑问词与动词短语) *",
+                lblP3: "3. 从而以便于... (主要目的/预期目标) *",
                 lblProbStatementOutput: "整合后的问题陈述 (中英文对照):",
                 aiMasterTitle: "AI 导师大师评测",
-                aiMasterDesc: "智能 AI 导师评估您的挑战契合度、逻辑结构和陈述句语法完整性。需要至少达到 6/10 分才能解锁下一步骤。",
-                lblAiResult: "AI 导师综合评估报告：",
-                lblAiSuggestion: "具体改进建议：",
+                aiMasterDesc: "智能 AI 导师评估您的挑战研析契合度、逻辑结构和陈述句语法完整性。需要至少达到 6/10 分才能解锁下一步骤。",
                 btnSpeakFeedback: "聆听 AI 语音评估反馈",
                 btnTextEvalProb: "提交评测并解锁下一步",
                 lblMinScoreIndicator: "评测至少需达 6 分",
@@ -776,8 +820,6 @@
                 lblFinalSolStatement: "最终解决方案陈述 *",
                 aiMasterSolTitle: "AI 导师评估反馈",
                 aiMasterSolDesc: "AI 导师深度分析方案的可行性、指标计算的严密性以及可持续发展契合度。需要 6/10 分以上方可解锁行动 tab。",
-                lblAiSolResult: "AI 导师解决方案评估反馈：",
-                lblAiSolSuggestion: "具体改进方案指导：",
                 btnSpeakSolFeedback: "聆听 AI 方案语音评测",
                 btnTextEvalSol: "评测并解锁行动步骤",
                 lblMinScoreSolIndicator: "评测至少需达 6 分",
@@ -825,20 +867,17 @@
                 lblChg4: "挑戰 4 與原因 (選填)",
                 lblTemplateTag: "模板框架指南",
                 problemQ2Title: "2. 設立一個問題陳述 (Problem Statement)",
-                problemQ2Desc: "深入分析面臨的挑戰並確定1個研究課題。按照以下模組架構設計並生成您的問題陳述：",
+                problemQ2Desc: "深入分析面臨的挑戰並確定1个研究課題。按照以下模組架構設計並生成您的問題陳述：",
                 lblPart1: "現狀/起因陳述 (Condition)",
                 lblPart2: "疑問詞與動詞短語 (Stem + Verb)",
                 lblPart3: "主要目的/預期目標 (Purpose)",
                 lblPart4: "未來時空環境參數 (Future scene)",
-                lblP1: "1. 鑑於... / 由於... (Condition) *",
-                lblP2: "2. 我們能如何... (Stem + Key Verb Phrase) *",
-                lblP3: "3. 從而以便於... (Purpose) *",
-                lblP4: "4. 地點與具體年份限制 (Future Parameters) *",
+                lblP1: "1. 鑑於... / 由於... (現狀/起因陳述) *",
+                lblP2: "2. 我們能如何... (疑問詞與動詞短語) *",
+                lblP3: "3. 從而以便於... (主要目的/預期目標) *",
                 lblProbStatementOutput: "整合後的問題陳述 (中英文對照):",
                 aiMasterTitle: "AI 導師大師評測",
                 aiMasterDesc: "智能 AI 導師評估您的挑戰氣合度、邏輯結構和陳述句語法完整性。需要至少達到 6/10 分才能解鎖下一步驟。",
-                lblAiResult: "AI 導師綜合評估報告：",
-                lblAiSuggestion: "具體編制建議：",
                 btnSpeakFeedback: "聆聽 AI 語音評估回饋",
                 btnTextEvalProb: "提交評測並解鎖下一步",
                 lblMinScoreIndicator: "評測至少需達 6 分",
@@ -855,12 +894,10 @@
                 tblHeadSolution: "提議的解決方法 (Solutions)",
                 tblHeadTotal: "總得分 (Total)",
                 solQ3Title: "3. 綜合多維指標，確立最終解決方案陳述",
-                solQ3Desc: "根據矩陣得分，推導選擇最佳且最可行的解決途徑，設立並精細化您的解決方案陳述。",
+                solQ3Desc: "根據陣列得分，推導選擇最佳且最可行的解決途徑，設立並精細化您的解決方案陳述。",
                 lblFinalSolStatement: "最終解決方案陳述 *",
                 aiMasterSolTitle: "AI 導師評估回饋",
                 aiMasterSolDesc: "AI 導師深度分析方案的可行性、指標計算的嚴密性以及永續發展契合度。需要 6/10 分以上方可解鎖行動 tab。",
-                lblAiSolResult: "AI 導師解決方案評估回饋：",
-                lblAiSolSuggestion: "具體改進方案指導：",
                 btnSpeakSolFeedback: "聆聽 AI 方案語音評測",
                 btnTextEvalSol: "評測並解鎖行動步驟",
                 lblMinScoreSolIndicator: "評測至少需達 6 分",
@@ -879,7 +916,7 @@
                 lblActRoles: "團隊內具體分工與角色定義 *",
                 lblActSteps: "實施行動的具體核心步驟 (至少3步) *",
                 lblFinishTitle: "導出並完成完整檔案",
-                lblFinishDesc: "恭喜您！您已經成功選定發展目標、梳理核心社會問題、通過 AI 導師雙重考评、建立了評估矩陣，並輸出了口頭演練落地計劃。",
+                lblFinishDesc: "恭喜您！您已經成功選定發展目標、梳理核心社會問題、通過 AI 導師雙重考評、建立了評估矩陣，並輸出了口頭演練落地計劃。",
                 lblLoadingText: "正在連接 AI 導師大師，極速深度分析中...",
                 btnModalClose: "好，關閉",
                 lblFooter: "Copyright by Mr Alaric Leong and the GC Team."
@@ -926,11 +963,6 @@
                 grpSelect.appendChild(opt);
             }
 
-            // Apply theme configuration
-            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            if (systemPrefersDark) {
-                toggleDarkMode(true);
-            }
             renderSdgGrid();
             renderMatrix();
             switchLanguage('en');
@@ -946,7 +978,7 @@
                 btn.type = "button";
                 btn.onclick = () => selectSdg(sdg.id);
                 btn.id = `sdgBtn-${sdg.id}`;
-                btn.className = `p-1.5 rounded-xl flex flex-col items-center text-center justify-between gap-1 shadow-sm transition hover:scale-105 active:scale-95 border-2 border-transparent bg-[#fdfbf7] dark:bg-slate-900 hover:border-indigo-400 text-[#042f1a] dark:text-slate-100`;
+                btn.className = `p-1.5 rounded-xl flex flex-col items-center text-center justify-between gap-1 shadow-sm transition hover:scale-105 active:scale-95 border-2 border-transparent bg-[#fdfbf7] dark:bg-slate-900 text-[#02180a] dark:text-slate-100`;
                 
                 btn.innerHTML = `
                     <div class="text-xl">${sdg.icon}</div>
@@ -998,58 +1030,22 @@
 
             // Custom placeholder translations
             if (lang === 'zh-cn' || lang === 'zh-tw') {
-                document.getElementById('chgInput1').placeholder = "输入第一个具体挑战...";
-                document.getElementById('chgInput2').placeholder = "输入第二个具体挑战...";
-                document.getElementById('chgInput3').placeholder = "输入第三个具体挑战...";
-                document.getElementById('chgInput4').placeholder = "输入第四个具体挑战...";
-                document.getElementById('probPart1').placeholder = "由于某些新手术方法引起的伦理疑虑...";
-                document.getElementById('probPart2').placeholder = "我们可以如何为相关疗法建立一个积极的医疗环境...";
-                document.getElementById('probPart3').placeholder = "以便鼓励以符合伦理的方式使用相关手术...";
-                document.getElementById('probPart4').placeholder = "在美国，在2026年及以后？";
-                document.getElementById('solInput1').placeholder = "输入第一个创新方案...";
-                document.getElementById('solInput2').placeholder = "输入第二个创新方案...";
-                document.getElementById('solInput3').placeholder = "输入第三个创新方案...";
+                document.getElementById('chgInput1').placeholder = "由于青少年面对的情绪波动与挑战...";
+                document.getElementById('chgInput2').placeholder = "我们可以如何设计一套系统的同伴辅导框架...";
+                document.getElementById('chgInput3').placeholder = "以便协助中新两地学生有效地调适不良情绪...";
+                document.getElementById('probPart4').placeholder = "例如：于 2026 年在 悉尼 地区及以后？";
                 document.getElementById('finalSolutionStatement').placeholder = "精细化撰写您所选定的最佳解决方法陈述...";
             } else {
-                document.getElementById('chgInput1').placeholder = "Identify challenge 1...";
-                document.getElementById('chgInput2').placeholder = "Identify challenge 2...";
-                document.getElementById('chgInput3').placeholder = "Identify challenge 3...";
-                document.getElementById('chgInput4').placeholder = "Identify challenge 4...";
-                document.getElementById('probPart1').placeholder = "e.g. because of high stress and isolation...";
-                document.getElementById('probPart2').placeholder = "e.g. how might we assist youths...";
-                document.getElementById('probPart3').placeholder = "e.g. in order to reduce depression...";
-                document.getElementById('probPart4').placeholder = "e.g. in Singapore in 2026 and beyond?";
-                document.getElementById('solInput1').placeholder = "Define solution A...";
-                document.getElementById('solInput2').placeholder = "Define solution B...";
-                document.getElementById('solInput3').placeholder = "Define solution C...";
+                document.getElementById('chgInput1').placeholder = "e.g. because of the rising academic peer pressures...";
+                document.getElementById('chgInput2').placeholder = "e.g. how might we establish an interactive peer counseling framework...";
+                document.getElementById('chgInput3').placeholder = "e.g. in order to assist youth to effectively self-regulate stress...";
+                document.getElementById('probPart4').placeholder = "e.g. in Sydney in 2026 and beyond?";
                 document.getElementById('finalSolutionStatement').placeholder = "e.g. By leveraging a targeted social application peer-support mechanism...";
             }
 
             renderSdgGrid();
             renderMatrix();
             setupProblemStatementAssembler();
-        }
-
-        // Theme Toggle Handler (Enhanced to guarantee dark mode class functions fully with TailWind configurations)
-        function toggleDarkMode(forceDark = null) {
-            const html = document.documentElement;
-            if (forceDark !== null) {
-                isDarkMode = forceDark;
-            } else {
-                isDarkMode = !isDarkMode;
-            }
-            if (isDarkMode) {
-                html.classList.add('dark');
-                document.body.classList.add('dark', 'bg-[#021c15]', 'text-[#d8f3dc]');
-                document.body.classList.remove('bg-[#faf6ee]', 'text-[#064e3b]');
-            } else {
-                html.classList.remove('dark');
-                document.body.classList.remove('bg-slate-900', 'text-slate-100');
-                document.body.classList.add('bg-[#faf6ee]', 'text-[#064e3b]');
-            }
-            // Force redraw of card layouts
-            renderSdgGrid();
-            renderMatrix();
         }
 
         // Handle Dropdown-based Tracker Verification
@@ -1063,7 +1059,13 @@
             // Combine details dynamically to standard Year/Destination/Group path structure
             currentClassTracker = `${onboardedYear}/${onboardedCity}/${onboardedGroup}`;
 
-            // Seamless screen transition (no prompt pop-up)
+            // Pre-fill suggestion parameter hint to prompt standard formulation
+            const hintField = document.getElementById('probPart4');
+            hintField.value = currentLang === 'en' 
+                ? `in ${onboardedCity} in ${onboardedYear} and beyond?`
+                : `于${onboardedCity}${onboardedYear}年及以后？`;
+
+            // Seamless screen transition
             document.getElementById('onboardingScreen').classList.add('hidden');
             document.getElementById('mainWorkspace').classList.remove('hidden');
             document.getElementById('tabsRow').classList.remove('hidden'); // Expose cohesive navigation tabs
@@ -1073,6 +1075,8 @@
             badge.classList.remove('hidden');
             badge.classList.add('flex');
             badgeText.innerText = currentClassTracker;
+
+            updateAssembledProblem();
         }
 
         // Dynamic Problem Statement Assembler listeners
@@ -1087,14 +1091,39 @@
         }
 
         function updateAssembledProblem() {
-            const p1 = document.getElementById('probPart1').value.trim();
-            const p2 = document.getElementById('probPart2').value.trim();
-            const p3 = document.getElementById('probPart3').value.trim();
-            const p4 = document.getElementById('probPart4').value.trim();
+            const rawP1 = document.getElementById('probPart1').value.trim();
+            const rawP2 = document.getElementById('probPart2').value.trim();
+            const rawP3 = document.getElementById('probPart3').value.trim();
+            const rawP4 = document.getElementById('probPart4').value.trim();
 
-            const combined = `${p1 ? p1 + ' ' : ''}${p2 ? p2 + ' ' : ''}${p3 ? p3 + ' ' : ''}${p4 ? p4 : ''}`;
+            // Strict structural validation prepends matching instructions
+            let p1 = rawP1;
+            if (p1 && !p1.toLowerCase().startsWith("because of") && !p1.startsWith("由于") && !p1.startsWith("鉴于")) {
+                p1 = currentLang === 'en' ? "Because of " + p1 : "由于" + p1;
+            }
+
+            let p2 = rawP2;
+            if (p2 && !p2.toLowerCase().startsWith("how might we") && !p2.toLowerCase().startsWith("how can we") && !p2.startsWith("我们可以如何") && !p2.startsWith("我们如何") && !p2.startsWith("我们能如何")) {
+                p2 = currentLang === 'en' ? "how might we " + p2 : "我们可以如何" + p2;
+            }
+
+            let p3 = rawP3;
+            if (p3 && !p3.toLowerCase().startsWith("in order to") && !p3.toLowerCase().startsWith("so that") && !p3.startsWith("以便") && !p3.startsWith("从而")) {
+                p3 = currentLang === 'en' ? "in order to " + p3 : "以便" + p3;
+            }
+
+            let p4 = rawP4;
+
+            const partsList = [];
+            if (p1) partsList.push(p1);
+            if (p2) partsList.push(p2);
+            if (p3) partsList.push(p3);
+            if (p4) partsList.push(p4);
+
+            const combined = partsList.join(", ");
             const out = document.getElementById('assembledProbStatement');
-            if (combined.trim() === "") {
+            
+            if (!rawP1 && !rawP2 && !rawP3 && !rawP4) {
                 out.innerText = currentLang === 'en' ? "Assemble inputs to view complete problem statement." : "请在下方填写以实时组装您的问题陈述。";
             } else {
                 out.innerText = combined;
@@ -1110,9 +1139,9 @@
                 const tr = document.createElement('tr');
                 tr.className = "hover:bg-amber-50/40 dark:hover:bg-slate-800/30 transition border-b border-[#e4dec9] dark:border-slate-800";
                 
-                // Solution Title field cell (Contrast text color set directly to deep green)
-                let cellsHtml = `<td class="p-3.5 font-black text-[#042f1a] dark:text-slate-100">
-                    <input type="text" value="${row.name}" onchange="updateRowName(${rowIndex}, this.value)" class="bg-transparent focus:bg-[#faf6ee] dark:focus:bg-slate-700 w-full p-1 rounded font-black border-b border-[#1b4332]/20 dark:border-slate-800 focus:border-indigo-500 text-xs text-[#042f1a] dark:text-white">
+                // Solution Title field cell
+                let cellsHtml = `<td class="p-3.5 font-black text-[#02180a] dark:text-slate-100">
+                    <input type="text" value="${row.name}" onchange="updateRowName(${rowIndex}, this.value)" class="bg-transparent focus:bg-[#faf6ee] dark:focus:bg-slate-700 w-full p-1 rounded font-black border-b border-[#1b4332]/20 dark:border-slate-800 focus:border-indigo-500 text-xs text-[#02180a] dark:text-white">
                 </td>`;
                 
                 // Criteria Score inputs
@@ -1121,12 +1150,12 @@
                     const score = row.scores[i] || 3;
                     total += score;
                     cellsHtml += `<td class="p-3.5">
-                        <input type="number" min="1" max="5" value="${score}" onchange="updateCellScore(${rowIndex}, ${i}, this.value)" class="w-12 p-1.5 bg-[#faf6ee] dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-700 rounded-lg text-center font-black focus:ring-2 focus:ring-[#4a0d17] text-xs text-[#042f1a] dark:text-white">
+                        <input type="number" min="1" max="5" value="${score}" onchange="updateCellScore(${rowIndex}, ${i}, this.value)" class="w-12 p-1.5 bg-[#faf6ee] dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-700 rounded-lg text-center font-black focus:ring-2 focus:ring-[#4a0d17] text-xs text-[#02180a] dark:text-white">
                     </td>`;
                 }
 
                 // Total calculated score column
-                cellsHtml += `<td class="p-3.5 text-center font-black text-indigo-750 dark:text-indigo-400 text-sm bg-indigo-50/20 dark:bg-indigo-950/20">${total}</td>`;
+                cellsHtml += `<td class="p-3.5 text-center font-black text-[#02180a] dark:text-indigo-400 text-sm bg-indigo-50/20 dark:bg-indigo-950/20">${total}</td>`;
                 tr.innerHTML = cellsHtml;
                 tbody.appendChild(tr);
             });
@@ -1159,7 +1188,7 @@
             const totalHeader = document.getElementById('tblHeadTotal');
             
             const th = document.createElement('th');
-            th.className = "p-3.5 text-[#042f1a] dark:text-slate-250 font-extrabold uppercase text-[10px]";
+            th.className = "p-3.5 text-[#02180a] dark:text-slate-250 font-extrabold uppercase text-[10px]";
             th.id = `colCrit-${customCriteriaCount}`;
             th.innerText = `Crit ${customCriteriaCount} [1-5]`;
             
@@ -1196,12 +1225,12 @@
                 const btn = document.getElementById(`tabBtn-${t}`);
                 const content = document.getElementById(`tabContent-${t}`);
                 if (t === tabId) {
-                    btn.className = "flex-1 py-2 px-2.5 rounded-xl font-black text-xs transition-all flex items-center justify-center gap-1.5 bg-gradient-to-r from-amber-500 to-amber-600 text-white shadow-md";
+                    btn.className = "flex-1 py-2 px-2.5 rounded-xl font-black text-xs transition-all flex items-center justify-center gap-1.5 bg-[#4a0d17] border border-[#63141f] text-white shadow-md";
                     content.classList.remove('hidden');
                     activeTab = t;
                 } else {
                     if (unlockedTabs[t]) {
-                        btn.className = "flex-1 py-2 px-2.5 rounded-xl font-black text-xs transition-all flex items-center justify-center gap-1.5 bg-[#fdfbf7] dark:bg-slate-800 text-[#042f1a] dark:text-slate-100 hover:bg-[#faf6ee] border border-slate-200 dark:border-slate-700 shadow-xs";
+                        btn.className = "flex-1 py-2 px-2.5 rounded-xl font-black text-xs transition-all flex items-center justify-center gap-1.5 bg-[#fdfbf7] dark:bg-slate-800 text-[#02180a] dark:text-slate-100 hover:bg-[#faf6ee] border border-slate-200 dark:border-slate-700 shadow-xs";
                     } else {
                         btn.className = "flex-1 py-2 px-2.5 rounded-xl font-black text-xs transition-all flex items-center justify-center gap-1.5 text-slate-400 dark:text-slate-500 bg-[#5d121e] border border-[#711623] opacity-50 pointer-events-none";
                     }
@@ -1210,150 +1239,119 @@
             });
         }
 
-        // UI Modal controller
-        function showModal(msg) {
-            document.getElementById('modalMessage').innerText = msg;
-            const dialog = document.getElementById('modalDialog');
-            dialog.classList.remove('hidden');
-            dialog.classList.add('flex');
-        }
-
-        function closeModal() {
-            const dialog = document.getElementById('modalDialog');
-            dialog.classList.add('hidden');
-            dialog.classList.remove('flex');
-        }
-
-        // Helper to retrieve all inputs for API payloads
-        function getPortfolioData() {
-            return {
-                timestamp: new Date().toLocaleDateString(),
-                classTracker: currentClassTracker,
-                tripYear: onboardedYear,
-                tripCity: onboardedCity,
-                sdg: selectedSdg ? `SDG ${selectedSdg.id} - ${selectedSdg.name}` : "None Selected",
-                problem: {
-                    challenge1: document.getElementById('chgInput1').value.trim(),
-                    challenge2: document.getElementById('chgInput2').value.trim(),
-                    challenge3: document.getElementById('chgInput3').value.trim(),
-                    challenge4: document.getElementById('chgInput4').value.trim(),
-                    statement: document.getElementById('assembledProbStatement').innerText.trim()
-                },
-                solution: {
-                    solA: document.getElementById('solInput1').value.trim(),
-                    solB: document.getElementById('solInput2').value.trim(),
-                    solC: document.getElementById('solInput3').value.trim(),
-                    matrix: solutionRows.map(r => `${r.name} (Scores: ${r.scores.join(',')})`).join('; '),
-                    statement: document.getElementById('finalSolutionStatement').value.trim()
-                },
-                action: {
-                    timeline: document.getElementById('actionTimeline').value.trim(),
-                    roles: document.getElementById('actionRoles').value.trim(),
-                    steps: document.getElementById('actionSteps').value.trim()
-                }
-            };
-        }
-
-        // Strict Offline Rubrics Evaluator fallback (Incredibly robust local checker)
+        // Strictly evaluate using local rule-mapping (fallback & schema validation helper)
         function applyStrictOfflineRubrics(data, tab) {
+            let feedbackDetails = {
+                score: 10,
+                clarity: "Excellent clear communication.",
+                logic: "Logical progression of ideas.",
+                accuracy: "Syntactically accurate formulation.",
+                precision: "High descriptive precision.",
+                relevance: `Explicitly aligned with chosen focus target SDG.`
+            };
+
+            const reasons = [];
+
             if (tab === 'problem') {
                 const statement = data.problem.statement.trim();
                 const statementLower = statement.toLowerCase();
-                let score = 10;
-                let reasons = [];
-                
-                // Rule 1: Must contain Condition segment (typically "because of" or "due to" / "由于" or "鉴于")
-                if (!statementLower.includes("because") && !statementLower.includes("due to") && !statementLower.includes("鉴于") && !statementLower.includes("由于")) {
-                    score -= 2;
-                    reasons.push("Missing a clear Condition Statement starting with 'Because of...' or 'Due to...' (or '由于...' / '鉴于...').");
-                }
-                
-                // Rule 2: Must contain key verb phrase/stem (typically "how might we" / "我们可以如何" or "我们如何")
-                if (!statementLower.includes("how might we") && !statementLower.includes("how can we") && !statementLower.includes("我们能如何") && !statementLower.includes("我们可以如何") && !statementLower.includes("我们如何")) {
-                    score -= 2;
-                    reasons.push("Missing a clear actionable prompt stem ('how might we...' / '我们可以如何...').");
-                }
-                
-                // Rule 3: Must specify purpose parameters (typically "in order to" / "以便" or "从而")
-                if (!statementLower.includes("in order to") && !statementLower.includes("so that") && !statementLower.includes("以便") && !statementLower.includes("从而") && !statementLower.includes("来")) {
-                    score -= 2;
-                    reasons.push("Missing a clearly defined Purpose Statement starting with 'in order to...' (or '以便...').");
+
+                // 1. Clarity Check: Missing Condition component "Because of"
+                if (!statementLower.includes("because") && !statementLower.includes("due to") && !statementLower.includes("由于") && !statementLower.includes("鉴于")) {
+                    feedbackDetails.score -= 2;
+                    feedbackDetails.clarity = "Lacks clarity regarding root cause condition starting with 'Because of...' or '由于...'";
+                    reasons.push("Clarity: Missing a direct Condition cause.");
                 }
 
-                // Rule 4: Must specify Year timeline (e.g. 2026 / 2027)
+                // 2. Logic Check: Missing prompting stem "how might we"
+                if (!statementLower.includes("how might we") && !statementLower.includes("how can we") && !statementLower.includes("我们如何") && !statementLower.includes("我们可以如何")) {
+                    feedbackDetails.score -= 2;
+                    feedbackDetails.logic = "Lacks logical actionable transition. Ensure you ask 'how might we...' or '我们可以如何...'";
+                    reasons.push("Logic: Missing 'how might we' stem.");
+                }
+
+                // 3. Precision Check: Missing Purpose "in order to"
+                if (!statementLower.includes("in order to") && !statementLower.includes("so that") && !statementLower.includes("以便") && !statementLower.includes("从而")) {
+                    feedbackDetails.score -= 2;
+                    feedbackDetails.precision = "Purpose lacks precision. Integrate an 'in order to...' or '以便...' clause.";
+                    reasons.push("Precision: Missing 'in order to' target purpose.");
+                }
+
+                // 4. Accuracy Check: Missing onboarded Year
                 const yearMatch = onboardedYear ? onboardedYear : "2026";
                 if (!statementLower.includes(yearMatch)) {
-                    score -= 2;
-                    reasons.push(`Missing explicit timeline parameters matching your onboarded trip year (${yearMatch}).`);
+                    feedbackDetails.score -= 2;
+                    feedbackDetails.accuracy = `Accuracy fails: The designated onboarding year (${yearMatch}) is omitted from the future scene timeline parameters.`;
+                    reasons.push(`Accuracy: Add Year parameter (${yearMatch}).`);
                 }
 
-                // Rule 5: Dynamic City check - Statement must contain the onboarded destination city!
+                // 5. Relevance Check: Missing onboarded Trip City inside problem statement
                 const cityMatch = onboardedCity ? onboardedCity.toLowerCase() : "";
                 if (cityMatch && !statementLower.includes(cityMatch)) {
-                    score -= 2;
-                    reasons.push(`Missing your onboarded trip city parameters ('${onboardedCity}') inside the Future Scene parameters.`);
+                    feedbackDetails.score -= 2;
+                    feedbackDetails.relevance = `Relevance is weakened. The statement must directly reference your trip destination city: "${onboardedCity}".`;
+                    reasons.push(`Relevance: Explicitly include your trip city "${onboardedCity}".`);
                 }
 
-                let feedback = score >= 6 
-                    ? "Passes strict GLP problem criteria successfully. Excellent alignment with selected SDG." 
-                    : "Problem statement draft did not meet key structural standards.";
-                
-                let suggestions = reasons.length > 0 
-                    ? "To unlock, make sure you address: " + reasons.join(" ") 
-                    : "Outstanding formulation! Your statement is rubrics-perfect.";
+                const suggestions = reasons.length > 0
+                    ? "REVISIONS NEEDED: " + reasons.join(" | ")
+                    : "EXCELLENT WORK: Fully ready for next step locks!";
 
-                return { score, feedback, suggestions };
+                return {
+                    score: feedbackDetails.score,
+                    clarity: feedbackDetails.clarity,
+                    precision: feedbackDetails.precision,
+                    accuracy: feedbackDetails.accuracy,
+                    logic: feedbackDetails.logic,
+                    relevance: feedbackDetails.relevance,
+                    suggestions: suggestions
+                };
             } else {
-                // Solution Validation Rubrics
+                // Solution Tab Rubrics
                 const sol = data.solution;
                 const statement = sol.statement.toLowerCase();
-                let score = 10;
-                let reasons = [];
 
                 if (sol.solA.length < 5 || sol.solB.length < 5 || sol.solC.length < 5) {
-                    score -= 3;
-                    reasons.push("You must draft 3 distinct innovative solutions.");
+                    feedbackDetails.score -= 3;
+                    feedbackDetails.precision = "Brainstorm contains empty or extremely short solution ideas.";
+                    reasons.push("Precision: Sol A, B, and C must be completely descriptive.");
                 }
 
                 if (statement.length < 15) {
-                    score -= 3;
-                    reasons.push("The Final Solution Statement must clearly explain implementation steps compared to other measures.");
+                    feedbackDetails.score -= 3;
+                    feedbackDetails.clarity = "Final statement lacks descriptive implementation metrics.";
+                    reasons.push("Clarity: Statement is too short.");
                 }
 
-                let feedback = score >= 6 
-                    ? "Solutions pass criteria assessment. Excellent matrix evaluation metrics."
-                    : "The solution ideas are underdeveloped or lack cohesive matrix indicators.";
+                const suggestions = reasons.length > 0
+                    ? "REVISIONS NEEDED: " + reasons.join(" | ")
+                    : "EXCELLENT WORK: Ready to transition to oral pitch outline!";
 
-                let suggestions = reasons.length > 0 
-                    ? "Please refine: " + reasons.join(" ")
-                    : "Excellent synthesis! Ready to build implementation roadmap.";
-
-                return { score, feedback, suggestions };
+                return {
+                    score: feedbackDetails.score,
+                    clarity: feedbackDetails.clarity,
+                    precision: feedbackDetails.precision,
+                    accuracy: feedbackDetails.accuracy,
+                    logic: feedbackDetails.logic,
+                    relevance: feedbackDetails.relevance,
+                    suggestions: suggestions
+                };
             }
         }
 
-        // Unified fetch wrapper with strict validation mapping
+        // Unified fetch wrapper with strict schema handling
         async function queryAI(systemPrompt, userQuery, data, tab) {
             const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
             const payload = {
                 contents: [{ parts: [{ text: userQuery }] }],
                 systemInstruction: { parts: [{ text: systemPrompt }] },
                 generationConfig: {
-                    responseMimeType: "application/json",
-                    responseSchema: {
-                        type: "OBJECT",
-                        properties: {
-                            score: { type: "NUMBER" },
-                            feedback: { type: "STRING" },
-                            suggestions: { type: "STRING" }
-                        },
-                        required: ["score", "feedback", "suggestions"]
-                    }
+                    responseMimeType: "application/json"
                 }
             };
 
             let delay = 1000;
-            for (let i = 0; i < 5; i++) {
+            for (let i = 0; i < 4; i++) {
                 try {
                     const response = await fetch(url, {
                         method: 'POST',
@@ -1363,7 +1361,11 @@
                     if (response.ok) {
                         const resData = await response.json();
                         const rawText = resData.candidates?.[0]?.content?.parts?.[0]?.text;
-                        return JSON.parse(rawText);
+                        const cleanJson = JSON.parse(rawText);
+                        // Validate format schema strictly
+                        if (typeof cleanJson.score === 'number' && cleanJson.clarity && cleanJson.precision && cleanJson.accuracy && cleanJson.logic && cleanJson.relevance) {
+                            return cleanJson;
+                        }
                     }
                 } catch (err) {
                     // Backoff retry quietly
@@ -1372,7 +1374,7 @@
                 delay *= 2;
             }
             
-            // Calculate offline rubrics mapping if API is offline or key has expired
+            // Calculate offline rubrics mapping if API fails or key is exhausted
             return applyStrictOfflineRubrics(data, tab);
         }
 
@@ -1395,25 +1397,32 @@
             document.getElementById('loadingMask').classList.remove('hidden');
             document.getElementById('loadingMask').classList.add('flex');
 
-            const systemPrompt = `You are the strict AHS GLP Master AI (custom module: https://gemini.google.com/gem/1v1TG9fjy__A6R2z8Ha6SN-9gTRh_gy8-).
-            Strictly analyze the problem statements based on the uploaded rubrics and relevance to the selected SDG: ${data.sdg}.
-            The problem statement MUST contain:
+            const systemPrompt = `You are the strict AHS GLP Master AI.
+            Evaluate the submitted problem statement strictly according to 5 intellectual standards.
+            The statement must follow the formula:
             1. Condition Statement ("Because of...")
             2. Stem + Key Verb ("how might we...")
             3. Purpose Statement ("in order to...")
             4. Future Scene parameters referencing Destination City: "${onboardedCity}" AND Year: "${onboardedYear}".
-            If any of these 4 parameters are missing or if the statement does not reference "${onboardedCity}" or "${onboardedYear}", the score must be strictly below 6. Be strict and provide constructive, detailed feedback.
-            Respond strictly in a valid JSON object matching: { "score": number, "feedback": "string", "suggestions": "string" } in the language: ${currentLang}.`;
+
+            You MUST respond in JSON format with exactly:
+            {
+               "score": <number from 1 to 10>,
+               "clarity": "<string: Assess if condition is clearly explained>",
+               "precision": "<string: Assess descriptive precision of parameters>",
+               "accuracy": "<string: Assess timeline parameters accuracy (${onboardedYear})>",
+               "logic": "<string: Assess the logical connection of causes to the prompt>",
+               "relevance": "<string: Evaluate the direct connection to SDG: ${data.sdg}>",
+               "suggestions": "<string: How to fix missing or weak parameters if score < 6>"
+            }
+            
+            Be very strict. If it lacks any template standard or does not reference "${onboardedCity}" or "${onboardedYear}", the score must be strictly below 6.`;
 
             const query = `
                 User Language: ${currentLang}
                 Selected SDG: ${data.sdg}
                 Trip Destination: ${onboardedCity}
                 Trip Year: ${onboardedYear}
-                Challenge 1: ${data.problem.challenge1}
-                Challenge 2: ${data.problem.challenge2}
-                Challenge 3: ${data.problem.challenge3}
-                Challenge 4: ${data.problem.challenge4}
                 Problem Statement: ${data.problem.statement}
             `;
 
@@ -1421,37 +1430,47 @@
                 const result = await queryAI(systemPrompt, query, data, 'problem');
                 problemScore = result.score;
                 
-                // Extra local validation guardrail to ensure strict city check is always executed
+                // Extra local validation override to secure rubric strictness
                 const stmtLower = data.problem.statement.toLowerCase();
                 const cityMatch = onboardedCity ? onboardedCity.toLowerCase() : "";
                 const yearMatch = onboardedYear ? onboardedYear : "2026";
                 if ((cityMatch && !stmtLower.includes(cityMatch)) || !stmtLower.includes(yearMatch)) {
                     problemScore = Math.min(problemScore, 5);
-                    result.feedback = `Local Rubrics Guard: Missing trip destination parameters ('${onboardedCity}') or onboarding Year ('${onboardedYear}') inside the Future Scene parameters.`;
-                    result.suggestions = `Please explicitly modify your Problem Statement parameters to include the destination city: ${onboardedCity} and Year: ${onboardedYear}.`;
+                    result.accuracy = `Accuracy Weakened: Timeline does not match onboarding Year: "${onboardedYear}".`;
+                    result.relevance = `Relevance Weakened: Location does not match onboarding Destination: "${onboardedCity}".`;
+                    result.suggestions = `Please explicitly modify your Problem Statement to include city "${onboardedCity}" and year "${onboardedYear}".`;
                 }
 
+                // Update visual metrics in standard boxes
+                document.getElementById('clarityValProb').innerText = result.clarity;
+                document.getElementById('precisionValProb').innerText = result.precision;
+                document.getElementById('accuracyValProb').innerText = result.accuracy;
+                document.getElementById('logicValProb').innerText = result.logic;
+                document.getElementById('relevanceValProb').innerText = result.relevance;
+
                 const feedbackDiv = document.getElementById('aiFeedbackProb');
-                const feedbackText = document.getElementById('aiFeedbackTextProb');
-                const suggestionsText = document.getElementById('aiSuggestionsTextProb');
+                const responseBox = document.getElementById('feedbackResponseBoxProb');
                 const scoreVal = document.getElementById('probScoreVal');
 
                 feedbackDiv.classList.remove('hidden');
                 scoreVal.innerText = `${currentLang === 'en' ? 'Score' : '评分'}: ${problemScore}/10`;
-                feedbackText.innerText = result.feedback;
-                suggestionsText.innerText = result.suggestions;
 
                 if (problemScore >= 6) {
                     unlockedTabs.solution = true;
                     document.getElementById('tabBtn-solution').classList.remove('opacity-50', 'pointer-events-none');
                     document.getElementById('tabBtn-solution').removeAttribute('disabled');
                     document.getElementById('unlockIndicatorProb').innerHTML = `<span class="text-emerald-600 font-extrabold flex items-center gap-1 text-[10px]">✓ Unlocked! Proceed to Tab 2</span>`;
+                    
+                    responseBox.className = "p-3 rounded-lg text-[11px] font-bold bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-900 mt-2";
+                    responseBox.innerHTML = `🌟 <strong>${currentLang === 'en' ? 'PASSED!' : '通过评估！'}</strong> <br> ${currentLang === 'en' ? 'Encouragement Note: Outstanding formulation! Your problem statement is perfectly logical, aligned with the UN SDGs, and clear. Proceed to Tab 2 Solution Stage.' : '恭喜！您的问题陈述逻辑清晰，完美契合可持续发展目标，且要素完整。请点击 Tab 2 方案页面继续。'}`;
                 } else {
-                    document.getElementById('unlockIndicatorProb').innerHTML = `<span class="text-red-650 font-extrabold text-[10px]">Score: ${problemScore}/10 (Requires 6+)</span>`;
-                    showModal("Your draft did not meet the strict 6-point lock. Check suggestions and revise!");
+                    document.getElementById('unlockIndicatorProb').innerHTML = `<span class="text-red-500 font-extrabold text-[10px]">Score: ${problemScore}/10 (Requires 6+)</span>`;
+                    
+                    responseBox.className = "p-3 rounded-lg text-[11px] font-bold bg-red-50 dark:bg-red-950/40 text-red-800 dark:text-red-300 border border-red-200 dark:border-red-900 mt-2";
+                    responseBox.innerHTML = `⚠️ <strong>${currentLang === 'en' ? 'REFINEMENT NEEDED' : '需优化陈述'}</strong> <br> ${result.suggestions}`;
                 }
             } catch (err) {
-                // Handled gracefully inside queryAI
+                // Handled gracefully inside queryAI fallback
             } finally {
                 document.getElementById('loadingMask').classList.add('hidden');
                 document.getElementById('loadingMask').classList.remove('flex');
@@ -1473,12 +1492,21 @@
             document.getElementById('loadingMask').classList.remove('hidden');
             document.getElementById('loadingMask').classList.add('flex');
 
-            const systemPrompt = `You are the strict AHS GLP Master AI (custom module: https://gemini.google.com/gem/1v1TG9fjy__A6R2z8Ha6SN-9gTRh_gy8-).
-            Strictly analyze the student's solution brainstorm suggestions, their matrix scores, and their compiled Solution Statement.
-            To unlock (score >= 6), solution statement must:
-            - Explicitly address the evaluated problem statement and the selected SDG: ${data.sdg}.
-            - Suggest concrete, innovative actionable changes compared to existing city measures in "${onboardedCity}".
-            Respond strictly in a JSON object: { "score": number, "feedback": "string", "suggestions": "string" } in the language: ${currentLang}.`;
+            const systemPrompt = `You are the strict AHS GLP Master AI.
+            Analyze the solutions brainstorm suggestions, matrix metrics, and compiled Solution Statement against chosen SDG: ${data.sdg}.
+            
+            You MUST respond in JSON format with exactly:
+            {
+               "score": <number from 1 to 10>,
+               "clarity": "<string: Assess readability of solution statement>",
+               "precision": "<string: Assess matrix scoring logic correctness>",
+               "accuracy": "<string: Assess accuracy of solution targets>",
+               "logic": "<string: Assess logic connecting solution to problem>",
+               "relevance": "<string: Evaluate connection to chosen SDG ${data.sdg}>",
+               "suggestions": "<string: Actionable suggestions for improvement if score < 6>"
+            }
+            
+            Unlocking requires score >= 6. Make sure the solution statement addresses the target city "${onboardedCity}" clearly.`;
 
             const query = `
                 User Language: ${currentLang}
@@ -1496,27 +1524,36 @@
                 const result = await queryAI(systemPrompt, query, data, 'solution');
                 solutionScore = result.score;
                 
+                // Update visual metrics in standard boxes
+                document.getElementById('clarityValSol').innerText = result.clarity;
+                document.getElementById('precisionValSol').innerText = result.precision;
+                document.getElementById('accuracyValSol').innerText = result.accuracy;
+                document.getElementById('logicValSol').innerText = result.logic;
+                document.getElementById('relevanceValSol').innerText = result.relevance;
+
                 const feedbackDiv = document.getElementById('aiFeedbackSol');
-                const feedbackText = document.getElementById('aiFeedbackTextSol');
-                const suggestionsText = document.getElementById('aiSuggestionsTextSol');
+                const responseBox = document.getElementById('feedbackResponseBoxSol');
                 const scoreVal = document.getElementById('solScoreVal');
 
                 feedbackDiv.classList.remove('hidden');
                 scoreVal.innerText = `${currentLang === 'en' ? 'Score' : '评分'}: ${solutionScore}/10`;
-                feedbackText.innerText = result.feedback;
-                suggestionsText.innerText = result.suggestions;
 
                 if (solutionScore >= 6) {
                     unlockedTabs.action = true;
                     document.getElementById('tabBtn-action').classList.remove('opacity-50', 'pointer-events-none');
                     document.getElementById('tabBtn-action').removeAttribute('disabled');
                     document.getElementById('unlockIndicatorSol').innerHTML = `<span class="text-emerald-600 font-extrabold flex items-center gap-1 text-[10px]">✓ Unlocked! Proceed to Tab 3</span>`;
+                    
+                    responseBox.className = "p-3 rounded-lg text-[11px] font-bold bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-900 mt-2";
+                    responseBox.innerHTML = `🌟 <strong>${currentLang === 'en' ? 'PASSED!' : '通过评估！'}</strong> <br> ${currentLang === 'en' ? 'Encouragement Note: Excellent synthesis! Your innovative ideas are well evaluated against robust selection criteria. Proceed to Tab 3 Action timeline Stage.' : '恭喜！您的方案设计多维考评逻辑完美，完全符合可持续发展标准。请点击 Tab 3 行动计划页面。'}`;
                 } else {
                     document.getElementById('unlockIndicatorSol').innerHTML = `<span class="text-red-500 font-extrabold text-[10px]">Score: ${solutionScore}/10 (Requires 6+)</span>`;
-                    showModal("Your solution framework requires a bit of additional metrics work. Review feedback suggestions!");
+                    
+                    responseBox.className = "p-3 rounded-lg text-[11px] font-bold bg-red-50 dark:bg-red-950/40 text-red-800 dark:text-red-300 border border-red-200 dark:border-red-900 mt-2";
+                    responseBox.innerHTML = `⚠️ <strong>${currentLang === 'en' ? 'REFINEMENT NEEDED' : '需优化方案'}</strong> <br> ${result.suggestions}`;
                 }
             } catch (err) {
-                // Handled gracefully inside queryAI
+                // Handled gracefully inside queryAI fallback
             } finally {
                 document.getElementById('loadingMask').classList.add('hidden');
                 document.getElementById('loadingMask').classList.remove('flex');
@@ -1563,9 +1600,9 @@
         async function speakFeedback(tab) {
             let feedback = "";
             if (tab === 'prob') {
-                feedback = document.getElementById('aiFeedbackTextProb').innerText + ". Suggestions: " + document.getElementById('aiSuggestionsTextProb').innerText;
+                feedback = document.getElementById('clarityValProb').innerText + ". Suggestions: " + document.getElementById('feedbackResponseBoxProb').innerText;
             } else {
-                feedback = document.getElementById('aiFeedbackTextSol').innerText + ". Suggestions: " + document.getElementById('aiSuggestionsTextSol').innerText;
+                feedback = document.getElementById('clarityValSol').innerText + ". Suggestions: " + document.getElementById('feedbackResponseBoxSol').innerText;
             }
 
             if (!feedback || feedback.trim() === "") return;
