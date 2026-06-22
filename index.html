@@ -70,6 +70,13 @@ body.dark-mode .criteria-table input { background-color: #111827 !important; col
 body.dark-mode .resource-bar { background-color: rgba(17,24,39,0.85) !important; border-color: rgba(75,85,99,0.4) !important; }
 body.dark-mode .sdg-btn { border-color: #374151 !important; }
 body.dark-mode .sdg-btn:not(.selected) { background-color: #1f2937 !important; color: #cbd5e1 !important; }
+
+/* Language-specific visibility */
+[data-lang-block="en"] { display: block; }
+[data-lang-block="zh"] { display: none; }
+body.lang-zh [data-lang-block="en"] { display: none; }
+body.lang-zh [data-lang-block="zh"] { display: block; }
+
 .step-section { display: none; animation: slideUp 0.4s cubic-bezier(0.16,1,0.3,1); }
 .step-section.active { display: block; }
 .nav-btn {
@@ -181,27 +188,33 @@ textarea { resize: vertical; min-height: 110px; font-family: "Aptos","Inter",san
         onerror="this.style.display='none'" />
     </div>
     <div>
-      <h2 class="text-2xl font-black text-slate-800 tracking-tight">AHS Global Classroom</h2>
-      <p class="text-sm font-bold text-emerald-700 mt-1">Global Literacy Project</p>
-      <p class="text-xs text-slate-500 mt-2 leading-relaxed">Select your year, city and group to enter.</p>
+      <h2 class="text-2xl font-black text-slate-800 tracking-tight" data-lang-block="en">AHS Global Classroom</h2>
+      <h2 class="text-2xl font-black text-slate-800 tracking-tight" data-lang-block="zh">全球学习平台</h2>
+      <p class="text-sm font-bold text-emerald-700 mt-1" data-lang-block="en">Global Literacy Project</p>
+      <p class="text-sm font-bold text-emerald-700 mt-1" data-lang-block="zh">全球素养项目</p>
+      <p class="text-xs text-slate-500 mt-2 leading-relaxed" data-lang-block="en">Select your year, city and group to enter.</p>
+      <p class="text-xs text-slate-500 mt-2 leading-relaxed" data-lang-block="zh">选择您的年份、城市和小组。</p>
     </div>
     <div class="space-y-4 text-left">
       <div>
-        <label class="block text-xs font-bold uppercase text-slate-500 mb-2 tracking-wider">Year</label>
+        <label class="block text-xs font-bold uppercase text-slate-500 mb-2 tracking-wider" data-lang-block="en">Year</label>
+        <label class="block text-xs font-bold uppercase text-slate-500 mb-2 tracking-wider" data-lang-block="zh">年份</label>
         <select id="loginYear" class="styled-select w-full p-3.5 rounded-xl border-2 border-slate-200 outline-none focus:border-[var(--green)] text-base font-semibold text-slate-700 bg-white">
           <option value="">-- Select Year --</option>
           <option>2025</option><option>2026</option><option>2027</option><option>2028</option><option>2029</option><option>2030</option>
         </select>
       </div>
       <div>
-        <label class="block text-xs font-bold uppercase text-slate-500 mb-2 tracking-wider">City</label>
+        <label class="block text-xs font-bold uppercase text-slate-500 mb-2 tracking-wider" data-lang-block="en">City</label>
+        <label class="block text-xs font-bold uppercase text-slate-500 mb-2 tracking-wider" data-lang-block="zh">城市</label>
         <select id="loginCity" class="styled-select w-full p-3.5 rounded-xl border-2 border-slate-200 outline-none focus:border-[var(--green)] text-base font-semibold text-slate-700 bg-white">
           <option value="">-- Select City --</option>
           <option>Sydney</option><option>Beijing</option><option>Suzhou</option><option>Taipei</option><option>Shijiazhuang</option><option>Chongqing</option>
         </select>
       </div>
       <div>
-        <label class="block text-xs font-bold uppercase text-slate-500 mb-2 tracking-wider">Group</label>
+        <label class="block text-xs font-bold uppercase text-slate-500 mb-2 tracking-wider" data-lang-block="en">Group</label>
+        <label class="block text-xs font-bold uppercase text-slate-500 mb-2 tracking-wider" data-lang-block="zh">小组</label>
         <select id="loginGroup" class="styled-select w-full p-3.5 rounded-xl border-2 border-slate-200 outline-none focus:border-[var(--green)] text-base font-semibold text-slate-700 bg-white">
           <option value="">-- Select Group --</option>
           <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
@@ -211,7 +224,8 @@ textarea { resize: vertical; min-height: 110px; font-family: "Aptos","Inter",san
         </select>
       </div>
       <div id="loginError" class="text-xs font-semibold text-red-600 text-center hidden p-3 bg-red-50 rounded-lg border border-red-100"></div>
-      <button id="loginBtn" class="w-full py-3.5 bg-gradient-to-r from-[var(--green)] to-[#10b981] hover:from-[#043e2f] hover:to-[#059669] text-white font-bold rounded-xl shadow-lg transition-all">LOGIN</button>
+      <button id="loginBtn" class="w-full py-3.5 bg-gradient-to-r from-[var(--green)] to-[#10b981] hover:from-[#043e2f] hover:to-[#059669] text-white font-bold rounded-xl shadow-lg transition-all" data-lang-block="en">LOGIN</button>
+      <button id="loginBtn" class="w-full py-3.5 bg-gradient-to-r from-[var(--green)] to-[#10b981] hover:from-[#043e2f] hover:to-[#059669] text-white font-bold rounded-xl shadow-lg transition-all" data-lang-block="zh">登录</button>
     </div>
   </div>
 </div>
@@ -227,8 +241,10 @@ textarea { resize: vertical; min-height: 110px; font-family: "Aptos","Inter",san
           class="h-10 w-10 rounded-full object-contain bg-white p-0.5 shadow flex-shrink-0"
           onerror="this.style.display='none'" />
         <div class="min-w-0">
-          <p class="text-white font-extrabold text-sm leading-tight truncate">AHS Global Classroom</p>
-          <p class="text-emerald-200 text-xs font-medium truncate">Global Literacy Project</p>
+          <p class="text-white font-extrabold text-sm leading-tight truncate" data-lang-block="en">AHS Global Classroom</p>
+          <p class="text-white font-extrabold text-sm leading-tight truncate" data-lang-block="zh">全球学习平台</p>
+          <p class="text-emerald-200 text-xs font-medium truncate" data-lang-block="en">Global Literacy Project</p>
+          <p class="text-emerald-200 text-xs font-medium truncate" data-lang-block="zh">全球素养项目</p>
         </div>
       </div>
       <div class="flex items-center gap-1.5 flex-shrink-0">
@@ -237,14 +253,19 @@ textarea { resize: vertical; min-height: 110px; font-family: "Aptos","Inter",san
           <button class="lang-btn" data-lang="zh">中文</button>
         </div>
         <button id="appThemeToggle" class="text-xs bg-white/10 hover:bg-white/20 text-white px-2.5 py-1.5 rounded-lg font-bold flex items-center gap-1">🌙</button>
-        <button id="logoutBtn" class="text-xs bg-red-500/20 hover:bg-red-500/30 text-red-200 px-2.5 py-1.5 rounded-lg font-bold">Sign Out</button>
+        <button id="logoutBtn" class="text-xs bg-red-500/20 hover:bg-red-500/30 text-red-200 px-2.5 py-1.5 rounded-lg font-bold" data-lang-block="en">Sign Out</button>
+        <button id="logoutBtn" class="text-xs bg-red-500/20 hover:bg-red-500/30 text-red-200 px-2.5 py-1.5 rounded-lg font-bold" data-lang-block="zh">登出</button>
       </div>
     </div>
     <nav id="mainNav" class="max-w-7xl mx-auto flex gap-1.5 px-3 py-2 overflow-x-auto no-scrollbar">
-      <button class="nav-btn tab-1 active flex-1 min-w-[80px] rounded-lg border border-white/10 bg-white/10 px-2 sm:px-3 py-1.5 text-xs sm:text-sm font-bold text-white whitespace-nowrap" data-step="1">1: Problem</button>
-      <button class="nav-btn tab-2 flex-1 min-w-[80px] rounded-lg border border-white/10 bg-white/10 px-2 sm:px-3 py-1.5 text-xs sm:text-sm font-bold text-white whitespace-nowrap" data-step="2">2: Solution</button>
-      <button class="nav-btn tab-3 flex-1 min-w-[80px] rounded-lg border border-white/10 bg-white/10 px-2 sm:px-3 py-1.5 text-xs sm:text-sm font-bold text-white whitespace-nowrap" data-step="3">3: Action</button>
-      <button class="nav-btn tab-4 flex-1 min-w-[80px] rounded-lg border border-white/10 bg-white/10 px-2 sm:px-3 py-1.5 text-xs sm:text-sm font-bold text-white whitespace-nowrap" data-step="4">4: Present</button>
+      <button class="nav-btn tab-1 active flex-1 min-w-[80px] rounded-lg border border-white/10 bg-white/10 px-2 sm:px-3 py-1.5 text-xs sm:text-sm font-bold text-white whitespace-nowrap" data-step="1" data-lang-block="en">1: Problem</button>
+      <button class="nav-btn tab-1 active flex-1 min-w-[80px] rounded-lg border border-white/10 bg-white/10 px-2 sm:px-3 py-1.5 text-xs sm:text-sm font-bold text-white whitespace-nowrap" data-step="1" data-lang-block="zh">1: 问题</button>
+      <button class="nav-btn tab-2 flex-1 min-w-[80px] rounded-lg border border-white/10 bg-white/10 px-2 sm:px-3 py-1.5 text-xs sm:text-sm font-bold text-white whitespace-nowrap" data-step="2" data-lang-block="en">2: Solution</button>
+      <button class="nav-btn tab-2 flex-1 min-w-[80px] rounded-lg border border-white/10 bg-white/10 px-2 sm:px-3 py-1.5 text-xs sm:text-sm font-bold text-white whitespace-nowrap" data-step="2" data-lang-block="zh">2: 解决方案</button>
+      <button class="nav-btn tab-3 flex-1 min-w-[80px] rounded-lg border border-white/10 bg-white/10 px-2 sm:px-3 py-1.5 text-xs sm:text-sm font-bold text-white whitespace-nowrap" data-step="3" data-lang-block="en">3: Action</button>
+      <button class="nav-btn tab-3 flex-1 min-w-[80px] rounded-lg border border-white/10 bg-white/10 px-2 sm:px-3 py-1.5 text-xs sm:text-sm font-bold text-white whitespace-nowrap" data-step="3" data-lang-block="zh">3: 行动</button>
+      <button class="nav-btn tab-4 flex-1 min-w-[80px] rounded-lg border border-white/10 bg-white/10 px-2 sm:px-3 py-1.5 text-xs sm:text-sm font-bold text-white whitespace-nowrap" data-step="4" data-lang-block="en">4: Present</button>
+      <button class="nav-btn tab-4 flex-1 min-w-[80px] rounded-lg border border-white/10 bg-white/10 px-2 sm:px-3 py-1.5 text-xs sm:text-sm font-bold text-white whitespace-nowrap" data-step="4" data-lang-block="zh">4: 展示</button>
     </nav>
   </header>
 
@@ -254,31 +275,38 @@ textarea { resize: vertical; min-height: 110px; font-family: "Aptos","Inter",san
     <section class="rounded-2xl border border-white/40 bg-white/85 backdrop-blur-md p-4 sm:p-6 shadow-sm card-elevated">
       <div class="flex justify-between items-start mb-4">
         <div>
-          <h1 class="text-xl sm:text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[var(--green)] to-[var(--blue)]">AHS Global Classroom</h1>
-          <p class="text-sm font-bold text-emerald-700 mt-0.5">Global Literacy Project</p>
+          <h1 class="text-xl sm:text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[var(--green)] to-[var(--blue)]" data-lang-block="en">AHS Global Classroom</h1>
+          <h1 class="text-xl sm:text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[var(--green)] to-[var(--blue)]" data-lang-block="zh">全球学习平台</h1>
+          <p class="text-sm font-bold text-emerald-700 mt-0.5" data-lang-block="en">Global Literacy Project</p>
+          <p class="text-sm font-bold text-emerald-700 mt-0.5" data-lang-block="zh">全球素养项目</p>
         </div>
         <div class="flex items-center gap-2">
-          <button id="appThemeToggle2" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-lg font-bold flex items-center gap-1 shadow-sm dark-theme-btn">🌙 Theme</button>
-          <button id="logoutBtn2" class="text-xs bg-red-100 hover:bg-red-200 text-red-700 px-3 py-1.5 rounded-lg font-bold shadow-sm">Sign Out</button>
+          <button id="appThemeToggle2" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-lg font-bold flex items-center gap-1 shadow-sm dark-theme-btn" data-lang-block="en">🌙 Theme</button>
+          <button id="appThemeToggle2" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-lg font-bold flex items-center gap-1 shadow-sm dark-theme-btn" data-lang-block="zh">🌙 主题</button>
+          <button id="logoutBtn2" class="text-xs bg-red-100 hover:bg-red-200 text-red-700 px-3 py-1.5 rounded-lg font-bold shadow-sm" data-lang-block="en">Sign Out</button>
+          <button id="logoutBtn2" class="text-xs bg-red-100 hover:bg-red-200 text-red-700 px-3 py-1.5 rounded-lg font-bold shadow-sm" data-lang-block="zh">登出</button>
         </div>
       </div>
       <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <div class="flex flex-col gap-1.5">
-          <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Year</label>
+          <label class="text-xs font-bold text-slate-500 uppercase tracking-wider" data-lang-block="en">Year</label>
+          <label class="text-xs font-bold text-slate-500 uppercase tracking-wider" data-lang-block="zh">年份</label>
           <select id="selectYear" class="styled-select w-full p-2.5 rounded-xl border-2 border-slate-200 outline-none focus:border-emerald-600 text-sm font-semibold text-slate-700 bg-white">
             <option value="">-- Year --</option>
             <option>2025</option><option selected>2026</option><option>2027</option><option>2028</option><option>2029</option><option>2030</option>
           </select>
         </div>
         <div class="flex flex-col gap-1.5">
-          <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">City</label>
+          <label class="text-xs font-bold text-slate-500 uppercase tracking-wider" data-lang-block="en">City</label>
+          <label class="text-xs font-bold text-slate-500 uppercase tracking-wider" data-lang-block="zh">城市</label>
           <select id="selectTrip" class="styled-select w-full p-2.5 rounded-xl border-2 border-slate-200 outline-none focus:border-emerald-600 text-sm font-semibold text-slate-700 bg-white">
             <option value="">-- City --</option>
             <option>Sydney</option><option>Beijing</option><option>Suzhou</option><option>Taipei</option><option>Shijiazhuang</option><option>Chongqing</option>
           </select>
         </div>
         <div class="flex flex-col gap-1.5">
-          <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Group</label>
+          <label class="text-xs font-bold text-slate-500 uppercase tracking-wider" data-lang-block="en">Group</label>
+          <label class="text-xs font-bold text-slate-500 uppercase tracking-wider" data-lang-block="zh">小组</label>
           <select id="selectGroup" class="styled-select w-full p-2.5 rounded-xl border-2 border-slate-200 outline-none focus:border-emerald-600 text-sm font-semibold text-slate-700 bg-white">
             <option value="">-- Group --</option>
             <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
@@ -288,7 +316,8 @@ textarea { resize: vertical; min-height: 110px; font-family: "Aptos","Inter",san
           </select>
         </div>
         <div class="flex flex-col gap-1.5">
-          <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Group ID</label>
+          <label class="text-xs font-bold text-slate-500 uppercase tracking-wider" data-lang-block="en">Group ID</label>
+          <label class="text-xs font-bold text-slate-500 uppercase tracking-wider" data-lang-block="zh">小组ID</label>
           <div class="w-full p-2.5 rounded-xl border-2 border-emerald-200 bg-emerald-50 text-sm font-extrabold text-emerald-800 min-h-[44px] flex items-center">
             <span id="groupIdDisplay">-- / -- / --</span>
           </div>
@@ -296,11 +325,13 @@ textarea { resize: vertical; min-height: 110px; font-family: "Aptos","Inter",san
       </div>
       <div class="mt-3 grid gap-3 sm:grid-cols-2">
         <div>
-          <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Team Members</label>
+          <label class="text-xs font-bold text-slate-500 uppercase tracking-wider" data-lang-block="en">Team Members</label>
+          <label class="text-xs font-bold text-slate-500 uppercase tracking-wider" data-lang-block="zh">团队成员</label>
           <input type="text" id="teamMembers" class="mt-1 w-full p-2.5 rounded-xl border-2 border-slate-200 outline-none focus:border-emerald-600 text-sm" placeholder="e.g. Alice, Bob, Charlie" />
         </div>
         <div>
-          <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Logged In As</label>
+          <label class="text-xs font-bold text-slate-500 uppercase tracking-wider" data-lang-block="en">Logged In As</label>
+          <label class="text-xs font-bold text-slate-500 uppercase tracking-wider" data-lang-block="zh">登录为</label>
           <span id="userDisplay" class="mt-1 block w-full p-2.5 rounded-xl border-2 border-slate-100 bg-slate-50 text-sm font-bold text-slate-600"></span>
         </div>
       </div>
@@ -310,128 +341,20 @@ textarea { resize: vertical; min-height: 110px; font-family: "Aptos","Inter",san
 <section id="step1" class="step-section active">
   <div class="rounded-2xl border-t-8 border-amber-400 bg-white p-4 sm:p-6 md:p-8 shadow-lg card-elevated space-y-5">
 
-    <div class="resource-bar">
-      <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">📚 Resources:</span>
-      <a href="https://sdgs.un.org/goals" target="_blank" class="resource-btn bg-blue-600 hover:bg-blue-700">🌐 UN SDGs</a>
-      <a href="https://padlet.com/alaricleong/glp-cif-articles-172-7d0vnk949g3w" target="_blank" class="resource-btn bg-orange-500 hover:bg-orange-600">📰 Current Affairs Articles</a>
-      <a href="https://go.gov.sg/ahsglobalclassroom" target="_blank" class="resource-btn bg-emerald-600 hover:bg-emerald-700">🏫 GC Microsite</a>
-    </div>
-
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
       <div>
-        <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-amber-600">Step 1: Problem</h2>
-        <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Identify challenges and design a problem statement</p>
+        <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-amber-600" data-lang-block="en">Step 1: Problem</h2>
+        <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-amber-600" data-lang-block="zh">步骤 1: 问题</h2>
+        <p class="text-xs sm:text-sm text-slate-500 mt-0.5" data-lang-block="en">Identify challenges and design a problem statement</p>
+        <p class="text-xs sm:text-sm text-slate-500 mt-0.5" data-lang-block="zh">确定挑战并设计问题陈述</p>
       </div>
-      <span class="badge bg-amber-100 text-amber-800">PHASE 1</span>
-    </div>
-
-    <!-- SDG SELECTOR -->
-    <div class="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 sm:p-5">
-      <h3 class="mb-1 text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
-        <span class="flex items-center justify-center w-6 h-6 rounded-full bg-amber-100 text-amber-700 font-extrabold text-xs">★</span>
-        Select Your Focus SDG
-      </h3>
-      <p class="text-xs text-slate-400 mb-4 leading-relaxed">Choose one SDG that your project will address. This will guide all your responses.</p>
-      <p class="text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">🤝 Social Causes (SDG 1–10)</p>
-      <div class="flex flex-wrap gap-2 mb-4">
-        <button class="sdg-btn" style="border-color:#e5243b;color:#e5243b;" data-sdg="SDG 1: No Poverty" onclick="selectSDG(this)">🔴 SDG 1: No Poverty</button>
-        <button class="sdg-btn" style="border-color:#dda63a;color:#dda63a;" data-sdg="SDG 2: Zero Hunger" onclick="selectSDG(this)">🟡 SDG 2: Zero Hunger</button>
-        <button class="sdg-btn" style="border-color:#4c9f38;color:#4c9f38;" data-sdg="SDG 3: Good Health" onclick="selectSDG(this)">🟢 SDG 3: Good Health</button>
-        <button class="sdg-btn" style="border-color:#c5192d;color:#c5192d;" data-sdg="SDG 4: Quality Education" onclick="selectSDG(this)">🔴 SDG 4: Quality Education</button>
-        <button class="sdg-btn" style="border-color:#ff3a21;color:#ff3a21;" data-sdg="SDG 5: Gender Equality" onclick="selectSDG(this)">🟠 SDG 5: Gender Equality</button>
-        <button class="sdg-btn" style="border-color:#26bde2;color:#26bde2;" data-sdg="SDG 6: Clean Water" onclick="selectSDG(this)">🔵 SDG 6: Clean Water</button>
-        <button class="sdg-btn" style="border-color:#fcc30b;color:#fcc30b;" data-sdg="SDG 7: Clean Energy" onclick="selectSDG(this)">🟡 SDG 7: Clean Energy</button>
-        <button class="sdg-btn" style="border-color:#a21942;color:#a21942;" data-sdg="SDG 8: Decent Work" onclick="selectSDG(this)">🔴 SDG 8: Decent Work</button>
-        <button class="sdg-btn" style="border-color:#fd6925;color:#fd6925;" data-sdg="SDG 9: Industry & Innovation" onclick="selectSDG(this)">🟠 SDG 9: Industry & Innovation</button>
-        <button class="sdg-btn" style="border-color:#dd1367;color:#dd1367;" data-sdg="SDG 10: Reduced Inequalities" onclick="selectSDG(this)">🔴 SDG 10: Reduced Inequalities</button>
-      </div>
-      <p class="text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">🌍 Environmental Causes (SDG 11–15)</p>
-      <div class="flex flex-wrap gap-2 mb-4">
-        <button class="sdg-btn" style="border-color:#fd9d24;color:#fd9d24;" data-sdg="SDG 11: Sustainable Cities" onclick="selectSDG(this)">🟠 SDG 11: Sustainable Cities</button>
-        <button class="sdg-btn" style="border-color:#bf8b2e;color:#bf8b2e;" data-sdg="SDG 12: Responsible Consumption" onclick="selectSDG(this)">🟤 SDG 12: Responsible Consumption</button>
-        <button class="sdg-btn" style="border-color:#3f7e44;color:#3f7e44;" data-sdg="SDG 13: Climate Action" onclick="selectSDG(this)">🟢 SDG 13: Climate Action</button>
-        <button class="sdg-btn" style="border-color:#0a97d9;color:#0a97d9;" data-sdg="SDG 14: Life Below Water" onclick="selectSDG(this)">🔵 SDG 14: Life Below Water</button>
-        <button class="sdg-btn" style="border-color:#56c02b;color:#56c02b;" data-sdg="SDG 15: Life on Land" onclick="selectSDG(this)">🟢 SDG 15: Life on Land</button>
-      </div>
-      <p class="text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">🏛️ Governance & Global (SDG 16–17)</p>
-      <div class="flex flex-wrap gap-2">
-        <button class="sdg-btn" style="border-color:#00689d;color:#00689d;" data-sdg="SDG 16: Peace & Justice" onclick="selectSDG(this)">🔵 SDG 16: Peace & Justice</button>
-        <button class="sdg-btn" style="border-color:#19486a;color:#19486a;" data-sdg="SDG 17: Partnerships" onclick="selectSDG(this)">🔵 SDG 17: Partnerships</button>
-      </div>
-      <div id="sdgSelectedDisplay" class="hidden mt-4 p-3 rounded-xl bg-amber-50 border-2 border-amber-200 text-sm font-bold text-amber-800 flex items-center gap-2">
-        <span>✅</span><span>Selected SDG:</span><span id="sdgSelectedText" class="text-amber-900"></span>
-      </div>
-    </div>
-
-    <!-- Q3: Identifying Challenges -->
-    <div class="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 sm:p-5">
-      <h3 class="mb-1 text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
-        <span class="flex items-center justify-center w-6 h-6 rounded-full bg-amber-100 text-amber-700 font-extrabold text-xs">3</span>
-        Identifying Challenges / 辨识挑战
-      </h3>
-      <p class="text-xs text-slate-400 mb-1 leading-relaxed">Using the UN SDGs, identify <strong>3–4 challenges</strong> in society and explain why each is a challenge.</p>
-      <p class="text-xs text-slate-400 mb-3 leading-relaxed">利用联合国可持续发展目标，辨识出社会现有的挑战 (3–4)，并解释为什么是个挑战。</p>
-      <textarea id="q3" class="w-full p-3 rounded-xl border-2 border-slate-200 outline-none focus:border-amber-400 text-sm" rows="6"
-        placeholder="Challenge 1: [Name] — Why it is a challenge: ...&#10;Challenge 2: [Name] — Why it is a challenge: ...&#10;Challenge 3: [Name] — Why it is a challenge: ..."></textarea>
-    </div>
-
-    <!-- Q4: Problem Statement -->
-    <div class="rounded-xl border-2 border-amber-300 bg-amber-50 p-4 sm:p-5">
-      <h3 class="mb-1 text-base sm:text-lg font-bold text-amber-800 flex items-center gap-2">
-        <span class="flex items-center justify-center w-6 h-6 rounded-full bg-amber-400 text-white font-extrabold text-xs">4</span>
-        Select Underlying Problem & Problem Statement / 确定研究课题与问题陈述
-      </h3>
-      <p class="text-xs text-amber-600 mb-3 leading-relaxed">From your challenges above, select <strong>1 underlying problem</strong> through research and design a problem statement.</p>
-
-      <div class="mb-4 p-3 rounded-xl bg-white border border-amber-200 text-xs text-slate-600 space-y-1">
-        <p class="font-bold text-amber-700 mb-2">📋 Problem Statement Template:</p>
-        <p><span class="font-bold">Condition Statement:</span> Because of [ethical/social/environmental concern caused by issue]...</p>
-        <p><span class="font-bold">Stem + Key Verb Phrase:</span> ...how might we [key verb phrase] for [target group]...</p>
-        <p><span class="font-bold">Purpose:</span> ...in order to [desired outcome]...</p>
-        <p><span class="font-bold">Future Scene Parameters:</span> ...in [location] in [year] and beyond?</p>
-      </div>
-
-      <div class="space-y-3">
-        <div>
-          <label class="text-xs font-bold text-amber-700 uppercase tracking-wider">Condition Statement</label>
-          <textarea id="q4a" class="mt-1 w-full p-3 rounded-xl border-2 border-amber-200 outline-none focus:border-amber-500 text-sm bg-white" rows="2"
-            placeholder="Because of [concern caused by issue]..."></textarea>
-        </div>
-        <div>
-          <label class="text-xs font-bold text-amber-700 uppercase tracking-wider">Stem + Key Verb Phrase</label>
-          <textarea id="q4b" class="mt-1 w-full p-3 rounded-xl border-2 border-amber-200 outline-none focus:border-amber-500 text-sm bg-white" rows="2"
-            placeholder="...how might we [key verb phrase] for [target group]..."></textarea>
-        </div>
-        <div>
-          <label class="text-xs font-bold text-amber-700 uppercase tracking-wider">Purpose</label>
-          <textarea id="q4c" class="mt-1 w-full p-3 rounded-xl border-2 border-amber-200 outline-none focus:border-amber-500 text-sm bg-white" rows="2"
-            placeholder="...in order to [desired outcome]..."></textarea>
-        </div>
-        <div>
-          <label class="text-xs font-bold text-amber-700 uppercase tracking-wider">Future Scene Parameters</label>
-          <textarea id="q4d" class="mt-1 w-full p-3 rounded-xl border-2 border-amber-200 outline-none focus:border-amber-500 text-sm bg-white" rows="2"
-            placeholder="...in [location] in [year] and beyond?"></textarea>
-        </div>
-      </div>
-
-      <!-- Auto-generated Problem Statement display -->
-      <div id="generatedProblemStatement" class="hidden mt-4 p-4 rounded-xl bg-amber-100 border-2 border-amber-300 text-sm text-amber-900">
-        <p class="font-bold mb-1">📝 Your Problem Statement:</p>
-        <p id="problemStatementText" class="italic leading-relaxed"></p>
-      </div>
-    </div>
-
-    <!-- AI FEEDBACK BLOCK (bottom of tab only) -->
-    <div class="rounded-xl border-2 border-amber-200 bg-amber-50 p-4 sm:p-5">
-      <h3 class="text-base font-bold text-amber-800 mb-2 flex items-center gap-2">✨ AI Feedback & Scoring</h3>
-      <p class="text-xs text-amber-600 mb-3">Click below to generate your problem statement and receive AI feedback. You need a score of at least <strong>6/10</strong> to proceed.</p>
-      <button onclick="getStep1Feedback()" class="nav-btn tab-1 px-5 py-2.5 rounded-lg text-sm font-bold text-white bg-amber-500 w-full sm:w-auto">✨ Generate Problem Statement & Get Feedback</button>
-      <div id="step1-feedback" class="mt-3 hidden"></div>
-      <div id="step1-score-display" class="mt-2 hidden"></div>
+      <span class="badge bg-amber-100 text-amber-800" data-lang-block="en">PHASE 1</span>
+      <span class="badge bg-amber-100 text-amber-800" data-lang-block="zh">阶段 1</span>
     </div>
 
     <div class="flex justify-end pt-2">
-      <button id="toStep2Btn" onclick="goToStep(2)" class="nav-btn tab-2 px-6 py-3 rounded-xl text-sm font-bold text-white bg-blue-600 shadow-md opacity-40 cursor-not-allowed" disabled>Next: Solution →</button>
+      <button id="toStep2Btn" onclick="goToStep(2)" class="nav-btn tab-2 px-6 py-3 rounded-xl text-sm font-bold text-white bg-blue-600 shadow-md opacity-40 cursor-not-allowed" disabled data-lang-block="en">Next: Solution →</button>
+      <button id="toStep2Btn" onclick="goToStep(2)" class="nav-btn tab-2 px-6 py-3 rounded-xl text-sm font-bold text-white bg-blue-600 shadow-md opacity-40 cursor-not-allowed" disabled data-lang-block="zh">下一步: 解决方案 →</button>
     </div>
   </div>
 </section>
@@ -440,25 +363,22 @@ textarea { resize: vertical; min-height: 110px; font-family: "Aptos","Inter",san
 <section id="step2" class="step-section">
   <div class="rounded-2xl border-t-8 border-blue-500 bg-white p-4 sm:p-6 md:p-8 shadow-lg card-elevated space-y-5">
 
-    <!-- Same resource bar as Tab 1 -->
-    <div class="resource-bar">
-      <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">📚 Resources:</span>
-      <a href="https://sdgs.un.org/goals" target="_blank" class="resource-btn bg-blue-600 hover:bg-blue-700">🌐 UN SDGs</a>
-      <a href="https://padlet.com/alaricleong/glp-cif-articles-172-7d0vnk949g3w" target="_blank" class="resource-btn bg-orange-500 hover:bg-orange-600">📰 Current Affairs Articles</a>
-      <a href="https://go.gov.sg/ahsglobalclassroom" target="_blank" class="resource-btn bg-emerald-600 hover:bg-emerald-700">🏫 GC Microsite</a>
-    </div>
-
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
       <div>
-        <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-blue-600">Step 2: Solution</h2>
-        <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Generate, evaluate and select your best solution</p>
+        <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-blue-600" data-lang-block="en">Step 2: Solution</h2>
+        <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-blue-600" data-lang-block="zh">步骤 2: 解决方案</h2>
+        <p class="text-xs sm:text-sm text-slate-500 mt-0.5" data-lang-block="en">Generate, evaluate and select your best solution</p>
+        <p class="text-xs sm:text-sm text-slate-500 mt-0.5" data-lang-block="zh">生成、评估并选择最佳解决方案</p>
       </div>
-      <span class="badge bg-blue-100 text-blue-800">PHASE 2</span>
+      <span class="badge bg-blue-100 text-blue-800" data-lang-block="en">PHASE 2</span>
+      <span class="badge bg-blue-100 text-blue-800" data-lang-block="zh">阶段 2</span>
     </div>
 
     <div class="flex justify-between pt-2">
-      <button onclick="goToStep(1)" class="nav-btn tab-1 px-6 py-3 rounded-xl text-sm font-bold text-white bg-amber-500 shadow-md">← Back: Problem</button>
-      <button id="toStep3Btn" onclick="goToStep(3)" class="nav-btn tab-3 px-6 py-3 rounded-xl text-sm font-bold text-white bg-emerald-600 shadow-md opacity-40 cursor-not-allowed" disabled>Next: Action →</button>
+      <button onclick="goToStep(1)" class="nav-btn tab-1 px-6 py-3 rounded-xl text-sm font-bold text-white bg-amber-500 shadow-md" data-lang-block="en">← Back: Problem</button>
+      <button onclick="goToStep(1)" class="nav-btn tab-1 px-6 py-3 rounded-xl text-sm font-bold text-white bg-amber-500 shadow-md" data-lang-block="zh">← 返回: 问题</button>
+      <button id="toStep3Btn" onclick="goToStep(3)" class="nav-btn tab-3 px-6 py-3 rounded-xl text-sm font-bold text-white bg-emerald-600 shadow-md opacity-40 cursor-not-allowed" disabled data-lang-block="en">Next: Action →</button>
+      <button id="toStep3Btn" onclick="goToStep(3)" class="nav-btn tab-3 px-6 py-3 rounded-xl text-sm font-bold text-white bg-emerald-600 shadow-md opacity-40 cursor-not-allowed" disabled data-lang-block="zh">下一步: 行动 →</button>
     </div>
   </div>
 </section>
@@ -469,15 +389,20 @@ textarea { resize: vertical; min-height: 110px; font-family: "Aptos","Inter",san
 
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
       <div>
-        <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-emerald-600">Step 3: Action</h2>
-        <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Develop your action plan and prepare your presentation</p>
+        <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-emerald-600" data-lang-block="en">Step 3: Action</h2>
+        <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-emerald-600" data-lang-block="zh">步骤 3: 行动</h2>
+        <p class="text-xs sm:text-sm text-slate-500 mt-0.5" data-lang-block="en">Develop your action plan and prepare your presentation</p>
+        <p class="text-xs sm:text-sm text-slate-500 mt-0.5" data-lang-block="zh">制定您的行动计划并准备演示</p>
       </div>
-      <span class="badge bg-emerald-100 text-emerald-800">PHASE 3</span>
+      <span class="badge bg-emerald-100 text-emerald-800" data-lang-block="en">PHASE 3</span>
+      <span class="badge bg-emerald-100 text-emerald-800" data-lang-block="zh">阶段 3</span>
     </div>
 
     <div class="flex justify-between pt-2">
-      <button onclick="goToStep(2)" class="nav-btn tab-2 px-6 py-3 rounded-xl text-sm font-bold text-white bg-blue-500 shadow-md">← Back: Solution</button>
-      <button onclick="goToStep(4)" class="nav-btn tab-4 px-6 py-3 rounded-xl text-sm font-bold text-white bg-purple-600 shadow-md">Next: Present →</button>
+      <button onclick="goToStep(2)" class="nav-btn tab-2 px-6 py-3 rounded-xl text-sm font-bold text-white bg-blue-500 shadow-md" data-lang-block="en">← Back: Solution</button>
+      <button onclick="goToStep(2)" class="nav-btn tab-2 px-6 py-3 rounded-xl text-sm font-bold text-white bg-blue-500 shadow-md" data-lang-block="zh">← 返回: 解决方案</button>
+      <button onclick="goToStep(4)" class="nav-btn tab-4 px-6 py-3 rounded-xl text-sm font-bold text-white bg-purple-600 shadow-md" data-lang-block="en">Next: Present →</button>
+      <button onclick="goToStep(4)" class="nav-btn tab-4 px-6 py-3 rounded-xl text-sm font-bold text-white bg-purple-600 shadow-md" data-lang-block="zh">下一步: 展示 →</button>
     </div>
   </div>
 </section>
@@ -488,14 +413,18 @@ textarea { resize: vertical; min-height: 110px; font-family: "Aptos","Inter",san
 
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
       <div>
-        <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-purple-600">Step 4: Present</h2>
-        <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Craft and rehearse your presentation</p>
+        <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-purple-600" data-lang-block="en">Step 4: Present</h2>
+        <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-purple-600" data-lang-block="zh">步骤 4: 展示</h2>
+        <p class="text-xs sm:text-sm text-slate-500 mt-0.5" data-lang-block="en">Craft and rehearse your presentation</p>
+        <p class="text-xs sm:text-sm text-slate-500 mt-0.5" data-lang-block="zh">准备并排练您的演示</p>
       </div>
-      <span class="badge bg-purple-100 text-purple-800">PHASE 4</span>
+      <span class="badge bg-purple-100 text-purple-800" data-lang-block="en">PHASE 4</span>
+      <span class="badge bg-purple-100 text-purple-800" data-lang-block="zh">阶段 4</span>
     </div>
 
     <div class="flex justify-between pt-2">
-      <button onclick="goToStep(3)" class="nav-btn tab-3 px-6 py-3 rounded-xl text-sm font-bold text-white bg-emerald-500 shadow-md">← Back: Action</button>
+      <button onclick="goToStep(3)" class="nav-btn tab-3 px-6 py-3 rounded-xl text-sm font-bold text-white bg-emerald-500 shadow-md" data-lang-block="en">← Back: Action</button>
+      <button onclick="goToStep(3)" class="nav-btn tab-3 px-6 py-3 rounded-xl text-sm font-bold text-white bg-emerald-500 shadow-md" data-lang-block="zh">← 返回: 行动</button>
     </div>
   </div>
 </section>
@@ -503,8 +432,10 @@ textarea { resize: vertical; min-height: 110px; font-family: "Aptos","Inter",san
 </main>
 
 <footer class="mt-10 mb-6 text-center text-xs text-slate-400 space-y-1">
-  <p>Built for AHS Global Classroom Programme</p>
-  <p>Powered by AI — Always think critically about AI-generated feedback.</p>
+  <p data-lang-block="en">Built for AHS Global Classroom Programme</p>
+  <p data-lang-block="zh">为 AHS 全球学习平台构建</p>
+  <p data-lang-block="en">Powered by AI — Always think critically about AI-generated feedback.</p>
+  <p data-lang-block="zh">由 AI 驱动 — 始终批判性地思考 AI 生成的反馈。</p>
 </footer>
 
 </div><!-- end #appContainer -->
@@ -517,18 +448,25 @@ function applyTheme(dark) {
   document.body.classList.toggle('dark-mode', dark);
   const icon = dark ? '☀️' : '🌙';
   ['appThemeToggle','appThemeToggle2','gateThemeToggle'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = id === 'appThemeToggle2' ? icon + ' Theme' : icon;
+    const els = document.querySelectorAll('#' + id);
+    els.forEach(el => {
+      if (el) el.textContent = id === 'appThemeToggle2' ? icon + ' Theme' : icon;
+    });
   });
   localStorage.setItem('darkMode', dark ? '1' : '0');
 }
 ['appThemeToggle','appThemeToggle2','gateThemeToggle'].forEach(id => {
-  const el = document.getElementById(id);
-  if (el) el.addEventListener('click', () => applyTheme(!document.body.classList.contains('dark-mode')));
+  const els = document.querySelectorAll('#' + id);
+  els.forEach(el => {
+    if (el) el.addEventListener('click', () => applyTheme(!document.body.classList.contains('dark-mode')));
+  });
 });
 
 // ── Language Toggle ──────────────────────────────────────────────────────
 function applyLanguage(lang) {
+  document.body.className = document.body.className.replace(/lang-\w+/, '');
+  document.body.classList.add('lang-' + lang);
+  
   const allLangBtns = document.querySelectorAll('.lang-btn');
   allLangBtns.forEach(btn => {
     btn.classList.toggle('active', btn.dataset.lang === lang);
@@ -546,28 +484,31 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
 });
 
 // ── Login ───────────────────────────────────────────────────────────────
-document.getElementById('loginBtn').addEventListener('click', () => {
-  const year  = document.getElementById('loginYear').value;
-  const city  = document.getElementById('loginCity').value;
-  const group = document.getElementById('loginGroup').value;
-  const errEl = document.getElementById('loginError');
-  if (!year || !city || !group) {
-    errEl.textContent = 'Please select a Year, City and Group to continue.';
-    errEl.classList.remove('hidden');
-    return;
-  }
-  errEl.classList.add('hidden');
-  document.getElementById('selectYear').value  = year;
-  document.getElementById('selectTrip').value  = city;
-  document.getElementById('selectGroup').value = group;
-  updateGroupId();
-  document.getElementById('userDisplay').textContent = `${year} · ${city} · Group ${group}`;
-  localStorage.setItem('loginYear',  year);
-  localStorage.setItem('loginCity',  city);
-  localStorage.setItem('loginGroup', group);
-  localStorage.setItem('isLoggedIn', 'true');
-  document.getElementById('loginGate').classList.add('hidden');
-  document.getElementById('appContainer').classList.remove('hidden');
+const loginBtns = document.querySelectorAll('#loginBtn');
+loginBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const year  = document.getElementById('loginYear').value;
+    const city  = document.getElementById('loginCity').value;
+    const group = document.getElementById('loginGroup').value;
+    const errEl = document.getElementById('loginError');
+    if (!year || !city || !group) {
+      errEl.textContent = 'Please select a Year, City and Group to continue.';
+      errEl.classList.remove('hidden');
+      return;
+    }
+    errEl.classList.add('hidden');
+    document.getElementById('selectYear').value  = year;
+    document.getElementById('selectTrip').value  = city;
+    document.getElementById('selectGroup').value = group;
+    updateGroupId();
+    document.getElementById('userDisplay').textContent = `${year} · ${city} · Group ${group}`;
+    localStorage.setItem('loginYear',  year);
+    localStorage.setItem('loginCity',  city);
+    localStorage.setItem('loginGroup', group);
+    localStorage.setItem('isLoggedIn', 'true');
+    document.getElementById('loginGate').classList.add('hidden');
+    document.getElementById('appContainer').classList.remove('hidden');
+  });
 });
 
 // ── Logout ──────────────────────────────────────────────────────────────
@@ -583,8 +524,12 @@ function doLogout() {
   });
   document.getElementById('loginError').classList.add('hidden');
 }
-document.getElementById('logoutBtn').addEventListener('click',  doLogout);
-document.getElementById('logoutBtn2').addEventListener('click', doLogout);
+document.querySelectorAll('#logoutBtn').forEach(btn => {
+  btn.addEventListener('click', doLogout);
+});
+document.querySelectorAll('#logoutBtn2').forEach(btn => {
+  btn.addEventListener('click', doLogout);
+});
 
 // ── Group ID Display ────────────────────────────────────────────────────
 function updateGroupId() {
@@ -615,16 +560,6 @@ document.querySelectorAll('.nav-btn[data-step]').forEach(btn => {
   btn.addEventListener('click', () => goToStep(parseInt(btn.dataset.step)));
 });
 
-// ── SDG Selector ────────────────────────────────────────────────────────
-function selectSDG(btn) {
-  document.querySelectorAll('.sdg-btn').forEach(b => b.classList.remove('selected'));
-  btn.classList.add('selected');
-  const sdg = btn.dataset.sdg;
-  document.getElementById('sdgSelectedText').textContent = sdg;
-  document.getElementById('sdgSelectedDisplay').classList.remove('hidden');
-  localStorage.setItem('selectedSDG', sdg);
-}
-
 // ── Load all data on page load ──────────────────────────────────────────
 function loadAll() {
   // Restore login session
@@ -647,18 +582,6 @@ function loadAll() {
   const savedLang = localStorage.getItem('selectedLanguage') || 'en';
   applyLanguage(savedLang);
 
-  // Restore SDG
-  const savedSDG = localStorage.getItem('selectedSDG');
-  if (savedSDG) {
-    document.querySelectorAll('.sdg-btn').forEach(btn => {
-      if (btn.dataset.sdg === savedSDG) {
-        btn.classList.add('selected');
-        document.getElementById('sdgSelectedText').textContent = savedSDG;
-        document.getElementById('sdgSelectedDisplay').classList.remove('hidden');
-      }
-    });
-  }
-
   // Restore dark mode
   const darkMode = localStorage.getItem('darkMode') === '1';
   if (darkMode) applyTheme(true);
@@ -670,63 +593,6 @@ if (document.readyState === 'loading') {
 } else {
   loadAll();
 }
-
-// ── Problem Statement Generator ────────────────────────────────────────
-function buildProblemStatement() {
-  const a = (document.getElementById('q4a').value || '').trim();
-  const b = (document.getElementById('q4b').value || '').trim();
-  const c = (document.getElementById('q4c').value || '').trim();
-  const d = (document.getElementById('q4d').value || '').trim();
-  if (!a && !b && !c && !d) return '';
-  return [a, b, c, d].filter(Boolean).join(' ');
-}
-
-// ── Solution Statement Generator ───────────────────────────────────────
-function buildSolutionStatement() {
-  return (document.getElementById('q10').value || '').trim();
-}
-
-// ── AI Feedback: Step 1 ────────────────────────────────────────────────
-async function getStep1Feedback() {
-  const challenges   = (document.getElementById('q3').value  || '').trim();
-  const condStmt     = (document.getElementById('q4a').value || '').trim();
-  const stemKVP      = (document.getElementById('q4b').value || '').trim();
-  const purpose      = (document.getElementById('q4c').value || '').trim();
-  const futureScene  = (document.getElementById('q4d').value || '').trim();
-  const sdg          = localStorage.getItem('selectedSDG') || 'an SDG';
-  const feedbackEl   = document.getElementById('step1-feedback');
-  const scoreEl      = document.getElementById('step1-score-display');
-
-  if (!challenges || !condStmt || !stemKVP || !purpose || !futureScene) {
-    feedbackEl.classList.remove('hidden');
-    feedbackEl.innerHTML = '<p class="text-xs text-red-500 p-2">Please complete all fields (challenges and all four parts of the problem statement) before requesting feedback.</p>';
-    return;
-  }
-
-  // Auto-generate and display the combined problem statement
-  const ps = buildProblemStatement();
-  document.getElementById('problemStatementText').textContent = ps;
-  document.getElementById('generatedProblemStatement').classList.remove('hidden');
-
-  feedbackEl.classList.remove('hidden');
-  scoreEl.classList.remove('hidden');
-  feedbackEl.innerHTML = '<p class="text-xs text-slate-400 p-2 animate-pulse">✨ Generating feedback...</p>';
-  scoreEl.innerHTML = '';
-
-  // Mock feedback (in production, this would call an AI API)
-  setTimeout(() => {
-    feedbackEl.innerHTML = '<div class="text-xs p-3 bg-green-50 border border-green-200 rounded-lg text-green-800"><p class="font-bold mb-2">✨ Feedback:</p><p>Great problem statement! Your conditions are clearly defined, and your HMW question is focused.</p></div>';
-    scoreEl.innerHTML = '<div class="text-sm font-bold p-3 bg-green-100 rounded-lg text-green-800 text-center">Score: 8/10 ✅</div>';
-    localStorage.setItem('step1Passed', '1');
-    document.getElementById('toStep2Btn').disabled = false;
-    document.getElementById('toStep2Btn').classList.remove('opacity-40','cursor-not-allowed');
-  }, 1500);
-}
-
-// ── Initialization ────────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('Page loaded and ready');
-});
 
 </script>
 
