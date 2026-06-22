@@ -177,37 +177,36 @@ textarea { resize: vertical; min-height: 110px; font-family: "Inter", sans-serif
       <p class="text-sm font-bold text-emerald-700 mt-1">Global Literacy Project</p>
       <p class="text-xs text-slate-500 mt-2 leading-relaxed transition-colors duration-300">Authorized Anglican High School Student &amp; Staff access only.</p>
     </div>
-    <div id="loginEmailStage" class="space-y-4 text-left">
-      <div>
-        <label class="block text-xs font-bold uppercase text-slate-500 mb-2 tracking-wider">School Email Address</label>
-        <input type="email" id="loginEmail" class="w-full p-3.5 rounded-xl border-2 border-slate-200 outline-none focus:border-[var(--green)] focus:ring-4 focus:ring-emerald-100 text-base transition-all duration-300" placeholder="username@students.edu.sg" />
-      </div>
-      <button id="loginBtn" class="w-full py-3.5 bg-gradient-to-r from-[var(--green)] to-[#10b981] hover:from-[#043e2f] hover:to-[#059669] text-white font-bold rounded-xl shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 active:scale-95">Send Verification Code</button>
-      <div class="relative flex py-2 items-center">
-        <div class="flex-grow border-t border-slate-200"></div>
-        <span class="flex-shrink mx-4 text-slate-400 text-[10px] font-bold uppercase tracking-wider">Or Quick Bypass</span>
-        <div class="flex-grow border-t border-slate-200"></div>
-      </div>
-      <button id="bypassLoginBtn" class="w-full py-3 bg-slate-800 hover:bg-slate-900 text-white text-xs font-bold rounded-xl shadow-md transition-all duration-300 flex items-center justify-center gap-1.5">🔑 Guest Demo Sign-In (Instant Access)</button>
-      <div id="loginError" class="text-xs font-semibold text-red-600 text-center hidden p-3 bg-red-50 rounded-lg border border-red-100"></div>
-    </div>
-    <div id="loginOtpStage" class="space-y-4 text-left hidden">
-      <div class="p-3 bg-emerald-50 border border-emerald-100 rounded-xl">
-        <p class="text-xs font-semibold text-emerald-800 flex items-center gap-1">✉️ Code sent to <span id="targetEmailLabel" class="font-bold underline"></span></p>
-      </div>
-      <div>
-        <label class="block text-xs font-bold uppercase text-slate-500 mb-2 tracking-wider">6-Digit PIN</label>
-        <input type="text" id="otpInput" maxlength="6" class="w-full p-3.5 rounded-xl border-2 border-slate-200 outline-none focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 text-xl font-mono text-center tracking-[0.5em] transition-all duration-300" placeholder="000000" />
-      </div>
-      <button id="verifyOtpBtn" class="w-full py-3.5 bg-gradient-to-r from-[#0d9488] to-[#0f766e] text-white font-bold rounded-xl shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 active:scale-95">Verify Code &amp; Enter Portal</button>
-      <div class="flex justify-between items-center text-[11px] text-slate-400 mt-2">
-        <span>Expires in: <strong id="otpTimer" class="font-mono text-slate-600">02:00</strong></span>
-        <button id="resendOtpBtn" class="text-indigo-600 hover:underline font-semibold">Resend Code</button>
-      </div>
-      <div id="otpError" class="text-xs font-semibold text-red-600 text-center hidden p-3 bg-red-50 rounded-lg border border-red-100"></div>
-    </div>
-    <p class="text-[10px] text-slate-400">Supports @students.edu.sg and @moe.edu.sg domains.</p>
+<div class="space-y-4 text-left">
+  <div>
+    <label class="block text-xs font-bold uppercase text-slate-500 mb-2 tracking-wider">Year</label>
+    <select id="loginYear" class="styled-select w-full p-3.5 rounded-xl border-2 border-slate-200 outline-none focus:border-[var(--green)] focus:ring-4 focus:ring-emerald-100 text-base font-semibold text-slate-700 bg-white transition-all duration-300">
+      <option value="">-- Select Year --</option>
+      <option>2025</option><option>2026</option><option>2027</option>
+      <option>2028</option><option>2029</option><option>2030</option>
+    </select>
   </div>
+  <div>
+    <label class="block text-xs font-bold uppercase text-slate-500 mb-2 tracking-wider">City</label>
+    <select id="loginCity" class="styled-select w-full p-3.5 rounded-xl border-2 border-slate-200 outline-none focus:border-[var(--green)] focus:ring-4 focus:ring-emerald-100 text-base font-semibold text-slate-700 bg-white transition-all duration-300">
+      <option value="">-- Select City --</option>
+      <option>Sydney</option><option>Beijing</option><option>Suzhou</option>
+      <option>Taipei</option><option>Shijiazhuang</option><option>Chongqing</option>
+    </select>
+  </div>
+  <div>
+    <label class="block text-xs font-bold uppercase text-slate-500 mb-2 tracking-wider">Group</label>
+    <select id="loginGroup" class="styled-select w-full p-3.5 rounded-xl border-2 border-slate-200 outline-none focus:border-[var(--green)] focus:ring-4 focus:ring-emerald-100 text-base font-semibold text-slate-700 bg-white transition-all duration-300">
+      <option value="">-- Select Group --</option>
+      <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+      <option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
+      <option>11</option><option>12</option><option>13</option><option>14</option><option>15</option>
+      <option>16</option><option>17</option><option>18</option><option>19</option><option>20</option>
+    </select>
+  </div>
+  <div id="loginError" class="text-xs font-semibold text-red-600 text-center hidden p-3 bg-red-50 rounded-lg border border-red-100"></div>
+  <button id="loginBtn" class="w-full py-3.5 bg-gradient-to-r from-[var(--green)] to-[#10b981] hover:from-[#043e2f] hover:to-[#059669] text-white font-bold rounded-xl shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 active:scale-95">Enter Portal →</button>
+</div>  </div>
 </div>
 
 <!-- APP CONTAINER -->
@@ -1376,12 +1375,107 @@ Respond with this exact JSON structure:
     }
 
     // =====================
-    // INIT
-    // =====================
-    document.addEventListener('DOMContentLoaded', () => {
-      setLanguage('en');
-      showStep(1);
-    });
+// LOGIN
+// =====================
+document.getElementById('loginBtn').addEventListener('click', () => {
+  const year  = document.getElementById('loginYear').value;
+  const city  = document.getElementById('loginCity').value;
+  const group = document.getElementById('loginGroup').value;
+  const err   = document.getElementById('loginError');
+
+  if (!year || !city || !group) {
+    err.textContent = 'Please select a Year, City, and Group to continue.';
+    err.classList.remove('hidden');
+    return;
+  }
+
+  err.classList.add('hidden');
+
+  // Pre-fill the main app dropdowns to match login selections
+  document.getElementById('selectYear').value  = year;
+  document.getElementById('selectTrip').value  = city;
+  document.getElementById('selectGroup').value = group;
+  updateGroupId(); // refresh the Group ID display
+
+  // Set the "Logged In As" display
+  document.getElementById('userDisplay').textContent = `${city} ${year} · Group ${group}`;
+
+  // Hide login, show app
+  document.getElementById('loginGate').style.display  = 'none';
+  document.getElementById('appContainer').classList.remove('hidden');
+});
+
+// Allow pressing Enter on any dropdown to submit
+['loginYear','loginCity','loginGroup'].forEach(id => {
+  document.getElementById(id).addEventListener('keydown', e => {
+    if (e.key === 'Enter') document.getElementById('loginBtn').click();
+  });
+});
+
+// =====================
+// LOGOUT
+// =====================
+function doLogout() {
+  document.getElementById('loginGate').style.display  = 'flex';
+  document.getElementById('appContainer').classList.add('hidden');
+  document.getElementById('loginYear').value  = '';
+  document.getElementById('loginCity').value  = '';
+  document.getElementById('loginGroup').value = '';
+}
+document.getElementById('logoutBtn')?.addEventListener('click',  doLogout);
+document.getElementById('logoutBtn2')?.addEventListener('click', doLogout);
+
+// =====================
+// GROUP ID AUTO-UPDATE
+// =====================
+function updateGroupId() {
+  const y = document.getElementById('selectYear').value  || '--';
+  const t = document.getElementById('selectTrip').value  || '--';
+  const g = document.getElementById('selectGroup').value || '--';
+  document.getElementById('groupIdDisplay').textContent = `${y} / ${t} / Grp ${g}`;
+}
+document.getElementById('selectYear') ?.addEventListener('change', updateGroupId);
+document.getElementById('selectTrip') ?.addEventListener('change', updateGroupId);
+document.getElementById('selectGroup')?.addEventListener('change', updateGroupId);
+
+// =====================
+// THEME TOGGLE
+// =====================
+function toggleTheme() {
+  document.body.classList.toggle('dark-mode');
+  const isDark = document.body.classList.contains('dark-mode');
+  document.querySelectorAll('#appThemeToggle, #appThemeToggle2, #gateThemeToggle')
+    .forEach(btn => { btn.textContent = isDark ? '☀️' : '🌙'; });
+}
+document.getElementById('gateThemeToggle') ?.addEventListener('click', toggleTheme);
+document.getElementById('appThemeToggle')  ?.addEventListener('click', toggleTheme);
+document.getElementById('appThemeToggle2') ?.addEventListener('click', toggleTheme);
+
+// =====================
+// NAV TABS
+// =====================
+document.querySelectorAll('.nav-btn[data-step]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    showStep(parseInt(btn.dataset.step));
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+
+// =====================
+// LANG BUTTONS
+// =====================
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+});
+
+// =====================
+// INIT
+// =====================
+document.addEventListener('DOMContentLoaded', () => {
+  setLanguage('en');
+  showStep(1);
+});
   </script>
 
 </body>
