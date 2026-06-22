@@ -306,465 +306,949 @@ textarea { resize: vertical; min-height: 110px; font-family: "Aptos","Inter",san
       </div>
     </section>
 
-    <!-- ===== STEP 1: PROBLEM ===== -->
-    <section id="step1" class="step-section active">
-      <div class="rounded-2xl border-t-8 border-amber-400 bg-white p-4 sm:p-6 md:p-8 shadow-lg card-elevated space-y-5">
+<!-- ===== STEP 1: PROBLEM ===== -->
+<section id="step1" class="step-section active">
+  <div class="rounded-2xl border-t-8 border-amber-400 bg-white p-4 sm:p-6 md:p-8 shadow-lg card-elevated space-y-5">
 
-        <!-- Resource Bar -->
-        <div class="resource-bar">
-          <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">📚 Resources:</span>
-          <a href="https://sdgs.un.org/goals" target="_blank" class="resource-btn bg-blue-600 hover:bg-blue-700">🌐 UN SDGs</a>
-          <a href="https://padlet.com/alaricleong/glp-cif-articles-172-7d0vnk949g3w" target="_blank" class="resource-btn bg-orange-500 hover:bg-orange-600">📰 Current Affairs Articles</a>
-          <a href="https://go.gov.sg/ahsglobalclassroom" target="_blank" class="resource-btn bg-emerald-600 hover:bg-emerald-700">🏫 GC Microsite</a>
+    <div class="resource-bar">
+      <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">📚 Resources:</span>
+      <a href="https://sdgs.un.org/goals" target="_blank" class="resource-btn bg-blue-600 hover:bg-blue-700">🌐 UN SDGs</a>
+      <a href="https://padlet.com/alaricleong/glp-cif-articles-172-7d0vnk949g3w" target="_blank" class="resource-btn bg-orange-500 hover:bg-orange-600">📰 Current Affairs Articles</a>
+      <a href="https://go.gov.sg/ahsglobalclassroom" target="_blank" class="resource-btn bg-emerald-600 hover:bg-emerald-700">🏫 GC Microsite</a>
+    </div>
+
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+      <div>
+        <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-amber-600">Step 1: Problem</h2>
+        <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Identify challenges and design a problem statement</p>
+      </div>
+      <span class="badge bg-amber-100 text-amber-800">PHASE 1</span>
+    </div>
+
+    <!-- SDG SELECTOR -->
+    <div class="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 sm:p-5">
+      <h3 class="mb-1 text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
+        <span class="flex items-center justify-center w-6 h-6 rounded-full bg-amber-100 text-amber-700 font-extrabold text-xs">★</span>
+        Select Your Focus SDG
+      </h3>
+      <p class="text-xs text-slate-400 mb-4 leading-relaxed">Choose one SDG that your project will address. This will guide all your responses.</p>
+      <p class="text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">🤝 Social Causes (SDG 1–10)</p>
+      <div class="flex flex-wrap gap-2 mb-4">
+        <button class="sdg-btn" style="border-color:#e5243b;color:#e5243b;" data-sdg="SDG 1: No Poverty" onclick="selectSDG(this)">🔴 SDG 1: No Poverty</button>
+        <button class="sdg-btn" style="border-color:#dda63a;color:#dda63a;" data-sdg="SDG 2: Zero Hunger" onclick="selectSDG(this)">🟡 SDG 2: Zero Hunger</button>
+        <button class="sdg-btn" style="border-color:#4c9f38;color:#4c9f38;" data-sdg="SDG 3: Good Health" onclick="selectSDG(this)">🟢 SDG 3: Good Health</button>
+        <button class="sdg-btn" style="border-color:#c5192d;color:#c5192d;" data-sdg="SDG 4: Quality Education" onclick="selectSDG(this)">🔴 SDG 4: Quality Education</button>
+        <button class="sdg-btn" style="border-color:#ff3a21;color:#ff3a21;" data-sdg="SDG 5: Gender Equality" onclick="selectSDG(this)">🟠 SDG 5: Gender Equality</button>
+        <button class="sdg-btn" style="border-color:#26bde2;color:#26bde2;" data-sdg="SDG 6: Clean Water" onclick="selectSDG(this)">🔵 SDG 6: Clean Water</button>
+        <button class="sdg-btn" style="border-color:#fcc30b;color:#fcc30b;" data-sdg="SDG 7: Clean Energy" onclick="selectSDG(this)">🟡 SDG 7: Clean Energy</button>
+        <button class="sdg-btn" style="border-color:#a21942;color:#a21942;" data-sdg="SDG 8: Decent Work" onclick="selectSDG(this)">🔴 SDG 8: Decent Work</button>
+        <button class="sdg-btn" style="border-color:#fd6925;color:#fd6925;" data-sdg="SDG 9: Industry & Innovation" onclick="selectSDG(this)">🟠 SDG 9: Industry & Innovation</button>
+        <button class="sdg-btn" style="border-color:#dd1367;color:#dd1367;" data-sdg="SDG 10: Reduced Inequalities" onclick="selectSDG(this)">🔴 SDG 10: Reduced Inequalities</button>
+      </div>
+      <p class="text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">🌍 Environmental Causes (SDG 11–15)</p>
+      <div class="flex flex-wrap gap-2 mb-4">
+        <button class="sdg-btn" style="border-color:#fd9d24;color:#fd9d24;" data-sdg="SDG 11: Sustainable Cities" onclick="selectSDG(this)">🟠 SDG 11: Sustainable Cities</button>
+        <button class="sdg-btn" style="border-color:#bf8b2e;color:#bf8b2e;" data-sdg="SDG 12: Responsible Consumption" onclick="selectSDG(this)">🟤 SDG 12: Responsible Consumption</button>
+        <button class="sdg-btn" style="border-color:#3f7e44;color:#3f7e44;" data-sdg="SDG 13: Climate Action" onclick="selectSDG(this)">🟢 SDG 13: Climate Action</button>
+        <button class="sdg-btn" style="border-color:#0a97d9;color:#0a97d9;" data-sdg="SDG 14: Life Below Water" onclick="selectSDG(this)">🔵 SDG 14: Life Below Water</button>
+        <button class="sdg-btn" style="border-color:#56c02b;color:#56c02b;" data-sdg="SDG 15: Life on Land" onclick="selectSDG(this)">🟢 SDG 15: Life on Land</button>
+      </div>
+      <p class="text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">🏛️ Governance & Global (SDG 16–17)</p>
+      <div class="flex flex-wrap gap-2">
+        <button class="sdg-btn" style="border-color:#00689d;color:#00689d;" data-sdg="SDG 16: Peace & Justice" onclick="selectSDG(this)">🔵 SDG 16: Peace & Justice</button>
+        <button class="sdg-btn" style="border-color:#19486a;color:#19486a;" data-sdg="SDG 17: Partnerships" onclick="selectSDG(this)">🔵 SDG 17: Partnerships</button>
+      </div>
+      <div id="sdgSelectedDisplay" class="hidden mt-4 p-3 rounded-xl bg-amber-50 border-2 border-amber-200 text-sm font-bold text-amber-800 flex items-center gap-2">
+        <span>✅</span><span>Selected SDG:</span><span id="sdgSelectedText" class="text-amber-900"></span>
+      </div>
+    </div>
+
+    <!-- Q3: Identifying Challenges -->
+    <div class="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 sm:p-5">
+      <h3 class="mb-1 text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
+        <span class="flex items-center justify-center w-6 h-6 rounded-full bg-amber-100 text-amber-700 font-extrabold text-xs">3</span>
+        Identifying Challenges / 辨识挑战
+      </h3>
+      <p class="text-xs text-slate-400 mb-1 leading-relaxed">Using the UN SDGs, identify <strong>3–4 challenges</strong> in society and explain why each is a challenge.</p>
+      <p class="text-xs text-slate-400 mb-3 leading-relaxed">利用联合国可持续发展目标，辨识出社会现有的挑战 (3–4)，并解释为什么是个挑战。</p>
+      <textarea id="q3" class="w-full p-3 rounded-xl border-2 border-slate-200 outline-none focus:border-amber-400 text-sm" rows="6"
+        placeholder="Challenge 1: [Name] — Why it is a challenge: ...&#10;Challenge 2: [Name] — Why it is a challenge: ...&#10;Challenge 3: [Name] — Why it is a challenge: ...&#10;Challenge 4 (optional): [Name] — Why it is a challenge: ..."></textarea>
+    </div>
+
+    <!-- Q4: Problem Statement -->
+    <div class="rounded-xl border-2 border-amber-300 bg-amber-50 p-4 sm:p-5">
+      <h3 class="mb-1 text-base sm:text-lg font-bold text-amber-800 flex items-center gap-2">
+        <span class="flex items-center justify-center w-6 h-6 rounded-full bg-amber-400 text-white font-extrabold text-xs">4</span>
+        Select Underlying Problem & Problem Statement / 确定研究课题与问题陈述
+      </h3>
+      <p class="text-xs text-amber-600 mb-3 leading-relaxed">From your challenges above, select <strong>1 underlying problem</strong> through research and design a problem statement using the template below.<br/>从辨识出的挑战中选择并确定1个研究课题。设立1个问题陈述。</p>
+
+      <div class="mb-4 p-3 rounded-xl bg-white border border-amber-200 text-xs text-slate-600 space-y-1">
+        <p class="font-bold text-amber-700 mb-2">📋 Problem Statement Template:</p>
+        <p><span class="font-bold">Condition Statement:</span> Because of [ethical/social/environmental concern caused by issue]...</p>
+        <p><span class="font-bold">Stem + Key Verb Phrase:</span> ...how might we [key verb phrase] for [target group]...</p>
+        <p><span class="font-bold">Purpose:</span> ...in order to [desired outcome]...</p>
+        <p><span class="font-bold">Future Scene Parameters:</span> ...in [location] in [year] and beyond?</p>
+        <p class="mt-2 italic text-slate-400">Example: Because of ethical concerns caused by the new surgical procedure... how might we create a positive medical environment for xx treatments... in order to encourage ethical use of xx surgery... in the U.S. in 2023 and beyond?</p>
+      </div>
+
+      <div class="space-y-3">
+        <div>
+          <label class="text-xs font-bold text-amber-700 uppercase tracking-wider">Condition Statement</label>
+          <textarea id="q4a" class="mt-1 w-full p-3 rounded-xl border-2 border-amber-200 outline-none focus:border-amber-500 text-sm bg-white" rows="2"
+            placeholder="Because of [concern caused by issue]..."></textarea>
         </div>
-
-        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-          <div>
-            <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-amber-600" data-i18n="step1Title">Step 1: Problem</h2>
-            <p class="text-xs sm:text-sm text-slate-500 mt-0.5" data-i18n="step1Sub">Identify challenges and design a problem statement</p>
-          </div>
-          <span class="badge bg-amber-100 text-amber-800">PHASE 1</span>
+        <div>
+          <label class="text-xs font-bold text-amber-700 uppercase tracking-wider">Stem + Key Verb Phrase</label>
+          <textarea id="q4b" class="mt-1 w-full p-3 rounded-xl border-2 border-amber-200 outline-none focus:border-amber-500 text-sm bg-white" rows="2"
+            placeholder="...how might we [key verb phrase] for [target group]..."></textarea>
         </div>
-
-        <div class="space-y-5">
-
-          <!-- SDG SELECTOR: Social Causes -->
-          <div class="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 sm:p-5">
-            <h3 class="mb-1 text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
-              <span class="flex items-center justify-center w-6 h-6 rounded-full bg-amber-100 text-amber-700 font-extrabold text-xs">★</span>
-              <span data-i18n="sdgSelectLabel">Select Your Focus SDG</span>
-            </h3>
-            <p class="text-xs text-slate-400 mb-4 leading-relaxed" data-i18n="sdgSelectHint">Choose one SDG that your project will address. This will guide all your responses.</p>
-
-            <p class="text-xs font-bold text-slate-600 uppercase tracking-wider mb-2" data-i18n="sdgCat1">🤝 Social Causes (SDG 1–10)</p>
-            <div id="sdgButtonsSocial" class="flex flex-wrap gap-2 mb-4">
-              <button class="sdg-btn" style="border-color:#e5243b;color:#e5243b;" data-sdg="SDG 1: No Poverty" onclick="selectSDG(this)">🔴 SDG 1: No Poverty</button>
-              <button class="sdg-btn" style="border-color:#dda63a;color:#dda63a;" data-sdg="SDG 2: Zero Hunger" onclick="selectSDG(this)">🟡 SDG 2: Zero Hunger</button>
-              <button class="sdg-btn" style="border-color:#4c9f38;color:#4c9f38;" data-sdg="SDG 3: Good Health" onclick="selectSDG(this)">🟢 SDG 3: Good Health</button>
-              <button class="sdg-btn" style="border-color:#c5192d;color:#c5192d;" data-sdg="SDG 4: Quality Education" onclick="selectSDG(this)">🔴 SDG 4: Quality Education</button>
-              <button class="sdg-btn" style="border-color:#ff3a21;color:#ff3a21;" data-sdg="SDG 5: Gender Equality" onclick="selectSDG(this)">🟠 SDG 5: Gender Equality</button>
-              <button class="sdg-btn" style="border-color:#26bde2;color:#26bde2;" data-sdg="SDG 6: Clean Water" onclick="selectSDG(this)">🔵 SDG 6: Clean Water</button>
-              <button class="sdg-btn" style="border-color:#fcc30b;color:#fcc30b;" data-sdg="SDG 7: Clean Energy" onclick="selectSDG(this)">🟡 SDG 7: Clean Energy</button>
-              <button class="sdg-btn" style="border-color:#a21942;color:#a21942;" data-sdg="SDG 8: Decent Work" onclick="selectSDG(this)">🔴 SDG 8: Decent Work</button>
-              <button class="sdg-btn" style="border-color:#fd6925;color:#fd6925;" data-sdg="SDG 9: Industry & Innovation" onclick="selectSDG(this)">🟠 SDG 9: Industry & Innovation</button>
-              <button class="sdg-btn" style="border-color:#dd1367;color:#dd1367;" data-sdg="SDG 10: Reduced Inequalities" onclick="selectSDG(this)">🔴 SDG 10: Reduced Inequalities</button>
-            </div>
-
-            <p class="text-xs font-bold text-slate-600 uppercase tracking-wider mb-2" data-i18n="sdgCat2">🌍 Environmental Causes (SDG 11–15)</p>
-            <div id="sdgButtonsEnv" class="flex flex-wrap gap-2 mb-4">
-              <button class="sdg-btn" style="border-color:#fd9d24;color:#fd9d24;" data-sdg="SDG 11: Sustainable Cities" onclick="selectSDG(this)">🟠 SDG 11: Sustainable Cities</button>
-              <button class="sdg-btn" style="border-color:#bf8b2e;color:#bf8b2e;" data-sdg="SDG 12: Responsible Consumption" onclick="selectSDG(this)">🟤 SDG 12: Responsible Consumption</button>
-              <button class="sdg-btn" style="border-color:#3f7e44;color:#3f7e44;" data-sdg="SDG 13: Climate Action" onclick="selectSDG(this)">🟢 SDG 13: Climate Action</button>
-              <button class="sdg-btn" style="border-color:#0a97d9;color:#0a97d9;" data-sdg="SDG 14: Life Below Water" onclick="selectSDG(this)">🔵 SDG 14: Life Below Water</button>
-              <button class="sdg-btn" style="border-color:#56c02b;color:#56c02b;" data-sdg="SDG 15: Life on Land" onclick="selectSDG(this)">🟢 SDG 15: Life on Land</button>
-            </div>
-
-            <p class="text-xs font-bold text-slate-600 uppercase tracking-wider mb-2" data-i18n="sdgCat3">🏛️ Governance & Global (SDG 16–17)</p>
-            <div id="sdgButtonsGov" class="flex flex-wrap gap-2">
-              <button class="sdg-btn" style="border-color:#00689d;color:#00689d;" data-sdg="SDG 16: Peace & Justice" onclick="selectSDG(this)">🔵 SDG 16: Peace & Justice</button>
-              <button class="sdg-btn" style="border-color:#19486a;color:#19486a;" data-sdg="SDG 17: Partnerships" onclick="selectSDG(this)">🔵 SDG 17: Partnerships</button>
-            </div>
-
-            <div id="sdgSelectedDisplay" class="hidden mt-4 p-3 rounded-xl bg-amber-50 border-2 border-amber-200 text-sm font-bold text-amber-800 flex items-center gap-2">
-              <span>✅</span>
-              <span data-i18n="sdgSelected">Selected SDG:</span>
-              <span id="sdgSelectedText" class="text-amber-900"></span>
-            </div>
-          </div>
-
-          <!-- 1.1 CURRENT AFFAIRS -->
-          <div class="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 sm:p-5">
-            <h3 class="mb-1 text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
-              <span class="flex items-center justify-center w-6 h-6 rounded-full bg-amber-100 text-amber-700 font-extrabold text-xs">1</span>
-              <span data-i18n="q1label">Current Affairs Connection</span>
-            </h3>
-            <p class="text-xs text-slate-400 mb-3 leading-relaxed" data-i18n="q1hint">Identify a current global issue related to your chosen SDG. Use the articles resource above.</p>
-            <textarea id="q1" class="w-full p-3 rounded-xl border-2 border-slate-200 outline-none focus:border-amber-400 text-sm" rows="4"
-              placeholder="Describe a current affairs issue related to your SDG. What is happening in the world right now?"></textarea>
-            <div class="mt-2 flex justify-end">
-              <button onclick="getAIFeedback('q1','step1')" class="nav-btn tab-1 px-4 py-2 rounded-lg text-xs font-bold text-white bg-amber-500">✨ Get AI Feedback</button>
-            </div>
-            <div id="q1-feedback" class="mt-2 hidden"></div>
-          </div>
-
-          <!-- 1.2 LOCAL CONTEXT -->
-          <div class="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 sm:p-5">
-            <h3 class="mb-1 text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
-              <span class="flex items-center justify-center w-6 h-6 rounded-full bg-amber-100 text-amber-700 font-extrabold text-xs">2</span>
-              <span data-i18n="q2label">Local Context</span>
-            </h3>
-            <p class="text-xs text-slate-400 mb-3 leading-relaxed" data-i18n="q2hint">How does this global issue manifest locally in your city or country?</p>
-            <textarea id="q2" class="w-full p-3 rounded-xl border-2 border-slate-200 outline-none focus:border-amber-400 text-sm" rows="4"
-              placeholder="How does this issue affect your local community? Provide specific examples or data."></textarea>
-            <div class="mt-2 flex justify-end">
-              <button onclick="getAIFeedback('q2','step1')" class="nav-btn tab-1 px-4 py-2 rounded-lg text-xs font-bold text-white bg-amber-500">✨ Get AI Feedback</button>
-            </div>
-            <div id="q2-feedback" class="mt-2 hidden"></div>
-          </div>
-
-          <!-- 1.3 ROOT CAUSES -->
-          <div class="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 sm:p-5">
-            <h3 class="mb-1 text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
-              <span class="flex items-center justify-center w-6 h-6 rounded-full bg-amber-100 text-amber-700 font-extrabold text-xs">3</span>
-              <span data-i18n="q3label">Root Causes</span>
-            </h3>
-            <p class="text-xs text-slate-400 mb-3 leading-relaxed" data-i18n="q3hint">What are the underlying causes of this problem? Think beyond surface-level symptoms.</p>
-            <textarea id="q3" class="w-full p-3 rounded-xl border-2 border-slate-200 outline-none focus:border-amber-400 text-sm" rows="4"
-              placeholder="Identify 2–3 root causes. Why does this problem exist? What systemic factors contribute to it?"></textarea>
-            <div class="mt-2 flex justify-end">
-              <button onclick="getAIFeedback('q3','step1')" class="nav-btn tab-1 px-4 py-2 rounded-lg text-xs font-bold text-white bg-amber-500">✨ Get AI Feedback</button>
-            </div>
-            <div id="q3-feedback" class="mt-2 hidden"></div>
-          </div>
-
-          <!-- 1.4 STAKEHOLDERS -->
-          <div class="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 sm:p-5">
-            <h3 class="mb-1 text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
-              <span class="flex items-center justify-center w-6 h-6 rounded-full bg-amber-100 text-amber-700 font-extrabold text-xs">4</span>
-              <span data-i18n="q4label">Stakeholders</span>
-            </h3>
-            <p class="text-xs text-slate-400 mb-3 leading-relaxed" data-i18n="q4hint">Who is affected by this problem? Who has the power to change it?</p>
-            <textarea id="q4" class="w-full p-3 rounded-xl border-2 border-slate-200 outline-none focus:border-amber-400 text-sm" rows="4"
-              placeholder="List key stakeholders: who is most impacted, who are the decision-makers, and who could be allies?"></textarea>
-            <div class="mt-2 flex justify-end">
-              <button onclick="getAIFeedback('q4','step1')" class="nav-btn tab-1 px-4 py-2 rounded-lg text-xs font-bold text-white bg-amber-500">✨ Get AI Feedback</button>
-            </div>
-            <div id="q4-feedback" class="mt-2 hidden"></div>
-          </div>
-
-          <!-- 1.5 PROBLEM STATEMENT -->
-          <div class="rounded-xl border-2 border-amber-300 bg-amber-50 p-4 sm:p-5">
-            <h3 class="mb-1 text-base sm:text-lg font-bold text-amber-800 flex items-center gap-2">
-              <span class="flex items-center justify-center w-6 h-6 rounded-full bg-amber-400 text-white font-extrabold text-xs">★</span>
-              <span data-i18n="q5label">Problem Statement</span>
-            </h3>
-            <p class="text-xs text-amber-600 mb-3 leading-relaxed" data-i18n="q5hint">Synthesise your research into a clear, focused problem statement using the format: "How might we [action] for [target group] so that [outcome]?"</p>
-            <textarea id="q5" class="w-full p-3 rounded-xl border-2 border-amber-200 outline-none focus:border-amber-500 text-sm bg-white" rows="3"
-              placeholder="How might we __________ for __________ so that __________?"></textarea>
-            <div class="mt-2 flex justify-end">
-              <button onclick="getAIFeedback('q5','step1')" class="nav-btn tab-1 px-4 py-2 rounded-lg text-xs font-bold text-white bg-amber-500">✨ Get AI Feedback</button>
-            </div>
-            <div id="q5-feedback" class="mt-2 hidden"></div>
-          </div>
-
-          <div class="flex justify-end pt-2">
-            <button onclick="goToStep(2)" class="nav-btn tab-2 px-6 py-3 rounded-xl text-sm font-bold text-white bg-blue-600 shadow-md">Next: Solution →</button>
-          </div>
+        <div>
+          <label class="text-xs font-bold text-amber-700 uppercase tracking-wider">Purpose</label>
+          <textarea id="q4c" class="mt-1 w-full p-3 rounded-xl border-2 border-amber-200 outline-none focus:border-amber-500 text-sm bg-white" rows="2"
+            placeholder="...in order to [desired outcome]..."></textarea>
+        </div>
+        <div>
+          <label class="text-xs font-bold text-amber-700 uppercase tracking-wider">Future Scene Parameters</label>
+          <textarea id="q4d" class="mt-1 w-full p-3 rounded-xl border-2 border-amber-200 outline-none focus:border-amber-500 text-sm bg-white" rows="2"
+            placeholder="...in [location] in [year] and beyond?"></textarea>
         </div>
       </div>
-    </section>
 
-    <!-- ===== STEP 2: SOLUTION ===== -->
-    <section id="step2" class="step-section">
-      <div class="rounded-2xl border-t-8 border-blue-500 bg-white p-4 sm:p-6 md:p-8 shadow-lg card-elevated space-y-5">
+      <!-- Auto-generated Problem Statement display -->
+      <div id="generatedProblemStatement" class="hidden mt-4 p-4 rounded-xl bg-amber-100 border-2 border-amber-300 text-sm text-amber-900">
+        <p class="font-bold mb-1">📝 Your Problem Statement:</p>
+        <p id="problemStatementText" class="italic leading-relaxed"></p>
+      </div>
+    </div>
 
-        <!-- Resource Bar -->
-        <div class="resource-bar">
-          <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">📚 Resources:</span>
-          <a href="https://www.designkit.org/methods" target="_blank" class="resource-btn bg-blue-600 hover:bg-blue-700">🎨 IDEO Design Kit</a>
-          <a href="https://www.ted.com/topics/social+change" target="_blank" class="resource-btn bg-red-500 hover:bg-red-600">🎤 TED: Social Change</a>
-          <a href="https://go.gov.sg/ahsglobalclassroom" target="_blank" class="resource-btn bg-emerald-600 hover:bg-emerald-700">🏫 GC Microsite</a>
+    <!-- AI FEEDBACK BLOCK (bottom of tab only) -->
+    <div class="rounded-xl border-2 border-amber-200 bg-amber-50 p-4 sm:p-5">
+      <h3 class="text-base font-bold text-amber-800 mb-2 flex items-center gap-2">✨ AI Feedback & Scoring</h3>
+      <p class="text-xs text-amber-600 mb-3">Click below to generate your problem statement and receive AI feedback based on the rubric. You need a score of at least <strong>6/10</strong> to proceed.</p>
+      <button onclick="getStep1Feedback()" class="nav-btn tab-1 px-5 py-2.5 rounded-lg text-sm font-bold text-white bg-amber-500 w-full sm:w-auto">✨ Generate Problem Statement & Get Feedback</button>
+      <div id="step1-feedback" class="mt-3 hidden"></div>
+      <div id="step1-score-display" class="mt-2 hidden"></div>
+    </div>
+
+    <div class="flex justify-end pt-2">
+      <button id="toStep2Btn" onclick="goToStep(2)" class="nav-btn tab-2 px-6 py-3 rounded-xl text-sm font-bold text-white bg-blue-600 shadow-md opacity-40 cursor-not-allowed" disabled>Next: Solution →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STEP 2: SOLUTION ===== -->
+<section id="step2" class="step-section">
+  <div class="rounded-2xl border-t-8 border-blue-500 bg-white p-4 sm:p-6 md:p-8 shadow-lg card-elevated space-y-5">
+
+    <!-- Same resource bar as Tab 1 -->
+    <div class="resource-bar">
+      <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">📚 Resources:</span>
+      <a href="https://sdgs.un.org/goals" target="_blank" class="resource-btn bg-blue-600 hover:bg-blue-700">🌐 UN SDGs</a>
+      <a href="https://padlet.com/alaricleong/glp-cif-articles-172-7d0vnk949g3w" target="_blank" class="resource-btn bg-orange-500 hover:bg-orange-600">📰 Current Affairs Articles</a>
+      <a href="https://go.gov.sg/ahsglobalclassroom" target="_blank" class="resource-btn bg-emerald-600 hover:bg-emerald-700">🏫 GC Microsite</a>
+    </div>
+
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+      <div>
+        <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-blue-600">Step 2: Solution</h2>
+        <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Generate, evaluate and select your best solution</p>
+      </div>
+      <span class="badge bg-blue-100 text-blue-800">PHASE 2</span>
+    </div>
+
+    <!-- Q4: Generate Solutions -->
+    <div class="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 sm:p-5">
+      <h3 class="mb-1 text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
+        <span class="flex items-center justify-center w-6 h-6 rounded-full bg-blue-100 text-blue-700 font-extrabold text-xs">4</span>
+        Generate Solution Ideas / 提出解决方法
+      </h3>
+      <p class="text-xs text-slate-400 mb-1 leading-relaxed">Compare and explain <strong>existing measures or solutions in both cities</strong>. Then come up with <strong>≥3 new solutions</strong>.</p>
+      <p class="text-xs text-slate-400 mb-3 leading-relaxed">对比现有的解决方式，并提出≥3个创新的解决方法。</p>
+      <textarea id="q6" class="w-full p-3 rounded-xl border-2 border-slate-200 outline-none focus:border-blue-400 text-sm" rows="6"
+        placeholder="Existing measures in City 1: ...&#10;Existing measures in City 2: ...&#10;&#10;New Solution 1: ...&#10;New Solution 2: ...&#10;New Solution 3: ..."></textarea>
+    </div>
+
+    <!-- Q5: Evaluation Criteria Table -->
+    <div class="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 sm:p-5">
+      <h3 class="mb-1 text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
+        <span class="flex items-center justify-center w-6 h-6 rounded-full bg-blue-100 text-blue-700 font-extrabold text-xs">5</span>
+        Evaluation Criteria Table / 评估标准表
+      </h3>
+      <p class="text-xs text-slate-400 mb-1 leading-relaxed">Identify <strong>3–4 criteria</strong> to evaluate your proposed solutions. Score each solution (1 = low, 3 = high). The table will auto-total.</p>
+      <p class="text-xs text-slate-400 mb-3 leading-relaxed">设立标准 (3–4) 来评估自己提议的解决方法。</p>
+
+      <div class="text-xs text-slate-500 mb-3 p-3 bg-slate-50 rounded-lg border border-slate-200">
+        <p class="font-bold mb-1">Possible criteria / 评估标准的例子：</p>
+        <p>Time consideration 时间考量 · Manpower consideration 人力 · Cost consideration 成本考量 · Public perception 公众认知和反应</p>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table id="criteriaTable" class="criteria-table w-full mb-3">
+          <thead>
+            <tr id="criteriaHeaderRow">
+              <th class="text-left">Solutions / 解决方法</th>
+              <th><input type="text" id="crit1" value="Time 时间" class="criteria-header-input" oninput="updateCriteriaHeaders()" /></th>
+              <th><input type="text" id="crit2" value="Manpower 人力" class="criteria-header-input" oninput="updateCriteriaHeaders()" /></th>
+              <th><input type="text" id="crit3" value="Cost 成本" class="criteria-header-input" oninput="updateCriteriaHeaders()" /></th>
+              <th><input type="text" id="crit4" value="Public Perception 公众认知" class="criteria-header-input" oninput="updateCriteriaHeaders()" /></th>
+              <th>Total 总评分</th>
+            </tr>
+          </thead>
+          <tbody id="criteriaBody">
+            <tr>
+              <td><input type="text" placeholder="Solution A" class="sol-name" /></td>
+              <td><input type="number" min="0" max="10" class="score-cell" oninput="recalcRow(this)" /></td>
+              <td><input type="number" min="0" max="10" class="score-cell" oninput="recalcRow(this)" /></td>
+              <td><input type="number" min="0" max="10" class="score-cell" oninput="recalcRow(this)" /></td>
+              <td><input type="number" min="0" max="10" class="score-cell" oninput="recalcRow(this)" /></td>
+              <td class="row-total font-bold text-blue-700">0</td>
+            </tr>
+            <tr>
+              <td><input type="text" placeholder="Solution B" class="sol-name" /></td>
+              <td><input type="number" min="0" max="10" class="score-cell" oninput="recalcRow(this)" /></td>
+              <td><input type="number" min="0" max="10" class="score-cell" oninput="recalcRow(this)" /></td>
+              <td><input type="number" min="0" max="10" class="score-cell" oninput="recalcRow(this)" /></td>
+              <td><input type="number" min="0" max="10" class="score-cell" oninput="recalcRow(this)" /></td>
+              <td class="row-total font-bold text-blue-700">0</td>
+            </tr>
+            <tr>
+              <td><input type="text" placeholder="Solution C" class="sol-name" /></td>
+              <td><input type="number" min="0" max="10" class="score-cell" oninput="recalcRow(this)" /></td>
+              <td><input type="number" min="0" max="10" class="score-cell" oninput="recalcRow(this)" /></td>
+              <td><input type="number" min="0" max="10" class="score-cell" oninput="recalcRow(this)" /></td>
+              <td><input type="number" min="0" max="10" class="score-cell" oninput="recalcRow(this)" /></td>
+              <td class="row-total font-bold text-blue-700">0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="flex gap-2 flex-wrap">
+        <button onclick="addCriteriaRow()" class="text-xs bg-blue-100 hover:bg-blue-200 text-blue-700 px-3 py-1.5 rounded-lg font-bold">+ Add Solution Row</button>
+        <button onclick="removeCriteriaRow()" class="text-xs bg-red-100 hover:bg-red-200 text-red-700 px-3 py-1.5 rounded-lg font-bold">− Remove Last Row</button>
+        <button onclick="addCriteriaColumn()" class="text-xs bg-emerald-100 hover:bg-emerald-200 text-emerald-700 px-3 py-1.5 rounded-lg font-bold">+ Add Criteria Column</button>
+        <button onclick="removeCriteriaColumn()" class="text-xs bg-orange-100 hover:bg-orange-200 text-orange-700 px-3 py-1.5 rounded-lg font-bold">− Remove Last Criteria</button>
+      </div>
+    </div>
+
+    <!-- Q6: Solution Statement -->
+    <div class="rounded-xl border-2 border-blue-200 bg-blue-50 p-4 sm:p-5">
+      <h3 class="mb-1 text-base sm:text-lg font-bold text-blue-800 flex items-center gap-2">
+        <span class="flex items-center justify-center w-6 h-6 rounded-full bg-blue-500 text-white font-extrabold text-xs">6</span>
+        Select Best Solution & Solution Statement / 选择最佳解决方法与解决陈述
+      </h3>
+      <p class="text-xs text-blue-500 mb-3 leading-relaxed">Apply your criteria scores above to select the most feasible solution. Then design a solution statement.<br/>所选标准应用于你提出的解决方法并选择"最佳"的解决方法。设立1个解决陈述。</p>
+      <textarea id="q10" class="w-full p-3 rounded-xl border-2 border-blue-200 outline-none focus:border-blue-500 text-sm bg-white" rows="5"
+        placeholder="Based on our evaluation, we selected Solution [X] because...&#10;&#10;Our solution statement: We will [action] for [target group] by [method] in order to [outcome] in [location/timeframe]."></textarea>
+
+      <div id="generatedSolutionStatement" class="hidden mt-4 p-4 rounded-xl bg-blue-100 border-2 border-blue-300 text-sm text-blue-900">
+        <p class="font-bold mb-1">📝 Your Solution Statement:</p>
+        <p id="solutionStatementText" class="italic leading-relaxed"></p>
+      </div>
+    </div>
+
+    <!-- AI FEEDBACK BLOCK (bottom of tab only) -->
+    <div class="rounded-xl border-2 border-blue-200 bg-blue-50 p-4 sm:p-5">
+      <h3 class="text-base font-bold text-blue-800 mb-2 flex items-center gap-2">✨ AI Feedback & Scoring</h3>
+      <p class="text-xs text-blue-600 mb-3">Click below to generate your solution statement and receive AI feedback. You need a score of at least <strong>6/10</strong> to proceed.</p>
+      <button onclick="getStep2Feedback()" class="nav-btn tab-2 px-5 py-2.5 rounded-lg text-sm font-bold text-white bg-blue-500 w-full sm:w-auto">✨ Generate Solution Statement & Get Feedback</button>
+      <div id="step2-feedback" class="mt-3 hidden"></div>
+    </div>
+
+    <div class="flex justify-between pt-2">
+      <button onclick="goToStep(1)" class="nav-btn tab-1 px-6 py-3 rounded-xl text-sm font-bold text-white bg-amber-500 shadow-md">← Back: Problem</button>
+      <button id="toStep3Btn" onclick="goToStep(3)" class="nav-btn tab-3 px-6 py-3 rounded-xl text-sm font-bold text-white bg-emerald-600 shadow-md opacity-40 cursor-not-allowed" disabled>Next: Action →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STEP 3: ACTION ===== -->
+<section id="step3" class="step-section">
+  <div class="rounded-2xl border-t-8 border-emerald-500 bg-white p-4 sm:p-6 md:p-8 shadow-lg card-elevated space-y-5">
+
+    <div class="resource-bar">
+      <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">📚 Resources:</span>
+      <a href="https://www.canva.com" target="_blank" class="resource-btn bg-purple-600 hover:bg-purple-700">🎨 Canva</a>
+      <a href="https://www.globalgoals.org" target="_blank" class="resource-btn bg-blue-600 hover:bg-blue-700">🌐 Global Goals</a>
+            <a href="https://go.gov.sg/ahsglobalclassroom" target="_blank" class="resource-btn bg-emerald-600 hover:bg-emerald-700">🏫 GC Microsite</a>
+    </div>
+
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+      <div>
+        <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-emerald-600">Step 3: Action</h2>
+        <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Develop your action plan and prepare your presentation</p>
+      </div>
+      <span class="badge bg-emerald-100 text-emerald-800">PHASE 3</span>
+    </div>
+
+    <div class="rounded-xl border-2 border-emerald-200 bg-emerald-50 p-4 sm:p-6">
+      <h3 class="text-base sm:text-lg font-bold text-emerald-800 mb-3 flex items-center gap-2">
+        <span class="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500 text-white font-extrabold text-xs">★</span>
+        Action Plan / 行动计划
+      </h3>
+      <div class="p-4 rounded-xl bg-white border-2 border-emerald-200 text-sm text-slate-700 space-y-2 mb-4">
+        <p class="font-bold text-emerald-700">📋 Your Task:</p>
+        <p>Develop an action plan based on your solution via:</p>
+        <p class="ml-3">📊 <strong>An infographic</strong> — visually communicate your solution and its impact</p>
+        <p class="ml-3">🎤 <strong>A 5-minute oral presentation</strong> — present your problem, solution and action plan</p>
+        <p class="ml-3">❓ <strong>A 3-minute Q&amp;A</strong> — be ready to answer questions from the panel</p>
+        <p class="mt-2 text-slate-500 text-xs">制定1个周密的行动计划。进行1个信息图，5分钟的口头报告 + 3分钟的问答环节。</p>
+      </div>
+
+      <div class="space-y-4">
+        <div>
+          <label class="text-xs font-bold text-emerald-700 uppercase tracking-wider">Action Plan Notes / 行动计划笔记</label>
+          <textarea id="q11" class="mt-1 w-full p-3 rounded-xl border-2 border-emerald-200 outline-none focus:border-emerald-500 text-sm bg-white" rows="5"
+            placeholder="Outline your action steps here. Who does what, and by when?&#10;Step 1: ...&#10;Step 2: ...&#10;Step 3: ..."></textarea>
         </div>
 
-        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-          <div>
-            <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-blue-600" data-i18n="step2Title">Step 2: Solution</h2>
-            <p class="text-xs sm:text-sm text-slate-500 mt-0.5" data-i18n="step2Sub">Brainstorm, evaluate and design your solution</p>
-          </div>
-          <span class="badge bg-blue-100 text-blue-800">PHASE 2</span>
+        <div>
+          <label class="text-xs font-bold text-emerald-700 uppercase tracking-wider">Infographic Plan / 信息图计划</label>
+          <textarea id="q12" class="mt-1 w-full p-3 rounded-xl border-2 border-emerald-200 outline-none focus:border-emerald-500 text-sm bg-white" rows="4"
+            placeholder="Describe what your infographic will include. Key visuals, data points, layout ideas..."></textarea>
         </div>
 
-        <div class="space-y-5">
+        <div>
+          <label class="text-xs font-bold text-emerald-700 uppercase tracking-wider">Presentation Outline / 演示大纲</label>
+          <textarea id="q13" class="mt-1 w-full p-3 rounded-xl border-2 border-emerald-200 outline-none focus:border-emerald-500 text-sm bg-white" rows="5"
+            placeholder="Hook (0:00–0:30): ...&#10;Problem (0:30–1:30): ...&#10;Solution (1:30–3:00): ...&#10;Action Plan (3:00–4:30): ...&#10;Call to Action (4:30–5:00): ..."></textarea>
+        </div>
 
-          <!-- 2.1 BRAINSTORM -->
-          <div class="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 sm:p-5">
-            <h3 class="mb-1 text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
-              <span class="flex items-center justify-center w-6 h-6 rounded-full bg-blue-100 text-blue-700 font-extrabold text-xs">1</span>
-              <span data-i18n="q6label">Brainstorm Solutions</span>
-            </h3>
-            <p class="text-xs text-slate-400 mb-3 leading-relaxed" data-i18n="q6hint">Generate at least 3 possible solutions. Think creatively — no idea is too wild at this stage!</p>
-            <textarea id="q6" class="w-full p-3 rounded-xl border-2 border-slate-200 outline-none focus:border-blue-400 text-sm" rows="5"
-              placeholder="Solution 1: ...&#10;Solution 2: ...&#10;Solution 3: ...&#10;(Add more if you can!)"></textarea>
-            <div class="mt-2 flex justify-end">
-              <button onclick="getAIFeedback('q6','step2')" class="nav-btn tab-2 px-4 py-2 rounded-lg text-xs font-bold text-white bg-blue-500">✨ Get AI Feedback</button>
-            </div>
-            <div id="q6-feedback" class="mt-2 hidden"></div>
-          </div>
-
-          <!-- 2.2 EVALUATE -->
-          <div class="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 sm:p-5">
-            <h3 class="mb-1 text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
-              <span class="flex items-center justify-center w-6 h-6 rounded-full bg-blue-100 text-blue-700 font-extrabold text-xs">2</span>
-              <span data-i18n="q7label">Evaluate & Select</span>
-            </h3>
-            <p class="text-xs text-slate-400 mb-3 leading-relaxed" data-i18n="q7hint">Evaluate your ideas against feasibility, impact, and innovation. Which solution will you pursue and why?</p>
-            <textarea id="q7" class="w-full p-3 rounded-xl border-2 border-slate-200 outline-none focus:border-blue-400 text-sm" rows="4"
-              placeholder="We chose Solution ___ because... It is feasible because... Its potential impact is..."></textarea>
-            <div class="mt-2 flex justify-end">
-              <button onclick="getAIFeedback('q7','step2')" class="nav-btn tab-2 px-4 py-2 rounded-lg text-xs font-bold text-white bg-blue-500">✨ Get AI Feedback</button>
-            </div>
-            <div id="q7-feedback" class="mt-2 hidden"></div>
-          </div>
-
-          <!-- 2.3 SOLUTION DESIGN -->
-          <div class="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 sm:p-5">
-            <h3 class="mb-1 text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
-              <span class="flex items-center justify-center w-6 h-6 rounded-full bg-blue-100 text-blue-700 font-extrabold text-xs">3</span>
-              <span data-i18n="q8label">Solution Design</span>
-            </h3>
-            <p class="text-xs text-slate-400 mb-3 leading-relaxed" data-i18n="q8hint">Describe your chosen solution in detail. What does it look like? How does it work? Who delivers it?</p>
-            <textarea id="q8" class="w-full p-3 rounded-xl border-2 border-slate-200 outline-none focus:border-blue-400 text-sm" rows="5"
-              placeholder="Our solution is... It works by... It will be delivered by... The target beneficiaries are..."></textarea>
-            <div class="mt-2 flex justify-end">
-              <button onclick="getAIFeedback('q8','step2')" class="nav-btn tab-2 px-4 py-2 rounded-lg text-xs font-bold text-white bg-blue-500">✨ Get AI Feedback</button>
-            </div>
-            <div id="q8-feedback" class="mt-2 hidden"></div>
-          </div>
-
-          <!-- 2.4 THEORY OF CHANGE -->
-          <div class="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 sm:p-5">
-            <h3 class="mb-1 text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
-              <span class="flex items-center justify-center w-6 h-6 rounded-full bg-blue-100 text-blue-700 font-extrabold text-xs">4</span>
-              <span data-i18n="q9label">Theory of Change</span>
-            </h3>
-            <p class="text-xs text-slate-400 mb-3 leading-relaxed" data-i18n="q9hint">Complete the logic chain: If we do X, then Y will happen, which will lead to Z outcome.</p>
-            <textarea id="q9" class="w-full p-3 rounded-xl border-2 border-slate-200 outline-none focus:border-blue-400 text-sm" rows="4"
-              placeholder="If we [implement our solution], then [immediate change] will happen, which will lead to [long-term outcome] for [target group]."></textarea>
-            <div class="mt-2 flex justify-end">
-              <button onclick="getAIFeedback('q9','step2')" class="nav-btn tab-2 px-4 py-2 rounded-lg text-xs font-bold text-white bg-blue-500">✨ Get AI Feedback</button>
-            </div>
-            <div id="q9-feedback" class="mt-2 hidden"></div>
-          </div>
-
-          <!-- 2.5 RISKS & MITIGATION -->
-          <div class="rounded-xl border-2 border-blue-200 bg-blue-50 p-4 sm:p-5">
-            <h3 class="mb-1 text-base sm:text-lg font-bold text-blue-800 flex items-center gap-2">
-              <span class="flex items-center justify-center w-6 h-6 rounded-full bg-blue-500 text-white font-extrabold text-xs">★</span>
-              <span data-i18n="q10label">Risks & Mitigation</span>
-            </h3>
-            <p class="text-xs text-blue-500 mb-3 leading-relaxed" data-i18n="q10hint">What could go wrong? How will you address these challenges?</p>
-            <textarea id="q10" class="w-full p-3 rounded-xl border-2 border-blue-200 outline-none focus:border-blue-500 text-sm bg-white" rows="4"
-              placeholder="Risk 1: ... Mitigation: ...&#10;Risk 2: ... Mitigation: ..."></textarea>
-            <div class="mt-2 flex justify-end">
-              <button onclick="getAIFeedback('q10','step2')" class="nav-btn tab-2 px-4 py-2 rounded-lg text-xs font-bold text-white bg-blue-500">✨ Get AI Feedback</button>
-            </div>
-            <div id="q10-feedback" class="mt-2 hidden"></div>
-          </div>
-
-          <div class="flex justify-between pt-2">
-            <button onclick="goToStep(1)" class="nav-btn tab-1 px-6 py-3 rounded-xl text-sm font-bold text-white bg-amber-500 shadow-md">← Back: Problem</button>
-            <button onclick="goToStep(3)" class="nav-btn tab-3 px-6 py-3 rounded-xl text-sm font-bold text-white bg-emerald-600 shadow-md">Next: Action →</button>
-          </div>
+        <div>
+          <label class="text-xs font-bold text-emerald-700 uppercase tracking-wider">Anticipated Q&amp;A / 预期问答</label>
+          <textarea id="q14" class="mt-1 w-full p-3 rounded-xl border-2 border-emerald-200 outline-none focus:border-emerald-500 text-sm bg-white" rows="4"
+            placeholder="Q: ...&#10;A: ...&#10;&#10;Q: ...&#10;A: ..."></textarea>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- ===== STEP 3: ACTION ===== -->
-    <section id="step3" class="step-section">
-      <div class="rounded-2xl border-t-8 border-emerald-500 bg-white p-4 sm:p-6 md:p-8 shadow-lg card-elevated space-y-5">
+    <div class="flex justify-between pt-2">
+      <button onclick="goToStep(2)" class="nav-btn tab-2 px-6 py-3 rounded-xl text-sm font-bold text-white bg-blue-500 shadow-md">← Back: Solution</button>
+      <button onclick="goToStep(4)" class="nav-btn tab-4 px-6 py-3 rounded-xl text-sm font-bold text-white bg-purple-600 shadow-md">Next: Present →</button>
+    </div>
+  </div>
+</section>
 
-        <!-- Resource Bar -->
-        <div class="resource-bar">
-          <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">📚 Resources:</span>
-          <a href="https://www.canva.com" target="_blank" class="resource-btn bg-purple-600 hover:bg-purple-700">🎨 Canva</a>
-          <a href="https://www.globalgoals.org" target="_blank" class="resource-btn bg-blue-600 hover:bg-blue-700">🌐 Global Goals</a>
-          <a href="https://go.gov.sg/ahsglobalclassroom" target="_blank" class="resource-btn bg-emerald-600 hover:bg-emerald-700">🏫 GC Microsite</a>
-        </div>
+<!-- ===== STEP 4: PRESENT ===== -->
+<section id="step4" class="step-section">
+  <div class="rounded-2xl border-t-8 border-purple-500 bg-white p-4 sm:p-6 md:p-8 shadow-lg card-elevated space-y-5">
 
-        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-          <div>
-            <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-emerald-600" data-i18n="step3Title">Step 3: Action</h2>
-            <p class="text-xs sm:text-sm text-slate-500 mt-0.5" data-i18n="step3Sub">Plan and document your action steps</p>
-          </div>
-          <span class="badge bg-emerald-100 text-emerald-800">PHASE 3</span>
-        </div>
+    <div class="resource-bar">
+      <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">📚 Resources:</span>
+      <a href="https://www.canva.com/presentations/" target="_blank" class="resource-btn bg-purple-600 hover:bg-purple-700">🎨 Canva Slides</a>
+      <a href="https://www.ted.com/talks/nancy_duarte_the_secret_structure_of_great_talks" target="_blank" class="resource-btn bg-red-500 hover:bg-red-600">🎤 TED: Great Talks</a>
+      <a href="https://go.gov.sg/ahsglobalclassroom" target="_blank" class="resource-btn bg-emerald-600 hover:bg-emerald-700">🏫 GC Microsite</a>
+    </div>
 
-        <div class="space-y-5">
-
-          <!-- 3.1 ACTION PLAN -->
-          <div class="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 sm:p-5">
-            <h3 class="mb-1 text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
-              <span class="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 font-extrabold text-xs">1</span>
-              <span data-i18n="q11label">Action Plan</span>
-            </h3>
-            <p class="text-xs text-slate-400 mb-3 leading-relaxed" data-i18n="q11hint">Break your solution into concrete, time-bound action steps. Who does what, and by when?</p>
-            <textarea id="q11" class="w-full p-3 rounded-xl border-2 border-slate-200 outline-none focus:border-emerald-400 text-sm" rows="5"
-              placeholder="Step 1: [Action] — Responsible: [Name] — By: [Date]&#10;Step 2: [Action] — Responsible: [Name] — By: [Date]&#10;Step 3: ..."></textarea>
-            <div class="mt-2 flex justify-end">
-              <button onclick="getAIFeedback('q11','step3')" class="nav-btn tab-3 px-4 py-2 rounded-lg text-xs font-bold text-white bg-emerald-600">✨ Get AI Feedback</button>
-            </div>
-            <div id="q11-feedback" class="mt-2 hidden"></div>
-          </div>
-
-          <!-- 3.2 RESOURCES NEEDED -->
-          <div class="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 sm:p-5">
-            <h3 class="mb-1 text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
-              <span class="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 font-extrabold text-xs">2</span>
-              <span data-i18n="q12label">Resources Needed</span>
-            </h3>
-            <p class="text-xs text-slate-400 mb-3 leading-relaxed" data-i18n="q12hint">What people, materials, funding, or partnerships do you need to execute your plan?</p>
-            <textarea id="q12" class="w-full p-3 rounded-xl border-2 border-slate-200 outline-none focus:border-emerald-400 text-sm" rows="4"
-              placeholder="Human resources: ...&#10;Materials/tools: ...&#10;Funding: ...&#10;Partnerships: ..."></textarea>
-            <div class="mt-2 flex justify-end">
-              <button onclick="getAIFeedback('q12','step3')" class="nav-btn tab-3 px-4 py-2 rounded-lg text-xs font-bold text-white bg-emerald-600">✨ Get AI Feedback</button>
-            </div>
-            <div id="q12-feedback" class="mt-2 hidden"></div>
-          </div>
-
-          <!-- 3.3 MEASURING IMPACT -->
-          <div class="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 sm:p-5">
-            <h3 class="mb-1 text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
-              <span class="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 font-extrabold text-xs">3</span>
-              <span data-i18n="q13label">Measuring Impact</span>
-            </h3>
-            <p class="text-xs text-slate-400 mb-3 leading-relaxed" data-i18n="q13hint">How will you know your solution is working? Define 2–3 measurable indicators of success.</p>
-            <textarea id="q13" class="w-full p-3 rounded-xl border-2 border-slate-200 outline-none focus:border-emerald-400 text-sm" rows="4"
-              placeholder="Indicator 1: ...&#10;Indicator 2: ...&#10;Indicator 3: ...&#10;How we will measure: ..."></textarea>
-            <div class="mt-2 flex justify-end">
-              <button onclick="getAIFeedback('q13','step3')" class="nav-btn tab-3 px-4 py-2 rounded-lg text-xs font-bold text-white bg-emerald-600">✨ Get AI Feedback</button>
-            </div>
-            <div id="q13-feedback" class="mt-2 hidden"></div>
-          </div>
-
-          <!-- 3.4 REFLECTION -->
-          <div class="rounded-xl border-2 border-emerald-200 bg-emerald-50 p-4 sm:p-5">
-            <h3 class="mb-1 text-base sm:text-lg font-bold text-emerald-800 flex items-center gap-2">
-              <span class="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500 text-white font-extrabold text-xs">★</span>
-              <span data-i18n="q14label">Team Reflection</span>
-            </h3>
-            <p class="text-xs text-emerald-600 mb-3 leading-relaxed" data-i18n="q14hint">Reflect on your team's journey. What did you learn? What would you do differently?</p>
-            <textarea id="q14" class="w-full p-3 rounded-xl border-2 border-emerald-200 outline-none focus:border-emerald-500 text-sm bg-white" rows="4"
-              placeholder="What we learned: ...&#10;What surprised us: ...&#10;What we would do differently: ...&#10;How this changed our perspective: ..."></textarea>
-            <div class="mt-2 flex justify-end">
-              <button onclick="getAIFeedback('q14','step3')" class="nav-btn tab-3 px-4 py-2 rounded-lg text-xs font-bold text-white bg-emerald-600">✨ Get AI Feedback</button>
-            </div>
-            <div id="q14-feedback" class="mt-2 hidden"></div>
-          </div>
-
-          <div class="flex justify-between pt-2">
-            <button onclick="goToStep(2)" class="nav-btn tab-2 px-6 py-3 rounded-xl text-sm font-bold text-white bg-blue-500 shadow-md">← Back: Solution</button>
-            <button onclick="goToStep(4)" class="nav-btn tab-4 px-6 py-3 rounded-xl text-sm font-bold text-white bg-purple-600 shadow-md">Next: Present →</button>
-          </div>
-        </div>
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+      <div>
+        <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-purple-600">Step 4: Present</h2>
+        <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Craft and rehearse your presentation</p>
       </div>
-    </section>
+      <span class="badge bg-purple-100 text-purple-800">PHASE 4</span>
+    </div>
 
-    <!-- ===== STEP 4: PRESENT ===== -->
-    <section id="step4" class="step-section">
-      <div class="rounded-2xl border-t-8 border-purple-500 bg-white p-4 sm:p-6 md:p-8 shadow-lg card-elevated space-y-5">
-
-        <!-- Resource Bar -->
-        <div class="resource-bar">
-          <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">📚 Resources:</span>
-          <a href="https://www.canva.com/presentations/" target="_blank" class="resource-btn bg-purple-600 hover:bg-purple-700">🎨 Canva Slides</a>
-          <a href="https://www.ted.com/talks/nancy_duarte_the_secret_structure_of_great_talks" target="_blank" class="resource-btn bg-red-500 hover:bg-red-600">🎤 TED: Great Talks</a>
-          <a href="https://go.gov.sg/ahsglobalclassroom" target="_blank" class="resource-btn bg-emerald-600 hover:bg-emerald-700">🏫 GC Microsite</a>
-        </div>
-
-        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-          <div>
-            <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-purple-600" data-i18n="step4Title">Step 4: Present</h2>
-            <p class="text-xs sm:text-sm text-slate-500 mt-0.5" data-i18n="step4Sub">Craft and rehearse your presentation</p>
-          </div>
-          <span class="badge bg-purple-100 text-purple-800">PHASE 4</span>
-        </div>
-
-        <div class="space-y-5">
-
-          <!-- 4.1 PITCH STRUCTURE -->
-          <div class="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 sm:p-5">
-            <h3 class="mb-1 text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
-              <span class="flex items-center justify-center w-6 h-6 rounded-full bg-purple-100 text-purple-700 font-extrabold text-xs">1</span>
-              <span data-i18n="q15label">Pitch Structure</span>
-            </h3>
-            <p class="text-xs text-slate-400 mb-3 leading-relaxed" data-i18n="q15hint">Outline your presentation structure. A strong pitch covers: hook, problem, solution, evidence, call to action.</p>
-            <textarea id="q15" class="w-full p-3 rounded-xl border-2 border-slate-200 outline-none focus:border-purple-400 text-sm" rows="5"
-              placeholder="Hook: ...&#10;Problem: ...&#10;Solution: ...&#10;Evidence/Impact: ...&#10;Call to Action: ..."></textarea>
-            <div class="mt-2 flex justify-end">
-              <button onclick="getAIFeedback('q15','step4')" class="nav-btn tab-4 px-4 py-2 rounded-lg text-xs font-bold text-white bg-purple-600">✨ Get AI Feedback</button>
-            </div>
-            <div id="q15-feedback" class="mt-2 hidden"></div>
-          </div>
-
-          <!-- 4.2 STORYTELLING -->
-          <div class="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 sm:p-5">
-            <h3 class="mb-1 text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
-              <span class="flex items-center justify-center w-6 h-6 rounded-full bg-purple-100 text-purple-700 font-extrabold text-xs">2</span>
-              <span data-i18n="q16label">Storytelling Element</span>
-            </h3>
-            <p class="text-xs text-slate-400 mb-3 leading-relaxed" data-i18n="q16hint">Great presentations use stories to connect emotionally. Describe a real or hypothetical story of someone affected by your issue.</p>
-            <textarea id="q16" class="w-full p-3 rounded-xl border-2 border-slate-200 outline-none focus:border-purple-400 text-sm" rows="4"
-              placeholder="Meet [name/persona]... They face [problem] because... Your solution would help them by..."></textarea>
-            <div class="mt-2 flex justify-end">
-              <button onclick="getAIFeedback('q16','step4')" class="nav-btn tab-4 px-4 py-2 rounded-lg text-xs font-bold text-white bg-purple-600">✨ Get AI Feedback</button>
-            </div>
-            <div id="q16-feedback" class="mt-2 hidden"></div>
-          </div>
-
-          <!-- 4.3 DATA & EVIDENCE -->
-          <div class="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 sm:p-5">
-            <h3 class="mb-1 text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
-              <span class="flex items-center justify-center w-6 h-6 rounded-full bg-purple-100 text-purple-700 font-extrabold text-xs">3</span>
-              <span data-i18n="q17label">Data & Evidence</span>
-            </h3>
-            <p class="text-xs text-slate-400 mb-3 leading-relaxed" data-i18n="q17hint">What statistics, research, or evidence will you use to support your argument? Cite your sources.</p>
-            <textarea id="q17" class="w-full p-3 rounded-xl border-2 border-slate-200 outline-none focus:border-purple-400 text-sm" rows="4"
-              placeholder="Statistic 1: ... (Source: ...)&#10;Statistic 2: ... (Source: ...)&#10;Research finding: ... (Source: ...)"></textarea>
-            <div class="mt-2 flex justify-end">
-              <button onclick="getAIFeedback('q17','step4')" class="nav-btn tab-4 px-4 py-2 rounded-lg text-xs font-bold text-white bg-purple-600">✨ Get AI Feedback</button>
-            </div>
-            <div id="q17-feedback" class="mt-2 hidden"></div>
-          </div>
-
-          <!-- 4.4 ANTICIPATED Q&A -->
-          <div class="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 sm:p-5">
-            <h3 class="mb-1 text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
-              <span class="flex items-center justify-center w-6 h-6 rounded-full bg-purple-100 text-purple-700 font-extrabold text-xs">4</span>
-              <span data-i18n="q18label">Anticipated Q&A</span>
-            </h3>
-            <p class="text-xs text-slate-400 mb-3 leading-relaxed" data-i18n="q18hint">What tough questions might judges or the audience ask? Prepare your answers in advance.</p>
-            <textarea id="q18" class="w-full p-3 rounded-xl border-2 border-slate-200 outline-none focus:border-purple-400 text-sm" rows="4"
-              placeholder="Q: ...&#10;A: ...&#10;&#10;Q: ...&#10;A: ..."></textarea>
-            <div class="mt-2 flex justify-end">
-              <button onclick="getAIFeedback('q18','step4')" class="nav-btn tab-4 px-4 py-2 rounded-lg text-xs font-bold text-white bg-purple-600">✨ Get AI Feedback</button>
-            </div>
-            <div id="q18-feedback" class="mt-2 hidden"></div>
-          </div>
-
-          <!-- 4.5 FINAL SUMMARY -->
-          <div class="rounded-xl border-2 border-purple-300 bg-purple-50 p-4 sm:p-5">
-            <h3 class="mb-1 text-base sm:text-lg font-bold text-purple-800 flex items-center gap-2">
-              <span class="flex items-center justify-center w-6 h-6 rounded-full bg-purple-500 text-white font-extrabold text-xs">★</span>
-              <span data-i18n="q19label">Final Summary Statement</span>
-            </h3>
-            <p class="text-xs text-purple-500 mb-3 leading-relaxed" data-i18n="q19hint">Write a compelling 3–5 sentence summary of your entire project. This is your elevator pitch.</p>
-            <textarea id="q19" class="w-full p-3 rounded-xl border-2 border-purple-200 outline-none focus:border-purple-500 text-sm bg-white" rows="4"
-              placeholder="Our team identified the problem of... We designed a solution that... Our plan involves... We believe this will lead to... We call on you to..."></textarea>
-            <div class="mt-2 flex justify-end">
-              <button onclick="getAIFeedback('q19','step4')" class="nav-btn tab-4 px-4 py-2 rounded-lg text-xs font-bold text-white bg-purple-600">✨ Get AI Feedback</button>
-            </div>
-            <div id="q19-feedback" class="mt-2 hidden"></div>
-          </div>
-
-          <div class="flex justify-between pt-2">
-            <button onclick="goToStep(3)" class="nav-btn tab-3 px-6 py-3 rounded-xl text-sm font-bold text-white bg-emerald-500 shadow-md">← Back: Action</button>
-            <button onclick="exportPDF()" class="px-6 py-3 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-purple-600 to-pink-500 shadow-md hover:opacity-90 transition">📄 Export as PDF</button>
-          </div>
-        </div>
+    <div class="space-y-5">
+      <div class="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 sm:p-5">
+        <h3 class="mb-1 text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
+          <span class="flex items-center justify-center w-6 h-6 rounded-full bg-purple-100 text-purple-700 font-extrabold text-xs">1</span>
+          Pitch Structure
+        </h3>
+        <p class="text-xs text-slate-400 mb-3 leading-relaxed">Outline your presentation structure. A strong pitch covers: hook, problem, solution, evidence, call to action.</p>
+        <textarea id="q15" class="w-full p-3 rounded-xl border-2 border-slate-200 outline-none focus:border-purple-400 text-sm" rows="5"
+          placeholder="Hook: ...&#10;Problem: ...&#10;Solution: ...&#10;Evidence/Impact: ...&#10;Call to Action: ..."></textarea>
       </div>
-    </section>
 
-  </main>
+      <div class="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 sm:p-5">
+        <h3 class="mb-1 text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
+          <span class="flex items-center justify-center w-6 h-6 rounded-full bg-purple-100 text-purple-700 font-extrabold text-xs">2</span>
+          Storytelling Element
+        </h3>
+        <p class="text-xs text-slate-400 mb-3 leading-relaxed">Great presentations use stories to connect emotionally. Describe a real or hypothetical story of someone affected by your issue.</p>
+        <textarea id="q16" class="w-full p-3 rounded-xl border-2 border-slate-200 outline-none focus:border-purple-400 text-sm" rows="4"
+          placeholder="Meet [name/persona]... They face [problem] because... Your solution would help them by..."></textarea>
+      </div>
 
-  <!-- ===== FOOTER ===== -->
-  <footer class="mt-10 mb-6 text-center text-xs text-slate-400 space-y-1">
-    <p data-i18n="footerLine1">Built for AHS Global Classroom Programme</p>
-    <p data-i18n="footerLine2">Powered by AI — Always think critically about AI-generated feedback.</p>
-  </footer>
+      <div class="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 sm:p-5">
+        <h3 class="mb-1 text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
+          <span class="flex items-center justify-center w-6 h-6 rounded-full bg-purple-100 text-purple-700 font-extrabold text-xs">3</span>
+          Data &amp; Evidence
+        </h3>
+        <p class="text-xs text-slate-400 mb-3 leading-relaxed">What statistics, research, or evidence will you use to support your argument? Cite your sources.</p>
+        <textarea id="q17" class="w-full p-3 rounded-xl border-2 border-slate-200 outline-none focus:border-purple-400 text-sm" rows="4"
+          placeholder="Statistic 1: ... (Source: ...)&#10;Statistic 2: ... (Source: ...)&#10;Research finding: ... (Source: ...)"></textarea>
+      </div>
 
-</div><!-- end #app -->
+      <div class="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 sm:p-5">
+        <h3 class="mb-1 text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
+          <span class="flex items-center justify-center w-6 h-6 rounded-full bg-purple-100 text-purple-700 font-extrabold text-xs">4</span>
+          Anticipated Q&amp;A
+        </h3>
+        <p class="text-xs text-slate-400 mb-3 leading-relaxed">What tough questions might judges or the audience ask? Prepare your answers in advance.</p>
+        <textarea id="q18" class="w-full p-3 rounded-xl border-2 border-slate-200 outline-none focus:border-purple-400 text-sm" rows="4"
+          placeholder="Q: ...&#10;A: ...&#10;&#10;Q: ...&#10;A: ..."></textarea>
+      </div>
+
+      <div class="rounded-xl border-2 border-purple-300 bg-purple-50 p-4 sm:p-5">
+        <h3 class="mb-1 text-base sm:text-lg font-bold text-purple-800 flex items-center gap-2">
+          <span class="flex items-center justify-center w-6 h-6 rounded-full bg-purple-500 text-white font-extrabold text-xs">★</span>
+          Final Summary Statement
+        </h3>
+        <p class="text-xs text-purple-500 mb-3 leading-relaxed">Write a compelling 3–5 sentence summary of your entire project. This is your elevator pitch.</p>
+        <textarea id="q19" class="w-full p-3 rounded-xl border-2 border-purple-200 outline-none focus:border-purple-500 text-sm bg-white" rows="4"
+          placeholder="Our team identified the problem of... We designed a solution that... Our plan involves... We believe this will lead to... We call on you to..."></textarea>
+      </div>
+    </div>
+
+    <div class="flex justify-between pt-2">
+      <button onclick="goToStep(3)" class="nav-btn tab-3 px-6 py-3 rounded-xl text-sm font-bold text-white bg-emerald-500 shadow-md">← Back: Action</button>
+      <button onclick="exportPDF()" class="px-6 py-3 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-purple-600 to-pink-500 shadow-md hover:opacity-90 transition">📄 Export as PDF</button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="mt-10 mb-6 text-center text-xs text-slate-400 space-y-1">
+  <p>Built for AHS Global Classroom Programme</p>
+  <p>Powered by AI — Always think critically about AI-generated feedback.</p>
+</footer>
+
+</div><!-- end #appContainer -->
 
 <!-- ===== JAVASCRIPT ===== -->
+<script>
+
+// ── Theme Toggle ──────────────────────────────────────────────────────────
+function applyTheme(dark) {
+  document.body.classList.toggle('dark-mode', dark);
+  const icon = dark ? '☀️' : '🌙';
+  ['appThemeToggle','appThemeToggle2','gateThemeToggle'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = id === 'appThemeToggle2' ? icon + ' Theme' : icon;
+  });
+  localStorage.setItem('darkMode', dark ? '1' : '0');
+}
+['appThemeToggle','appThemeToggle2','gateThemeToggle'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('click', () => applyTheme(!document.body.classList.contains('dark-mode')));
+});
+
+// ── Login ─────────────────────────────────────────────────────────────────
+document.getElementById('loginBtn').addEventListener('click', () => {
+  const year  = document.getElementById('loginYear').value;
+  const city  = document.getElementById('loginCity').value;
+  const group = document.getElementById('loginGroup').value;
+  const errEl = document.getElementById('loginError');
+  if (!year || !city || !group) {
+    errEl.textContent = 'Please select a Year, City and Group to continue.';
+    errEl.classList.remove('hidden');
+    return;
+  }
+  errEl.classList.add('hidden');
+  document.getElementById('selectYear').value  = year;
+  document.getElementById('selectTrip').value  = city;
+  document.getElementById('selectGroup').value = group;
+  updateGroupId();
+  document.getElementById('userDisplay').textContent = `${year} · ${city} · Group ${group}`;
+  localStorage.setItem('loginYear',  year);
+  localStorage.setItem('loginCity',  city);
+  localStorage.setItem('loginGroup', group);
+  document.getElementById('loginGate').classList.add('hidden');
+  document.getElementById('appContainer').classList.remove('hidden');
+});
+
+// ── Logout ────────────────────────────────────────────────────────────────
+function doLogout() {
+  document.getElementById('appContainer').classList.add('hidden');
+  document.getElementById('loginGate').classList.remove('hidden');
+  ['loginYear','loginCity','loginGroup'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  document.getElementById('loginError').classList.add('hidden');
+}
+document.getElementById('logoutBtn').addEventListener('click',  doLogout);
+document.getElementById('logoutBtn2').addEventListener('click', doLogout);
+
+// ── Group ID Display ──────────────────────────────────────────────────────
+function updateGroupId() {
+  const year  = document.getElementById('selectYear').value  || '--';
+  const city  = document.getElementById('selectTrip').value  || '--';
+  const group = document.getElementById('selectGroup').value || '--';
+  document.getElementById('groupIdDisplay').textContent =
+    (year !== '--' && city !== '--' && group !== '--')
+      ? `${year} · ${city} · G${group}`
+      : '-- / -- / --';
+}
+['selectYear','selectTrip','selectGroup'].forEach(id => {
+  document.getElementById(id).addEventListener('change', updateGroupId);
+});
+
+// ── Tab / Step Navigation ─────────────────────────────────────────────────
+function goToStep(n) {
+  document.querySelectorAll('.step-section').forEach(s => s.classList.remove('active'));
+  const target = document.getElementById('step' + n);
+  if (target) target.classList.add('active');
+  document.querySelectorAll('.nav-btn[data-step]').forEach(btn => {
+    btn.classList.remove('active');
+    if (parseInt(btn.dataset.step) === n) btn.classList.add('active');
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+document.querySelectorAll('.nav-btn[data-step]').forEach(btn => {
+  btn.addEventListener('click', () => goToStep(parseInt(btn.dataset.step)));
+});
+
+// ── SDG Selector ──────────────────────────────────────────────────────────
+function selectSDG(btn) {
+  document.querySelectorAll('.sdg-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  const sdg = btn.dataset.sdg;
+  document.getElementById('sdgSelectedText').textContent = sdg;
+  document.getElementById('sdgSelectedDisplay').classList.remove('hidden');
+  localStorage.setItem('selectedSDG', sdg);
+}
+
+// ── Criteria Table ────────────────────────────────────────────────────────
+let extraCritCount = 4; // we start with 4 criteria columns
+
+function recalcRow(input) {
+  const row = input.closest('tr');
+  const scores = row.querySelectorAll('.score-cell');
+  let total = 0;
+  scores.forEach(s => { total += parseFloat(s.value) || 0; });
+  row.querySelector('.row-total').textContent = total;
+}
+
+function addCriteriaRow() {
+  const tbody = document.getElementById('criteriaBody');
+  const headerCells = document.querySelectorAll('#criteriaHeaderRow th');
+  // number of score columns = total headers - 2 (solution name + total)
+  const scoreCols = headerCells.length - 2;
+  let scoreTds = '';
+  for (let i = 0; i < scoreCols; i++) {
+    scoreTds += `<td><input type="number" min="0" max="10" class="score-cell" oninput="recalcRow(this)" /></td>`;
+  }
+  const tr = document.createElement('tr');
+  tr.innerHTML = `<td><input type="text" placeholder="Solution" class="sol-name" /></td>${scoreTds}<td class="row-total font-bold text-blue-700">0</td>`;
+  tbody.appendChild(tr);
+}
+
+function removeCriteriaRow() {
+  const tbody = document.getElementById('criteriaBody');
+  if (tbody.rows.length > 1) tbody.deleteRow(tbody.rows.length - 1);
+}
+
+function addCriteriaColumn() {
+  extraCritCount++;
+  const headerRow = document.getElementById('criteriaHeaderRow');
+  // Insert before the last "Total" th
+  const totalTh = headerRow.lastElementChild;
+  const newTh = document.createElement('th');
+  newTh.innerHTML = `<input type="text" id="crit${extraCritCount}" value="Criteria ${extraCritCount}" class="criteria-header-input" oninput="updateCriteriaHeaders()" />`;
+  headerRow.insertBefore(newTh, totalTh);
+
+  // Add a score cell to each body row before the total cell
+  const tbody = document.getElementById('criteriaBody');
+  Array.from(tbody.rows).forEach(row => {
+    const totalTd = row.lastElementChild;
+    const newTd = document.createElement('td');
+    newTd.innerHTML = `<input type="number" min="0" max="10" class="score-cell" oninput="recalcRow(this)" />`;
+    row.insertBefore(newTd, totalTd);
+  });
+}
+
+function removeCriteriaColumn() {
+  const headerRow = document.getElementById('criteriaHeaderRow');
+  // Must keep at least: solution name + 1 criteria + total = 3 columns
+  if (headerRow.children.length <= 3) return;
+  // Remove second-to-last th (before Total)
+  headerRow.removeChild(headerRow.children[headerRow.children.length - 2]);
+
+  const tbody = document.getElementById('criteriaBody');
+  Array.from(tbody.rows).forEach(row => {
+    // Remove second-to-last td (before total)
+    row.removeChild(row.children[row.children.length - 2]);
+    recalcRow(row.querySelector('.score-cell'));
+  });
+}
+
+function updateCriteriaHeaders() {
+  // No-op: inputs are live in the header cells themselves
+}
+
+// ── Auto-save to localStorage ─────────────────────────────────────────────
+const fieldIds = [
+  'q3','q4a','q4b','q4c','q4d',
+  'q6','q10',
+  'q11','q12','q13','q14',
+  'q15','q16','q17','q18','q19',
+  'teamMembers'
+];
+
+function saveAll() {
+  fieldIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) localStorage.setItem(id, el.value);
+  });
+}
+
+function loadAll() {
+  fieldIds.forEach(id => {
+    const el = document.getElementById(id);
+    const saved = localStorage.getItem(id);
+    if (el && saved) el.value = saved;
+  });
+
+  // Restore SDG
+  const savedSDG = localStorage.getItem('selectedSDG');
+  if (savedSDG) {
+    document.querySelectorAll('.sdg-btn').forEach(btn => {
+      if (btn.dataset.sdg === savedSDG) {
+        btn.classList.add('selected');
+        document.getElementById('sdgSelectedText').textContent = savedSDG;
+        document.getElementById('sdgSelectedDisplay').classList.remove('hidden');
+      }
+    });
+  }
+
+  // Restore gate states
+  if (localStorage.getItem('step1Passed') === '1') unlockStep2();
+  if (localStorage.getItem('step2Passed') === '1') unlockStep3();
+
+  // Restore login session
+  const savedYear  = localStorage.getItem('loginYear');
+  const savedCity  = localStorage.getItem('loginCity');
+  const savedGroup = localStorage.getItem('loginGroup');
+  if (savedYear && savedCity && savedGroup) {
+    document.getElementById('selectYear').value  = savedYear;
+    document.getElementById('selectTrip').value  = savedCity;
+    document.getElementById('selectGroup').value = savedGroup;
+    document.getElementById('userDisplay').textContent = `${savedYear} · ${savedCity} · Group ${savedGroup}`;
+    updateGroupId();
+    document.getElementById('loginGate').classList.add('hidden');
+    document.getElementById('appContainer').classList.remove('hidden');
+  }
+}
+
+fieldIds.forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('input', saveAll);
+});
+
+// ── Gate helpers ──────────────────────────────────────────────────────────
+function unlockStep2() {
+  const btn = document.getElementById('toStep2Btn');
+  if (btn) {
+    btn.disabled = false;
+    btn.classList.remove('opacity-40','cursor-not-allowed');
+  }
+}
+function unlockStep3() {
+  const btn = document.getElementById('toStep3Btn');
+  if (btn) {
+    btn.disabled = false;
+    btn.classList.remove('opacity-40','cursor-not-allowed');
+  }
+}
+
+// ── Problem Statement Generator ───────────────────────────────────────────
+function buildProblemStatement() {
+  const a = (document.getElementById('q4a').value || '').trim();
+  const b = (document.getElementById('q4b').value || '').trim();
+  const c = (document.getElementById('q4c').value || '').trim();
+  const d = (document.getElementById('q4d').value || '').trim();
+  if (!a && !b && !c && !d) return '';
+  return [a, b, c, d].filter(Boolean).join(' ');
+}
+
+// ── Solution Statement Generator ─────────────────────────────────────────
+function buildSolutionStatement() {
+  return (document.getElementById('q10').value || '').trim();
+}
+
+// ── AI Feedback: Step 1 ───────────────────────────────────────────────────
+async function getStep1Feedback() {
+  const challenges   = (document.getElementById('q3').value  || '').trim();
+  const condStmt     = (document.getElementById('q4a').value || '').trim();
+  const stemKVP      = (document.getElementById('q4b').value || '').trim();
+  const purpose      = (document.getElementById('q4c').value || '').trim();
+  const futureScene  = (document.getElementById('q4d').value || '').trim();
+  const sdg          = localStorage.getItem('selectedSDG') || 'an SDG';
+  const feedbackEl   = document.getElementById('step1-feedback');
+  const scoreEl      = document.getElementById('step1-score-display');
+
+  if (!challenges || !condStmt || !stemKVP || !purpose || !futureScene) {
+    feedbackEl.classList.remove('hidden');
+    feedbackEl.innerHTML = '<p class="text-xs text-red-500 p-2">Please complete all fields (challenges and all four parts of the problem statement) before requesting feedback.</p>';
+    return;
+  }
+
+  // Auto-generate and display the combined problem statement
+  const ps = buildProblemStatement();
+  document.getElementById('problemStatementText').textContent = ps;
+  document.getElementById('generatedProblemStatement').classList.remove('hidden');
+
+  feedbackEl.classList.remove('hidden');
+  scoreEl.classList.remove('hidden');
+  feedbackEl.innerHTML = '<p class="text-xs text-slate-400 p-2 animate-pulse">✨ Generating feedback...</p>';
+  scoreEl.innerHTML = '';
+
+  const prompt = `You are an experienced teacher evaluating a student's Global Literacy Project work focused on ${sdg}.
+
+The student identified these challenges:
+"${challenges}"
+
+Their problem statement (4 parts):
+- Condition Statement: "${condStmt}"
+- Stem + Key Verb Phrase: "${stemKVP}"
+- Purpose: "${purpose}"
+- Future Scene Parameters: "${futureScene}"
+
+Please evaluate using this rubric (each criterion scored 1–2, total out of 10):
+1. Identifies 3–4 relevant challenges linked to the chosen SDG (1–2 pts)
+2. Explains clearly WHY each challenge is a problem (1–2 pts)
+3. Condition Statement is specific and evidence-based (1–2 pts)
+4. Stem + Key Verb Phrase is clear and actionable (1–2 pts)
+5. Purpose and Future Scene Parameters are realistic and well-defined (1–2 pts)
+
+Respond in this exact format:
+SCORE: [total]/10
+FEEDBACK: [2–3 sentences of constructive feedback highlighting strengths and one specific improvement]
+CRITERIA:
+1. Challenges identified: [score]/2 — [one sentence comment]
+2. Why it's a challenge: [score]/2 — [one sentence comment]
+3. Condition Statement: [score]/2 — [one sentence comment]
+4. Stem + Key Verb Phrase: [score]/2 — [one sentence comment]
+5. Purpose & Future Scene: [score]/2 — [one sentence comment]`;
+
+  try {
+    const response = await fetch('/api/feedback', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prompt })
+    });
+    if (!response.ok) throw new Error('API error');
+    const data = await response.json();
+    const text = data.feedback || data.message || '';
+
+    // Parse score
+    const scoreMatch = text.match(/SCORE:\s*(\d+(?:\.\d+)?)\s*\/\s*10/i);
+    const score = scoreMatch ? parseFloat(scoreMatch[1]) : null;
+
+    // Parse feedback block
+    const feedbackMatch = text.match(/FEEDBACK:\s*([\s\S]*?)(?=CRITERIA:|$)/i);
+    const feedbackText  = feedbackMatch ? feedbackMatch[1].trim() : text;
+
+    // Parse criteria lines
+    const criteriaMatch = text.match(/CRITERIA:([\s\S]*)/i);
+    const criteriaText  = criteriaMatch ? criteriaMatch[1].trim() : '';
+    const criteriaLines = criteriaText.split('\n').filter(l => l.trim());
+
+    let criteriaHTML = '';
+    criteriaLines.forEach(line => {
+      criteriaHTML += `<p class="text-xs text-amber-800 border-b border-amber-100 pb-1">${line.trim()}</p>`;
+    });
+
+    const passed = score !== null && score >= 6;
+
+    feedbackEl.innerHTML = `
+      <div class="mt-2 p-4 rounded-xl bg-amber-50 border border-amber-200 space-y-3">
+        <div class="flex items-center gap-3">
+          <span class="text-2xl font-extrabold ${passed ? 'text-emerald-600' : 'text-red-500'}">${score !== null ? score + '/10' : 'N/A'}</span>
+          <span class="text-xs font-bold px-2 py-1 rounded-full ${passed ? 'bg-emerald-100 text-emerald-700' : 'bg-red-100 text-red-700'}">${passed ? '✅ Passed — you may proceed' : '❌ Score below 6 — please revise'}</span>
+        </div>
+        <div>
+          <p class="text-xs font-bold text-amber-700 mb-1">Overall Feedback:</p>
+          <p class="text-xs text-amber-800 leading-relaxed">${feedbackText}</p>
+        </div>
+        ${criteriaHTML ? `<div><p class="text-xs font-bold text-amber-700 mb-1">Criteria Breakdown:</p>${criteriaHTML}</div>` : ''}
+      </div>`;
+
+    scoreEl.innerHTML = '';
+
+    if (passed) {
+      localStorage.setItem('step1Passed', '1');
+      unlockStep2();
+    } else {
+      localStorage.removeItem('step1Passed');
+      const btn = document.getElementById('toStep2Btn');
+      if (btn) {
+        btn.disabled = true;
+        btn.classList.add('opacity-40','cursor-not-allowed');
+      }
+    }
+
+  } catch (err) {
+        feedbackEl.innerHTML = `<p class="text-xs text-red-500 p-2">⚠️ Could not retrieve feedback. Please check your connection and try again.</p>`;
+    console.error('Step 1 feedback error:', err);
+  }
+}
+
+// ── AI Feedback: Step 2 ───────────────────────────────────────────────────
+async function getStep2Feedback() {
+  const solution   = (document.getElementById('q10').value || '').trim();
+  const sdg        = localStorage.getItem('selectedSDG') || 'an SDG';
+  const feedbackEl = document.getElementById('step2-feedback');
+  const scoreEl    = document.getElementById('step2-score-display');
+
+  if (!solution) {
+    feedbackEl.classList.remove('hidden');
+    feedbackEl.innerHTML = '<p class="text-xs text-red-500 p-2">Please describe your solution before requesting feedback.</p>';
+    return;
+  }
+
+  // Auto-generate and display the combined solution statement
+  const ss = buildSolutionStatement();
+  document.getElementById('solutionStatementText').textContent = ss;
+  document.getElementById('generatedSolutionStatement').classList.remove('hidden');
+
+  feedbackEl.classList.remove('hidden');
+  if (scoreEl) scoreEl.classList.remove('hidden');
+  feedbackEl.innerHTML = '<p class="text-xs text-slate-400 p-2 animate-pulse">✨ Generating feedback...</p>';
+  if (scoreEl) scoreEl.innerHTML = '';
+
+  const prompt = `You are an experienced teacher evaluating a student's Global Literacy Project solution focused on ${sdg}.
+
+The student's proposed solution is:
+"${solution}"
+
+Please evaluate using this rubric (each criterion scored 1–2, total out of 10):
+1. The solution directly addresses the identified problem (1–2 pts)
+2. The solution is realistic and feasible to implement (1–2 pts)
+3. The solution is innovative or creative (1–2 pts)
+4. The solution considers potential impact and beneficiaries (1–2 pts)
+5. The solution is clearly explained and well-structured (1–2 pts)
+
+Respond in this exact format:
+SCORE: [total]/10
+FEEDBACK: [2–3 sentences of constructive feedback highlighting strengths and one specific improvement]
+CRITERIA:
+1. Addresses the problem: [score]/2 — [one sentence comment]
+2. Feasibility: [score]/2 — [one sentence comment]
+3. Innovation: [score]/2 — [one sentence comment]
+4. Impact & beneficiaries: [score]/2 — [one sentence comment]
+5. Clarity & structure: [score]/2 — [one sentence comment]`;
+
+  try {
+    const response = await fetch('/api/feedback', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prompt })
+    });
+    if (!response.ok) throw new Error('API error');
+    const data = await response.json();
+    const text = data.feedback || data.message || '';
+
+    // Parse score
+    const scoreMatch = text.match(/SCORE:\s*(\d+(?:\.\d+)?)\s*\/\s*10/i);
+    const score = scoreMatch ? parseFloat(scoreMatch[1]) : null;
+
+    // Parse feedback block
+    const feedbackMatch = text.match(/FEEDBACK:\s*([\s\S]*?)(?=CRITERIA:|$)/i);
+    const feedbackText  = feedbackMatch ? feedbackMatch[1].trim() : text;
+
+    // Parse criteria lines
+    const criteriaMatch = text.match(/CRITERIA:([\s\S]*)/i);
+    const criteriaText  = criteriaMatch ? criteriaMatch[1].trim() : '';
+    const criteriaLines = criteriaText.split('\n').filter(l => l.trim());
+
+    let criteriaHTML = '';
+    criteriaLines.forEach(line => {
+      criteriaHTML += `<p class="text-xs text-blue-800 border-b border-blue-100 pb-1">${line.trim()}</p>`;
+    });
+
+    const passed = score !== null && score >= 6;
+
+    feedbackEl.innerHTML = `
+      <div class="mt-2 p-4 rounded-xl bg-blue-50 border border-blue-200 space-y-3">
+        <div class="flex items-center gap-3">
+          <span class="text-2xl font-extrabold ${passed ? 'text-emerald-600' : 'text-red-500'}">${score !== null ? score + '/10' : 'N/A'}</span>
+          <span class="text-xs font-bold px-2 py-1 rounded-full ${passed ? 'bg-emerald-100 text-emerald-700' : 'bg-red-100 text-red-700'}">${passed ? '✅ Passed — you may proceed' : '❌ Score below 6 — please revise'}</span>
+        </div>
+        <div>
+          <p class="text-xs font-bold text-blue-700 mb-1">Overall Feedback:</p>
+          <p class="text-xs text-blue-800 leading-relaxed">${feedbackText}</p>
+        </div>
+        ${criteriaHTML ? `<div><p class="text-xs font-bold text-blue-700 mb-1">Criteria Breakdown:</p>${criteriaHTML}</div>` : ''}
+      </div>`;
+
+    if (scoreEl) scoreEl.innerHTML = '';
+
+    if (passed) {
+      localStorage.setItem('step2Passed', '1');
+      unlockStep3();
+    } else {
+      localStorage.removeItem('step2Passed');
+      const btn = document.getElementById('toStep3Btn');
+      if (btn) {
+        btn.disabled = true;
+        btn.classList.add('opacity-40','cursor-not-allowed');
+      }
+    }
+
+  } catch (err) {
+    feedbackEl.innerHTML = `<p class="text-xs text-red-500 p-2">⚠️ Could not retrieve feedback. Please check your connection and try again.</p>`;
+    console.error('Step 2 feedback error:', err);
+  }
+}
+
+// ── Export as PDF ─────────────────────────────────────────────────────────
+function exportPDF() {
+  window.print();
+}
+
+// ── Clear All Data ────────────────────────────────────────────────────────
+function clearAllData() {
+  if (!confirm('Are you sure you want to clear all saved data? This cannot be undone.')) return;
+  fieldIds.forEach(id => localStorage.removeItem(id));
+  localStorage.removeItem('selectedSDG');
+  localStorage.removeItem('step1Passed');
+  localStorage.removeItem('step2Passed');
+  fieldIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+  document.querySelectorAll('.sdg-btn').forEach(b => b.classList.remove('selected'));
+  document.getElementById('sdgSelectedDisplay').classList.add('hidden');
+  document.getElementById('generatedProblemStatement').classList.add('hidden');
+  document.getElementById('generatedSolutionStatement').classList.add('hidden');
+  document.getElementById('step1-feedback').classList.add('hidden');
+  document.getElementById('step2-feedback').classList.add('hidden');
+  const s1score = document.getElementById('step1-score-display');
+  const s2score = document.getElementById('step2-score-display');
+  if (s1score) s1score.classList.add('hidden');
+  if (s2score) s2score.classList.add('hidden');
+
+  // Re-lock gated buttons
+  ['toStep2Btn','toStep3Btn'].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) {
+      btn.disabled = true;
+      btn.classList.add('opacity-40','cursor-not-allowed');
+    }
+  });
+
+  alert('All data cleared.');
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────
+(function init() {
+  // Apply saved theme
+  applyTheme(localStorage.getItem('darkMode') === '1');
+
+  // Load saved data
+  loadAll();
+
+  // Start on step 1
+  goToStep(1);
+
+  // Wire up clear button if present
+  const clearBtn = document.getElementById('clearDataBtn');
+  if (clearBtn) clearBtn.addEventListener('click', clearAllData);
+})();
+
 <script>
 
   // ── Theme Toggle ──────────────────────────────────────────────────────────
