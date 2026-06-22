@@ -339,7 +339,7 @@ textarea { resize: vertical; min-height: 110px; font-family: "Aptos","Inter",san
             <p class="text-xs font-bold text-slate-600 uppercase tracking-wider mb-2" data-i18n="sdgCat1">🤝 Social Causes (SDG 1–10)</p>
             <div id="sdgButtonsSocial" class="flex flex-wrap gap-2 mb-4">
               <button class="sdg-btn" style="border-color:#e5243b;color:#e5243b;" data-sdg="SDG 1: No Poverty" onclick="selectSDG(this)">🔴 SDG 1: No Poverty</button>
-              <button class="sdg-btn" style="border-color:#dda63a;              <button class="sdg-btn" style="border-color:#dda63a;color:#dda63a;" data-sdg="SDG 2: Zero Hunger" onclick="selectSDG(this)">🟡 SDG 2: Zero Hunger</button>
+              <button class="sdg-btn" style="border-color:#dda63a;color:#dda63a;" data-sdg="SDG 2: Zero Hunger" onclick="selectSDG(this)">🟡 SDG 2: Zero Hunger</button>
               <button class="sdg-btn" style="border-color:#4c9f38;color:#4c9f38;" data-sdg="SDG 3: Good Health" onclick="selectSDG(this)">🟢 SDG 3: Good Health</button>
               <button class="sdg-btn" style="border-color:#c5192d;color:#c5192d;" data-sdg="SDG 4: Quality Education" onclick="selectSDG(this)">🔴 SDG 4: Quality Education</button>
               <button class="sdg-btn" style="border-color:#ff3a21;color:#ff3a21;" data-sdg="SDG 5: Gender Equality" onclick="selectSDG(this)">🟠 SDG 5: Gender Equality</button>
@@ -630,7 +630,7 @@ textarea { resize: vertical; min-height: 110px; font-family: "Aptos","Inter",san
           <div class="rounded-xl border-2 border-emerald-200 bg-emerald-50 p-4 sm:p-5">
             <h3 class="mb-1 text-base sm:text-lg font-bold text-emerald-800 flex items-center gap-2">
               <span class="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500 text-white font-extrabold text-xs">★</span>
-              <span data-i18n="q14label">              <span data-i18n="q14label">Team Reflection</span>
+              <span data-i18n="q14label">Team Reflection</span>
             </h3>
             <p class="text-xs text-emerald-600 mb-3 leading-relaxed" data-i18n="q14hint">Reflect on your team's journey. What did you learn? What would you do differently?</p>
             <textarea id="q14" class="w-full p-3 rounded-xl border-2 border-emerald-200 outline-none focus:border-emerald-500 text-sm bg-white" rows="4"
@@ -1070,5 +1070,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const savedLang = localStorage.getItem('lang') || 'en';
   setLanguage(savedLang);
 });
+  </script>    
 </body>
 </html>
