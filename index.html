@@ -767,172 +767,308 @@ textarea { resize: vertical; min-height: 110px; font-family: "Aptos","Inter",san
 <!-- ===== JAVASCRIPT ===== -->
 <script>
 
-  // ── Tab / Step Navigation ──────────────────────────────────────────────────
-  function goToStep(n) {
-    document.querySelectorAll('.step-section').forEach(s => s.classList.add('hidden'));
-    document.getElementById('step' + n).classList.remove('hidden');
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-      btn.classList.remove('active-tab');
-      if (parseInt(btn.dataset.step) === n) btn.classList.add('active-tab');
-    });
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  // ── Theme Toggle ──────────────────────────────────────────────────────────
+function applyTheme(dark) {
+  document.body.classList.toggle('dark-mode', dark);
+  const icon = dark ? '☀️' : '🌙';
+  ['appThemeToggle','appThemeToggle2','gateThemeToggle'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = id === 'appThemeToggle2' ? icon + ' Theme' : icon;
+  });
+  localStorage.setItem('darkMode', dark ? '1' : '0');
+}
+
+['appThemeToggle','appThemeToggle2','gateThemeToggle'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('click', () => {
+    applyTheme(!document.body.classList.contains('dark-mode'));
+  });
+});
+
+// ── Login ─────────────────────────────────────────────────────────────────
+document.getElementById('loginBtn').addEventListener('click', () => {
+  const year  = document.getElementById('loginYear').value;
+  const city  = document.getElementById('loginCity').value;
+  const group = document.getElementById('loginGroup').value;
+  const errEl = document.getElementById('loginError');
+
+  if (!year || !city || !group) {
+    errEl.textContent = 'Please select a Year, City and Group to continue.';
+    errEl.classList.remove('hidden');
+    return;
   }
 
-  // ── SDG Selector ──────────────────────────────────────────────────────────
-  function selectSDG(btn) {
-    document.querySelectorAll('.sdg-btn').forEach(b => b.classList.remove('sdg-selected'));
-    btn.classList.add('sdg-selected');
-    const sdg = btn.dataset.sdg;
-    document.getElementById('sdgSelectedText').textContent = sdg;
-    document.getElementById('sdgSelectedDisplay').classList.remove('hidden');
-    localStorage.setItem('selectedSDG', sdg);
+  errEl.classList.add('hidden');
+
+  // Mirror selections into the app dropdowns
+  document.getElementById('selectYear').value  = year;
+  document.getElementById('selectTrip').value  = city;
+  document.getElementById('selectGroup').value = group;
+  updateGroupId();
+
+  // Show user identity in header
+  document.getElementById('userDisplay').textContent = `${year} · ${city} · Group ${group}`;
+
+  // Save to localStorage
+  localStorage.setItem('loginYear',  year);
+  localStorage.setItem('loginCity',  city);
+  localStorage.setItem('loginGroup', group);
+
+  // Hide gate, show app
+  document.getElementById('loginGate').classList.add('hidden');
+  document.getElementById('appContainer').classList.remove('hidden');
+});
+
+// ── Logout ────────────────────────────────────────────────────────────────
+function doLogout() {
+  document.getElementById('appContainer').classList.add('hidden');
+  document.getElementById('loginGate').classList.remove('hidden');
+  // Clear login selects
+  ['loginYear','loginCity','loginGroup'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  document.getElementById('loginError').classList.add('hidden');
+}
+
+document.getElementById('logoutBtn').addEventListener('click',  doLogout);
+document.getElementById('logoutBtn2').addEventListener('click', doLogout);
+
+// ── Group ID Display ──────────────────────────────────────────────────────
+function updateGroupId() {
+  const year  = document.getElementById('selectYear').value  || '--';
+  const city  = document.getElementById('selectTrip').value  || '--';
+  const group = document.getElementById('selectGroup').value || '--';
+  document.getElementById('groupIdDisplay').textContent =
+    (year !== '--' && city !== '--' && group !== '--')
+      ? `${year} · ${city} · G${group}`
+      : '-- / -- / --';
+}
+
+['selectYear','selectTrip','selectGroup'].forEach(id => {
+  document.getElementById(id).addEventListener('change', updateGroupId);
+});
+
+// ── Tab / Step Navigation ─────────────────────────────────────────────────
+function goToStep(n) {
+  document.querySelectorAll('.step-section').forEach(s => {
+    s.classList.remove('active');
+  });
+  const target = document.getElementById('step' + n);
+  if (target) target.classList.add('active');
+
+  document.querySelectorAll('.nav-btn[data-step]').forEach(btn => {
+    btn.classList.remove('active');
+    if (parseInt(btn.dataset.step) === n) btn.classList.add('active');
+  });
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Wire up nav tab buttons
+document.querySelectorAll('.nav-btn[data-step]').forEach(btn => {
+  btn.addEventListener('click', () => goToStep(parseInt(btn.dataset.step)));
+});
+
+// ── Language Toggle ───────────────────────────────────────────────────────
+const translations = {
+  en: {
+    appTitle:   'Global Classroom Project Planner',
+    step1Title: 'Step 1: Problem',
+    step1Sub:   'Identify challenges and design a problem statement',
+    step2Title: 'Step 2: Solution',
+    step2Sub:   'Brainstorm, evaluate and design your solution',
+    step3Title: 'Step 3: Action',
+    step3Sub:   'Plan and document your action steps',
+    step4Title: 'Step 4: Present',
+    step4Sub:   'Craft and rehearse your presentation',
+    sdgSelectLabel: 'Select Your Focus SDG',
+    sdgSelectHint:  'Choose one SDG that your project will address.',
+    sdgSelected:    'Selected SDG:',
+    sdgCat1: '🤝 Social Causes (SDG 1–10)',
+    sdgCat2: '🌍 Environmental Causes (SDG 11–15)',
+    sdgCat3: '🏛️ Governance & Global (SDG 16–17)',
+    footerLine1: 'Built for AHS Global Classroom Programme',
+    footerLine2: 'Powered by AI — Always think critically about AI-generated feedback.',
+  },
+  zh: {
+    appTitle:   '全球课堂项目规划器',
+    step1Title: '第一步：问题',
+    step1Sub:   '识别挑战并设计问题陈述',
+    step2Title: '第二步：解决方案',
+    step2Sub:   '头脑风暴、评估并设计您的解决方案',
+    step3Title: '第三步：行动',
+    step3Sub:   '规划并记录您的行动步骤',
+    step4Title: '第四步：展示',
+    step4Sub:   '准备并排练您的演示',
+    sdgSelectLabel: '选择您的重点可持续发展目标',
+    sdgSelectHint:  '选择一个您的项目将要解决的可持续发展目标。',
+    sdgSelected:    '已选择：',
+    sdgCat1: '🤝 社会议题 (SDG 1–10)',
+    sdgCat2: '🌍 环境议题 (SDG 11–15)',
+    sdgCat3: '🏛️ 治理与全球 (SDG 16–17)',
+    footerLine1: '为AHS全球课堂项目而建',
+    footerLine2: '由AI驱动 — 请批判性地思考AI生成的反馈。',
   }
+};
 
-  // ── Auto-save to localStorage ──────────────────────────────────────────────
-  const fieldIds = ['q1','q2','q3','q4','q5','q6','q7','q8','q9','q10',
-                    'q11','q12','q13','q14','q15','q16','q17','q18','q19'];
+function setLanguage(lang) {
+  const t = translations[lang] || translations['en'];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (t[key]) el.textContent = t[key];
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+  localStorage.setItem('lang', lang);
+}
 
-  function saveAll() {
-    fieldIds.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) localStorage.setItem(id, el.value);
-    });
-  }
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+});
 
-  function loadAll() {
-    fieldIds.forEach(id => {
-      const el = document.getElementById(id);
-      const saved = localStorage.getItem(id);
-      if (el && saved) el.value = saved;
-    });
-    const savedSDG = localStorage.getItem('selectedSDG');
-    if (savedSDG) {
-      document.querySelectorAll('.sdg-btn').forEach(btn => {
-        if (btn.dataset.sdg === savedSDG) {
-          btn.classList.add('sdg-selected');
-          document.getElementById('sdgSelectedText').textContent = savedSDG;
-          document.getElementById('sdgSelectedDisplay').classList.remove('hidden');
-        }
-      });
-    }
-  }
+// ── SDG Selector ──────────────────────────────────────────────────────────
+function selectSDG(btn) {
+  document.querySelectorAll('.sdg-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  const sdg = btn.dataset.sdg;
+  document.getElementById('sdgSelectedText').textContent = sdg;
+  document.getElementById('sdgSelectedDisplay').classList.remove('hidden');
+  localStorage.setItem('selectedSDG', sdg);
+}
 
-  // Attach auto-save listeners
+// ── Auto-save to localStorage ─────────────────────────────────────────────
+const fieldIds = [
+  'q1','q2','q3','q4','q5','q6','q7','q8','q9','q10',
+  'q11','q12','q13','q14','q15','q16','q17','q18','q19',
+  'teamMembers'
+];
+
+function saveAll() {
   fieldIds.forEach(id => {
     const el = document.getElementById(id);
-    if (el) el.addEventListener('input', saveAll);
+    if (el) localStorage.setItem(id, el.value);
+  });
+}
+
+function loadAll() {
+  fieldIds.forEach(id => {
+    const el = document.getElementById(id);
+    const saved = localStorage.getItem(id);
+    if (el && saved) el.value = saved;
   });
 
-  // ── AI Feedback ───────────────────────────────────────────────────────────
-  async function getAIFeedback(fieldId, step) {
-    const el = document.getElementById(fieldId);
-    const feedbackEl = document.getElementById(fieldId + '-feedback');
-    if (!el || !feedbackEl) return;
+  // Restore SDG selection
+  const savedSDG = localStorage.getItem('selectedSDG');
+  if (savedSDG) {
+    document.querySelectorAll('.sdg-btn').forEach(btn => {
+      if (btn.dataset.sdg === savedSDG) {
+        btn.classList.add('selected');
+        document.getElementById('sdgSelectedText').textContent = savedSDG;
+        document.getElementById('sdgSelectedDisplay').classList.remove('hidden');
+      }
+    });
+  }
 
-    const userText = el.value.trim();
-    if (!userText) {
-      feedbackEl.classList.remove('hidden');
-      feedbackEl.innerHTML = '<p class="text-xs text-red-500 p-2">Please write something first before requesting feedback.</p>';
-      return;
-    }
+  // Restore login session if previously logged in
+  const savedYear  = localStorage.getItem('loginYear');
+  const savedCity  = localStorage.getItem('loginCity');
+  const savedGroup = localStorage.getItem('loginGroup');
+  if (savedYear && savedCity && savedGroup) {
+    document.getElementById('selectYear').value  = savedYear;
+    document.getElementById('selectTrip').value  = savedCity;
+    document.getElementById('selectGroup').value = savedGroup;
+    document.getElementById('userDisplay').textContent =
+      `${savedYear} · ${savedCity} · Group ${savedGroup}`;
+    updateGroupId();
+    document.getElementById('loginGate').classList.add('hidden');
+    document.getElementById('appContainer').classList.remove('hidden');
+  }
+}
 
-    const sdg = localStorage.getItem('selectedSDG') || 'an SDG';
+fieldIds.forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('input', saveAll);
+});
 
+// ── AI Feedback ───────────────────────────────────────────────────────────
+async function getAIFeedback(fieldId, step) {
+  const el = document.getElementById(fieldId);
+  const feedbackEl = document.getElementById(fieldId + '-feedback');
+  if (!el || !feedbackEl) return;
+
+  const userText = el.value.trim();
+  if (!userText) {
     feedbackEl.classList.remove('hidden');
-    feedbackEl.innerHTML = '<p class="text-xs text-slate-400 p-2 animate-pulse">✨ Generating feedback...</p>';
-
-    const prompts = {
-      q1:  `You are a helpful teacher for a student Global Classroom project focused on ${sdg}. The student wrote the following about a current affairs connection: "${userText}". Give 2–3 sentences of constructive, encouraging feedback. Point out what is strong and suggest one specific improvement.`,
-      q2:  `You are a helpful teacher. The student wrote about the local context of ${sdg}: "${userText}". Give 2–3 sentences of constructive feedback. Highlight strengths and suggest one improvement.`,
-      q3:  `You are a helpful teacher. The student identified root causes related to ${sdg}: "${userText}". Give 2–3 sentences of feedback. Are the causes systemic enough? Suggest one improvement.`,
-      q4:  `You are a helpful teacher. The student identified stakeholders for ${sdg}: "${userText}". Give 2–3 sentences of feedback. Are key groups represented? Suggest one improvement.`,
-      q5:  `You are a helpful teacher. The student wrote this problem statement for ${sdg}: "${userText}". Evaluate whether it follows the "How might we... for... so that..." format. Give 2–3 sentences of feedback and one specific suggestion.`,
-      q6:  `You are a helpful teacher. The student brainstormed solutions for ${sdg}: "${userText}". Give 2–3 sentences of feedback on creativity and feasibility. Suggest one way to strengthen the ideas.`,
-      q7:  `You are a helpful teacher. The student evaluated and selected a solution for ${sdg}: "${userText}". Give 2–3 sentences of feedback. Is the reasoning clear? Suggest one improvement.`,
-      q8:  `You are a helpful teacher. The student described their solution design for ${sdg}: "${userText}". Give 2–3 sentences of feedback on clarity and detail. Suggest one improvement.`,
-      q9:  `You are a helpful teacher. The student wrote a theory of change for ${sdg}: "${userText}". Give 2–3 sentences of feedback. Is the logic chain clear? Suggest one improvement.`,
-      q10: `You are a helpful teacher. The student identified risks and mitigations for ${sdg}: "${userText}". Give 2–3 sentences of feedback. Are the risks realistic? Suggest one improvement.`,
-      q11: `You are a helpful teacher. The student wrote an action plan for ${sdg}: "${userText}". Give 2–3 sentences of feedback. Are the steps concrete and time-bound? Suggest one improvement.`,
-      q12: `You are a helpful teacher. The student listed resources needed for ${sdg}: "${userText}". Give 2–3 sentences of feedback. Are all key resources covered? Suggest one improvement.`,
-      q13: `You are a helpful teacher. The student described how they will measure impact for ${sdg}: "${userText}". Give 2–3 sentences of feedback. Are the indicators measurable? Suggest one improvement.`,
-      q14: `You are a helpful teacher. The student wrote a team reflection for ${sdg}: "${userText}". Give 2–3 sentences of warm, encouraging feedback. Highlight growth and suggest one area to explore further.`,
-      q15: `You are a helpful teacher. The student outlined their pitch structure for ${sdg}: "${userText}". Give 2–3 sentences of feedback. Does it cover hook, problem, solution, evidence, and call to action? Suggest one improvement.`,
-      q16: `You are a helpful teacher. The student wrote a storytelling element for ${sdg}: "${userText}". Give 2–3 sentences of feedback on emotional connection and clarity. Suggest one improvement.`,
-      q17: `You are a helpful teacher. The student listed data and evidence for ${sdg}: "${userText}". Give 2–3 sentences of feedback. Is the evidence credible and well-cited? Suggest one improvement.`,
-      q18: `You are a helpful teacher. The student prepared Q&A responses for ${sdg}: "${userText}". Give 2–3 sentences of feedback. Are the answers convincing? Suggest one improvement.`,
-      q19: `You are a helpful teacher. The student wrote a final summary/elevator pitch for ${sdg}: "${userText}". Give 2–3 sentences of feedback. Is it compelling and concise? Suggest one improvement.`,
-    };
-
-    try {
-      const response = await fetch('/api/feedback', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt: prompts[fieldId] })
-      });
-
-      if (!response.ok) throw new Error('API error');
-      const data = await response.json();
-      const feedback = data.feedback || data.message || 'No feedback returned.';
-
-      const stepColors = {
-        step1: 'amber', step2: 'blue', step3: 'emerald', step4: 'purple'
-      };
-      const color = stepColors[step] || 'slate';
-
-      feedbackEl.innerHTML = `
-        <div class="mt-2 p-3 rounded-xl bg-${color}-50 border border-${color}-200 text-xs text-${color}-800 leading-relaxed">
-          <p class="font-bold mb-1">✨ AI Feedback</p>
-          <p>${feedback}</p>
-        </div>`;
-    } catch (err) {
-      feedbackEl.innerHTML = `
-        <div class="mt-2 p-3 rounded-xl bg-red-50 border border-red-200 text-xs text-red-700">
-          <p>⚠️ Could not retrieve feedback. Please check your connection and try again.</p>
-        </div>`;
-    }
+    feedbackEl.innerHTML =
+      '<p class="text-xs text-red-500 p-2">Please write something first before requesting feedback.</p>';
+    return;
   }
 
-  // ── Export PDF ─────────────────────────────────────────────────────────────
-  function exportPDF() {
-    window.print();
-  }
+  const sdg = localStorage.getItem('selectedSDG') || 'an SDG';
+  feedbackEl.classList.remove('hidden');
+  feedbackEl.innerHTML =
+    '<p class="text-xs text-slate-400 p-2 animate-pulse">✨ Generating feedback...</p>';
 
-  // ── i18n (basic English/Chinese toggle example) ───────────────────────────
-  const translations = {
-    en: {
-      appTitle: 'Global Classroom Project Planner',
-      step1Title: 'Step 1: Problem',
-      step2Title: 'Step 2: Solution',
-      step3Title: 'Step 3: Action',
-      step4Title: 'Step 4: Present',
-    },
-    zh: {
-      appTitle: '全球课堂项目规划器',
-      step1Title: '第一步：问题',
-      step2Title: '第二步：解决方案',
-      step3Title: '第三步：行动',
-      step4Title: '第四步：展示',
-    }
+  const prompts = {
+    q1:  `You are a helpful teacher for a student Global Classroom project focused on ${sdg}. The student wrote about a current affairs connection: "${userText}". Give 2–3 sentences of constructive, encouraging feedback. Point out what is strong and suggest one specific improvement.`,
+    q2:  `You are a helpful teacher. The student wrote about the local context of ${sdg}: "${userText}". Give 2–3 sentences of feedback. Highlight strengths and suggest one improvement.`,
+    q3:  `You are a helpful teacher. The student identified root causes related to ${sdg}: "${userText}". Give 2–3 sentences of feedback. Are the causes systemic enough? Suggest one improvement.`,
+    q4:  `You are a helpful teacher. The student identified stakeholders for ${sdg}: "${userText}". Give 2–3 sentences of feedback. Are key groups represented? Suggest one improvement.`,
+    q5:  `You are a helpful teacher. The student wrote this problem statement for ${sdg}: "${userText}". Evaluate whether it follows the "How might we... for... so that..." format. Give 2–3 sentences of feedback and one specific suggestion.`,
+    q6:  `You are a helpful teacher. The student brainstormed solutions for ${sdg}: "${userText}". Give 2–3 sentences of feedback on creativity and feasibility. Suggest one way to strengthen the ideas.`,
+    q7:  `You are a helpful teacher. The student evaluated and selected a solution for ${sdg}: "${userText}". Give 2–3 sentences of feedback. Is the reasoning clear? Suggest one improvement.`,
+    q8:  `You are a helpful teacher. The student described their solution design for ${sdg}: "${userText}". Give 2–3 sentences of feedback on clarity and detail. Suggest one improvement.`,
+    q9:  `You are a helpful teacher. The student wrote a theory of change for ${sdg}: "${userText}". Give 2–3 sentences of feedback. Is the logic chain clear? Suggest one improvement.`,
+    q10: `You are a helpful teacher. The student identified risks and mitigations for ${sdg}: "${userText}". Give 2–3 sentences of feedback. Are the risks realistic? Suggest one improvement.`,
+    q11: `You are a helpful teacher. The student wrote an action plan for ${sdg}: "${userText}". Give 2–3 sentences of feedback. Are the steps concrete and time-bound? Suggest one improvement.`,
+    q12: `You are a helpful teacher. The student listed resources needed for ${sdg}: "${userText}". Give 2–3 sentences of feedback. Are all key resources covered? Suggest one improvement.`,
+    q13: `You are a helpful teacher. The student described how they will measure impact for ${sdg}: "${userText}". Give 2–3 sentences of feedback. Are the indicators measurable? Suggest one improvement.`,
+    q14: `You are a helpful teacher. The student wrote a team reflection for ${sdg}: "${userText}". Give 2–3 sentences of warm, encouraging feedback. Highlight growth and suggest one area to explore further.`,
+    q15: `You are a helpful teacher. The student outlined their pitch structure for ${sdg}: "${userText}". Give 2–3 sentences of feedback. Does it cover hook, problem, solution, evidence, and call to action? Suggest one improvement.`,
+    q16: `You are a helpful teacher. The student wrote a storytelling element for ${sdg}: "${userText}". Give 2–3 sentences of feedback on emotional connection and clarity. Suggest one improvement.`,
+    q17: `You are a helpful teacher. The student listed data and evidence for ${sdg}: "${userText}". Give 2–3 sentences of feedback. Is the evidence credible and well-cited? Suggest one improvement.`,
+    q18: `You are a helpful teacher. The student prepared Q&A responses for ${sdg}: "${userText}". Give 2–3 sentences of feedback. Are the answers convincing? Suggest one improvement.`,
+    q19: `You are a helpful teacher. The student wrote a final summary/elevator pitch for ${sdg}: "${userText}". Give 2–3 sentences of feedback. Is it compelling and concise? Suggest one improvement.`,
   };
 
-  function setLanguage(lang) {
-    const t = translations[lang] || translations['en'];
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.dataset.i18n;
-      if (t[key]) el.textContent = t[key];
+  try {
+    const response = await fetch('/api/feedback', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prompt: prompts[fieldId] })
     });
-    localStorage.setItem('lang', lang);
+    if (!response.ok) throw new Error('API error');
+    const data = await response.json();
+    const feedback = data.feedback || data.message || 'No feedback returned.';
+    const colors = { step1:'amber', step2:'blue', step3:'emerald', step4:'purple' };
+    const color = colors[step] || 'slate';
+    feedbackEl.innerHTML = `
+      <div class="mt-2 p-3 rounded-xl bg-${color}-50 border border-${color}-200 text-xs text-${color}-800 leading-relaxed">
+        <p class="font-bold mb-1">✨ AI Feedback</p>
+        <p>${feedback}</p>
+      </div>`;
+  } catch (err) {
+    feedbackEl.innerHTML = `
+      <div class="mt-2 p-3 rounded-xl bg-red-50 border border-red-200 text-xs text-red-700">
+        <p>⚠️ Could not retrieve feedback. Please check your connection and try again.</p>
+      </div>`;
   }
+}
 
-  // ── Init ───────────────────────────────────────────────────────────────────
-  document.addEventListener('DOMContentLoaded', () => {
-    loadAll();
-    goToStep(1);
-    const savedLang = localStorage.getItem('lang') || 'en';
-    setLanguage(savedLang);
-  });
+// ── Export PDF ────────────────────────────────────────────────────────────
+function exportPDF() { window.print(); }
 
-</script>
+// ── Init ──────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  // Apply saved theme
+  applyTheme(localStorage.getItem('darkMode') === '1');
 
+  loadAll();
+  goToStep(1);
+
+  const savedLang = localStorage.getItem('lang') || 'en';
+  setLanguage(savedLang);
+});
 </body>
 </html>
