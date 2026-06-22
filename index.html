@@ -1240,8 +1240,349 @@ document.addEventListener('DOMContentLoaded', function() {
   goToStep(1);
   const clearBtn = document.getElementById('clearDataBtn');
   if (clearBtn) clearBtn.addEventListener('click', clearAllData);
+  const savedLang = localStorage.getItem('lang') || 'en';
+applyLanguage(savedLang);
 })();
 
+  // ── Language / i18n ───────────────────────────────────────────────────────
+
+const translations = {
+  en: {
+    // Header
+    "header-title": "AHS Global Classroom",
+    "header-sub": "Global Literacy Project",
+    // Nav tabs
+    "nav-1": "1: Problem",
+    "nav-2": "2: Solution",
+    "nav-3": "3: Action",
+    "nav-4": "4: Advocate",
+    // Project info labels
+    "label-year": "Year",
+    "label-city": "City",
+    "label-group": "Group",
+    "label-groupid": "Group ID",
+    "label-team": "Team Members",
+    "label-loggedin": "Logged In As",
+    // Step 1
+    "step1-title": "Step 1: Problem",
+    "step1-sub": "Identify challenges and design a problem statement",
+    "step1-badge": "PHASE 1",
+    "sdg-select-title": "Select Your Focus SDG",
+    "sdg-select-hint": "Choose one SDG that your project will address. This will guide all your responses.",
+    "sdg-cat1": "🤝 Social Causes (SDG 1–10)",
+    "sdg-cat2": "🌍 Environmental Causes (SDG 11–15)",
+    "sdg-cat3": "🏛️ Governance & Global (SDG 16–17)",
+    "sdg-selected-label": "Selected SDG:",
+    "q3-title": "Identifying Challenges",
+    "q3-hint": "Using the UN SDGs, identify 3–4 challenges in society and explain why each is a challenge.",
+    "q3-placeholder": "Challenge 1: [Name] — Why it is a challenge: ...\nChallenge 2: [Name] — Why it is a challenge: ...\nChallenge 3: [Name] — Why it is a challenge: ...\nChallenge 4 (optional): [Name] — Why it is a challenge: ...",
+    "q4-title": "Select Underlying Problem & Problem Statement",
+    "q4-hint": "From your challenges above, select 1 underlying problem through research and design a problem statement using the template below.",
+    "ps-template-title": "📋 Problem Statement Template:",
+    "ps-condition-label": "Condition Statement:",
+    "ps-condition-text": "Because of [ethical/social/environmental concern caused by issue]...",
+    "ps-stem-label": "Stem + Key Verb Phrase:",
+    "ps-stem-text": "...how might we [key verb phrase] for [target group]...",
+    "ps-purpose-label": "Purpose:",
+    "ps-purpose-text": "...in order to [desired outcome]...",
+    "ps-future-label": "Future Scene Parameters:",
+    "ps-future-text": "...in [location] in [year] and beyond?",
+    "ps-example": "Example: Because of ethical concerns caused by the new surgical procedure... how might we create a positive medical environment for xx treatments... in order to encourage ethical use of xx surgery... in the U.S. in 2023 and beyond?",
+    "q4a-label": "Condition Statement",
+    "q4a-placeholder": "Because of [concern caused by issue]...",
+    "q4b-label": "Stem + Key Verb Phrase",
+    "q4b-placeholder": "...how might we [key verb phrase] for [target group]...",
+    "q4c-label": "Purpose",
+    "q4c-placeholder": "...in order to [desired outcome]...",
+    "q4d-label": "Future Scene Parameters",
+    "q4d-placeholder": "...in [location] in [year] and beyond?",
+    "ps-label": "📝 Your Problem Statement:",
+    "step1-ai-title": "✨ AI Feedback & Scoring",
+    "step1-ai-hint": "Click below to generate your problem statement and receive AI feedback based on the rubric. You need a score of at least 6/10 to proceed.",
+    "step1-ai-btn": "✨ Generate Problem Statement & Get Feedback",
+    "to-step2-btn": "Next: Solution →",
+    // Step 2
+    "step2-title": "Step 2: Solution",
+    "step2-sub": "Generate, evaluate and select your best solution",
+    "step2-badge": "PHASE 2",
+    "q6-title": "Generate Solution Ideas",
+    "q6-hint": "Compare and explain existing measures or solutions in both cities. Then come up with ≥3 new solutions.",
+    "q6-placeholder": "Existing measures in City 1: ...\nExisting measures in City 2: ...\n\nNew Solution 1: ...\nNew Solution 2: ...\nNew Solution 3: ...",
+    "q5-title": "Evaluation Criteria Table",
+    "q5-hint": "Identify 3–4 criteria to evaluate your proposed solutions. Score each solution (1 = low, 3 = high). The table will auto-total.",
+    "q5-criteria-title": "Possible criteria:",
+    "q5-criteria-text": "Time consideration · Manpower consideration · Cost consideration · Public perception",
+    "q10-title": "Select Best Solution & Solution Statement",
+    "q10-hint": "Apply your criteria scores above to select the most feasible solution. Then design a solution statement.",
+    "q10-placeholder": "Based on our evaluation, we selected Solution [X] because...\n\nOur solution statement: We will [action] for [target group] by [method] in order to [outcome] in [location/timeframe].",
+    "ss-label": "📝 Your Solution Statement:",
+    "step2-ai-title": "✨ AI Feedback & Scoring",
+    "step2-ai-hint": "Click below to generate your solution statement and receive AI feedback. You need a score of at least 6/10 to proceed.",
+    "step2-ai-btn": "✨ Generate Solution Statement & Get Feedback",
+    "back-step1-btn": "← Back: Problem",
+    "to-step3-btn": "Next: Action →",
+    // Step 3
+    "step3-title": "Step 3: Action",
+    "step3-sub": "Develop your action plan and prepare your presentation",
+    "step3-badge": "PHASE 3",
+    "step3-plan-title": "Action Plan",
+    "step3-task-title": "📋 Your Task:",
+    "step3-task-body": "Develop an action plan based on your solution via:",
+    "step3-task-1": "📊 An infographic — visually communicate your solution and its impact",
+    "step3-task-2": "🎤 A 5-minute oral presentation — present your problem, solution and action plan",
+    "step3-task-3": "❓ A 3-minute Q&A — be ready to answer questions from the panel",
+    "q11-label": "Action Plan Notes",
+    "q11-placeholder": "Outline your action steps here. Who does what, and by when?\nStep 1: ...\nStep 2: ...\nStep 3: ...",
+    "q12-label": "Infographic Plan",
+    "q12-placeholder": "Describe what your infographic will include. Key visuals, data points, layout ideas...",
+    "q13-label": "Presentation Outline",
+    "q13-placeholder": "Hook (0:00–0:30): ...\nProblem (0:30–1:30): ...\nSolution (1:30–3:00): ...\nAction Plan (3:00–4:30): ...\nCall to Action (4:30–5:00): ...",
+    "q14-label": "Anticipated Q&A",
+    "q14-placeholder": "Q: ...\nA: ...\n\nQ: ...\nA: ...",
+    "back-step2-btn": "← Back: Solution",
+    "to-step4-btn": "Next: Present →",
+    // Step 4
+    "step4-title": "Step 4: Present",
+    "step4-sub": "Craft and rehearse your presentation",
+    "step4-badge": "PHASE 4",
+    "q15-title": "Pitch Structure",
+    "q15-hint": "Outline your presentation structure. A strong pitch covers: hook, problem, solution, evidence, call to action.",
+    "q15-placeholder": "Hook: ...\nProblem: ...\nSolution: ...\nEvidence/Impact: ...\nCall to Action: ...",
+    "q16-title": "Storytelling Element",
+    "q16-hint": "Great presentations use stories to connect emotionally. Describe a real or hypothetical story of someone affected by your issue.",
+    "q16-placeholder": "Meet [name/persona]... They face [problem] because... Your solution would help them by...",
+    "q17-title": "Data & Evidence",
+    "q17-hint": "What statistics, research, or evidence will you use to support your argument? Cite your sources.",
+    "q17-placeholder": "Statistic 1: ... (Source: ...)\nStatistic 2: ... (Source: ...)\nResearch finding: ... (Source: ...)",
+    "q18-title": "Anticipated Q&A",
+    "q18-hint": "What tough questions might judges or the audience ask? Prepare your answers in advance.",
+    "q18-placeholder": "Q: ...\nA: ...\n\nQ: ...\nA: ...",
+    "q19-title": "Final Summary Statement",
+    "q19-hint": "Write a compelling 3–5 sentence summary of your entire project. This is your elevator pitch.",
+    "q19-placeholder": "Our team identified the problem of... We designed a solution that... Our plan involves... We believe this will lead to... We call on you to...",
+    "back-step3-btn": "← Back: Action",
+    "export-btn": "📄 Export as PDF",
+    // Footer
+    "footer-1": "Built for AHS Global Classroom Programme",
+    "footer-2": "Powered by AI — Always think critically about AI-generated feedback.",
+    // Login
+    "login-year-label": "Year",
+    "login-city-label": "City",
+    "login-group-label": "Group",
+    "login-btn": "Enter Portal →",
+    "login-error": "Please select a Year, City and Group to continue.",
+    // Buttons misc
+    "signout-btn": "Sign Out",
+    "theme-btn": "🌙 Theme",
+    "add-row-btn": "+ Add Solution Row",
+    "remove-row-btn": "− Remove Last Row",
+    "add-col-btn": "+ Add Criteria Column",
+    "remove-col-btn": "− Remove Last Criteria",
+  },
+  zh: {
+    // Header
+    "header-title": "AHS 全球课堂",
+    "header-sub": "全球素养项目",
+    // Nav tabs
+    "nav-1": "1：问题",
+    "nav-2": "2：解决方法",
+    "nav-3": "3：行动",
+    "nav-4": "4：倡导",
+    // Project info labels
+    "label-year": "年份",
+    "label-city": "城市",
+    "label-group": "小组",
+    "label-groupid": "小组编号",
+    "label-team": "团队成员",
+    "label-loggedin": "当前登录",
+    // Step 1
+    "step1-title": "第一步：问题",
+    "step1-sub": "辨识挑战并设计问题陈述",
+    "step1-badge": "阶段一",
+    "sdg-select-title": "选择你的重点可持续发展目标",
+    "sdg-select-hint": "选择一个你的项目将要解决的可持续发展目标，这将指导你所有的回答。",
+    "sdg-cat1": "🤝 社会议题（SDG 1–10）",
+    "sdg-cat2": "🌍 环境议题（SDG 11–15）",
+    "sdg-cat3": "🏛️ 治理与全球（SDG 16–17）",
+    "sdg-selected-label": "已选目标：",
+    "q3-title": "辨识挑战",
+    "q3-hint": "利用联合国可持续发展目标，辨识出社会现有的挑战（3–4个），并解释为什么是个挑战。",
+    "q3-placeholder": "挑战1：[名称] — 为什么是挑战：...\n挑战2：[名称] — 为什么是挑战：...\n挑战3：[名称] — 为什么是挑战：...\n挑战4（可选）：[名称] — 为什么是挑战：...",
+    "q4-title": "确定研究课题与问题陈述",
+    "q4-hint": "从辨识出的挑战中选择并确定1个研究课题，使用以下模板设立1个问题陈述。",
+    "ps-template-title": "📋 问题陈述模板：",
+    "ps-condition-label": "条件陈述：",
+    "ps-condition-text": "由于 [问题引发的伦理/社会/环境关切]……",
+    "ps-stem-label": "主干 + 关键动词短语：",
+    "ps-stem-text": "……我们如何为 [目标群体] [关键动词短语]……",
+    "ps-purpose-label": "目的：",
+    "ps-purpose-text": "……以便 [期望的结果]……",
+    "ps-future-label": "未来场景参数：",
+    "ps-future-text": "……在 [地点] 于 [年份] 及以后？",
+    "ps-example": "示例：由于新手术程序引发的伦理问题……我们如何为xx治疗创造积极的医疗环境……以便鼓励对xx手术的合理使用……在2023年及以后的美国？",
+    "q4a-label": "条件陈述",
+    "q4a-placeholder": "由于 [问题引发的关切]……",
+    "q4b-label": "主干 + 关键动词短语",
+    "q4b-placeholder": "……我们如何为 [目标群体] [关键动词短语]……",
+    "q4c-label": "目的",
+    "q4c-placeholder": "……以便 [期望的结果]……",
+    "q4d-label": "未来场景参数",
+    "q4d-placeholder": "……在 [地点] 于 [年份] 及以后？",
+    "ps-label": "📝 你的问题陈述：",
+    "step1-ai-title": "✨ AI 反馈与评分",
+    "step1-ai-hint": "点击下方生成你的问题陈述并根据评分标准获取AI反馈。你需要至少6/10分才能继续。",
+    "step1-ai-btn": "✨ 生成问题陈述并获取反馈",
+    "to-step2-btn": "下一步：解决方法 →",
+    // Step 2
+    "step2-title": "第二步：解决方法",
+    "step2-sub": "提出、评估并选择最佳解决方法",
+    "step2-badge": "阶段二",
+    "q6-title": "提出解决方法",
+    "q6-hint": "对比两个城市现有的解决方式，并提出≥3个创新的解决方法。",
+    "q6-placeholder": "城市1的现有措施：...\n城市2的现有措施：...\n\n新解决方法1：...\n新解决方法2：...\n新解决方法3：...",
+    "q5-title": "评估标准表",
+    "q5-hint": "设立3–4个标准来评估你提议的解决方法。为每个方案评分（1=低，3=高），表格将自动计算总分。",
+    "q5-criteria-title": "评估标准示例：",
+    "q5-criteria-text": "时间考量 · 人力考量 · 成本考量 · 公众认知和反应",
+    "q10-title": "选择最佳解决方法与解决陈述",
+    "q10-hint": "将评估标准应用于你提出的解决方法并选择"最佳"方案，然后设立1个解决陈述。",
+    "q10-placeholder": "根据我们的评估，我们选择了方案[X]，因为……\n\n我们的解决陈述：我们将通过[方法]为[目标群体][行动]，以便在[地点/时间]实现[结果]。",
+    "ss-label": "📝 你的解决陈述：",
+    "step2-ai-title": "✨ AI 反馈与评分",
+    "step2-ai-hint": "点击下方生成你的解决陈述并获取AI反馈。你需要至少6/10分才能继续。",
+    "step2-ai-btn": "✨ 生成解决陈述并获取反馈",
+    "back-step1-btn": "← 返回：问题",
+    "to-step3-btn": "下一步：行动 →",
+    // Step 3
+    "step3-title": "第三步：行动",
+    "step3-sub": "制定行动计划并准备演示",
+    "step3-badge": "阶段三",
+    "step3-plan-title": "行动计划",
+    "step3-task-title": "📋 你的任务：",
+    "step3-task-body": "根据你的解决方法制定行动计划，包括：",
+    "step3-task-1": "📊 信息图 — 以视觉方式传达你的解决方法及其影响",
+    "step3-task-2": "🎤 5分钟口头报告 — 呈现你的问题、解决方法和行动计划",
+    "step3-task-3": "❓ 3分钟问答环节 — 准备好回答评审团的问题",
+    "q11-label": "行动计划笔记",
+    "q11-placeholder": "在此概述你的行动步骤。谁做什么，何时完成？\n步骤1：...\n步骤2：...\n步骤3：...",
+    "q12-label": "信息图计划",
+    "q12-placeholder": "描述你的信息图将包含的内容。关键视觉元素、数据点、版面构思……",
+    "q13-label": "演示大纲",
+    "q13-placeholder": "开场（0:00–0:30）：...\n问题（0:30–1:30）：...\n解决方法（1:30–3:00）：...\n行动计划（3:00–4:30）：...\n行动号召（4:30–5:00）：...",
+    "q14-label": "预期问答",
+    "q14-placeholder": "问：...\n答：...\n\n问：...\n答：...",
+    "back-step2-btn": "← 返回：解决方法",
+    "to-step4-btn": "下一步：演示 →",
+    // Step 4
+    "step4-title": "第四步：演示",
+    "step4-sub": "准备并排练你的演示",
+    "step4-badge": "阶段四",
+    "q15-title": "演讲结构",
+    "q15-hint": "概述你的演示结构。一个有力的演讲应涵盖：开场、问题、解决方法、证据、行动号召。",
+    "q15-placeholder": "开场：...\n问题：...\n解决方法：...\n证据/影响：...\n行动号召：...",
+    "q16-title": "故事叙述元素",
+    "q16-hint": "优秀的演示通过故事建立情感联系。描述一个受你所关注问题影响的真实或假设性故事。",
+    "q16-placeholder": "认识一下[姓名/人物]……他们面临[问题]，因为……你的解决方法将通过……帮助他们",
+    "q17-title": "数据与证据",
+    "q17-hint": "你将使用哪些统计数据、研究或证据来支持你的论点？请注明来源。",
+    "q17-placeholder": "统计数据1：……（来源：……）\n统计数据2：……（来源：……）\n研究发现：……（来源：……）",
+    "q18-title": "预期问答",
+    "q18-hint": "评审或观众可能会提出哪些棘手的问题？提前准备好你的答案。",
+    "q18-placeholder": "问：...\n答：...\n\n问：...\n答：...",
+    "q19-title": "最终总结陈述",
+    "q19-hint": "写一段引人入胜的3–5句话，总结你的整个项目。这是你的电梯演讲。",
+    "q19-placeholder": "我们的团队发现了……的问题。我们设计了一个……的解决方案。我们的计划包括……我们相信这将带来……我们呼吁你……",
+    "back-step3-btn": "← 返回：行动",
+    "export-btn": "📄 导出为PDF",
+    // Footer
+    "footer-1": "为AHS全球课堂项目而建",
+    "footer-2": "由AI驱动 — 请始终批判性地看待AI生成的反馈。",
+    // Login
+    "login-year-label": "年份",
+    "login-city-label": "城市",
+    "login-group-label": "小组",
+    "login-btn": "进入平台 →",
+    "login-error": "请选择年份、城市和小组后继续。",
+    // Buttons misc
+    "signout-btn": "退出登录",
+    "theme-btn": "🌙 主题",
+    "add-row-btn": "+ 添加方案行",
+    "remove-row-btn": "− 删除最后一行",
+    "add-col-btn": "+ 添加标准列",
+    "remove-col-btn": "− 删除最后一列",
+  }
+};
+
+let currentLang = 'en';
+
+function applyLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem('lang', lang);
+  const t = translations[lang];
+
+  // Helper: set text content safely
+  function setText(id, key) {
+    const el = document.getElementById(id);
+    if (el && t[key] !== undefined) el.textContent = t[key];
+  }
+
+  // Helper: set placeholder safely
+  function setPlaceholder(id, key) {
+    const el = document.getElementById(id);
+    if (el && t[key] !== undefined) el.placeholder = t[key];
+  }
+
+  // Header
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) {
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        el.placeholder = t[key];
+      } else {
+        el.textContent = t[key];
+      }
+    }
+  });
+
+  // Placeholders for textareas/inputs (by id)
+  const placeholderMap = {
+    q3: 'q3-placeholder',
+    q4a: 'q4a-placeholder',
+    q4b: 'q4b-placeholder',
+    q4c: 'q4c-placeholder',
+    q4d: 'q4d-placeholder',
+    q6: 'q6-placeholder',
+    q10: 'q10-placeholder',
+    q11: 'q11-placeholder',
+    q12: 'q12-placeholder',
+    q13: 'q13-placeholder',
+    q14: 'q14-placeholder',
+    q15: 'q15-placeholder',
+    q16: 'q16-placeholder',
+    q17: 'q17-placeholder',
+    q18: 'q18-placeholder',
+    q19: 'q19-placeholder',
+  };
+  Object.entries(placeholderMap).forEach(([id, key]) => setPlaceholder(id, key));
+
+  // Nav tab buttons
+  document.querySelectorAll('.nav-btn[data-step]').forEach(btn => {
+    const step = btn.dataset.step;
+    const key = 'nav-' + step;
+    if (t[key]) btn.textContent = t[key];
+  });
+
+  // Language button active state
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+}
+
+// Wire up language buttons
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
+});
+  
   </script>    
 </body>
 </html>
