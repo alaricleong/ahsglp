@@ -1234,17 +1234,10 @@ function clearAllData() {
 }
 
 // ── Init ──────────────────────────────────────────────────────────────────
-(function init() {
-  // Apply saved theme
+document.addEventListener('DOMContentLoaded', function() {
   applyTheme(localStorage.getItem('darkMode') === '1');
-
-  // Load saved data
   loadAll();
-
-  // Start on step 1
   goToStep(1);
-
-  // Wire up clear button if present
   const clearBtn = document.getElementById('clearDataBtn');
   if (clearBtn) clearBtn.addEventListener('click', clearAllData);
 })();
