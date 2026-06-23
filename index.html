@@ -121,7 +121,6 @@ textarea { resize: vertical; min-height: 110px; font-family: "Aptos","Inter",san
 .criteria-table td:first-child { text-align: left; font-weight: 600; }
 .criteria-table input[type="text"],
 .criteria-table input[type="number"] { width: 100%; border: 1px solid #cbd5e1; border-radius: 6px; padding: 4px 6px; font-size: 0.78rem; outline: none; background: white; }
-/* SDG Buttons */
 .sdg-btn {
   display: inline-flex;
   align-items: center;
@@ -139,7 +138,6 @@ textarea { resize: vertical; min-height: 110px; font-family: "Aptos","Inter",san
 }
 .sdg-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
 .sdg-btn.selected { box-shadow: 0 4px 14px rgba(0,0,0,0.25); transform: translateY(-1px); filter: brightness(1.05); }
-/* Resource bar */
 .resource-bar {
   background: rgba(255,255,255,0.75);
   border: 1px solid rgba(203,213,225,0.6);
@@ -211,7 +209,7 @@ textarea { resize: vertical; min-height: 110px; font-family: "Aptos","Inter",san
         </select>
       </div>
       <div id="loginError" class="text-xs font-semibold text-red-600 text-center hidden p-3 bg-red-50 rounded-lg border border-red-100"></div>
-      <button id="loginBtn" class="w-full py-3.5 bg-gradient-to-r from-[var(--green)] to-[#10b981] hover:from-[#043e2f] hover:to-[#059669] text-white font-bold rounded-xl shadow-lg transition-all">LOGIN</button>
+      <button id="loginBtn" class="w-full py-3.5 bg-gradient-to-r from-[var(--green)] to-[#10b981] hover:from-[#043e2f] hover:to-[#059669] text-white font-bold rounded-xl shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 active:scale-95">Enter Portal →</button>
     </div>
   </div>
 </div>
@@ -237,14 +235,14 @@ textarea { resize: vertical; min-height: 110px; font-family: "Aptos","Inter",san
           <button class="lang-btn" data-lang="zh">中文</button>
         </div>
         <button id="appThemeToggle" class="text-xs bg-white/10 hover:bg-white/20 text-white px-2.5 py-1.5 rounded-lg font-bold flex items-center gap-1">🌙</button>
-        <button id="logoutBtn" class="text-xs bg-red-500/20 hover:bg-red-500/30 text-red-200 px-2.5 py-1.5 rounded-lg font-bold">Sign Out</button>
+        <button id="logoutBtn" class="text-xs bg-red-500/20 hover:bg-red-500/30 text-red-200 px-2.5 py-1.5 rounded-lg font-bold" data-i18n="signout-btn">Sign Out</button>
       </div>
     </div>
     <nav id="mainNav" class="max-w-7xl mx-auto flex gap-1.5 px-3 py-2 overflow-x-auto no-scrollbar">
-      <button class="nav-btn tab-1 active flex-1 min-w-[80px] rounded-lg border border-white/10 bg-white/10 px-2 sm:px-3 py-1.5 text-xs sm:text-sm font-bold text-white whitespace-nowrap" data-step="1">1: Problem</button>
-      <button class="nav-btn tab-2 flex-1 min-w-[80px] rounded-lg border border-white/10 bg-white/10 px-2 sm:px-3 py-1.5 text-xs sm:text-sm font-bold text-white whitespace-nowrap" data-step="2">2: Solution</button>
-      <button class="nav-btn tab-3 flex-1 min-w-[80px] rounded-lg border border-white/10 bg-white/10 px-2 sm:px-3 py-1.5 text-xs sm:text-sm font-bold text-white whitespace-nowrap" data-step="3">3: Action</button>
-      <button class="nav-btn tab-4 flex-1 min-w-[80px] rounded-lg border border-white/10 bg-white/10 px-2 sm:px-3 py-1.5 text-xs sm:text-sm font-bold text-white whitespace-nowrap" data-step="4">4: Present</button>
+      <button class="nav-btn tab-1 active flex-1 min-w-[80px] rounded-lg border border-white/10 bg-white/10 px-2 sm:px-3 py-1.5 text-xs sm:text-sm font-bold text-white whitespace-nowrap" data-step="1" data-i18n-nav="nav-1">1: Problem</button>
+      <button class="nav-btn tab-2 flex-1 min-w-[80px] rounded-lg border border-white/10 bg-white/10 px-2 sm:px-3 py-1.5 text-xs sm:text-sm font-bold text-white whitespace-nowrap" data-step="2" data-i18n-nav="nav-2">2: Solution</button>
+      <button class="nav-btn tab-3 flex-1 min-w-[80px] rounded-lg border border-white/10 bg-white/10 px-2 sm:px-3 py-1.5 text-xs sm:text-sm font-bold text-white whitespace-nowrap" data-step="3" data-i18n-nav="nav-3">3: Action</button>
+      <button class="nav-btn tab-4 flex-1 min-w-[80px] rounded-lg border border-white/10 bg-white/10 px-2 sm:px-3 py-1.5 text-xs sm:text-sm font-bold text-white whitespace-nowrap" data-step="4" data-i18n-nav="nav-4">4: Present</button>
     </nav>
   </header>
 
@@ -259,26 +257,26 @@ textarea { resize: vertical; min-height: 110px; font-family: "Aptos","Inter",san
         </div>
         <div class="flex items-center gap-2">
           <button id="appThemeToggle2" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-lg font-bold flex items-center gap-1 shadow-sm dark-theme-btn">🌙 Theme</button>
-          <button id="logoutBtn2" class="text-xs bg-red-100 hover:bg-red-200 text-red-700 px-3 py-1.5 rounded-lg font-bold shadow-sm">Sign Out</button>
+          <button id="logoutBtn2" class="text-xs bg-red-100 hover:bg-red-200 text-red-700 px-3 py-1.5 rounded-lg font-bold shadow-sm" data-i18n="signout-btn">Sign Out</button>
         </div>
       </div>
       <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <div class="flex flex-col gap-1.5">
-          <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Year</label>
+          <label class="text-xs font-bold text-slate-500 uppercase tracking-wider" data-i18n="label-year">Year</label>
           <select id="selectYear" class="styled-select w-full p-2.5 rounded-xl border-2 border-slate-200 outline-none focus:border-emerald-600 text-sm font-semibold text-slate-700 bg-white">
             <option value="">-- Year --</option>
             <option>2025</option><option selected>2026</option><option>2027</option><option>2028</option><option>2029</option><option>2030</option>
           </select>
         </div>
         <div class="flex flex-col gap-1.5">
-          <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">City</label>
+          <label class="text-xs font-bold text-slate-500 uppercase tracking-wider" data-i18n="label-city">City</label>
           <select id="selectTrip" class="styled-select w-full p-2.5 rounded-xl border-2 border-slate-200 outline-none focus:border-emerald-600 text-sm font-semibold text-slate-700 bg-white">
             <option value="">-- City --</option>
             <option>Sydney</option><option>Beijing</option><option>Suzhou</option><option>Taipei</option><option>Shijiazhuang</option><option>Chongqing</option>
           </select>
         </div>
         <div class="flex flex-col gap-1.5">
-          <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Group</label>
+          <label class="text-xs font-bold text-slate-500 uppercase tracking-wider" data-i18n="label-group">Group</label>
           <select id="selectGroup" class="styled-select w-full p-2.5 rounded-xl border-2 border-slate-200 outline-none focus:border-emerald-600 text-sm font-semibold text-slate-700 bg-white">
             <option value="">-- Group --</option>
             <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
@@ -288,7 +286,7 @@ textarea { resize: vertical; min-height: 110px; font-family: "Aptos","Inter",san
           </select>
         </div>
         <div class="flex flex-col gap-1.5">
-          <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Group ID</label>
+          <label class="text-xs font-bold text-slate-500 uppercase tracking-wider" data-i18n="label-groupid">Group ID</label>
           <div class="w-full p-2.5 rounded-xl border-2 border-emerald-200 bg-emerald-50 text-sm font-extrabold text-emerald-800 min-h-[44px] flex items-center">
             <span id="groupIdDisplay">-- / -- / --</span>
           </div>
@@ -296,438 +294,1413 @@ textarea { resize: vertical; min-height: 110px; font-family: "Aptos","Inter",san
       </div>
       <div class="mt-3 grid gap-3 sm:grid-cols-2">
         <div>
-          <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Team Members</label>
+          <label class="text-xs font-bold text-slate-500 uppercase tracking-wider" data-i18n="label-team">Team Members</label>
           <input type="text" id="teamMembers" class="mt-1 w-full p-2.5 rounded-xl border-2 border-slate-200 outline-none focus:border-emerald-600 text-sm" placeholder="e.g. Alice, Bob, Charlie" />
         </div>
         <div>
-          <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Logged In As</label>
+          <label class="text-xs font-bold text-slate-500 uppercase tracking-wider" data-i18n="label-loggedin">Logged In As</label>
           <span id="userDisplay" class="mt-1 block w-full p-2.5 rounded-xl border-2 border-slate-100 bg-slate-50 text-sm font-bold text-slate-600"></span>
         </div>
       </div>
     </section>
 
-<!-- ===== STEP 1: PROBLEM ===== -->
-<section id="step1" class="step-section active">
-  <div class="rounded-2xl border-t-8 border-amber-400 bg-white p-4 sm:p-6 md:p-8 shadow-lg card-elevated space-y-5">
+    <!-- ===== STEP 1: PROBLEM ===== -->
+    <section id="step1" class="step-section active">
+      <div class="rounded-2xl border-t-8 border-amber-400 bg-white p-4 sm:p-6 md:p-8 shadow-lg card-elevated space-y-5">
 
-    <div class="resource-bar">
-      <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">📚 Resources:</span>
-      <a href="https://sdgs.un.org/goals" target="_blank" class="resource-btn bg-blue-600 hover:bg-blue-700">🌐 UN SDGs</a>
-      <a href="https://padlet.com/alaricleong/glp-cif-articles-172-7d0vnk949g3w" target="_blank" class="resource-btn bg-orange-500 hover:bg-orange-600">📰 Current Affairs Articles</a>
-      <a href="https://go.gov.sg/ahsglobalclassroom" target="_blank" class="resource-btn bg-emerald-600 hover:bg-emerald-700">🏫 GC Microsite</a>
-    </div>
-
-    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-      <div>
-        <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-amber-600">Step 1: Problem</h2>
-        <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Identify challenges and design a problem statement</p>
-      </div>
-      <span class="badge bg-amber-100 text-amber-800">PHASE 1</span>
-    </div>
-
-    <!-- SDG SELECTOR -->
-    <div class="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 sm:p-5">
-      <h3 class="mb-1 text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
-        <span class="flex items-center justify-center w-6 h-6 rounded-full bg-amber-100 text-amber-700 font-extrabold text-xs">★</span>
-        Select Your Focus SDG
-      </h3>
-      <p class="text-xs text-slate-400 mb-4 leading-relaxed">Choose one SDG that your project will address. This will guide all your responses.</p>
-      <p class="text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">🤝 Social Causes (SDG 1–10)</p>
-      <div class="flex flex-wrap gap-2 mb-4">
-        <button class="sdg-btn" style="border-color:#e5243b;color:#e5243b;" data-sdg="SDG 1: No Poverty" onclick="selectSDG(this)">🔴 SDG 1: No Poverty</button>
-        <button class="sdg-btn" style="border-color:#dda63a;color:#dda63a;" data-sdg="SDG 2: Zero Hunger" onclick="selectSDG(this)">🟡 SDG 2: Zero Hunger</button>
-        <button class="sdg-btn" style="border-color:#4c9f38;color:#4c9f38;" data-sdg="SDG 3: Good Health" onclick="selectSDG(this)">🟢 SDG 3: Good Health</button>
-        <button class="sdg-btn" style="border-color:#c5192d;color:#c5192d;" data-sdg="SDG 4: Quality Education" onclick="selectSDG(this)">🔴 SDG 4: Quality Education</button>
-        <button class="sdg-btn" style="border-color:#ff3a21;color:#ff3a21;" data-sdg="SDG 5: Gender Equality" onclick="selectSDG(this)">🟠 SDG 5: Gender Equality</button>
-        <button class="sdg-btn" style="border-color:#26bde2;color:#26bde2;" data-sdg="SDG 6: Clean Water" onclick="selectSDG(this)">🔵 SDG 6: Clean Water</button>
-        <button class="sdg-btn" style="border-color:#fcc30b;color:#fcc30b;" data-sdg="SDG 7: Clean Energy" onclick="selectSDG(this)">🟡 SDG 7: Clean Energy</button>
-        <button class="sdg-btn" style="border-color:#a21942;color:#a21942;" data-sdg="SDG 8: Decent Work" onclick="selectSDG(this)">🔴 SDG 8: Decent Work</button>
-        <button class="sdg-btn" style="border-color:#fd6925;color:#fd6925;" data-sdg="SDG 9: Industry & Innovation" onclick="selectSDG(this)">🟠 SDG 9: Industry & Innovation</button>
-        <button class="sdg-btn" style="border-color:#dd1367;color:#dd1367;" data-sdg="SDG 10: Reduced Inequalities" onclick="selectSDG(this)">🔴 SDG 10: Reduced Inequalities</button>
-      </div>
-      <p class="text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">🌍 Environmental Causes (SDG 11–15)</p>
-      <div class="flex flex-wrap gap-2 mb-4">
-        <button class="sdg-btn" style="border-color:#fd9d24;color:#fd9d24;" data-sdg="SDG 11: Sustainable Cities" onclick="selectSDG(this)">🟠 SDG 11: Sustainable Cities</button>
-        <button class="sdg-btn" style="border-color:#bf8b2e;color:#bf8b2e;" data-sdg="SDG 12: Responsible Consumption" onclick="selectSDG(this)">🟤 SDG 12: Responsible Consumption</button>
-        <button class="sdg-btn" style="border-color:#3f7e44;color:#3f7e44;" data-sdg="SDG 13: Climate Action" onclick="selectSDG(this)">🟢 SDG 13: Climate Action</button>
-        <button class="sdg-btn" style="border-color:#0a97d9;color:#0a97d9;" data-sdg="SDG 14: Life Below Water" onclick="selectSDG(this)">🔵 SDG 14: Life Below Water</button>
-        <button class="sdg-btn" style="border-color:#56c02b;color:#56c02b;" data-sdg="SDG 15: Life on Land" onclick="selectSDG(this)">🟢 SDG 15: Life on Land</button>
-      </div>
-      <p class="text-xs font-bold text-slate-600 uppercase tracking-wider mb-2">🏛️ Governance & Global (SDG 16–17)</p>
-      <div class="flex flex-wrap gap-2">
-        <button class="sdg-btn" style="border-color:#00689d;color:#00689d;" data-sdg="SDG 16: Peace & Justice" onclick="selectSDG(this)">🔵 SDG 16: Peace & Justice</button>
-        <button class="sdg-btn" style="border-color:#19486a;color:#19486a;" data-sdg="SDG 17: Partnerships" onclick="selectSDG(this)">🔵 SDG 17: Partnerships</button>
-      </div>
-      <div id="sdgSelectedDisplay" class="hidden mt-4 p-3 rounded-xl bg-amber-50 border-2 border-amber-200 text-sm font-bold text-amber-800 flex items-center gap-2">
-        <span>✅</span><span>Selected SDG:</span><span id="sdgSelectedText" class="text-amber-900"></span>
-      </div>
-    </div>
-
-    <!-- Q3: Identifying Challenges -->
-    <div class="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 sm:p-5">
-      <h3 class="mb-1 text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
-        <span class="flex items-center justify-center w-6 h-6 rounded-full bg-amber-100 text-amber-700 font-extrabold text-xs">3</span>
-        Identifying Challenges / 辨识挑战
-      </h3>
-      <p class="text-xs text-slate-400 mb-1 leading-relaxed">Using the UN SDGs, identify <strong>3–4 challenges</strong> in society and explain why each is a challenge.</p>
-      <p class="text-xs text-slate-400 mb-3 leading-relaxed">利用联合国可持续发展目标，辨识出社会现有的挑战 (3–4)，并解释为什么是个挑战。</p>
-      <textarea id="q3" class="w-full p-3 rounded-xl border-2 border-slate-200 outline-none focus:border-amber-400 text-sm" rows="6"
-        placeholder="Challenge 1: [Name] — Why it is a challenge: ...&#10;Challenge 2: [Name] — Why it is a challenge: ...&#10;Challenge 3: [Name] — Why it is a challenge: ..."></textarea>
-    </div>
-
-    <!-- Q4: Problem Statement -->
-    <div class="rounded-xl border-2 border-amber-300 bg-amber-50 p-4 sm:p-5">
-      <h3 class="mb-1 text-base sm:text-lg font-bold text-amber-800 flex items-center gap-2">
-        <span class="flex items-center justify-center w-6 h-6 rounded-full bg-amber-400 text-white font-extrabold text-xs">4</span>
-        Select Underlying Problem & Problem Statement / 确定研究课题与问题陈述
-      </h3>
-      <p class="text-xs text-amber-600 mb-3 leading-relaxed">From your challenges above, select <strong>1 underlying problem</strong> through research and design a problem statement.</p>
-
-      <div class="mb-4 p-3 rounded-xl bg-white border border-amber-200 text-xs text-slate-600 space-y-1">
-        <p class="font-bold text-amber-700 mb-2">📋 Problem Statement Template:</p>
-        <p><span class="font-bold">Condition Statement:</span> Because of [ethical/social/environmental concern caused by issue]...</p>
-        <p><span class="font-bold">Stem + Key Verb Phrase:</span> ...how might we [key verb phrase] for [target group]...</p>
-        <p><span class="font-bold">Purpose:</span> ...in order to [desired outcome]...</p>
-        <p><span class="font-bold">Future Scene Parameters:</span> ...in [location] in [year] and beyond?</p>
-      </div>
-
-      <div class="space-y-3">
-        <div>
-          <label class="text-xs font-bold text-amber-700 uppercase tracking-wider">Condition Statement</label>
-          <textarea id="q4a" class="mt-1 w-full p-3 rounded-xl border-2 border-amber-200 outline-none focus:border-amber-500 text-sm bg-white" rows="2"
-            placeholder="Because of [concern caused by issue]..."></textarea>
+        <div class="resource-bar">
+          <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">📚 Resources:</span>
+          <a href="https://sdgs.un.org/goals" target="_blank" class="resource-btn bg-blue-600 hover:bg-blue-700">🌐 UN SDGs</a>
+          <a href="https://padlet.com/alaricleong/glp-cif-articles-172-7d0vnk949g3w" target="_blank" class="resource-btn bg-orange-500 hover:bg-orange-600">📰 Current Affairs Articles</a>
+          <a href="https://go.gov.sg/ahsglobalclassroom" target="_blank" class="resource-btn bg-emerald-600 hover:bg-emerald-700">🏫 GC Microsite</a>
         </div>
-        <div>
-          <label class="text-xs font-bold text-amber-700 uppercase tracking-wider">Stem + Key Verb Phrase</label>
-          <textarea id="q4b" class="mt-1 w-full p-3 rounded-xl border-2 border-amber-200 outline-none focus:border-amber-500 text-sm bg-white" rows="2"
-            placeholder="...how might we [key verb phrase] for [target group]..."></textarea>
+
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+          <div>
+            <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-amber-600" data-i18n="step1-title">Step 1: Problem</h2>
+            <p class="text-xs sm:text-sm text-slate-500 mt-0.5" data-i18n="step1-sub">Identify challenges and design a problem statement</p>
+          </div>
+          <span class="badge bg-amber-100 text-amber-800" data-i18n="step1-badge">PHASE 1</span>
         </div>
-        <div>
-          <label class="text-xs font-bold text-amber-700 uppercase tracking-wider">Purpose</label>
-          <textarea id="q4c" class="mt-1 w-full p-3 rounded-xl border-2 border-amber-200 outline-none focus:border-amber-500 text-sm bg-white" rows="2"
-            placeholder="...in order to [desired outcome]..."></textarea>
+
+        <!-- SDG SELECTOR -->
+        <div class="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 sm:p-5">
+          <h3 class="mb-1 text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
+            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-amber-100 text-amber-700 font-extrabold text-xs">★</span>
+            <span data-i18n="sdg-select-title">Select Your Focus SDG</span>
+          </h3>
+          <p class="text-xs text-slate-400 mb-4 leading-relaxed" data-i18n="sdg-select-hint">Choose one SDG that your project will address. This will guide all your responses.</p>
+          <p class="text-xs font-bold text-slate-600 uppercase tracking-wider mb-2" data-i18n="sdg-cat1">🤝 Social Causes (SDG 1–10)</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+            <button class="sdg-btn" style="border-color:#e5243b;color:#e5243b;" data-sdg="SDG 1: No Poverty" onclick="selectSDG(this)">🔴 SDG 1: No Poverty</button>
+            <button class="sdg-btn" style="border-color:#dda63a;color:#dda63a;" data-sdg="SDG 2: Zero Hunger" onclick="selectSDG(this)">🟡 SDG 2: Zero Hunger</button>
+            <button class="sdg-btn" style="border-color:#4c9f38;color:#4c9f38;" data-sdg="SDG 3: Good Health" onclick="selectSDG(this)">🟢 SDG 3: Good Health</button>
+            <button class="sdg-btn" style="border-color:#c5192d;color:#c5192d;" data-sdg="SDG 4: Quality Education" onclick="selectSDG(this)">🔴 SDG 4: Quality Education</button>
+            <button class="sdg-btn" style="border-color:#ff3a21;color:#ff3a21;" data-sdg="SDG 5: Gender Equality" onclick="selectSDG(this)">🟠 SDG 5: Gender Equality</button>
+            <button class="sdg-btn" style="border-color:#26bde2;color:#26bde2;" data-sdg="SDG 6: Clean Water" onclick="selectSDG(this)">🔵 SDG 6: Clean Water</button>
+            <button class="sdg-btn" style="border-color:#fcc30b;color:#fcc30b;" data-sdg="SDG 7: Clean Energy" onclick="selectSDG(this)">🟡 SDG 7: Clean Energy</button>
+            <button class="sdg-btn" style="border-color:#a21942;color:#a21942;" data-sdg="SDG 8: Decent Work" onclick="selectSDG(this)">🔴 SDG 8: Decent Work</button>
+            <button class="sdg-btn" style="border-color:#fd6925;color:#fd6925;" data-sdg="SDG 9: Industry & Innovation" onclick="selectSDG(this)">🟠 SDG 9: Industry & Innovation</button>
+            <button class="sdg-btn" style="border-color:#dd1367;color:#dd1367;" data-sdg="SDG 10: Reduced Inequalities" onclick="selectSDG(this)">🔴 SDG 10: Reduced Inequalities</button>
+          </div>
+          <p class="text-xs font-bold text-slate-600 uppercase tracking-wider mb-2" data-i18n="sdg-cat2">🌍 Environmental Causes (SDG 11–15)</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <button class="sdg-btn" style="border-color:#fd9d24;color:#fd9d24;" data-sdg="SDG 11: Sustainable Cities" onclick="selectSDG(this)">🟠 SDG 11: Sustainable Cities</button>
+            <button class="sdg-btn" style="border-color:#bf8b2e;color:#bf8b2e;" data-sdg="SDG 12: Responsible Consumption" onclick="selectSDG(this)">🟤 SDG 12: Responsible Consumption</button>
+            <button class="sdg-btn" style="border-color:#3f7e44;color:#3f7e44;" data-sdg="SDG 13: Climate Action" onclick="selectSDG(this)">🟢 SDG 13: Climate Action</button>
+            <button class="sdg-btn" style="border-color:#0a97d9;color:#0a97d9;" data-sdg="SDG 14: Life Below Water" onclick="selectSDG(this)">🔵 SDG 14: Life Below Water</button>
+            <button class="sdg-btn" style="border-color:#56c02b;color:#56c02b;" data-sdg="SDG 15: Life on Land" onclick="selectSDG(this)">🟢 SDG 15: Life on Land</button>
+          </div>
+          <p class="text-xs font-bold text-slate-600 uppercase tracking-wider mb-2" data-i18n="sdg-cat3">🏛️ Governance & Global (SDG 16–17)</p>
+          <div class="flex flex-wrap gap-2">
+            <button class="sdg-btn" style="border-color:#00689d;color:#00689d;" data-sdg="SDG 16: Peace & Justice" onclick="selectSDG(this)">🔵 SDG 16: Peace & Justice</button>
+            <button class="sdg-btn" style="border-color:#19486a;color:#19486a;" data-sdg="SDG 17: Partnerships" onclick="selectSDG(this)">🔵 SDG 17: Partnerships</button>
+          </div>
+          <div id="sdgSelectedDisplay" class="hidden mt-4 p-3 rounded-xl bg-amber-50 border-2 border-amber-200 text-sm font-bold text-amber-800 flex items-center gap-2">
+            <span>✅</span><span data-i18n="sdg-selected-label">Selected SDG:</span><span id="sdgSelectedText" class="text-amber-900"></span>
+          </div>
         </div>
-        <div>
-          <label class="text-xs font-bold text-amber-700 uppercase tracking-wider">Future Scene Parameters</label>
-          <textarea id="q4d" class="mt-1 w-full p-3 rounded-xl border-2 border-amber-200 outline-none focus:border-amber-500 text-sm bg-white" rows="2"
-            placeholder="...in [location] in [year] and beyond?"></textarea>
+
+        <!-- Q3: Identifying Challenges -->
+        <div class="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 sm:p-5">
+          <h3 class="mb-1 text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
+            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-amber-100 text-amber-700 font-extrabold text-xs">3</span>
+            <span data-i18n="q3-title">Identifying Challenges / 辨识挑战</span>
+          </h3>
+          <p class="text-xs text-slate-400 mb-1 leading-relaxed" data-i18n="q3-hint-en">Using the UN SDGs, identify <strong>3–4 challenges</strong> in society and explain why each is a challenge.</p>
+          <p class="text-xs text-slate-400 mb-3 leading-relaxed" data-i18n="q3-hint-zh">利用联合国可持续发展目标，辨识出社会现有的挑战 (3–4)，并解释为什么是个挑战。</p>
+          <textarea id="q3" class="w-full p-3 rounded-xl border-2 border-slate-200 outline-none focus:border-amber-400 text-sm" rows="8"
+            placeholder="Challenge 1: [Name] — Why it is a challenge: ...&#10;Challenge 2: [Name] — Why it is a challenge: ...&#10;Challenge 3: [Name] — Why it is a challenge: ...&#10;Challenge 4: [Name] — Why it is a challenge: ..."></textarea>
         </div>
+
+        <!-- Q4: Problem Statement -->
+        <div class="rounded-xl border-2 border-amber-300 bg-amber-50 p-4 sm:p-5">
+          <h3 class="mb-1 text-base sm:text-lg font-bold text-amber-800 flex items-center gap-2">
+            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-amber-400 text-white font-extrabold text-xs">4</span>
+            <span data-i18n="q4-title">Select Underlying Problem & Problem Statement / 确定研究课题与问题陈述</span>
+          </h3>
+          <p class="text-xs text-amber-600 mb-3 leading-relaxed" data-i18n="q4-hint">From your challenges above, select <strong>1 underlying problem</strong> through research and design a problem statement.</p>
+          <div class="mb-4 p-3 rounded-xl bg-white border border-amber-200 text-xs text-slate-600 space-y-1">
+            <p class="font-bold text-amber-700 mb-2" data-i18n="q4-template-title">📋 Problem Statement Template:</p>
+            <p><span class="font-bold" data-i18n="q4-t1">Condition Statement:</span> <span data-i18n="q4-t1-eg">Because of [ethical/social/environmental concern caused by issue]...</span></p>
+            <p><span class="font-bold" data-i18n="q4-t2">Stem + Key Verb Phrase:</span> <span data-i18n="q4-t2-eg">...how might we [key verb phrase] for [target group]...</span></p>
+            <p><span class="font-bold" data-i18n="q4-t3">Purpose:</span> <span data-i18n="q4-t3-eg">...in order to [desired outcome]...</span></p>
+            <p><span class="font-bold" data-i18n="q4-t4">Future Scene Parameters:</span> <span data-i18n="q4-t4-eg">...in [location] in [year] and beyond?</span></p>
+          </div>
+          <div class="space-y-3">
+            <div>
+              <label class="text-xs font-bold text-amber-700 uppercase tracking-wider" data-i18n="q4a-label">Condition Statement</label>
+              <textarea id="q4a" class="mt-1 w-full p-3 rounded-xl border-2 border-amber-200 outline-none focus:border-amber-500 text-sm bg-white" rows="2"
+                placeholder="Because of [concern caused by issue]..."></textarea>
+            </div>
+            <div>
+              <label class="text-xs font-bold text-amber-700 uppercase tracking-wider" data-i18n="q4b-label">Stem + Key Verb Phrase</label>
+              <textarea id="q4b" class="mt-1 w-full p-3 rounded-xl border-2 border-amber-200 outline-none focus:border-amber-500 text-sm bg-white" rows="2"
+                placeholder="...how might we [key verb phrase] for [target group]..."></textarea>
+            </div>
+            <div>
+              <label class="text-xs font-bold text-amber-700 uppercase tracking-wider" data-i18n="q4c-label">Purpose</label>
+              <textarea id="q4c" class="mt-1 w-full p-3 rounded-xl border-2 border-amber-200 outline-none focus:border-amber-500 text-sm bg-white" rows="2"
+                placeholder="...in order to [desired outcome]..."></textarea>
+            </div>
+            <div>
+              <label class="text-xs font-bold text-amber-700 uppercase tracking-wider" data-i18n="q4d-label">Future Scene Parameters</label>
+              <textarea id="q4d" class="mt-1 w-full p-3 rounded-xl border-2 border-amber-200 outline-none focus:border-amber-500 text-sm bg-white" rows="2"
+                placeholder="...in [location] in [year] and beyond?"></textarea>
+            </div>
+          </div>
+          <div id="generatedProblemStatement" class="hidden mt-4 p-4 rounded-xl bg-amber-100 border-2 border-amber-300 text-sm text-amber-900">
+            <p class="font-bold mb-1" data-i18n="ps-generated-title">📝 Your Problem Statement:</p>
+            <p id="problemStatementText" class="italic leading-relaxed"></p>
+          </div>
+        </div>
+
+        <!-- AI FEEDBACK BLOCK Step 1 -->
+        <div class="rounded-xl border-2 border-amber-200 bg-amber-50 p-4 sm:p-5">
+          <h3 class="text-base font-bold text-amber-800 mb-2 flex items-center gap-2">✨ <span data-i18n="ai-feedback-title">AI Feedback & Scoring</span></h3>
+          <p class="text-xs text-amber-600 mb-1" data-i18n="ai-feedback-hint1">Click below to generate your problem statement and receive AI feedback.</p>
+          <p class="text-xs text-amber-600 mb-3" data-i18n="ai-feedback-hint2">You need a score of at least <strong>6/10</strong> to proceed to Step 2.</p>
+          <div class="mb-3 p-3 rounded-xl bg-white border border-amber-200 text-xs text-slate-600">
+            <p class="font-bold text-amber-700 mb-2" data-i18n="rubric-title">📊 Rubric (Step 1 — max 10 pts):</p>
+            <ul class="space-y-1 list-disc list-inside text-slate-500">
+              <li data-i18n="rubric1-1"><strong>Challenges (Q3) — 4 pts:</strong> 3–4 distinct, well-explained challenges clearly linked to the chosen SDG.</li>
+              <li data-i18n="rubric1-2"><strong>Problem Identification — 2 pts:</strong> One specific underlying problem selected and justified from the challenges.</li>
+              <li data-i18n="rubric1-3"><strong>Problem Statement (Q4) — 4 pts:</strong> All four components present, specific, coherent and correctly formatted.</li>
+            </ul>
+          </div>
+          <button onclick="getStep1Feedback()" class="nav-btn tab-1 px-5 py-2.5 rounded-lg text-sm font-bold text-white bg-amber-500 w-full sm:w-auto" data-i18n="ai-btn-1">✨ Generate Problem Statement & Get Feedback</button>
+          <div id="step1-feedback" class="mt-3 hidden"></div>
+          <div id="step1-score-display" class="mt-2 hidden"></div>
+        </div>
+
+        <div class="flex justify-end pt-2">
+          <button id="toStep2Btn" onclick="goToStep(2)" class="nav-btn tab-2 px-6 py-3 rounded-xl text-sm font-bold text-white bg-blue-600 shadow-md opacity-40 cursor-not-allowed" disabled data-i18n="next-solution">Next: Solution →</button>
+        </div>
+
       </div>
+    </section>
 
-      <!-- Auto-generated Problem Statement display -->
-      <div id="generatedProblemStatement" class="hidden mt-4 p-4 rounded-xl bg-amber-100 border-2 border-amber-300 text-sm text-amber-900">
-        <p class="font-bold mb-1">📝 Your Problem Statement:</p>
-        <p id="problemStatementText" class="italic leading-relaxed"></p>
+    <!-- ===== STEP 2: SOLUTION ===== -->
+    <section id="step2" class="step-section">
+      <div class="rounded-2xl border-t-8 border-blue-500 bg-white p-4 sm:p-6 md:p-8 shadow-lg card-elevated space-y-5">
+
+        <div class="resource-bar">
+          <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">📚 Resources:</span>
+          <a href="https://sdgs.un.org/goals" target="_blank" class="resource-btn bg-blue-600 hover:bg-blue-700">🌐 UN SDGs</a>
+          <a href="https://padlet.com/alaricleong/glp-cif-articles-172-7d0vnk949g3w" target="_blank" class="resource-btn bg-orange-500 hover:bg-orange-600">📰 Current Affairs Articles</a>
+          <a href="https://go.gov.sg/ahsglobalclassroom" target="_blank" class="resource-btn bg-emerald-600 hover:bg-emerald-700">🏫 GC Microsite</a>
+        </div>
+
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+          <div>
+            <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-blue-600" data-i18n="step2-title">Step 2: Solution</h2>
+            <p class="text-xs sm:text-sm text-slate-500 mt-0.5" data-i18n="step2-sub">Generate, evaluate and select your best solution</p>
+          </div>
+          <span class="badge bg-blue-100 text-blue-800" data-i18n="step2-badge">PHASE 2</span>
+        </div>
+
+        <!-- Q5: Existing Measures + New Solutions -->
+        <div class="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 sm:p-5">
+          <h3 class="mb-1 text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
+            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-blue-100 text-blue-700 font-extrabold text-xs">5</span>
+            <span data-i18n="q5-title">Generate Solution Ideas / 提出解决方法</span>
+          </h3>
+          <p class="text-xs text-slate-400 mb-1 leading-relaxed" data-i18n="q5-hint-en">Compare and explain <strong>existing measures or solutions in both cities</strong>. Then come up with <strong>≥3 new innovative solutions</strong>.</p>
+          <p class="text-xs text-slate-400 mb-3 leading-relaxed" data-i18n="q5-hint-zh">对比现有的解决方式，并提出 ≥3 个创新的解决方法。</p>
+          <div class="mb-3">
+            <label class="text-xs font-bold text-blue-700 uppercase tracking-wider" data-i18n="q5a-label">Existing Measures / 现有解决方式</label>
+            <textarea id="q5a" class="mt-1 w-full p-3 rounded-xl border-2 border-slate-200 outline-none focus:border-blue-400 text-sm" rows="5"
+              placeholder="City 1 (e.g. Singapore): Existing measure 1...&#10;City 2 (e.g. Beijing): Existing measure 1...&#10;Comparison: ..."></textarea>
+          </div>
+          <div>
+            <label class="text-xs font-bold text-blue-700 uppercase tracking-wider" data-i18n="q5b-label">New Solutions (≥3) / 创新解决方法</label>
+            <textarea id="q5b" class="mt-1 w-full p-3 rounded-xl border-2 border-slate-200 outline-none focus:border-blue-400 text-sm" rows="6"
+              placeholder="Solution 1: ...&#10;Solution 2: ...&#10;Solution 3: ..."></textarea>
+          </div>
+        </div>
+
+        <!-- Q6: Criteria Table -->
+        <div class="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 sm:p-5">
+          <h3 class="mb-1 text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
+            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-blue-100 text-blue-700 font-extrabold text-xs">6</span>
+            <span data-i18n="q6-title">Identify Criteria & Evaluate Solutions / 设立标准并评估解决方法</span>
+          </h3>
+          <p class="text-xs text-slate-400 mb-1 leading-relaxed" data-i18n="q6-hint-en">Identify <strong>3–4 criteria</strong> to evaluate your proposed solutions. Score each solution against each criterion (1 = low, 3 = high). The highest total score is your best solution.</p>
+          <p class="text-xs text-slate-400 mb-3 leading-relaxed" data-i18n="q6-hint-zh">设立标准 (3–4) 来评估自己提议的解决方法。</p>
+          <div class="mb-3 p-3 rounded-xl bg-blue-50 border border-blue-200 text-xs text-slate-600">
+            <p class="font-bold text-blue-700 mb-1" data-i18n="q6-criteria-eg">💡 Possible criteria / 评估标准的例子：</p>
+            <p class="text-slate-500" data-i18n="q6-criteria-list">Time consideration 时间考量 · Manpower consideration 人力 · Cost consideration 成本考量 · Public perception 公众认知和反应</p>
+          </div>
+
+          <!-- Criteria Table Builder -->
+          <div class="overflow-x-auto">
+            <table class="criteria-table" id="criteriaTable">
+              <thead>
+                <tr id="criteriaHeaderRow">
+                  <th style="min-width:120px;" data-i18n="table-solution">Solutions / 解决方法</th>
+                  <th style="min-width:110px;"><input type="text" id="crit1" placeholder="Criterion 1" class="text-center font-bold" value="Time 时间考量" /></th>
+                  <th style="min-width:110px;"><input type="text" id="crit2" placeholder="Criterion 2" class="text-center font-bold" value="Manpower 人力" /></th>
+                  <th style="min-width:110px;"><input type="text" id="crit3" placeholder="Criterion 3" class="text-center font-bold" value="Cost 成本考量" /></th>
+                  <th style="min-width:110px;" id="crit4Header"><input type="text" id="crit4" placeholder="Criterion 4 (optional)" class="text-center font-bold" /></th>
+                  <th style="min-width:80px;" data-i18n="table-total">Total 总评分</th>
+                </tr>
+              </thead>
+              <tbody id="criteriaTableBody">
+                <!-- Rows injected by JS -->
+              </tbody>
+            </table>
+          </div>
+          <div class="flex flex-wrap gap-2 mt-3">
+            <button onclick="addCriteriaRow()" class="resource-btn bg-blue-600 text-xs px-3 py-1.5" data-i18n="add-row-btn">+ Add Solution Row</button>
+            <button onclick="removeCriteriaRow()" class="resource-btn bg-slate-400 text-xs px-3 py-1.5" data-i18n="remove-row-btn">− Remove Last Row</button>
+          </div>
+          <div id="bestSolutionDisplay" class="hidden mt-3 p-3 rounded-xl bg-blue-50 border-2 border-blue-200 text-sm font-bold text-blue-800">
+            <span data-i18n="best-solution-label">🏆 Best Solution (highest score):</span> <span id="bestSolutionText"></span>
+          </div>
+        </div>
+
+        <!-- Q7: Solution Statement -->
+        <div class="rounded-xl border-2 border-blue-300 bg-blue-50 p-4 sm:p-5">
+          <h3 class="mb-1 text-base sm:text-lg font-bold text-blue-800 flex items-center gap-2">
+            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-blue-400 text-white font-extrabold text-xs">7</span>
+            <span data-i18n="q7-title">Design a Solution Statement / 设立解决陈述</span>
+          </h3>
+          <p class="text-xs text-blue-600 mb-3 leading-relaxed" data-i18n="q7-hint">Apply your selected criteria to choose the most feasible solution. Then write a solution statement describing your chosen solution, who it helps, and how it addresses the problem.</p>
+          <textarea id="q7" class="w-full p-3 rounded-xl border-2 border-blue-200 outline-none focus:border-blue-500 text-sm bg-white" rows="4"
+            placeholder="Our solution is to [describe solution] for [target group] in order to [desired outcome]. This addresses [problem] by [mechanism]..."></textarea>
+        </div>
+
+        <!-- AI FEEDBACK BLOCK Step 2 -->
+        <div class="rounded-xl border-2 border-blue-200 bg-blue-50 p-4 sm:p-5">
+          <h3 class="text-base font-bold text-blue-800 mb-2 flex items-center gap-2">✨ <span data-i18n="ai-feedback-title2">AI Feedback & Scoring</span></h3>
+          <p class="text-xs text-blue-600 mb-1" data-i18n="ai-feedback-hint3">Click below to generate your solution statement and receive AI feedback.</p>
+          <p class="text-xs text-blue-600 mb-3" data-i18n="ai-feedback-hint4">You need a score of at least <strong>6/10</strong> to proceed to Step 3.</p>
+          <div class="mb-3 p-3 rounded-xl bg-white border border-blue-200 text-xs text-slate-600">
+            <p class="font-bold text-blue-700 mb-2" data-i18n="rubric2-title">📊 Rubric (Step 2 — max 10 pts):</p>
+            <ul class="space-y-1 list-disc list-inside text-slate-500">
+              <li data-i18n="rubric2-1"><strong>Existing Measures (Q5) — 3 pts:</strong> Both cities' measures compared with clear explanation and contrast.</li>
+              <li data-i18n="rubric2-2"><strong>New Solutions (Q5) — 3 pts:</strong> At least 3 genuinely innovative solutions proposed with justification.</li>
+              <li data-i18n="rubric2-3"><strong>Criteria & Evaluation (Q6) — 2 pts:</strong> 3–4 relevant criteria applied consistently; scores are justified.</li>
+              <li data-i18n="rubric2-4"><strong>Solution Statement (Q7) — 2 pts:</strong> Clear, specific statement identifying the best solution and its rationale.</li>
+            </ul>
+          </div>
+          <button onclick="getStep2Feedback()" class="nav-btn tab-2 px-5 py-2.5 rounded-lg text-sm font-bold text-white bg-blue-500 w-full sm:w-auto" data-i18n="ai-btn-2
+">✨ Generate Solution Statement & Get Feedback</button>
+          <div id="step2-feedback" class="mt-3 hidden"></div>
+          <div id="step2-score-display" class="mt-2 hidden"></div>
+        </div>
+
+        <div class="flex justify-between pt-2">
+          <button onclick="goToStep(1)" class="nav-btn px-6 py-3 rounded-xl text-sm font-bold text-white bg-slate-400 shadow-md" data-i18n="back-problem">← Back: Problem</button>
+          <button id="toStep3Btn" onclick="goToStep(3)" class="nav-btn tab-3 px-6 py-3 rounded-xl text-sm font-bold text-white bg-emerald-600 shadow-md opacity-40 cursor-not-allowed" disabled data-i18n="next-prototype">Next: Prototype →</button>
+        </div>
+
       </div>
-    </div>
+    </section>
 
-    <!-- AI FEEDBACK BLOCK (bottom of tab only) -->
-    <div class="rounded-xl border-2 border-amber-200 bg-amber-50 p-4 sm:p-5">
-      <h3 class="text-base font-bold text-amber-800 mb-2 flex items-center gap-2">✨ AI Feedback & Scoring</h3>
-      <p class="text-xs text-amber-600 mb-3">Click below to generate your problem statement and receive AI feedback. You need a score of at least <strong>6/10</strong> to proceed.</p>
-      <button onclick="getStep1Feedback()" class="nav-btn tab-1 px-5 py-2.5 rounded-lg text-sm font-bold text-white bg-amber-500 w-full sm:w-auto">✨ Generate Problem Statement & Get Feedback</button>
-      <div id="step1-feedback" class="mt-3 hidden"></div>
-      <div id="step1-score-display" class="mt-2 hidden"></div>
-    </div>
+    <!-- ===== STEP 3: PROTOTYPE ===== -->
+    <section id="step3" class="step-section">
+      <div class="rounded-2xl border-t-8 border-emerald-500 bg-white p-4 sm:p-6 md:p-8 shadow-lg card-elevated space-y-5">
 
-    <div class="flex justify-end pt-2">
-      <button id="toStep2Btn" onclick="goToStep(2)" class="nav-btn tab-2 px-6 py-3 rounded-xl text-sm font-bold text-white bg-blue-600 shadow-md opacity-40 cursor-not-allowed" disabled>Next: Solution →</button>
-    </div>
-  </div>
-</section>
+        <div class="resource-bar">
+          <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">📚 Resources:</span>
+          <a href="https://sdgs.un.org/goals" target="_blank" class="resource-btn bg-blue-600 hover:bg-blue-700">🌐 UN SDGs</a>
+          <a href="https://padlet.com/alaricleong/glp-cif-articles-172-7d0vnk949g3w" target="_blank" class="resource-btn bg-orange-500 hover:bg-orange-600">📰 Current Affairs Articles</a>
+          <a href="https://go.gov.sg/ahsglobalclassroom" target="_blank" class="resource-btn bg-emerald-600 hover:bg-emerald-700">🏫 GC Microsite</a>
+        </div>
 
-<!-- ===== STEP 2: SOLUTION ===== -->
-<section id="step2" class="step-section">
-  <div class="rounded-2xl border-t-8 border-blue-500 bg-white p-4 sm:p-6 md:p-8 shadow-lg card-elevated space-y-5">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+          <div>
+            <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-emerald-600" data-i18n="step3-title">Step 3: Prototype</h2>
+            <p class="text-xs sm:text-sm text-slate-500 mt-0.5" data-i18n="step3-sub">Design and refine your prototype</p>
+          </div>
+          <span class="badge bg-emerald-100 text-emerald-800" data-i18n="step3-badge">PHASE 3</span>
+        </div>
 
-    <!-- Same resource bar as Tab 1 -->
-    <div class="resource-bar">
-      <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">📚 Resources:</span>
-      <a href="https://sdgs.un.org/goals" target="_blank" class="resource-btn bg-blue-600 hover:bg-blue-700">🌐 UN SDGs</a>
-      <a href="https://padlet.com/alaricleong/glp-cif-articles-172-7d0vnk949g3w" target="_blank" class="resource-btn bg-orange-500 hover:bg-orange-600">📰 Current Affairs Articles</a>
-      <a href="https://go.gov.sg/ahsglobalclassroom" target="_blank" class="resource-btn bg-emerald-600 hover:bg-emerald-700">🏫 GC Microsite</a>
-    </div>
+        <!-- Q8: Prototype Description -->
+        <div class="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 sm:p-5">
+          <h3 class="mb-1 text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
+            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 font-extrabold text-xs">8</span>
+            <span data-i18n="q8-title">Describe Your Prototype / 描述你的原型</span>
+          </h3>
+          <p class="text-xs text-slate-400 mb-1 leading-relaxed" data-i18n="q8-hint-en">Describe your prototype in detail. Include its <strong>key features</strong>, <strong>materials or technology</strong> used, and how it works to solve the problem.</p>
+          <p class="text-xs text-slate-400 mb-3 leading-relaxed" data-i18n="q8-hint-zh">详细描述你的原型，包括主要功能、使用的材料或技术，以及它如何解决问题。</p>
+          <textarea id="q8" class="w-full p-3 rounded-xl border-2 border-slate-200 outline-none focus:border-emerald-400 text-sm" rows="6"
+            placeholder="Our prototype is... It works by... Key features include... Materials/technology used: ..."></textarea>
+        </div>
 
-    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-      <div>
-        <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-blue-600">Step 2: Solution</h2>
-        <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Generate, evaluate and select your best solution</p>
+        <!-- Q9: Prototype Sketch Upload -->
+        <div class="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 sm:p-5">
+          <h3 class="mb-1 text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
+            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 font-extrabold text-xs">9</span>
+            <span data-i18n="q9-title">Prototype Sketch / 原型草图</span>
+          </h3>
+          <p class="text-xs text-slate-400 mb-3 leading-relaxed" data-i18n="q9-hint">Upload a sketch or diagram of your prototype. Label key components clearly.</p>
+          <div class="border-2 border-dashed border-emerald-300 rounded-xl p-6 text-center bg-emerald-50 cursor-pointer hover:bg-emerald-100 transition-colors" onclick="document.getElementById('sketchUpload').click()">
+            <p class="text-2xl mb-2">🖼️</p>
+            <p class="text-sm font-bold text-emerald-700" data-i18n="upload-sketch">Click to upload sketch / diagram</p>
+            <p class="text-xs text-slate-400 mt-1" data-i18n="upload-formats">Accepted: JPG, PNG, PDF</p>
+            <input type="file" id="sketchUpload" class="hidden" accept=".jpg,.jpeg,.png,.pdf" onchange="handleSketchUpload(event)" />
+          </div>
+          <div id="sketchPreview" class="hidden mt-3">
+            <p class="text-xs font-bold text-emerald-700 mb-1" data-i18n="sketch-uploaded">✅ Sketch uploaded:</p>
+            <img id="sketchImg" src="" alt="Prototype Sketch" class="max-w-full rounded-xl border border-emerald-200 shadow" style="max-height:300px;" />
+            <p id="sketchFileName" class="text-xs text-slate-400 mt-1"></p>
+          </div>
+        </div>
+
+        <!-- Q10: Stakeholder Feedback -->
+        <div class="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 sm:p-5">
+          <h3 class="mb-1 text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
+            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 font-extrabold text-xs">10</span>
+            <span data-i18n="q10-title">Stakeholder Feedback & Iteration / 持份者反馈与改进</span>
+          </h3>
+          <p class="text-xs text-slate-400 mb-1 leading-relaxed" data-i18n="q10-hint-en">Describe the <strong>feedback received</strong> from at least one stakeholder and explain how you will <strong>iterate or improve</strong> your prototype based on this feedback.</p>
+          <p class="text-xs text-slate-400 mb-3 leading-relaxed" data-i18n="q10-hint-zh">描述从至少一位持份者收到的反馈，并说明你将如何根据反馈改进原型。</p>
+          <div class="space-y-3">
+            <div>
+              <label class="text-xs font-bold text-emerald-700 uppercase tracking-wider" data-i18n="q10a-label">Stakeholder & Feedback Received</label>
+              <textarea id="q10a" class="mt-1 w-full p-3 rounded-xl border-2 border-slate-200 outline-none focus:border-emerald-400 text-sm" rows="4"
+                placeholder="Stakeholder (e.g. teacher, community member, target user): ...&#10;Feedback: ..."></textarea>
+            </div>
+            <div>
+              <label class="text-xs font-bold text-emerald-700 uppercase tracking-wider" data-i18n="q10b-label">How You Will Iterate / Improve</label>
+              <textarea id="q10b" class="mt-1 w-full p-3 rounded-xl border-2 border-slate-200 outline-none focus:border-emerald-400 text-sm" rows="4"
+                placeholder="Based on the feedback, we will improve our prototype by..."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI FEEDBACK BLOCK Step 3 -->
+        <div class="rounded-xl border-2 border-emerald-200 bg-emerald-50 p-4 sm:p-5">
+          <h3 class="text-base font-bold text-emerald-800 mb-2 flex items-center gap-2">✨ <span data-i18n="ai-feedback-title3">AI Feedback & Scoring</span></h3>
+          <p class="text-xs text-emerald-600 mb-1" data-i18n="ai-feedback-hint5">Click below to receive AI feedback on your prototype.</p>
+          <p class="text-xs text-emerald-600 mb-3" data-i18n="ai-feedback-hint6">You need a score of at least <strong>6/10</strong> to proceed to Step 4.</p>
+          <div class="mb-3 p-3 rounded-xl bg-white border border-emerald-200 text-xs text-slate-600">
+            <p class="font-bold text-emerald-700 mb-2" data-i18n="rubric3-title">📊 Rubric (Step 3 — max 10 pts):</p>
+            <ul class="space-y-1 list-disc list-inside text-slate-500">
+              <li data-i18n="rubric3-1"><strong>Prototype Description (Q8) — 4 pts:</strong> Detailed, specific description with clear features, materials/technology, and mechanism.</li>
+              <li data-i18n="rubric3-2"><strong>Prototype Sketch (Q9) — 2 pts:</strong> Sketch uploaded with labelled components.</li>
+              <li data-i18n="rubric3-3"><strong>Stakeholder Feedback (Q10) — 2 pts:</strong> Specific feedback from a named stakeholder clearly described.</li>
+              <li data-i18n="rubric3-4"><strong>Iteration Plan (Q10) — 2 pts:</strong> Concrete, specific improvements planned based on feedback.</li>
+            </ul>
+          </div>
+          <button onclick="getStep3Feedback()" class="nav-btn tab-3 px-5 py-2.5 rounded-lg text-sm font-bold text-white bg-emerald-500 w-full sm:w-auto" data-i18n="ai-btn-3">✨ Get Prototype Feedback</button>
+          <div id="step3-feedback" class="mt-3 hidden"></div>
+          <div id="step3-score-display" class="mt-2 hidden"></div>
+        </div>
+
+        <div class="flex justify-between pt-2">
+          <button onclick="goToStep(2)" class="nav-btn px-6 py-3 rounded-xl text-sm font-bold text-white bg-slate-400 shadow-md" data-i18n="back-solution">← Back: Solution</button>
+          <button id="toStep4Btn" onclick="goToStep(4)" class="nav-btn tab-4 px-6 py-3 rounded-xl text-sm font-bold text-white bg-purple-600 shadow-md opacity-40 cursor-not-allowed" disabled data-i18n="next-reflection">Next: Reflection →</button>
+        </div>
+
       </div>
-      <span class="badge bg-blue-100 text-blue-800">PHASE 2</span>
-    </div>
+    </section>
 
-    <div class="flex justify-between pt-2">
-      <button onclick="goToStep(1)" class="nav-btn tab-1 px-6 py-3 rounded-xl text-sm font-bold text-white bg-amber-500 shadow-md">← Back: Problem</button>
-      <button id="toStep3Btn" onclick="goToStep(3)" class="nav-btn tab-3 px-6 py-3 rounded-xl text-sm font-bold text-white bg-emerald-600 shadow-md opacity-40 cursor-not-allowed" disabled>Next: Action →</button>
-    </div>
-  </div>
-</section>
+    <!-- ===== STEP 4: REFLECTION ===== -->
+    <section id="step4" class="step-section">
+      <div class="rounded-2xl border-t-8 border-purple-500 bg-white p-4 sm:p-6 md:p-8 shadow-lg card-elevated space-y-5">
 
-<!-- ===== STEP 3: ACTION ===== -->
-<section id="step3" class="step-section">
-  <div class="rounded-2xl border-t-8 border-emerald-500 bg-white p-4 sm:p-6 md:p-8 shadow-lg card-elevated space-y-5">
+        <div class="resource-bar">
+          <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">📚 Resources:</span>
+          <a href="https://sdgs.un.org/goals" target="_blank" class="resource-btn bg-blue-600 hover:bg-blue-700">🌐 UN SDGs</a>
+          <a href="https://padlet.com/alaricleong/glp-cif-articles-172-7d0vnk949g3w" target="_blank" class="resource-btn bg-orange-500 hover:bg-orange-600">📰 Current Affairs Articles</a>
+          <a href="https://go.gov.sg/ahsglobalclassroom" target="_blank" class="resource-btn bg-emerald-600 hover:bg-emerald-700">🏫 GC Microsite</a>
+        </div>
 
-    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-      <div>
-        <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-emerald-600">Step 3: Action</h2>
-        <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Develop your action plan and prepare your presentation</p>
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+          <div>
+            <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-purple-600" data-i18n="step4-title">Step 4: Reflection</h2>
+            <p class="text-xs sm:text-sm text-slate-500 mt-0.5" data-i18n="step4-sub">Reflect on your learning journey and global citizenship</p>
+          </div>
+          <span class="badge bg-purple-100 text-purple-800" data-i18n="step4-badge">PHASE 4</span>
+        </div>
+
+        <!-- Q11: Individual Reflection -->
+        <div class="rounded-xl border-2 border-slate-200 bg-gradient-to-br from-slate-50 to-white p-4 sm:p-5">
+          <h3 class="mb-1 text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
+            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-purple-100 text-purple-700 font-extrabold text-xs">11</span>
+            <span data-i18n="q11-title">Individual Reflection / 个人反思</span>
+          </h3>
+          <p class="text-xs text-slate-400 mb-1 leading-relaxed" data-i18n="q11-hint-en">Reflect on your <strong>personal learning</strong> throughout this project. What did you learn about yourself, global issues, and working with others?</p>
+          <p class="text-xs text-slate-400 mb-3 leading-relaxed" data-i18n="q11-hint-zh">反思你在这个项目中的个人学习。你对自己、全球问题和与他人合作有什么了解？</p>
+          <textarea id="q11" class="w-full p-3 rounded-xl border-2 border-slate-200 outline-none focus:border-purple-400 text-sm" rows="6"
+            placeholder="Through this project, I learned... I was challenged by... I grew as a global citizen by... Working with my team, I discovered..."></textarea>
+        </div>
+
+        <!-- Q12: Global Citizenship -->
+        <div class="rounded-xl border-2 border-purple-300 bg-purple-50 p-4 sm:p-5">
+          <h3 class="mb-1 text-base sm:text-lg font-bold text-purple-800 flex items-center gap-2">
+            <span class="flex items-center justify-center w-6 h-6 rounded-full bg-purple-400 text-white font-extrabold text-xs">12</span>
+            <span data-i18n="q12-title">Global Citizenship Commitment / 全球公民承诺</span>
+          </h3>
+          <p class="text-xs text-purple-600 mb-3 leading-relaxed" data-i18n="q12-hint">As a global citizen, what <strong>concrete actions</strong> will you take beyond this project to continue addressing this issue or related global challenges?</p>
+          <textarea id="q12" class="w-full p-3 rounded-xl border-2 border-purple-200 outline-none focus:border-purple-500 text-sm bg-white" rows="5"
+            placeholder="As a global citizen, I commit to... Beyond this project, I will... I will inspire others by..."></textarea>
+        </div>
+
+        <!-- AI FEEDBACK BLOCK Step 4 -->
+        <div class="rounded-xl border-2 border-purple-200 bg-purple-50 p-4 sm:p-5">
+          <h3 class="text-base font-bold text-purple-800 mb-2 flex items-center gap-2">✨ <span data-i18n="ai-feedback-title4">AI Feedback & Scoring</span></h3>
+          <p class="text-xs text-purple-600 mb-3" data-i18n="ai-feedback-hint7">Click below to receive AI feedback on your reflection.</p>
+          <div class="mb-3 p-3 rounded-xl bg-white border border-purple-200 text-xs text-slate-600">
+            <p class="font-bold text-purple-700 mb-2" data-i18n="rubric4-title">📊 Rubric (Step 4 — max 10 pts):</p>
+            <ul class="space-y-1 list-disc list-inside text-slate-500">
+              <li data-i18n="rubric4-1"><strong>Individual Reflection (Q11) — 5 pts:</strong> Thoughtful, specific reflection on personal growth, challenges faced, and learning about global issues.</li>
+              <li data-i18n="rubric4-2"><strong>Global Citizenship Commitment (Q12) — 5 pts:</strong> Concrete, actionable commitments that go beyond the project with clear personal ownership.</li>
+            </ul>
+          </div>
+          <button onclick="getStep4Feedback()" class="nav-btn tab-4 px-5 py-2.5 rounded-lg text-sm font-bold text-white bg-purple-500 w-full sm:w-auto" data-i18n="ai-btn-4">✨ Get Reflection Feedback</button>
+          <div id="step4-feedback" class="mt-3 hidden"></div>
+          <div id="step4-score-display" class="mt-2 hidden"></div>
+        </div>
+
+        <div class="flex justify-between pt-2">
+          <button onclick="goToStep(3)" class="nav-btn px-6 py-3 rounded-xl text-sm font-bold text-white bg-slate-400 shadow-md" data-i18n="back-prototype">← Back: Prototype</button>
+          <button id="toSummaryBtn" onclick="goToStep(5)" class="nav-btn tab-5 px-6 py-3 rounded-xl text-sm font-bold text-white bg-rose-600 shadow-md opacity-40 cursor-not-allowed" disabled data-i18n="next-summary">Next: Summary →</button>
+        </div>
+
       </div>
-      <span class="badge bg-emerald-100 text-emerald-800">PHASE 3</span>
-    </div>
+    </section>
 
-    <div class="flex justify-between pt-2">
-      <button onclick="goToStep(2)" class="nav-btn tab-2 px-6 py-3 rounded-xl text-sm font-bold text-white bg-blue-500 shadow-md">← Back: Solution</button>
-      <button onclick="goToStep(4)" class="nav-btn tab-4 px-6 py-3 rounded-xl text-sm font-bold text-white bg-purple-600 shadow-md">Next: Present →</button>
-    </div>
-  </div>
-</section>
+    <!-- ===== STEP 5: SUMMARY ===== -->
+    <section id="step5" class="step-section">
+      <div class="rounded-2xl border-t-8 border-rose-500 bg-white p-4 sm:p-6 md:p-8 shadow-lg card-elevated space-y-5">
 
-<!-- ===== STEP 4: PRESENT ===== -->
-<section id="step4" class="step-section">
-  <div class="rounded-2xl border-t-8 border-purple-500 bg-white p-4 sm:p-6 md:p-8 shadow-lg card-elevated space-y-5">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+          <div>
+            <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-rose-600" data-i18n="step5-title">📋 Summary & Export</h2>
+            <p class="text-xs sm:text-sm text-slate-500 mt-0.5" data-i18n="step5-sub">Review your full CIF submission and export</p>
+          </div>
+          <span class="badge bg-rose-100 text-rose-800" data-i18n="step5-badge">FINAL</span>
+        </div>
 
-    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-      <div>
-        <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-purple-600">Step 4: Present</h2>
-        <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Craft and rehearse your presentation</p>
+        <!-- Overall Score -->
+        <div id="overallScoreCard" class="rounded-xl border-2 border-rose-200 bg-rose-50 p-4 text-center">
+          <p class="text-xs font-bold text-rose-600 uppercase tracking-wider mb-1" data-i18n="overall-score-label">Overall Score</p>
+          <p id="overallScoreText" class="text-4xl font-extrabold text-rose-700">—/40</p>
+          <p id="overallScoreSubtext" class="text-xs text-slate-500 mt-1" data-i18n="overall-score-sub">Complete all steps to see your total score.</p>
+        </div>
+
+        <!-- Summary Content -->
+        <div id="summaryContent" class="space-y-4 text-sm text-slate-700">
+          <p class="text-slate-400 italic text-center" data-i18n="summary-placeholder">Your completed responses will appear here once all steps are done.</p>
+        </div>
+
+        <!-- Export Buttons -->
+        <div class="flex flex-wrap gap-3 pt-2">
+          <button onclick="exportPDF()" class="nav-btn px-6 py-3 rounded-xl text-sm font-bold text-white bg-rose-600 shadow-md flex items-center gap-2" data-i18n="export-pdf">📄 Export as PDF</button>
+          <button onclick="exportJSON()" class="nav-btn px-6 py-3 rounded-xl text-sm font-bold text-white bg-slate-600 shadow-md flex items-center gap-2" data-i18n="export-json">💾 Save Progress (JSON)</button>
+          <label class="nav-btn px-6 py-3 rounded-xl text-sm font-bold text-white bg-slate-500 shadow-md flex items-center gap-2 cursor-pointer" data-i18n="import-json">
+            📂 Load Progress (JSON)
+            <input type="file" accept=".json" class="hidden" onchange="importJSON(event)" />
+          </label>
+        </div>
+
+        <div class="flex justify-start pt-2">
+          <button onclick="goToStep(4)" class="nav-btn px-6 py-3 rounded-xl text-sm font-bold text-white bg-slate-400 shadow-md" data-i18n="back-reflection">← Back: Reflection</button>
+        </div>
+
       </div>
-      <span class="badge bg-purple-100 text-purple-800">PHASE 4</span>
-    </div>
+    </section>
 
-    <div class="flex justify-between pt-2">
-      <button onclick="goToStep(3)" class="nav-btn tab-3 px-6 py-3 rounded-xl text-sm font-bold text-white bg-emerald-500 shadow-md">← Back: Action</button>
-    </div>
-  </div>
-</section>
+  </main>
 
-</main>
+  <!-- ===== FOOTER ===== -->
+  <footer class="mt-10 mb-6 text-center text-xs text-slate-400 px-4">
+    <p data-i18n="footer-text">Built for AHS Global Classroom Programme · Powered by AI · For educational use only</p>
+    <p class="mt-1 text-slate-300" data-i18n="footer-sub">Responses are stored locally in your browser. Export your work regularly.</p>
+  </footer>
 
-<footer class="mt-10 mb-6 text-center text-xs text-slate-400 space-y-1">
-  <p>Built for AHS Global Classroom Programme</p>
-  <p>Powered by AI — Always think critically about AI-generated feedback.</p>
-</footer>
+</div><!-- end #app -->
 
-</div><!-- end #appContainer -->
-
-<!-- ===== JAVASCRIPT ===== -->
 <script>
+// ============================================================
+// GLOBALS & STATE
+// ============================================================
+let currentStep = 1;
+let scores = { 1: 0, 2: 0, 3: 0, 4: 0 };
+let stepUnlocked = { 1: true, 2: false, 3: false, 4: false, 5: false };
+let sketchDataURL = null;
+let currentLang = 'en';
 
-// ── Theme Toggle ─────────────────────────────────────────────────────────
-function applyTheme(dark) {
-  document.body.classList.toggle('dark-mode', dark);
-  const icon = dark ? '☀️' : '🌙';
-  ['appThemeToggle','appThemeToggle2','gateThemeToggle'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = id === 'appThemeToggle2' ? icon + ' Theme' : icon;
-  });
-  localStorage.setItem('darkMode', dark ? '1' : '0');
-}
-['appThemeToggle','appThemeToggle2','gateThemeToggle'].forEach(id => {
-  const el = document.getElementById(id);
-  if (el) el.addEventListener('click', () => applyTheme(!document.body.classList.contains('dark-mode')));
-});
+const PASS_SCORE = 6;
+const MAX_SCORE = 10;
 
-// ── Language Toggle ──────────────────────────────────────────────────────
-function applyLanguage(lang) {
-  const allLangBtns = document.querySelectorAll('.lang-btn');
-  allLangBtns.forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.lang === lang);
-  });
-  localStorage.setItem('selectedLanguage', lang);
-  console.log('Language set to:', lang);
-}
-
-document.querySelectorAll('.lang-btn').forEach(btn => {
-  btn.addEventListener('click', function(e) {
-    e.preventDefault();
-    const lang = this.dataset.lang;
-    applyLanguage(lang);
-  });
-});
-
-// ── Login ───────────────────────────────────────────────────────────────
-document.getElementById('loginBtn').addEventListener('click', () => {
-  const year  = document.getElementById('loginYear').value;
-  const city  = document.getElementById('loginCity').value;
-  const group = document.getElementById('loginGroup').value;
-  const errEl = document.getElementById('loginError');
-  if (!year || !city || !group) {
-    errEl.textContent = 'Please select a Year, City and Group to continue.';
-    errEl.classList.remove('hidden');
-    return;
+// ============================================================
+// i18n TRANSLATIONS
+// ============================================================
+const translations = {
+  en: {
+    "app-title": "CIF Design Thinking Workbook",
+    "app-subtitle": "AHS Global Classroom Programme",
+    "lang-toggle": "中文",
+    "step1-title": "Step 1: Problem",
+    "step1-sub": "Identify and define your global issue",
+    "step1-badge": "PHASE 1",
+    "step2-title": "Step 2: Solution",
+    "step2-sub": "Develop and refine your solution",
+    "step2-badge": "PHASE 2",
+    "step3-title": "Step 3: Prototype",
+    "step3-sub": "Design and refine your prototype",
+    "step3-badge": "PHASE 3",
+    "step4-title": "Step 4: Reflection",
+    "step4-sub": "Reflect on your learning journey and global citizenship",
+    "step4-badge": "PHASE 4",
+    "step5-title": "📋 Summary & Export",
+    "step5-sub": "Review your full CIF submission and export",
+    "step5-badge": "FINAL",
+    "q1-title": "Choose Your SDG / 选择你的可持续发展目标",
+    "q1-hint": "Select the UN Sustainable Development Goal your project addresses.",
+    "q2-title": "Problem Statement / 问题陈述",
+    "q2-hint-en": "Describe the global issue you are addressing. Include context, scale, and who is affected.",
+    "q2-hint-zh": "描述你正在解决的全球问题，包括背景、规模和受影响的人群。",
+    "q3-title": "Root Cause Analysis / 根本原因分析",
+    "q3-hint-en": "Use the 5 Whys or fishbone method to identify the root causes of your problem.",
+    "q3-hint-zh": "使用5个为什么或鱼骨图方法找出问题的根本原因。",
+    "q4-title": "Stakeholder Analysis / 持份者分析",
+    "q4-hint-en": "Identify at least 2 stakeholders affected by this problem. Describe their perspectives and needs.",
+    "q4-hint-zh": "确定至少2个受此问题影响的持份者，描述他们的观点和需求。",
+    "q5-title": "Evidence & Data / 证据与数据",
+    "q5-hint-en": "Provide at least 2 pieces of evidence (statistics, case studies, expert opinions) that support your problem statement.",
+    "q5-hint-zh": "提供至少2条支持你问题陈述的证据（统计数据、案例研究、专家意见）。",
+    "ai-feedback-title1": "AI Feedback & Scoring",
+    "ai-feedback-hint1": "Click below to receive AI feedback on your problem definition.",
+    "ai-feedback-hint2": "You need a score of at least 6/10 to proceed to Step 2.",
+    "rubric1-title": "📊 Rubric (Step 1 — max 10 pts):",
+    "rubric1-1": "SDG Selection (Q1) — 1 pt: Relevant SDG selected.",
+    "rubric1-2": "Problem Statement (Q2) — 3 pts: Clear, specific, contextualised problem with scale and affected groups.",
+    "rubric1-3": "Root Cause Analysis (Q3) — 2 pts: Logical causal chain identifying underlying causes.",
+    "rubric1-4": "Stakeholder Analysis (Q4) — 2 pts: At least 2 stakeholders with distinct perspectives.",
+    "rubric1-5": "Evidence & Data (Q5) — 2 pts: At least 2 specific, credible pieces of evidence cited.",
+    "ai-btn-1": "✨ Get Problem Feedback",
+    "q6-title": "Solution Description / 解决方案描述",
+    "q6-hint-en": "Describe your proposed solution in detail. How does it address the root causes identified?",
+    "q6-hint-zh": "详细描述你提出的解决方案，它如何解决已识别的根本原因？",
+    "q7-title": "Solution Statement / 解决方案陈述",
+    "q7-hint-en": "Write a concise solution statement: We will [action] for [target group] so that [outcome] by [method].",
+    "q7-hint-zh": "写一个简洁的解决方案陈述：我们将为[目标群体][行动]，以便通过[方法]实现[结果]。",
+    "q7-generated": "✨ AI-Generated Solution Statement:",
+    "ai-feedback-title2": "AI Feedback & Scoring",
+    "ai-feedback-hint3": "Click below to generate a solution statement and receive AI feedback.",
+    "ai-feedback-hint4": "You need a score of at least 6/10 to proceed to Step 3.",
+    "rubric2-title": "📊 Rubric (Step 2 — max 10 pts):",
+    "rubric2-1": "Solution Description (Q6) — 5 pts: Detailed, feasible solution that clearly addresses root causes.",
+    "rubric2-2": "Solution Statement (Q7) — 5 pts: Clear, structured statement with action, target group, outcome, and method.",
+    "ai-btn-2": "✨ Generate Solution Statement & Get Feedback",
+    "ai-feedback-title3": "AI Feedback & Scoring",
+    "ai-feedback-hint5": "Click below to receive AI feedback on your prototype.",
+    "ai-feedback-hint6": "You need a score of at least 6/10 to proceed to Step 4.",
+    "rubric3-title": "📊 Rubric (Step 3 — max 10 pts):",
+    "rubric3-1": "Prototype Description (Q8) — 4 pts: Detailed, specific description with clear features, materials/technology, and mechanism.",
+    "rubric3-2": "Prototype Sketch (Q9) — 2 pts: Sketch uploaded with labelled components.",
+    "rubric3-3": "Stakeholder Feedback (Q10) — 2 pts: Specific feedback from a named stakeholder clearly described.",
+    "rubric3-4": "Iteration Plan (Q10) — 2 pts: Concrete, specific improvements planned based on feedback.",
+    "ai-btn-3": "✨ Get Prototype Feedback",
+    "upload-sketch": "Click to upload sketch / diagram",
+    "upload-formats": "Accepted: JPG, PNG, PDF",
+    "sketch-uploaded": "✅ Sketch uploaded:",
+    "q10a-label": "Stakeholder & Feedback Received",
+    "q10b-label": "How You Will Iterate / Improve",
+    "ai-feedback-title4": "AI Feedback & Scoring",
+    "ai-feedback-hint7": "Click below to receive AI feedback on your reflection.",
+    "rubric4-title": "📊 Rubric (Step 4 — max 10 pts):",
+    "rubric4-1": "Individual Reflection (Q11) — 5 pts: Thoughtful, specific reflection on personal growth, challenges faced, and learning about global issues.",
+    "rubric4-2": "Global Citizenship Commitment (Q12) — 5 pts: Concrete, actionable commitments that go beyond the project with clear personal ownership.",
+    "ai-btn-4": "✨ Get Reflection Feedback",
+    "overall-score-label": "Overall Score",
+    "overall-score-sub": "Complete all steps to see your total score.",
+    "summary-placeholder": "Your completed responses will appear here once all steps are done.",
+    "export-pdf": "📄 Export as PDF",
+    "export-json": "💾 Save Progress (JSON)",
+    "import-json": "📂 Load Progress (JSON)",
+    "back-problem": "← Back: Problem",
+    "back-solution": "← Back: Solution",
+    "back-prototype": "← Back: Prototype",
+    "back-reflection": "← Back: Reflection",
+    "next-solution": "Next: Solution →",
+    "next-prototype": "Next: Prototype →",
+    "next-reflection": "Next: Reflection →",
+    "next-summary": "Next: Summary →",
+    "footer-text": "Built for AHS Global Classroom Programme · Powered by AI · For educational use only",
+    "footer-sub": "Responses are stored locally in your browser. Export your work regularly.",
+    "q8-title": "Describe Your Prototype / 描述你的原型",
+    "q8-hint-en": "Describe your prototype in detail. Include its key features, materials or technology used, and how it works to solve the problem.",
+    "q8-hint-zh": "详细描述你的原型，包括主要功能、使用的材料或技术，以及它如何解决问题。",
+    "q9-title": "Prototype Sketch / 原型草图",
+    "q9-hint": "Upload a sketch or diagram of your prototype. Label key components clearly.",
+    "q10-title": "Stakeholder Feedback & Iteration / 持份者反馈与改进",
+    "q10-hint-en": "Describe the feedback received from at least one stakeholder and explain how you will iterate or improve your prototype based on this feedback.",
+    "q10-hint-zh": "描述从至少一位持份者收到的反馈，并说明你将如何根据反馈改进原型。",
+    "q11-title": "Individual Reflection / 个人反思",
+    "q11-hint-en": "Reflect on your personal learning throughout this project. What did you learn about yourself, global issues, and working with others?",
+    "q11-hint-zh": "反思你在这个项目中的个人学习。你对自己、全球问题和与他人合作有什么了解？",
+    "q12-title": "Global Citizenship Commitment / 全球公民承诺",
+    "q12-hint": "As a global citizen, what concrete actions will you take beyond this project to continue addressing this issue or related global challenges?"
+  },
+  zh: {
+    "app-title": "CIF 设计思维工作手册",
+    "app-subtitle": "AHS 全球课堂计划",
+    "lang-toggle": "English",
+    "step1-title": "第一步：问题",
+    "step1-sub": "识别并定义你的全球议题",
+    "step1-badge": "阶段一",
+    "step2-title": "第二步：解决方案",
+    "step2-sub": "开发并完善你的解决方案",
+    "step2-badge": "阶段二",
+    "step3-title": "第三步：原型",
+    "step3-sub": "设计并完善你的原型",
+    "step3-badge": "阶段三",
+    "step4-title": "第四步：反思",
+    "step4-sub": "反思你的学习历程与全球公民身份",
+    "step4-badge": "阶段四",
+    "step5-title": "📋 总结与导出",
+    "step5-sub": "查看你的完整CIF提交并导出",
+    "step5-badge": "最终",
+    "q1-title": "选择你的可持续发展目标",
+    "q1-hint": "选择你的项目所针对的联合国可持续发展目标。",
+    "q2-title": "问题陈述",
+    "q2-hint-en": "Describe the global issue you are addressing. Include context, scale, and who is affected.",
+    "q2-hint-zh": "描述你正在解决的全球问题，包括背景、规模和受影响的人群。",
+    "q3-title": "根本原因分析",
+    "q3-hint-en": "Use the 5 Whys or fishbone method to identify the root causes of your problem.",
+    "q3-hint-zh": "使用5个为什么或鱼骨图方法找出问题的根本原因。",
+    "q4-title": "持份者分析",
+    "q4-hint-en": "Identify at least 2 stakeholders affected by this problem. Describe their perspectives and needs.",
+    "q4-hint-zh": "确定至少2个受此问题影响的持份者，描述他们的观点和需求。",
+    "q5-title": "证据与数据",
+    "q5-hint-en": "Provide at least 2 pieces of evidence (statistics, case studies, expert opinions) that support your problem statement.",
+    "q5-hint-zh": "提供至少2条支持你问题陈述的证据（统计数据、案例研究、专家意见）。",
+    "ai-feedback-title1": "AI反馈与评分",
+    "ai-feedback-hint1": "点击下方获取关于你问题定义的AI反馈。",
+    "ai-feedback-hint2": "你需要至少6/10分才能进入第二步。",
+    "rubric1-title": "📊 评分标准（第一步 — 最高10分）：",
+    "rubric1-1": "SDG选择（Q1）— 1分：选择了相关的SDG。",
+    "rubric1-2": "问题陈述（Q2）— 3分：清晰、具体、有背景的问题，包含规模和受影响群体。",
+    "rubric1-3": "根本原因分析（Q3）— 2分：逻辑因果链，识别潜在原因。",
+    "rubric1-4": "持份者分析（Q4）— 2分：至少2个具有不同观点的持份者。",
+    "rubric1-5": "证据与数据（Q5）— 2分：至少引用2条具体、可信的证据。",
+    "ai-btn-1": "✨ 获取问题反馈",
+    "q6-title": "解决方案描述",
+    "q6-hint-en": "Describe your proposed solution in detail. How does it address the root causes identified?",
+    "q6-hint-zh": "详细描述你提出的解决方案，它如何解决已识别的根本原因？",
+    "q7-title": "解决方案陈述",
+    "q7-hint-en": "Write a concise solution statement: We will [action] for [target group] so that [outcome] by [method].",
+    "q7-hint-zh": "写一个简洁的解决方案陈述：我们将为[目标群体][行动]，以便通过[方法]实现[结果]。",
+    "q7-generated": "✨ AI生成的解决方案陈述：",
+    "ai-feedback-title2": "AI反馈与评分",
+    "ai-feedback-hint3": "点击下方生成解决方案陈述并获取AI反馈。",
+    "ai-feedback-hint4": "你需要至少6/10分才能进入第三步。",
+    "rubric2-title": "📊 评分标准（第二步 — 最高10分）：",
+    "rubric2-1": "解决方案描述（Q6）— 5分：详细、可行的解决方案，清楚地解决根本原因。",
+    "rubric2-2": "解决方案陈述（Q7）— 5分：清晰、结构化的陈述，包含行动、目标群体、结果和方法。",
+    "ai-btn-2": "✨ 生成解决方案陈述并获取反馈",
+    "ai-feedback-title3": "AI反馈与评分",
+    "ai-feedback-hint5": "点击下方获取关于你原型的AI反馈。",
+    "ai-feedback-hint6": "你需要至少6/10分才能进入第四步。",
+    "rubric3-title": "📊 评分标准（第三步 — 最高10分）：",
+    "rubric3-1": "原型描述（Q8）— 4分：详细、具体的描述，包含清晰的功能、材料/技术和机制。",
+    "rubric3-2": "原型草图（Q9）— 2分：上传了带标注组件的草图。",
+    "rubric3-3": "持份者反馈（Q10）— 2分：来自具名持份者的具体反馈，描述清晰。",
+    "rubric3-4": "迭代计划（Q10）— 2分：基于反馈的具体、明确的改进计划。",
+    "ai-btn-3": "✨ 获取原型反馈",
+    "upload-sketch": "点击上传草图/图表",
+    "upload-formats": "接受格式：JPG、PNG、PDF",
+    "sketch-uploaded": "✅ 草图已上传：",
+    "q10a-label": "持份者及收到的反馈",
+    "q10b-label": "你将如何迭代/改进",
+    "ai-feedback-title4": "AI反馈与评分",
+    "ai-feedback-hint7": "点击下方获取关于你反思的AI反馈。",
+    "rubric4-title": "📊 评分标准（第四步 — 最高10分）：",
+    "rubric4-1": "个人反思（Q11）— 5分：对个人成长、面临的挑战和全球问题学习的深思熟虑、具体的反思。",
+    "rubric4-2": "全球公民承诺（Q12）— 5分：超越项目的具体、可行的承诺，具有明确的个人责任感。",
+    "ai-btn-4": "✨ 获取反思反馈",
+    "overall-score-label": "总分",
+    "overall-score-sub": "完成所有步骤后查看你的总分。",
+    "summary-placeholder": "完成所有步骤后，你的回答将显示在这里。",
+    "export-pdf": "📄 导出为PDF",
+    "export-json": "💾 保存进度（JSON）",
+    "import-json": "📂 加载进度（JSON）",
+    "back-problem": "← 返回：问题",
+    "back-solution": "← 返回：解决方案",
+    "back-prototype": "← 返回：原型",
+    "back-reflection": "← 返回：反思",
+    "next-solution": "下一步：解决方案 →",
+    "next-prototype": "下一步：原型 →",
+    "next-reflection": "下一步：反思 →",
+    "next-summary": "下一步：总结 →",
+    "footer-text": "为AHS全球课堂计划而建 · 由AI驱动 · 仅供教育使用",
+    "footer-sub": "回答存储在你的浏览器本地。请定期导出你的工作。",
+    "q8-title": "描述你的原型",
+    "q8-hint-en": "Describe your prototype in detail. Include its key features, materials or technology used, and how it works to solve the problem.",
+    "q8-hint-zh": "详细描述你的原型，包括主要功能、使用的材料或技术，以及它如何解决问题。",
+    "q9-title": "原型草图",
+    "q9-hint": "上传你原型的草图或图表，清楚标注关键组件。",
+    "q10-title": "持份者反馈与改进",
+    "q10-hint-en": "Describe the feedback received from at least one stakeholder and explain how you will iterate or improve your prototype based on this feedback.",
+    "q10-hint-zh": "描述从至少一位持份者收到的反馈，并说明你将如何根据反馈改进原型。",
+    "q11-title": "个人反思",
+    "q11-hint-en": "Reflect on your personal learning throughout this project. What did you learn about yourself, global issues, and working with others?",
+    "q11-hint-zh": "反思你在这个项目中的个人学习。你对自己、全球问题和与他人合作有什么了解？",
+    "q12-title": "全球公民承诺",
+    "q12-hint": "作为全球公民，你将在这个项目之外采取哪些具体行动来继续解决这个问题或相关的全球挑战？"
   }
-  errEl.classList.add('hidden');
-  document.getElementById('selectYear').value  = year;
-  document.getElementById('selectTrip').value  = city;
-  document.getElementById('selectGroup').value = group;
-  updateGroupId();
-  document.getElementById('userDisplay').textContent = `${year} · ${city} · Group ${group}`;
-  localStorage.setItem('loginYear',  year);
-  localStorage.setItem('loginCity',  city);
-  localStorage.setItem('loginGroup', group);
-  localStorage.setItem('isLoggedIn', 'true');
-  document.getElementById('loginGate').classList.add('hidden');
-  document.getElementById('appContainer').classList.remove('hidden');
-});
+};
 
-// ── Logout ──────────────────────────────────────────────────────────────
-function doLogout() {
-  localStorage.setItem('isLoggedIn', 'false');
-  localStorage.removeItem('loginYear');
-  localStorage.removeItem('loginCity');
-  localStorage.removeItem('loginGroup');
-  document.getElementById('appContainer').classList.add('hidden');
-  document.getElementById('loginGate').classList.remove('hidden');
-  ['loginYear','loginCity','loginGroup'].forEach(id => {
-    document.getElementById(id).value = '';
+// ============================================================
+// i18n APPLY
+// ============================================================
+function applyTranslations(lang) {
+  currentLang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (translations[lang] && translations[lang][key]) {
+      el.innerHTML = translations[lang][key];
+    }
   });
-  document.getElementById('loginError').classList.add('hidden');
+  document.getElementById('langToggleBtn').textContent = translations[lang]['lang-toggle'];
+  localStorage.setItem('cifLang', lang);
 }
-document.getElementById('logoutBtn').addEventListener('click',  doLogout);
-document.getElementById('logoutBtn2').addEventListener('click', doLogout);
 
-// ── Group ID Display ────────────────────────────────────────────────────
-function updateGroupId() {
-  const year  = document.getElementById('selectYear').value  || '--';
-  const city  = document.getElementById('selectTrip').value  || '--';
-  const group = document.getElementById('selectGroup').value || '--';
-  document.getElementById('groupIdDisplay').textContent =
-    (year !== '--' && city !== '--' && group !== '--')
-      ? `${year} · ${city} · G${group}`
-      : '-- / -- / --';
+function toggleLanguage() {
+  applyTranslations(currentLang === 'en' ? 'zh' : 'en');
 }
-['selectYear','selectTrip','selectGroup'].forEach(id => {
-  document.getElementById(id).addEventListener('change', updateGroupId);
-});
 
-// ── Tab / Step Navigation ──────────────────────────────────────────────
-function goToStep(n) {
-  document.querySelectorAll('.step-section').forEach(s => s.classList.remove('active'));
-  const target = document.getElementById('step' + n);
-  if (target) target.classList.add('active');
-  document.querySelectorAll('.nav-btn[data-step]').forEach(btn => {
-    btn.classList.remove('active');
-    if (parseInt(btn.dataset.step) === n) btn.classList.add('active');
+// ============================================================
+// NAVIGATION
+// ============================================================
+function goToStep(step) {
+  if (!stepUnlocked[step]) return;
+  currentStep = step;
+  document.querySelectorAll('.step-section').forEach((s, i) => {
+    s.classList.toggle('active', i + 1 === step);
   });
+  document.querySelectorAll('.step-tab').forEach((t, i) => {
+    t.classList.toggle('active', i + 1 === step);
+    t.classList.toggle('opacity-40', !stepUnlocked[i + 1]);
+    t.classList.toggle('cursor-not-allowed', !stepUnlocked[i + 1]);
+  });
+  if (step === 5) buildSummary();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-document.querySelectorAll('.nav-btn[data-step]').forEach(btn => {
-  btn.addEventListener('click', () => goToStep(parseInt(btn.dataset.step)));
-});
 
-// ── SDG Selector ────────────────────────────────────────────────────────
-function selectSDG(btn) {
-  document.querySelectorAll('.sdg-btn').forEach(b => b.classList.remove('selected'));
-  btn.classList.add('selected');
-  const sdg = btn.dataset.sdg;
-  document.getElementById('sdgSelectedText').textContent = sdg;
-  document.getElementById('sdgSelectedDisplay').classList.remove('hidden');
-  localStorage.setItem('selectedSDG', sdg);
+// ============================================================
+// SKETCH UPLOAD
+// ============================================================
+function handleSketchUpload(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  if (file.type === 'application/pdf') {
+    document.getElementById('sketchPreview').classList.remove('hidden');
+    document.getElementById('sketchImg').classList.add('hidden');
+    document.getElementById('sketchFileName').textContent = '📄 ' + file.name + ' (PDF uploaded)';
+    sketchDataURL = null;
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    sketchDataURL = e.target.result;
+    document.getElementById('sketchPreview').classList.remove('hidden');
+    document.getElementById('sketchImg').classList.remove('hidden');
+    document.getElementById('sketchImg').src = sketchDataURL;
+    document.getElementById('sketchFileName').textContent = file.name;
+  };
+  reader.readAsDataURL(file);
 }
 
-// ── Load all data on page load ──────────────────────────────────────────
-function loadAll() {
-  // Restore login session
-  const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-  const savedYear  = localStorage.getItem('loginYear');
-  const savedCity  = localStorage.getItem('loginCity');
-  const savedGroup = localStorage.getItem('loginGroup');
-  
-  if (isLoggedIn && savedYear && savedCity && savedGroup) {
-    document.getElementById('selectYear').value  = savedYear;
-    document.getElementById('selectTrip').value  = savedCity;
-    document.getElementById('selectGroup').value = savedGroup;
-    document.getElementById('userDisplay').textContent = `${savedYear} · ${savedCity} · Group ${savedGroup}`;
-    updateGroupId();
-    document.getElementById('loginGate').classList.add('hidden');
-    document.getElementById('appContainer').classList.remove('hidden');
-  }
+// ============================================================
+// SAVE & LOAD (localStorage)
+// ============================================================
+function saveToLocalStorage() {
+  const data = {
+    q1: document.getElementById('q1')?.value,
+    q2: document.getElementById('q2')?.value,
+    q3: document.getElementById('q3')?.value,
+    q4: document.getElementById('q4')?.value,
+    q5: document.getElementById('q5')?.value,
+    q6: document.getElementById('q6')?.value,
+    q7: document.getElementById('q7')?.value,
+    q8: document.getElementById('q8')?.value,
+    q10a: document.getElementById('q10a')?.value,
+    q10b: document.getElementById('q10b')?.value,
+    q11: document.getElementById('q11')?.value,
+    q12: document.getElementById('q12')?.value,
+    scores,
+    stepUnlocked,
+    sketchDataURL,
+    lang: currentLang
+  };
+  localStorage.setItem('cifWorkbook', JSON.stringify(data));
+}
 
-  // Restore language preference
-  const savedLang = localStorage.getItem('selectedLanguage') || 'en';
-  applyLanguage(savedLang);
-
-  // Restore SDG
-  const savedSDG = localStorage.getItem('selectedSDG');
-  if (savedSDG) {
-    document.querySelectorAll('.sdg-btn').forEach(btn => {
-      if (btn.dataset.sdg === savedSDG) {
-        btn.classList.add('selected');
-        document.getElementById('sdgSelectedText').textContent = savedSDG;
-        document.getElementById('sdgSelectedDisplay').classList.remove('hidden');
-      }
+function loadFromLocalStorage() {
+  const raw = localStorage.getItem('cifWorkbook');
+  if (!raw) return;
+  try {
+    const data = JSON.parse(raw);
+    ['q1','q2','q3','q4','q5','q6','q7','q8','q10a','q10b','q11','q12'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el && data[id]) el.value = data[id];
     });
+    if (data.scores) scores = data.scores;
+    if (data.stepUnlocked) stepUnlocked = data.stepUnlocked;
+    if (data.sketchDataURL) {
+      sketchDataURL = data.sketchDataURL;
+      document.getElementById('sketchPreview').classList.remove('hidden');
+      document.getElementById('sketchImg').src = sketchDataURL;
+    }
+    if (data.lang) applyTranslations(data.lang);
+    updateAllNavButtons();
+  } catch(e) {
+    console.warn('Failed to load saved data:', e);
   }
-
-  // Restore dark mode
-  const darkMode = localStorage.getItem('darkMode') === '1';
-  if (darkMode) applyTheme(true);
 }
 
-// Call loadAll when DOM is ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', loadAll);
-} else {
-  loadAll();
+// ============================================================
+// EXPORT / IMPORT JSON
+// ============================================================
+function exportJSON() {
+  saveToLocalStorage();
+  const raw = localStorage.getItem('cifWorkbook');
+  const blob = new Blob([raw], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'cif-workbook-progress.json';
+  a.click();
+  URL.revokeObjectURL(url);
 }
 
-// ── Problem Statement Generator ────────────────────────────────────────
-function buildProblemStatement() {
-  const a = (document.getElementById('q4a').value || '').trim();
-  const b = (document.getElementById('q4b').value || '').trim();
-  const c = (document.getElementById('q4c').value || '').trim();
-  const d = (document.getElementById('q4d').value || '').trim();
-  if (!a && !b && !c && !d) return '';
-  return [a, b, c, d].filter(Boolean).join(' ');
+function importJSON(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const data = JSON.parse(e.target.result);
+      localStorage.setItem('cifWorkbook', JSON.stringify(data));
+      loadFromLocalStorage();
+      alert('Progress loaded successfully!');
+    } catch(err) {
+      alert('Failed to load file. Please ensure it is a valid CIF workbook JSON.');
+    }
+  };
+  reader.readAsText(file);
 }
 
-// ── Solution Statement Generator ───────────────────────────────────────
-function buildSolutionStatement() {
-  return (document.getElementById('q10').value || '').trim();
+// ============================================================
+// AUTO-SAVE on input
+// ============================================================
+document.addEventListener('input', () => saveToLocalStorage());
+
+// ============================================================
+// UPDATE NAV BUTTONS
+// ============================================================
+function updateAllNavButtons() {
+  const btnMap = {
+    2: 'toStep2Btn',
+    3: 'toStep3Btn',
+    4: 'toStep4Btn',
+    5: 'toSummaryBtn'
+  };
+  Object.entries(btnMap).forEach(([step, btnId]) => {
+    const btn = document.getElementById(btnId);
+    if (!btn) return;
+    const unlocked = stepUnlocked[parseInt(step)];
+    btn.disabled = !unlocked;
+    btn.classList.toggle('opacity-40', !unlocked);
+    btn.classList.toggle('cursor-not-allowed', !unlocked);
+  });
+  document.querySelectorAll('.step-tab').forEach((t, i) => {
+    const s = i + 1;
+    t.classList.toggle('opacity-40', !stepUnlocked[s]);
+    t.classList.toggle('cursor-not-allowed', !stepUnlocked[s]);
+  });
 }
 
-// ── AI Feedback: Step 1 ────────────────────────────────────────────────
+// ============================================================
+// SCORE DISPLAY HELPER
+// ============================================================
+function renderScoreDisplay(containerId, score, max, passed) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  const color = passed ? 'text-emerald-700' : 'text-rose-600';
+  const bg = passed ? 'bg-emerald-50 border-emerald-200' : 'bg-rose-50 border-rose-200';
+  const icon = passed ? '✅' : '❌';
+  const msg = passed
+    ? (currentLang === 'zh' ? '通过！你可以继续下一步。' : 'Passed! You may proceed to the next step.')
+    : (currentLang === 'zh' ? '未通过。请修改你的回答并重试。' : 'Not yet. Please revise your responses and try again.');
+  el.innerHTML = `
+    <div class="rounded-xl border-2 ${bg} p-3 flex items-center gap-3">
+      <span class="text-2xl">${icon}</span>
+      <div>
+        <p class="font-extrabold ${color} text-lg">${score}/${max}</p>
+        <p class="text-xs text-slate-500">${msg}</p>
+      </div>
+    </div>`;
+  el.classList.remove('hidden');
+}
+
+// ============================================================
+// FEEDBACK DISPLAY HELPER
+// ============================================================
+function renderFeedback(containerId, html) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  el.innerHTML = `<div class="rounded-xl bg-white border border-slate-200 p-4 text-sm text-slate-700 leading-relaxed shadow-sm">${html}</div>`;
+  el.classList.remove('hidden');
+}
+
+// ============================================================
+// AI PROMPT BUILDER
+// ============================================================
+function buildStep1Prompt() {
+  const sdg = document.getElementById('q1')?.value || '';
+  const q2 = document.getElementById('q2')?.value || '';
+  const q3 = document.getElementById('q3')?.value || '';
+  const q4 = document.getElementById('q4')?.value || '';
+  const q5 = document.getElementById('q5')?.value || '';
+  const lang = currentLang === 'zh' ? 'Respond in Chinese (Simplified).' : 'Respond in English.';
+    return `You are an experienced educator assessing a student's CIF (Community Innovation Framework) Design Thinking workbook. ${lang}
+
+Assess the following Step 1 (Problem Definition) responses using the rubric below. Be encouraging but honest. Provide specific, actionable feedback for each criterion.
+
+RUBRIC (total 10 pts):
+- SDG Selection (Q1): 1 pt — Is the SDG relevant to the problem described?
+- Problem Statement (Q2): 3 pts — Is it clear, specific, contextualised, with scale and affected groups?
+- Root Cause Analysis (Q3): 2 pts — Is there a logical causal chain identifying underlying causes?
+- Stakeholder Analysis (Q4): 2 pts — Are at least 2 stakeholders identified with distinct perspectives?
+- Evidence & Data (Q5): 2 pts — Are at least 2 specific, credible pieces of evidence cited?
+
+STUDENT RESPONSES:
+Q1 (SDG): ${sdg}
+Q2 (Problem Statement): ${q2}
+Q3 (Root Cause Analysis): ${q3}
+Q4 (Stakeholder Analysis): ${q4}
+Q5 (Evidence & Data): ${q5}
+
+Respond in this EXACT format:
+SCORE: [number]/10
+FEEDBACK:
+[For each criterion, give 1-2 sentences of specific feedback. Start each with the criterion name in bold.]
+SUGGESTIONS:
+[Give 2-3 concrete suggestions for improvement.]`;
+}
+
+function buildStep2Prompt() {
+  const sdg = document.getElementById('q1')?.value || '';
+  const q2 = document.getElementById('q2')?.value || '';
+  const q3 = document.getElementById('q3')?.value || '';
+  const q6 = document.getElementById('q6')?.value || '';
+  const lang = currentLang === 'zh' ? 'Respond in Chinese (Simplified).' : 'Respond in English.';
+  return `You are an experienced educator assessing a student's CIF Design Thinking workbook. ${lang}
+
+First, generate a polished Solution Statement in this format:
+"We will [action] for [target group] so that [outcome] by [method]."
+Base it on the student's problem and solution description below.
+
+Then assess Step 2 (Solution Development) using the rubric below.
+
+RUBRIC (total 10 pts):
+- Solution Description (Q6): 5 pts — Is it detailed, feasible, and does it clearly address the root causes?
+- Solution Statement (Q7): 5 pts — Is it clear and structured with action, target group, outcome, and method?
+
+STUDENT RESPONSES:
+SDG: ${sdg}
+Problem Statement: ${q2}
+Root Causes: ${q3}
+Q6 (Solution Description): ${q6}
+
+Respond in this EXACT format:
+GENERATED_STATEMENT: [your generated solution statement here]
+SCORE: [number]/10
+FEEDBACK:
+[For each criterion, give 1-2 sentences of specific feedback. Start each with the criterion name in bold.]
+SUGGESTIONS:
+[Give 2-3 concrete suggestions for improvement.]`;
+}
+
+function buildStep3Prompt() {
+  const q8 = document.getElementById('q8')?.value || '';
+  const q10a = document.getElementById('q10a')?.value || '';
+  const q10b = document.getElementById('q10b')?.value || '';
+  const hasSketch = sketchDataURL ? 'Yes, a sketch image has been uploaded.' : 'No sketch uploaded.';
+  const lang = currentLang === 'zh' ? 'Respond in Chinese (Simplified).' : 'Respond in English.';
+  return `You are an experienced educator assessing a student's CIF Design Thinking workbook. ${lang}
+
+Assess the following Step 3 (Prototype) responses using the rubric below.
+
+RUBRIC (total 10 pts):
+- Prototype Description (Q8): 4 pts — Is it detailed and specific, with clear features, materials/technology, and mechanism?
+- Prototype Sketch (Q9): 2 pts — Has a sketch been uploaded with labelled components? (${hasSketch})
+- Stakeholder Feedback (Q10a): 2 pts — Is specific feedback from a named stakeholder clearly described?
+- Iteration Plan (Q10b): 2 pts — Are concrete, specific improvements planned based on feedback?
+
+STUDENT RESPONSES:
+Q8 (Prototype Description): ${q8}
+Q9 (Sketch uploaded): ${hasSketch}
+Q10a (Stakeholder & Feedback): ${q10a}
+Q10b (Iteration Plan): ${q10b}
+
+Respond in this EXACT format:
+SCORE: [number]/10
+FEEDBACK:
+[For each criterion, give 1-2 sentences of specific feedback. Start each with the criterion name in bold.]
+SUGGESTIONS:
+[Give 2-3 concrete suggestions for improvement.]`;
+}
+
+function buildStep4Prompt() {
+  const q11 = document.getElementById('q11')?.value || '';
+  const q12 = document.getElementById('q12')?.value || '';
+  const lang = currentLang === 'zh' ? 'Respond in Chinese (Simplified).' : 'Respond in English.';
+  return `You are an experienced educator assessing a student's CIF Design Thinking workbook. ${lang}
+
+Assess the following Step 4 (Reflection) responses using the rubric below.
+
+RUBRIC (total 10 pts):
+- Individual Reflection (Q11): 5 pts — Is it thoughtful and specific, covering personal growth, challenges, and learning about global issues?
+- Global Citizenship Commitment (Q12): 5 pts — Are there concrete, actionable commitments beyond the project with clear personal ownership?
+
+STUDENT RESPONSES:
+Q11 (Individual Reflection): ${q11}
+Q12 (Global Citizenship Commitment): ${q12}
+
+Respond in this EXACT format:
+SCORE: [number]/10
+FEEDBACK:
+[For each criterion, give 1-2 sentences of specific feedback. Start each with the criterion name in bold.]
+SUGGESTIONS:
+[Give 2-3 concrete suggestions for improvement.]`;
+}
+
+// ============================================================
+// PARSE AI RESPONSE
+// ============================================================
+function parseAIResponse(text) {
+  const scoreMatch = text.match(/SCORE:\s*(\d+)\/10/i);
+  const score = scoreMatch ? parseInt(scoreMatch[1]) : 0;
+
+  const feedbackMatch = text.match(/FEEDBACK:\s*([\s\S]*?)(?=SUGGESTIONS:|$)/i);
+  const suggestionsMatch = text.match(/SUGGESTIONS:\s*([\s\S]*?)$/i);
+
+  const feedbackRaw = feedbackMatch ? feedbackMatch[1].trim() : '';
+  const suggestionsRaw = suggestionsMatch ? suggestionsMatch[1].trim() : '';
+
+  // Convert **bold** markdown to <strong>
+  const formatText = (str) => str
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\n/g, '<br>');
+
+  const feedbackHTML = feedbackRaw ? `<p class="font-semibold text-slate-800 mb-1">📝 Feedback:</p><p>${formatText(feedbackRaw)}</p>` : '';
+  const suggestionsHTML = suggestionsRaw ? `<p class="font-semibold text-slate-800 mt-3 mb-1">💡 Suggestions:</p><p>${formatText(suggestionsRaw)}</p>` : '';
+
+  return { score, html: feedbackHTML + suggestionsHTML };
+}
+
+function parseGeneratedStatement(text) {
+  const match = text.match(/GENERATED_STATEMENT:\s*(.+?)(?:\n|SCORE:)/i);
+  return match ? match[1].trim() : null;
+}
+
+// ============================================================
+// CALL AI (fetch to /api/ai or mock)
+// ============================================================
+async function callAI(prompt) {
+  // If you have a backend endpoint, replace this with a real fetch call.
+  // For demo purposes, this returns a mock response.
+  // Replace the URL and body format to match your actual API.
+  try {
+    const response = await fetch('/api/ai', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prompt })
+    });
+    if (!response.ok) throw new Error('API error');
+    const data = await response.json();
+    return data.text || data.content || data.response || '';
+  } catch (err) {
+    // Fallback mock response for demo/testing
+    return mockAIResponse(prompt);
+  }
+}
+
+function mockAIResponse(prompt) {
+  const isChinese = prompt.includes('Respond in Chinese');
+  if (isChinese) {
+    return `SCORE: 7/10
+FEEDBACK:
+**SDG选择** 你选择的SDG与问题描述相关，选择合理。
+**问题陈述** 问题陈述清晰，但可以更具体地说明受影响的规模和人群。
+**根本原因分析** 提供了合理的因果链，但可以进一步深入探讨根本原因。
+**持份者分析** 识别了两个持份者，但对其观点的描述可以更详细。
+**证据与数据** 提供了相关证据，但建议引用更具体的统计数据或研究。
+SUGGESTIONS:
+1. 在问题陈述中加入具体的统计数据，例如受影响人数或地区范围。
+2. 在根本原因分析中使用"5个为什么"方法，深入挖掘根本原因。
+3. 为每个持份者提供更具体的需求和观点描述。`;
+  }
+  return `SCORE: 7/10
+FEEDBACK:
+**SDG Selection** Your chosen SDG is relevant and well-matched to the problem you've described.
+**Problem Statement** The problem is clearly stated, but could be strengthened by including more specific data on scale and the exact groups affected.
+**Root Cause Analysis** You've identified a reasonable causal chain. Consider going deeper to uncover the systemic or structural root causes.
+**Stakeholder Analysis** Two stakeholders are identified, but their distinct perspectives and specific needs could be elaborated further.
+**Evidence & Data** Relevant evidence is provided. Try to cite specific statistics, studies, or expert sources for greater credibility.
+SUGGESTIONS:
+1. Add specific statistics (e.g. number of people affected, geographic scope) to your problem statement to strengthen its impact.
+2. Apply the 5 Whys technique more rigorously in your root cause analysis to reach deeper systemic causes.
+3. Expand your stakeholder analysis by describing what each stakeholder specifically needs or fears regarding this issue.`;
+}
+
+// ============================================================
+// STEP 1 — GET FEEDBACK
+// ============================================================
 async function getStep1Feedback() {
-  const challenges   = (document.getElementById('q3').value  || '').trim();
-  const condStmt     = (document.getElementById('q4a').value || '').trim();
-  const stemKVP      = (document.getElementById('q4b').value || '').trim();
-  const purpose      = (document.getElementById('q4c').value || '').trim();
-  const futureScene  = (document.getElementById('q4d').value || '').trim();
-  const sdg          = localStorage.getItem('selectedSDG') || 'an SDG';
-  const feedbackEl   = document.getElementById('step1-feedback');
-  const scoreEl      = document.getElementById('step1-score-display');
+  const btn = document.getElementById('aiFeedbackBtn1');
+  const loadingEl = document.getElementById('aiLoading1');
+  const feedbackEl = document.getElementById('aiFeedbackContent1');
+  const scoreEl = document.getElementById('scoreDisplay1');
 
-  if (!challenges || !condStmt || !stemKVP || !purpose || !futureScene) {
-    feedbackEl.classList.remove('hidden');
-    feedbackEl.innerHTML = '<p class="text-xs text-red-500 p-2">Please complete all fields (challenges and all four parts of the problem statement) before requesting feedback.</p>';
+  // Validate required fields
+  const q2 = document.getElementById('q2')?.value?.trim();
+  const q3 = document.getElementById('q3')?.value?.trim();
+  if (!q2 || !q3) {
+    alert(currentLang === 'zh'
+      ? '请至少填写问题陈述（Q2）和根本原因分析（Q3）后再获取反馈。'
+      : 'Please fill in at least the Problem Statement (Q2) and Root Cause Analysis (Q3) before getting feedback.');
     return;
   }
 
-  // Auto-generate and display the combined problem statement
-  const ps = buildProblemStatement();
-  document.getElementById('problemStatementText').textContent = ps;
-  document.getElementById('generatedProblemStatement').classList.remove('hidden');
+  btn.disabled = true;
+  btn.textContent = currentLang === 'zh' ? '⏳ 正在分析...' : '⏳ Analysing...';
+  loadingEl.classList.remove('hidden');
+  feedbackEl.classList.add('hidden');
+  scoreEl.classList.add('hidden');
 
-  feedbackEl.classList.remove('hidden');
-  scoreEl.classList.remove('hidden');
-  feedbackEl.innerHTML = '<p class="text-xs text-slate-400 p-2 animate-pulse">✨ Generating feedback...</p>';
-  scoreEl.innerHTML = '';
+  try {
+    const prompt = buildStep1Prompt();
+    const responseText = await callAI(prompt);
+    const { score, html } = parseAIResponse(responseText);
 
-  // Mock feedback (in production, this would call an AI API)
-  setTimeout(() => {
-    feedbackEl.innerHTML = '<div class="text-xs p-3 bg-green-50 border border-green-200 rounded-lg text-green-800"><p class="font-bold mb-2">✨ Feedback:</p><p>Great problem statement! Your conditions are clearly defined, and your HMW question is focused.</p></div>';
-    scoreEl.innerHTML = '<div class="text-sm font-bold p-3 bg-green-100 rounded-lg text-green-800 text-center">Score: 8/10 ✅</div>';
-    localStorage.setItem('step1Passed', '1');
-    document.getElementById('toStep2Btn').disabled = false;
-    document.getElementById('toStep2Btn').classList.remove('opacity-40','cursor-not-allowed');
-  }, 1500);
+    scores[1] = score;
+    const passed = score >= PASS_SCORE;
+    if (passed) {
+      stepUnlocked[2] = true;
+    }
+
+    renderScoreDisplay('scoreDisplay1', score, MAX_SCORE, passed);
+    renderFeedback('aiFeedbackContent1', html);
+    updateAllNavButtons();
+    saveToLocalStorage();
+  } catch (err) {
+    renderFeedback('aiFeedbackContent1', '<p class="text-rose-600">An error occurred. Please try again.</p>');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = currentLang === 'zh' ? '✨ 获取问题反馈' : '✨ Get Problem Feedback';
+    loadingEl.classList.add('hidden');
+  }
 }
 
-// ── Initialization ────────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('Page loaded and ready');
-});
+// ============================================================
+// STEP 2 — GET FEEDBACK + GENERATE STATEMENT
+// ============================================================
+async function getStep2Feedback() {
+  const btn = document.getElementById('aiFeedbackBtn2');
+  const loadingEl = document.getElementById('aiLoading2');
+  const feedbackEl = document.getElementById('aiFeedbackContent2');
+  const scoreEl = document.getElementById('scoreDisplay2');
+  const statementBox = document.getElementById('generatedStatementBox');
+  const statementText = document.getElementById('generatedStatementText');
 
+  const q6 = document.getElementById('q6')?.value?.trim();
+  if (!q6) {
+    alert(currentLang === 'zh'
+      ? '请先填写解决方案描述（Q6）。'
+      : 'Please fill in the Solution Description (Q6) before getting feedback.');
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = currentLang === 'zh' ? '⏳ 正在生成...' : '⏳ Generating...';
+  loadingEl.classList.remove('hidden');
+  feedbackEl.classList.add('hidden');
+  scoreEl.classList.add('hidden');
+  statementBox.classList.add('hidden');
+
+  try {
+    const prompt = buildStep2Prompt();
+    const responseText = await callAI(prompt);
+
+    const generatedStatement = parseGeneratedStatement(responseText);
+    if (generatedStatement) {
+      document.getElementById('q7').value = generatedStatement;
+      statementText.textContent = generatedStatement;
+      statementBox.classList.remove('hidden');
+    }
+
+    const { score, html } = parseAIResponse(responseText);
+    scores[2] = score;
+    const passed = score >= PASS_SCORE;
+    if (passed) {
+      stepUnlocked[3] = true;
+    }
+
+    renderScoreDisplay('scoreDisplay2', score, MAX_SCORE, passed);
+    renderFeedback('aiFeedbackContent2', html);
+    updateAllNavButtons();
+    saveToLocalStorage();
+  } catch (err) {
+    renderFeedback('aiFeedbackContent2', '<p class="text-rose-600">An error occurred. Please try again.</p>');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = currentLang === 'zh' ? '✨ 生成解决方案陈述并获取反馈' : '✨ Generate Solution Statement & Get Feedback';
+    loadingEl.classList.add('hidden');
+  }
+}
+
+// ============================================================
+// STEP 3 — GET FEEDBACK
+// ============================================================
+async function getStep3Feedback() {
+  const btn = document.getElementById('aiFeedbackBtn3');
+  const loadingEl = document.getElementById('aiLoading3');
+  const feedbackEl = document.getElementById('aiFeedbackContent3');
+  const scoreEl = document.getElementById('scoreDisplay3');
+
+  const q8 = document.getElementById('q8')?.value?.trim();
+  if (!q8) {
+    alert(currentLang === 'zh'
+      ? '请先填写原型描述（Q8）。'
+      : 'Please fill in the Prototype Description (Q8) before getting feedback.');
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = currentLang === 'zh' ? '⏳ 正在分析...' : '⏳ Analysing...';
+  loadingEl.classList.remove('hidden');
+  feedbackEl.classList.add('hidden');
+  scoreEl.classList.add('hidden');
+
+  try {
+    const prompt = buildStep3Prompt();
+    const responseText = await callAI(prompt);
+    const { score, html } = parseAIResponse(responseText);
+
+    scores[3] = score;
+    const passed = score >= PASS_SCORE;
+    if (passed) {
+      stepUnlocked[4] = true;
+    }
+
+    renderScoreDisplay('scoreDisplay3', score, MAX_SCORE, passed);
+    renderFeedback('aiFeedbackContent3', html);
+    updateAllNavButtons();
+    saveToLocalStorage();
+  } catch (err) {
+    renderFeedback('aiFeedbackContent3', '<p class="text-rose-600">An error occurred. Please try again.</p>');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = currentLang === 'zh' ? '✨ 获取原型反馈' : '✨ Get Prototype Feedback';
+    loadingEl.classList.add('hidden');
+  }
+}
+
+// ============================================================
+// STEP 4 — GET FEEDBACK
+// ============================================================
+async function getStep4Feedback() {
+  const btn = document.getElementById('aiFeedbackBtn4');
+  const loadingEl = document.getElementById('aiLoading4');
+  const feedbackEl = document.getElementById('aiFeedbackContent4');
+  const scoreEl = document.getElementById('scoreDisplay4');
+
+  const q11 = document.getElementById('q11')?.value?.trim();
+  const q12 = document.getElementById('q12')?.value?.trim();
+  if (!q11 || !q12) {
+    alert(currentLang === 'zh'
+      ? '请填写个人反思（Q11）和全球公民承诺（Q12）后再获取反馈。'
+      : 'Please fill in both the Individual Reflection (Q11) and Global Citizenship Commitment (Q12) before getting feedback.');
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = currentLang === 'zh' ? '⏳ 正在分析...' : '⏳ Analysing...';
+  loadingEl.classList.remove('hidden');
+  feedbackEl.classList.add('hidden');
+  scoreEl.classList.add('hidden');
+
+  try {
+    const prompt = buildStep4Prompt();
+    const responseText = await callAI(prompt);
+    const { score, html } = parseAIResponse(responseText);
+
+    scores[4] = score;
+    stepUnlocked[5] = true;
+
+    renderScoreDisplay('scoreDisplay4', score, MAX_SCORE, passed);
+    renderFeedback('aiFeedbackContent4', html);
+    updateAllNavButtons();
+    saveToLocalStorage();
+  } catch (err) {
+    renderFeedback('aiFeedbackContent4', '<p class="text-rose-600">An error occurred. Please try again.</p>');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = currentLang === 'zh' ? '✨ 获取反思反馈' : '✨ Get Reflection Feedback';
+    loadingEl.classList.add('hidden');
+  }
+}
+
+// ============================================================
+// BUILD SUMMARY (Step 5)
+// ============================================================
+function buildSummary() {
+  const fields = {
+    'summary-q1': document.getElementById('q1')?.value,
+    'summary-q2': document.getElementById('q2')?.value,
+    'summary-q3': document.getElementById('q3')?.value,
+    'summary-q4': document.getElementById('q4')?.value,
+    'summary-q5': document.getElementById('q5')?.value,
+    'summary-q6': document.getElementById('q6')?.value,
+    'summary-q7': document.getElementById('q7')?.value,
+    'summary-q8': document.getElementById('q8')?.value,
+    'summary-q10a': document.getElementById('q10a')?.value,
+    'summary-q10b': document.getElementById('q10b')?.value,
+    'summary-q11': document.getElementById('q11')?.value,
+    'summary-q12': document.getElementById('q12')?.value,
+  };
+
+  Object.entries(fields).forEach(([id, val]) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = val || '—';
+  });
+
+  // Sketch
+  const summarySketch = document.getElementById('summary-sketch');
+  if (summarySketch) {
+    if (sketchDataURL) {
+      summarySketch.innerHTML = `<img src="${sketchDataURL}" class="max-w-xs rounded-lg border border-slate-200 shadow" alt="Prototype Sketch">`;
+    } else {
+      summarySketch.textContent = currentLang === 'zh' ? '未上传草图。' : 'No sketch uploaded.';
+    }
+  }
+
+  // Overall score
+  const total = Object.values(scores).reduce((a, b) => a + b, 0);
+  const maxTotal = 40;
+  const overallEl = document.getElementById('overallScore');
+  if (overallEl) {
+    const allDone = stepUnlocked[5];
+    if (allDone) {
+      const pct = Math.round((total / maxTotal) * 100);
+      overallEl.innerHTML = `
+        <p class="text-4xl font-extrabold text-indigo-700">${total}<span class="text-xl text-slate-400">/${maxTotal}</span></p>
+        <p class="text-sm text-slate-500 mt-1">${pct}% — ${
+          pct >= 75
+            ? (currentLang === 'zh' ? '优秀！' : 'Excellent!')
+            : pct >= 60
+            ? (currentLang === 'zh' ? '良好。' : 'Good work.')
+            : (currentLang === 'zh' ? '继续努力！' : 'Keep working at it!')
+        }</p>
+        <div class="mt-2 grid grid-cols-4 gap-2 text-xs text-center">
+          ${[1,2,3,4].map(s => `
+            <div class="rounded-lg bg-indigo-50 border border-indigo-100 p-2">
+              <p class="font-bold text-indigo-700">${scores[s]}/10</p>
+              <p class="text-slate-500">${currentLang === 'zh' ? ['问题','方案','原型','反思'][s-1] : ['Problem','Solution','Prototype','Reflection'][s-1]}</p>
+            </div>`).join('')}
+        </div>`;
+    } else {
+      overallEl.innerHTML = `<p class="text-slate-400 text-sm">${translations[currentLang]['overall-score-sub']}</p>`;
+    }
+  }
+}
+
+// ============================================================
+// EXPORT PDF
+// ============================================================
+function exportPDF() {
+  buildSummary();
+  window.print();
+}
+
+// ============================================================
+// INIT
+// ============================================================
+document.addEventListener('DOMContentLoaded', () => {
+  // Load saved data
+  loadFromLocalStorage();
+
+  // Apply default language
+  const savedLang = localStorage.getItem('cifLang') || 'en';
+  applyTranslations(savedLang);
+
+  // Set initial step
+  goToStep(1);
+
+  // Update nav buttons
+  updateAllNavButtons();
+});
 </script>
 
 </body>
