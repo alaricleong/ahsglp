@@ -1019,7 +1019,8 @@ function applyTranslations(lang) {
       el.innerHTML = translations[lang][key];
     }
   });
-  document.getElementById('langToggleBtn').textContent = translations[lang]['lang-toggle'];
+ const langToggleBtn = document.getElementById('langToggleBtn');
+if (langToggleBtn) langToggleBtn.textContent = translations[lang]['lang-toggle'];
   localStorage.setItem('cifLang', lang);
 }
 
@@ -1152,6 +1153,50 @@ function importJSON(event) {
 // ============================================================
 // AUTO-SAVE on input
 // ============================================================
+// ============================================================
+// LOGIN
+// ============================================================
+document.addEventListener('DOMContentLoaded', () => {
+  const loginBtn = document.getElementById('loginBtn');
+  const loginGate = document.getElementById('loginGate');
+  const appContainer = document.getElementById('appContainer');
+
+  loginBtn.addEventListener('click', () => {
+    const year = document.getElementById('loginYear').value;
+    const city = document.getElementById('loginCity').value;
+    const group = document.getElementById('loginGroup').value;
+    const errorEl = document.getElementById('loginError');
+
+    if (!year || !city || !group) {
+      errorEl.textContent = 'Please select your Year, City and Group to continue.';
+      errorEl.classList.remove('hidden');
+      return;
+    }
+
+    errorEl.classList.add('hidden');
+
+    // Set values in the main app
+    document.getElementById('selectYear').value = year;
+    document.getElementById('selectTrip').value = city;
+    document.getElementById('selectGroup').value = group;
+
+    const groupId = `${year} / ${city} / Group ${group}`;
+    document.getElementById('groupIdDisplay').textContent = groupId;
+    document.getElementById('userDisplay').textContent = groupId;
+
+    // Hide login, show app
+    loginGate.classList.add('hidden');
+    appContainer.classList.remove('hidden');
+  });
+
+  // Theme toggles on login gate
+  const gateThemeToggle = document.getElementById('gateThemeToggle');
+  if (gateThemeToggle) {
+    gateThemeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+  }
+});
 document.addEventListener('input', () => saveToLocalStorage());
 
 // ============================================================
@@ -1418,24 +1463,21 @@ SUGGESTIONS:
 // STEP 1 — GET FEEDBACK
 // ============================================================
 async function getStep1Feedback() {
-  const btn = document.getElementById('aiFeedbackBtn1');
-  const loadingEl = document.getElementById('aiLoading1');
-  const feedbackEl = document.getElementById('aiFeedbackContent1');
-  const scoreEl = document.getElementById('scoreDisplay1');
+  const btn = event.currentTarget;
+  const feedbackEl = document.getElementById('step1-feedback');
+  const scoreEl = document.getElementById('step1-score-display');
 
-  // Validate required fields
-  const q2 = document.getElementById('q2')?.value?.trim();
   const q3 = document.getElementById('q3')?.value?.trim();
-  if (!q2 || !q3) {
+  const q4a = document.getElementById('q4a')?.value?.trim();
+  if (!q3) {
     alert(currentLang === 'zh'
-      ? '请至少填写问题陈述（Q2）和根本原因分析（Q3）后再获取反馈。'
-      : 'Please fill in at least the Problem Statement (Q2) and Root Cause Analysis (Q3) before getting feedback.');
+      ? '请至少填写挑战（Q3）后再获取反馈。'
+      : 'Please fill in the Challenges (Q3) before getting feedback.');
     return;
   }
 
   btn.disabled = true;
   btn.textContent = currentLang === 'zh' ? '⏳ 正在分析...' : '⏳ Analysing...';
-  loadingEl.classList.remove('hidden');
   feedbackEl.classList.add('hidden');
   scoreEl.classList.add('hidden');
 
@@ -1446,48 +1488,39 @@ async function getStep1Feedback() {
 
     scores[1] = score;
     const passed = score >= PASS_SCORE;
-    if (passed) {
-      stepUnlocked[2] = true;
-    }
+    if (passed) stepUnlocked[2] = true;
 
-    renderScoreDisplay('scoreDisplay1', score, MAX_SCORE, passed);
-    renderFeedback('aiFeedbackContent1', html);
+    renderScoreDisplay('step1-score-display', score, MAX_SCORE, passed);
+    renderFeedback('step1-feedback', html);
     updateAllNavButtons();
     saveToLocalStorage();
   } catch (err) {
-    renderFeedback('aiFeedbackContent1', '<p class="text-rose-600">An error occurred. Please try again.</p>');
+    renderFeedback('step1-feedback', '<p class="text-rose-600">An error occurred. Please try again.</p>');
   } finally {
     btn.disabled = false;
-    btn.textContent = currentLang === 'zh' ? '✨ 获取问题反馈' : '✨ Get Problem Feedback';
-    loadingEl.classList.add('hidden');
+    btn.textContent = currentLang === 'zh' ? '✨ 获取问题反馈' : '✨ Generate Problem Statement & Get Feedback';
   }
 }
-
 // ============================================================
 // STEP 2 — GET FEEDBACK + GENERATE STATEMENT
 // ============================================================
 async function getStep2Feedback() {
-  const btn = document.getElementById('aiFeedbackBtn2');
-  const loadingEl = document.getElementById('aiLoading2');
-  const feedbackEl = document.getElementById('aiFeedbackContent2');
-  const scoreEl = document.getElementById('scoreDisplay2');
-  const statementBox = document.getElementById('generatedStatementBox');
-  const statementText = document.getElementById('generatedStatementText');
+  const btn = event.currentTarget;
+  const feedbackEl = document.getElementById('step2-feedback');
+  const scoreEl = document.getElementById('step2-score-display');
 
-  const q6 = document.getElementById('q6')?.value?.trim();
-  if (!q6) {
+  const q5b = document.getElementById('q5b')?.value?.trim();
+  if (!q5b) {
     alert(currentLang === 'zh'
-      ? '请先填写解决方案描述（Q6）。'
-      : 'Please fill in the Solution Description (Q6) before getting feedback.');
+      ? '请先填写新解决方法（Q5）。'
+      : 'Please fill in the New Solutions (Q5) before getting feedback.');
     return;
   }
 
   btn.disabled = true;
   btn.textContent = currentLang === 'zh' ? '⏳ 正在生成...' : '⏳ Generating...';
-  loadingEl.classList.remove('hidden');
   feedbackEl.classList.add('hidden');
   scoreEl.classList.add('hidden');
-  statementBox.classList.add('hidden');
 
   try {
     const prompt = buildStep2Prompt();
@@ -1496,38 +1529,31 @@ async function getStep2Feedback() {
     const generatedStatement = parseGeneratedStatement(responseText);
     if (generatedStatement) {
       document.getElementById('q7').value = generatedStatement;
-      statementText.textContent = generatedStatement;
-      statementBox.classList.remove('hidden');
     }
 
     const { score, html } = parseAIResponse(responseText);
     scores[2] = score;
     const passed = score >= PASS_SCORE;
-    if (passed) {
-      stepUnlocked[3] = true;
-    }
+    if (passed) stepUnlocked[3] = true;
 
-    renderScoreDisplay('scoreDisplay2', score, MAX_SCORE, passed);
-    renderFeedback('aiFeedbackContent2', html);
+    renderScoreDisplay('step2-score-display', score, MAX_SCORE, passed);
+    renderFeedback('step2-feedback', html);
     updateAllNavButtons();
     saveToLocalStorage();
   } catch (err) {
-    renderFeedback('aiFeedbackContent2', '<p class="text-rose-600">An error occurred. Please try again.</p>');
+    renderFeedback('step2-feedback', '<p class="text-rose-600">An error occurred. Please try again.</p>');
   } finally {
     btn.disabled = false;
     btn.textContent = currentLang === 'zh' ? '✨ 生成解决方案陈述并获取反馈' : '✨ Generate Solution Statement & Get Feedback';
-    loadingEl.classList.add('hidden');
   }
 }
-
 // ============================================================
 // STEP 3 — GET FEEDBACK
 // ============================================================
 async function getStep3Feedback() {
-  const btn = document.getElementById('aiFeedbackBtn3');
-  const loadingEl = document.getElementById('aiLoading3');
-  const feedbackEl = document.getElementById('aiFeedbackContent3');
-  const scoreEl = document.getElementById('scoreDisplay3');
+  const btn = event.currentTarget;
+  const feedbackEl = document.getElementById('step3-feedback');
+  const scoreEl = document.getElementById('step3-score-display');
 
   const q8 = document.getElementById('q8')?.value?.trim();
   if (!q8) {
@@ -1539,7 +1565,6 @@ async function getStep3Feedback() {
 
   btn.disabled = true;
   btn.textContent = currentLang === 'zh' ? '⏳ 正在分析...' : '⏳ Analysing...';
-  loadingEl.classList.remove('hidden');
   feedbackEl.classList.add('hidden');
   scoreEl.classList.add('hidden');
 
@@ -1550,31 +1575,26 @@ async function getStep3Feedback() {
 
     scores[3] = score;
     const passed = score >= PASS_SCORE;
-    if (passed) {
-      stepUnlocked[4] = true;
-    }
+    if (passed) stepUnlocked[4] = true;
 
-    renderScoreDisplay('scoreDisplay3', score, MAX_SCORE, passed);
-    renderFeedback('aiFeedbackContent3', html);
+    renderScoreDisplay('step3-score-display', score, MAX_SCORE, passed);
+    renderFeedback('step3-feedback', html);
     updateAllNavButtons();
     saveToLocalStorage();
   } catch (err) {
-    renderFeedback('aiFeedbackContent3', '<p class="text-rose-600">An error occurred. Please try again.</p>');
+    renderFeedback('step3-feedback', '<p class="text-rose-600">An error occurred. Please try again.</p>');
   } finally {
     btn.disabled = false;
     btn.textContent = currentLang === 'zh' ? '✨ 获取原型反馈' : '✨ Get Prototype Feedback';
-    loadingEl.classList.add('hidden');
   }
 }
-
 // ============================================================
 // STEP 4 — GET FEEDBACK
 // ============================================================
 async function getStep4Feedback() {
-  const btn = document.getElementById('aiFeedbackBtn4');
-  const loadingEl = document.getElementById('aiLoading4');
-  const feedbackEl = document.getElementById('aiFeedbackContent4');
-  const scoreEl = document.getElementById('scoreDisplay4');
+  const btn = event.currentTarget;
+  const feedbackEl = document.getElementById('step4-feedback');
+  const scoreEl = document.getElementById('step4-score-display');
 
   const q11 = document.getElementById('q11')?.value?.trim();
   const q12 = document.getElementById('q12')?.value?.trim();
@@ -1587,7 +1607,6 @@ async function getStep4Feedback() {
 
   btn.disabled = true;
   btn.textContent = currentLang === 'zh' ? '⏳ 正在分析...' : '⏳ Analysing...';
-  loadingEl.classList.remove('hidden');
   feedbackEl.classList.add('hidden');
   scoreEl.classList.add('hidden');
 
@@ -1597,21 +1616,20 @@ async function getStep4Feedback() {
     const { score, html } = parseAIResponse(responseText);
 
     scores[4] = score;
+    const passed = score >= PASS_SCORE;
     stepUnlocked[5] = true;
 
-    renderScoreDisplay('scoreDisplay4', score, MAX_SCORE, passed);
-    renderFeedback('aiFeedbackContent4', html);
+    renderScoreDisplay('step4-score-display', score, MAX_SCORE, passed);
+    renderFeedback('step4-feedback', html);
     updateAllNavButtons();
     saveToLocalStorage();
   } catch (err) {
-    renderFeedback('aiFeedbackContent4', '<p class="text-rose-600">An error occurred. Please try again.</p>');
+    renderFeedback('step4-feedback', '<p class="text-rose-600">An error occurred. Please try again.</p>');
   } finally {
     btn.disabled = false;
     btn.textContent = currentLang === 'zh' ? '✨ 获取反思反馈' : '✨ Get Reflection Feedback';
-    loadingEl.classList.add('hidden');
   }
 }
-
 // ============================================================
 // BUILD SUMMARY (Step 5)
 // ============================================================
@@ -1700,6 +1718,50 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Update nav buttons
   updateAllNavButtons();
+
+  // Logout buttons
+  const handleLogout = () => {
+    document.getElementById('appContainer').classList.add('hidden');
+    document.getElementById('loginGate').classList.remove('hidden');
+  };
+  document.getElementById('logoutBtn')?.addEventListener('click', handleLogout);
+  document.getElementById('logoutBtn2')?.addEventListener('click', handleLogout);
+
+  // Theme toggles in app
+  const handleThemeToggle = () => document.body.classList.toggle('dark-mode');
+  document.getElementById('appThemeToggle')?.addEventListener('click', handleThemeToggle);
+  document.getElementById('appThemeToggle2')?.addEventListener('click', handleThemeToggle);
+
+  // Language buttons
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      applyTranslations(btn.getAttribute('data-lang'));
+    });
+  });
+
+  // Nav tab buttons
+  document.querySelectorAll('.nav-btn[data-step]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const step = parseInt(btn.getAttribute('data-step'));
+      goToStep(step);
+    });
+  });
+
+  // Group ID display when selects change in main app
+  const updateGroupId = () => {
+    const year = document.getElementById('selectYear').value;
+    const city = document.getElementById('selectTrip').value;
+    const group = document.getElementById('selectGroup').value;
+    if (year && city && group) {
+      const id = `${year} / ${city} / Group ${group}`;
+      document.getElementById('groupIdDisplay').textContent = id;
+    }
+  };
+  document.getElementById('selectYear')?.addEventListener('change', updateGroupId);
+  document.getElementById('selectTrip')?.addEventListener('change', updateGroupId);
+  document.getElementById('selectGroup')?.addEventListener('change', updateGroupId);
 });
 </script>
 
